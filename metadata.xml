@@ -130,7 +130,7 @@
 				<Field Name="ActualStartDate" AllowNull="true" Type="DateTime2"/>
 				<Field Name="ActualEndDate" AllowNull="true" Type="DateTime2"/>
 				<Field Name="Author" AllowNull="true" Type="Catalog.User"/>
-				<Field Name="UserMA" AllowNull="false" Type="Catalog.User"/>
+				<Field Name="UserMA" AllowNull="true" Type="Catalog.User"/>
 				<Field Name="Comment" AllowNull="true" Type="String" Length="1000"/>
 				<Field Name="DetailedDescription" AllowNull="true" Type="String" Length="500"/>
 				<Field Name="CommentContractor" AllowNull="true" Type="String" Length="1000"/>
