@@ -364,12 +364,15 @@ CREATE FUNCTION [DateTime2ToBigInt](@dt DATETIME2(7))
 RETURNS BIGINT
 WITH SCHEMABINDING AS
 BEGIN
-declare @dtBinary binary(9) = CAST(REVERSE(CONVERT(binary(9), @dt)) as binary(9));
-declare @dtDateBytes binary(3) = SUBSTRING(@dtBinary, 1, 3);
-declare @dtTimeBytes binary(5) = SUBSTRING(@dtBinary, 4, 5);
-declare @dtPrecisionByte binary(1) = SUBSTRING(@dtBinary, 9, 1);
+-- declare @dtBinary binary(9) = CAST(REVERSE(CONVERT(binary(9), @dt)) as binary(9));
+-- declare @dtDateBytes binary(3) = SUBSTRING(@dtBinary, 1, 3);
+-- declare @dtTimeBytes binary(5) = SUBSTRING(@dtBinary, 4, 5);
+-- declare @dtPrecisionByte binary(1) = SUBSTRING(@dtBinary, 9, 1);
 
-return (CONVERT(bigint, @dtDateBytes) * 864000000000) + CONVERT(bigint, @dtTimeBytes)
+-- return (CONVERT(bigint, @dtDateBytes) * 864000000000) + CONVERT(bigint, @dtTimeBytes)
+
+return DATEDIFF(SECOND, {d '1970-01-01'}, @dt)
+
 END
 
 GO
