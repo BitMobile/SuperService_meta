@@ -360,10 +360,10 @@ GO
 
 
 
-CREATE FUNCTION [DateTime2ToBigInt](@dt DATETIME2(7))
-RETURNS BIGINT
-WITH SCHEMABINDING AS
-BEGIN
+-- CREATE FUNCTION [DateTime2ToBigInt](@dt DATETIME2(7))
+-- RETURNS BIGINT
+-- WITH SCHEMABINDING AS
+-- BEGIN
 -- declare @dtBinary binary(9) = CAST(REVERSE(CONVERT(binary(9), @dt)) as binary(9));
 -- declare @dtDateBytes binary(3) = SUBSTRING(@dtBinary, 1, 3);
 -- declare @dtTimeBytes binary(5) = SUBSTRING(@dtBinary, 4, 5);
@@ -371,38 +371,39 @@ BEGIN
 
 -- return (CONVERT(bigint, @dtDateBytes) * 864000000000) + CONVERT(bigint, @dtTimeBytes)
 
-return DATEDIFF(SECOND, {d '1970-01-01'}, @dt)
+-- return DATEDIFF(SECOND, {d '1970-01-01'}, @dt)
 
-END
+-- END
 
-GO
+-- GO
 
 
-PRINT 'Creating Auto last changed datetime triggers...  --------------------------------------------------------------------'
-DECLARE @colName NVARCHAR(100) = 'Timestamp';
-DECLARE @script NVARCHAR(MAX), @tableName NVARCHAR(MAX);
+-- PRINT 'Creating Auto last changed datetime triggers...  --------------------------------------------------------------------'
+-- DECLARE @colName NVARCHAR(100) = 'Timestamp';
+-- DECLARE @script NVARCHAR(MAX), @tableName NVARCHAR(MAX);
 
-DECLARE cursor_name CURSOR FAST_FORWARD READ_ONLY FOR
-SELECT	'CREATE TRIGGER tr'+ tableName +'LastChangeDate ON ['+ schemaName + '].[' + tableName +'] FOR UPDATE AS BEGIN ' +
-		'UPDATE ['+ schemaName + '].[' + tableName +'] SET [' + @colName + '] = dbo.DateTime2ToBigInt(GETDATE()) ' +  
-		'FROM ['+ schemaName + '].[' + tableName +'] t INNER JOIN Inserted s ON t.Id = s.Id; END ' AS script,
-		tableName AS tableName
-FROM	(
-			SELECT	t.name AS tableName, 
-					SCHEMA_NAME(schema_id) AS schemaName
-			FROM sys.tables AS t INNER JOIN sys.columns c ON t.OBJECT_ID = c.OBJECT_ID
-			WHERE c.name = @colName
-		) z
-OPEN cursor_name
-FETCH NEXT FROM cursor_name INTO @script, @tableName
+-- DECLARE cursor_name CURSOR FAST_FORWARD READ_ONLY FOR
+-- SELECT	'CREATE TRIGGER tr'+ tableName +'LastChangeDate ON ['+ schemaName + '].[' + tableName +'] FOR UPDATE AS BEGIN ' +
+-- 		'UPDATE ['+ schemaName + '].[' + tableName +'] SET [' + @colName + '] = dbo.DateTime2ToBigInt(GETDATE()) ' +  
+-- 		'FROM ['+ schemaName + '].[' + tableName +'] t INNER JOIN Inserted s ON t.Id = s.Id; END ' AS script,
+-- 		tableName AS tableName
+-- FROM	(
+-- 			SELECT	t.name AS tableName, 
+-- 					SCHEMA_NAME(schema_id) AS schemaName
+-- 			FROM sys.tables AS t INNER JOIN sys.columns c ON t.OBJECT_ID = c.OBJECT_ID
+-- 			WHERE c.name = @colName
+-- 		) z
+-- OPEN cursor_name
+-- FETCH NEXT FROM cursor_name INTO @script, @tableName
 
-WHILE @@FETCH_STATUS = 0
-BEGIN
-	PRINT 'for ' + @tableName
-	EXEC(@script);
-    FETCH NEXT FROM cursor_name INTO @script, @tableName
-END
+-- WHILE @@FETCH_STATUS = 0
+-- BEGIN
+-- 	PRINT 'for ' + @tableName
+-- 	EXEC(@script);
+--     FETCH NEXT FROM cursor_name INTO @script, @tableName
+-- END
 
-CLOSE cursor_name
-DEALLOCATE cursor_name
+-- CLOSE cursor_name
+-- DEALLOCATE cursor_name
+
 PRINT 'Finished.'
