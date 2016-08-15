@@ -111,7 +111,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity Schema="Document" Name="Event" SyncUpload="True" SyncDownload="True" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE EV.[UserMA] = @UserId AND EV.[Date] > (getDate() - 31) AND SE.[Name] = 'Appointed')
+		<Entity Schema="Document" Name="Event" SyncUpload="True" SyncDownload="True" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE EV.[UserMA] = @UserId AND EV.[Date] > (getDate() - 31) AND NOT (SE.[Name] = 'Done'))
 ">
 			<Fields>
 				<Field Name="Posted" AllowNull="true" Type="Boolean"/>
