@@ -20807,6 +20807,6 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58433-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculateMaterials" Code="000000007" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="3" Predefined="False" Id="f51db045-0642-11e6-80ff-902b3416d383" DeletionMark="True" Description="Used service bag" Code="000000016" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="3" Predefined="False" Id="d62584b7-0bb7-11e6-80ff-902b3416d383" DeletionMark="True" Description="Used service bag" Code="000000015" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="4f10f61a-0bc0-11e6-80ff-902b3416d383" DeletionMark="False" Description="UsedServiceBag" Code="000000014" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
+		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="4f10f61a-0bc0-11e6-80ff-902b3416d383" DeletionMark="False" Description="UsedServiceBag" Code="000000014" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 	</Rows>
 </Root>
