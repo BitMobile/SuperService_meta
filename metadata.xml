@@ -169,7 +169,7 @@
 					<Field Name="UIDPhoto" AllowNull="true" Type="Guid"/>
 					<Field Name="Equipment" AllowNull="true" Type="Catalog.Equipment"/>
 				</TabularSection>
-				<TabularSection Name="Parameters" SyncFilter="" Key="Parameter,Val">
+				<TabularSection Name="Parameters" SyncFilter="" Key="Parameter">
 					<Field Name="Id" Type="Guid" KeyField="true"/>
 					<Field Name="LineNumber" AllowNull="true" Type="Integer"/>
 					<Field Name="Ref" Type="Guid" KeyField="false" AllowNull="false"/>
@@ -303,7 +303,7 @@
 					<Field Name="FullFileName" AllowNull="true" Type="String" Length="700"/>
 					<Field Name="FileName" AllowNull="true" Type="Guid"/>
 				</TabularSection>
-				<TabularSection Name="Parameters" SyncFilter="" Key="Parameter,Val">
+				<TabularSection Name="Parameters" SyncFilter="" Key="Parameter">
 					<Field Name="Id" Type="Guid" KeyField="true"/>
 					<Field Name="LineNumber" AllowNull="true" Type="Integer"/>
 					<Field Name="Ref" Type="Guid" KeyField="false" AllowNull="false"/>
