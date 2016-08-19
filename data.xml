@@ -2,7 +2,7 @@
 <Root>
 	<RegionalSettings NumberDecimalSeparator="," NumberGroupSeparator=" "/>
 	<Rows>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="af739dda-a4d5-11e5-8aad-f8a963e4bf15" DeletionMark="False" Description="Admin" Code="000000005" UserName="Admin" Password="1" UserDB="" EMail="" UserID="9305f8d6-fc84-4120-804c-a42b0bc42935" Phone="" Role="">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="af739dda-a4d5-11e5-8aad-f8a963e4bf15" DeletionMark="False" Description="Admin" Code="000000005" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="9305f8d6-fc84-4120-804c-a42b0bc42935" Phone="" Role="Admin">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
