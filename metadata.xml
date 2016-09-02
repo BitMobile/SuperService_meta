@@ -268,7 +268,7 @@
 				<Field AllowNull="true" Name="SKU" Type="Catalog.SKU"/>
 			</Fields>
 			<TabularSections>
-				<TabularSection Key="Clients,Equiement" Name="Equiements" SyncFilter="">
+				<TabularSection Key="Period,Clients,Equiement" Name="Equiements" SyncFilter="">
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="true" Name="Period" Type="DateTime2"/>
