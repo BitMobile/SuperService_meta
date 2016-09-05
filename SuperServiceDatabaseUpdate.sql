@@ -339,6 +339,23 @@ EXEC sp_addextendedproperty N'MS_Description', N'Глобальная конфи
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+PRINT N'Creating [dbo].[PicturePaths]...';
+GO
+CREATE TABLE [dbo].[PicturePaths] (
+    [Id]          UNIQUEIDENTIFIER NOT NULL,
+    [Name]        NVARCHAR (200)   NOT NULL,
+    [PrivatePath] NVARCHAR (250)   NULL,
+    [SharedPath]  NVARCHAR (250)   NULL,
+    CONSTRAINT [UQ_PicturePaths_Name] UNIQUE NONCLUSTERED ([Name] ASC)
+);
+GO
+PRINT N'Creating unnamed constraint on [dbo].[PicturePaths]...';
+GO
+ALTER TABLE [dbo].[PicturePaths]
+    ADD DEFAULT (newsequentialid()) FOR [Id];
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
 COMMIT TRANSACTION
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
