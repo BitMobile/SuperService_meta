@@ -346,7 +346,8 @@ CREATE TABLE [dbo].[PicturePaths] (
     [Name]        NVARCHAR (200)   NOT NULL,
     [PrivatePath] NVARCHAR (250)   NULL,
     [SharedPath]  NVARCHAR (250)   NULL,
-    CONSTRAINT [UQ_PicturePaths_Name] UNIQUE NONCLUSTERED ([Name] ASC)
+    CONSTRAINT [UQ_PicturePaths_Name] UNIQUE NONCLUSTERED ([Name] ASC),
+	CONSTRAINT [PK_PicturePaths] PRIMARY KEY ([Id])
 );
 GO
 PRINT N'Creating unnamed constraint on [dbo].[PicturePaths]...';
