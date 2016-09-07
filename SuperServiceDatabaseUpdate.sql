@@ -374,6 +374,17 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('DBVersion'
+           ,N'3.1.3.0');
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Creating primary key [PK_dbConfig] on [dbo].[dbConfig]'
 GO
 
