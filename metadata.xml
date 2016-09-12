@@ -531,6 +531,7 @@
 				<Field AllowNull="false" Name="Client" Type="Catalog.Client"/>
 				<Field AllowNull="true" Name="Equipment" Type="Catalog.Equipment"/>
 				<Field AllowNull="true" Name="Event" Type="Document.Event"/>
+				<Field AllowNull="true" Length="100" Name="TaskType" Type="String"/>
 			</Fields>
 			<TabularSections>
 				<TabularSection Key="Description" Name="Targets" DeleteFilter="" SyncFilter="">
@@ -540,7 +541,7 @@
 					<Field AllowNull="true" Length="1000" Name="Description" Type="String"/>
 					<Field AllowNull="true" Name="IsDone" Type="Boolean"/>
 				</TabularSection>
-				<TabularSection Key="" Name="Status" DeleteFilter="" SyncFilter="">
+				<TabularSection Key="CommentContractor" Name="Status" DeleteFilter="" SyncFilter="">
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
