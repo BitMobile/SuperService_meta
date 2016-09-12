@@ -540,7 +540,7 @@
 					<Field AllowNull="true" Length="1000" Name="Description" Type="String"/>
 					<Field AllowNull="true" Name="IsDone" Type="Boolean"/>
 				</TabularSection>
-				<TabularSection Key="CommentContractor" Name="Status" DeleteFilter="" SyncFilter="">
+				<TabularSection Key="" Name="Status" DeleteFilter="" SyncFilter="">
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
