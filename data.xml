@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Root>
 	<RegionalSettings NumberDecimalSeparator="," NumberGroupSeparator=" "/>
 	<Rows>
@@ -414,12 +414,12 @@
 			<ListValues Key="Val"/>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="f365b197-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="МФУ Kyocera FS-C8520MFP" Code="000000001" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="10.05.2016 12:38:22" Clients="f365b192-1690-11e6-b0e4-6c71d97753d2" StatusEquiement="951b5831-923e-0439-4ef7-9198a2cf19fe" ContractSale="d7e59ced-16a7-11e6-b0e4-6c71d97753d2" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="Ирина" Info="" Equiement="f365b197-1690-11e6-b0e4-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="24.05.2016 17:28:51" Client="f365b192-1690-11e6-b0e4-6c71d97753d2" Equiements="f365b197-1690-11e6-b0e4-6c71d97753d2" Target="Заправка катриджей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000010 от 24.05.2016 16:18:44" Comment="ok" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="10.05.2016 12:38:22" Clients="f365b192-1690-11e6-b0e4-6c71d97753d2" StatusEquipment="951b5831-923e-0439-4ef7-9198a2cf19fe" ContractSale="d7e59ced-16a7-11e6-b0e4-6c71d97753d2" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="Ирина" Info="" Equipment="f365b197-1690-11e6-b0e4-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="24.05.2016 17:28:51" Client="f365b192-1690-11e6-b0e4-6c71d97753d2" Equipments="f365b197-1690-11e6-b0e4-6c71d97753d2" Target="Заправка катриджей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000010 от 24.05.2016 16:18:44" Comment="ok" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/f365b197-1690-11e6-b0e4-6c71d97753d2/bf813f30-9e38-4707-ac6c-e6a3d03817a7.jpg" FileName="bf813f30-9e38-4707-ac6c-e6a3d03817a7"/>
 			</Files>
@@ -431,12 +431,12 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="4d97f60c-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Description="Электропогрузчик Hyster A1.5XNT " Code="000000002" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="12.05.2016 17:39:09" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="4d97f60c-184d-11e6-b0e5-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="30.06.2016 12:14:47" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equiements="4d97f60c-184d-11e6-b0e5-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000018 от 29.06.2016 14:16:41" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="12.05.2016 17:39:09" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="4d97f60c-184d-11e6-b0e5-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="30.06.2016 12:14:47" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equipments="4d97f60c-184d-11e6-b0e5-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000018 от 29.06.2016 14:16:41" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4d97f60c-184d-11e6-b0e5-6c71d97753d2/b4d663f3-8bc8-498e-8885-f5856c4b9e42.jpg" FileName="b4d663f3-8bc8-498e-8885-f5856c4b9e42"/>
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4d97f60c-184d-11e6-b0e5-6c71d97753d2/af17a84a-f7fc-4fc4-8caa-2f8b8ed65ac8.jpg" FileName="af17a84a-f7fc-4fc4-8caa-2f8b8ed65ac8"/>
@@ -451,13 +451,13 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="4d97f60e-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Description="Вилочный погрузчик Hyster H16XMS-12" Code="000000003" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="12.05.2016 17:38:53" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="4d97f60e-184d-11e6-b0e5-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="30.06.2016 12:14:47" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equiements="4d97f60e-184d-11e6-b0e5-6c71d97753d2" Target="Плановое ТО" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" ObjectGet="Наряд 000000018 от 29.06.2016 14:16:41" Comment="Запчасть
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="12.05.2016 17:38:53" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="4d97f60e-184d-11e6-b0e5-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="30.06.2016 12:14:47" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equipments="4d97f60e-184d-11e6-b0e5-6c71d97753d2" Target="Плановое ТО" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" ObjectGet="Наряд 000000018 от 29.06.2016 14:16:41" Comment="Запчасть
 " Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4d97f60e-184d-11e6-b0e5-6c71d97753d2/d6d93c9e-239a-40dc-b573-546291160ea0.jpg" FileName="d6d93c9e-239a-40dc-b573-546291160ea0"/>
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4d97f60e-184d-11e6-b0e5-6c71d97753d2/634e7a1e-c2d9-4a8d-bfb9-475a15e67c83.jpg" FileName="634e7a1e-c2d9-4a8d-bfb9-475a15e67c83"/>
@@ -472,12 +472,12 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="7fc7f35b-21b0-11e6-b0e7-6c71d97753d2" DeletionMark="False" Description="Сервер SunStor 4U-24-3,5" Code="000000004" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="24.05.2016 16:07:51" Clients="f365b192-1690-11e6-b0e4-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="7fc7f35b-21b0-11e6-b0e7-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="24.05.2016 17:28:51" Client="f365b192-1690-11e6-b0e4-6c71d97753d2" Equiements="7fc7f35b-21b0-11e6-b0e7-6c71d97753d2" Target="Установка серверного ПО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000010 от 24.05.2016 16:18:44" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="24.05.2016 16:07:51" Clients="f365b192-1690-11e6-b0e4-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="7fc7f35b-21b0-11e6-b0e7-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="24.05.2016 17:28:51" Client="f365b192-1690-11e6-b0e4-6c71d97753d2" Equipments="7fc7f35b-21b0-11e6-b0e7-6c71d97753d2" Target="Установка серверного ПО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000010 от 24.05.2016 16:18:44" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/7fc7f35b-21b0-11e6-b0e7-6c71d97753d2/8fcdcf36-a547-4f8b-a65b-425363adce84.jpg" FileName="8fcdcf36-a547-4f8b-a65b-425363adce84"/>
 			</Files>
@@ -491,13 +491,13 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="bc012ec0-233c-11e6-b0e9-6c71d97753d2" DeletionMark="False" Description="Стиральная машина Bosch" Code="000000005" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="26.05.2016 15:51:58" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquiement="b526c98c-9cca-ddd2-4c8f-b6be4e172e26" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="bc012ec0-233c-11e6-b0e9-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="26.05.2016 16:16:55" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equiements="bc012ec0-233c-11e6-b0e9-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000011 от 26.05.2016 16:00:40" Comment="Неправильная установка." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="27.05.2016 12:25:27" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equiements="bc012ec0-233c-11e6-b0e9-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000012 от 26.05.2016 16:18:07" Comment="все ок" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="26.05.2016 15:51:58" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquipment="b526c98c-9cca-ddd2-4c8f-b6be4e172e26" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="bc012ec0-233c-11e6-b0e9-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="26.05.2016 16:16:55" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equipments="bc012ec0-233c-11e6-b0e9-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000011 от 26.05.2016 16:00:40" Comment="Неправильная установка." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+				<Row LineNumber="1" Period="27.05.2016 12:25:27" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equipments="bc012ec0-233c-11e6-b0e9-6c71d97753d2" Target="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000012 от 26.05.2016 16:18:07" Comment="все ок" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/bc012ec0-233c-11e6-b0e9-6c71d97753d2/5f5f9a2a-d481-47a7-bd05-71d4395db190.jpg" FileName="5f5f9a2a-d481-47a7-bd05-71d4395db190"/>
 			</Files>
@@ -512,12 +512,12 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="4faabe7e-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="Блок А4В6" Code="000000006" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="02.06.2016 12:42:23" Clients="4faabe7c-28a5-11e6-b0ea-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="4faabe7e-28a5-11e6-b0ea-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="30.06.2016 18:35:11" Client="4faabe7c-28a5-11e6-b0ea-6c71d97753d2" Equiements="4faabe7e-28a5-11e6-b0ea-6c71d97753d2" Target="Оценка стадии строительства." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000013 от 02.06.2016 12:56:17" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="02.06.2016 12:42:23" Clients="4faabe7c-28a5-11e6-b0ea-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="4faabe7e-28a5-11e6-b0ea-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="30.06.2016 18:35:11" Client="4faabe7c-28a5-11e6-b0ea-6c71d97753d2" Equipments="4faabe7e-28a5-11e6-b0ea-6c71d97753d2" Target="Оценка стадии строительства." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000013 от 02.06.2016 12:56:17" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4faabe7e-28a5-11e6-b0ea-6c71d97753d2/a3955deb-f014-4a73-8fdd-8b837f7daac9.jpg" FileName="a3955deb-f014-4a73-8fdd-8b837f7daac9"/>
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/4faabe7e-28a5-11e6-b0ea-6c71d97753d2/e2739a08-b5d6-4332-96b6-ae9f808a6e6b.jpg" FileName="e2739a08-b5d6-4332-96b6-ae9f808a6e6b"/>
@@ -534,15 +534,15 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="88098525-296e-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="ИБП Liebert HiPulse" Code="000000007" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="03.06.2016 12:39:04" Clients="88098524-296e-11e6-b0ea-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="88098525-296e-11e6-b0ea-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="03.06.2016 12:56:59" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equiements="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Монтаж" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000014 от 03.06.2016 12:49:44" Comment="Все хорошо." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="03.06.2016 14:25:47" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equiements="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика неисправностей. Ремонт." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000015 от 03.06.2016 12:57:56" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="30.06.2016 18:35:01" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equiements="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика неисправностей. Ремонт." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000017 от 20.06.2016 13:28:30" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="17.08.2016 10:31:27" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equiements="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000029 от 17.08.2016 10:12:41" Comment="ок" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="03.06.2016 12:39:04" Clients="88098524-296e-11e6-b0ea-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="88098525-296e-11e6-b0ea-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="03.06.2016 12:56:59" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equipments="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Монтаж" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000014 от 03.06.2016 12:49:44" Comment="Все хорошо." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+				<Row LineNumber="1" Period="03.06.2016 14:25:47" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equipments="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика неисправностей. Ремонт." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000015 от 03.06.2016 12:57:56" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+				<Row LineNumber="1" Period="30.06.2016 18:35:01" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equipments="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика неисправностей. Ремонт." Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000017 от 20.06.2016 13:28:30" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+				<Row LineNumber="1" Period="17.08.2016 10:31:27" Client="88098524-296e-11e6-b0ea-6c71d97753d2" Equipments="88098525-296e-11e6-b0ea-6c71d97753d2" Target="Диагностика" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000029 от 17.08.2016 10:12:41" Comment="ок" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/88098525-296e-11e6-b0ea-6c71d97753d2/6a4e29ee-4e5a-486d-964a-86bbb7744bbb.jpg" FileName="6a4e29ee-4e5a-486d-964a-86bbb7744bbb"/>
 			</Files>
@@ -558,10 +558,10 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="59e019b1-438d-11e6-b0f1-6c71d97753d2" DeletionMark="False" Description="Контейнер " Code="000000008" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="06.07.2016 18:22:08" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="59e019b1-438d-11e6-b0f1-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements"/>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="06.07.2016 18:22:08" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="59e019b1-438d-11e6-b0f1-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments"/>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/59e019b1-438d-11e6-b0f1-6c71d97753d2/cae2031b-fff7-4f22-b26e-fc2d554dd074.jpg" FileName="cae2031b-fff7-4f22-b26e-fc2d554dd074"/>
 			</Files>
@@ -577,13 +577,13 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="6144cbad-44ee-11e6-b0f1-6c71d97753d2" DeletionMark="False" Description="Кофемашина" Code="000000009" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="08.07.2016 12:36:30" Clients="6144cbae-44ee-11e6-b0f1-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="6144cbad-44ee-11e6-b0f1-6c71d97753d2"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="08.07.2016 12:48:35" Client="6144cbae-44ee-11e6-b0f1-6c71d97753d2" Equiements="6144cbad-44ee-11e6-b0f1-6c71d97753d2" Target="Пуско-наладка" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000023 от 08.07.2016 12:44:00" Comment="Исполнено" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="08.07.2016 13:18:15" Client="6144cbae-44ee-11e6-b0f1-6c71d97753d2" Equiements="6144cbad-44ee-11e6-b0f1-6c71d97753d2" Target="Плановое ТО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000024 от 08.07.2016 13:00:52" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="08.07.2016 12:36:30" Clients="6144cbae-44ee-11e6-b0f1-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="6144cbad-44ee-11e6-b0f1-6c71d97753d2"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="08.07.2016 12:48:35" Client="6144cbae-44ee-11e6-b0f1-6c71d97753d2" Equipments="6144cbad-44ee-11e6-b0f1-6c71d97753d2" Target="Пуско-наладка" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000023 от 08.07.2016 12:44:00" Comment="Исполнено" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+				<Row LineNumber="1" Period="08.07.2016 13:18:15" Client="6144cbae-44ee-11e6-b0f1-6c71d97753d2" Equipments="6144cbad-44ee-11e6-b0f1-6c71d97753d2" Target="Плановое ТО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000024 от 08.07.2016 13:00:52" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/6144cbad-44ee-11e6-b0f1-6c71d97753d2/9b74d77c-1256-4f79-ba07-b927047e4fff.jpg" FileName="9b74d77c-1256-4f79-ba07-b927047e4fff"/>
 			</Files>
@@ -601,14 +601,14 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="cec4c161-4e8d-11e6-b0f3-74d02b239a8a" DeletionMark="False" Description="Система сверхвысокого разрешения N-SIM" Code="000000010" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="20.07.2016 18:32:13" Clients="db6961b5-4e89-11e6-b0f3-74d02b239a8a" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="cec4c161-4e8d-11e6-b0f3-74d02b239a8a"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="20.07.2016 18:36:26" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equiements="cec4c161-4e8d-11e6-b0f3-74d02b239a8a" Target="Инсталяция" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000025 от 20.07.2016 18:33:49" Comment="Проведена. Оставил рекомендации.
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="20.07.2016 18:32:13" Clients="db6961b5-4e89-11e6-b0f3-74d02b239a8a" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="cec4c161-4e8d-11e6-b0f3-74d02b239a8a"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="20.07.2016 18:36:26" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equipments="cec4c161-4e8d-11e6-b0f3-74d02b239a8a" Target="Инсталяция" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000025 от 20.07.2016 18:33:49" Comment="Проведена. Оставил рекомендации.
 " Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-				<Row LineNumber="1" Period="18.08.2016 13:22:31" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equiements="cec4c161-4e8d-11e6-b0f3-74d02b239a8a" Target="Плановое ТО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000030 от 18.08.2016 12:57:51" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+				<Row LineNumber="1" Period="18.08.2016 13:22:31" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equipments="cec4c161-4e8d-11e6-b0f3-74d02b239a8a" Target="Плановое ТО" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000030 от 18.08.2016 12:57:51" Comment="" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/cec4c161-4e8d-11e6-b0f3-74d02b239a8a/a0cced8a-59e8-4823-bbc1-7b227ce9632c.jpg" FileName="a0cced8a-59e8-4823-bbc1-7b227ce9632c"/>
 			</Files>
@@ -628,12 +628,12 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="cec4c162-4e8d-11e6-b0f3-74d02b239a8a" DeletionMark="False" Description="Система сверхвысокого разрешения N-STORM" Code="000000011" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="20.07.2016 18:32:28" Clients="db6961b5-4e89-11e6-b0f3-74d02b239a8a" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="cec4c162-4e8d-11e6-b0f3-74d02b239a8a"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="18.08.2016 13:22:31" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equiements="cec4c162-4e8d-11e6-b0f3-74d02b239a8a" Target="Диагностика неисправностей" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" ObjectGet="Наряд 000000030 от 18.08.2016 12:57:51" Comment="выполнено" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="20.07.2016 18:32:28" Clients="db6961b5-4e89-11e6-b0f3-74d02b239a8a" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="cec4c162-4e8d-11e6-b0f3-74d02b239a8a"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="18.08.2016 13:22:31" Client="db6961b5-4e89-11e6-b0f3-74d02b239a8a" Equipments="cec4c162-4e8d-11e6-b0f3-74d02b239a8a" Target="Диагностика неисправностей" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" ObjectGet="Наряд 000000030 от 18.08.2016 12:57:51" Comment="выполнено" Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/cec4c162-4e8d-11e6-b0f3-74d02b239a8a/4bdb1605-39c6-4d37-a8ce-43ac6ed2a6d0.jpg" FileName="4bdb1605-39c6-4d37-a8ce-43ac6ed2a6d0"/>
 			</Files>
@@ -653,12 +653,12 @@
 			</Parameters>
 		</Row>
 		<Row _Type="Catalog.Equipment" _RS="0" Predefined="False" Id="347470bc-54a0-11e6-b0f5-74d02b239a8a" DeletionMark="False" Description="Кулер для воды AEL" Code="000000012" SKU="00000000-0000-0000-0000-000000000000">
-			<Equiements Key="Clients,Equiement">
-				<Row LineNumber="1" Period="28.07.2016 11:49:47" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquiement="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquiemnt="" Info="" Equiement="347470bc-54a0-11e6-b0f5-74d02b239a8a"/>
-			</Equiements>
-			<EquiementsHistory Key="Period,Client,Equiements">
-				<Row LineNumber="1" Period="28.07.2016 11:54:05" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equiements="347470bc-54a0-11e6-b0f5-74d02b239a8a" Target="Установка" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000027 от 28.07.2016 11:51:05" Comment="Выполнено. Все ок." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
-			</EquiementsHistory>
+			<Equipments Key="Clients,Equipment">
+				<Row LineNumber="1" Period="28.07.2016 11:49:47" Clients="4d97f608-184d-11e6-b0e5-6c71d97753d2" StatusEquipment="00000000-0000-0000-0000-000000000000" ContractSale="00000000-0000-0000-0000-000000000000" CantractService="00000000-0000-0000-0000-000000000000" ContactForEquipment="" Info="" Equipment="347470bc-54a0-11e6-b0f5-74d02b239a8a"/>
+			</Equipments>
+			<EquipmentsHistory Key="Period,Client,Equipments">
+				<Row LineNumber="1" Period="28.07.2016 11:54:05" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" Equipments="347470bc-54a0-11e6-b0f5-74d02b239a8a" Target="Установка" Result="81270b2c-190a-faf2-440f-4a593042495e" ObjectGet="Наряд 000000027 от 28.07.2016 11:51:05" Comment="Выполнено. Все ок." Executor="71e1c804-1387-11e6-b0e4-6c71d97753d2"/>
+			</EquipmentsHistory>
 			<Files Key="FullFileName,FileName">
 				<Row LineNumber="1" FullFileName="/shared/Catalog.Equipment/347470bc-54a0-11e6-b0f5-74d02b239a8a/85878917-13dd-4ad4-991d-bd0a25dd3432.jpg" FileName="85878917-13dd-4ad4-991d-bd0a25dd3432"/>
 			</Files>

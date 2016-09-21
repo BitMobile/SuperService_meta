@@ -224,7 +224,7 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
-		<Entity Name="ServiceAgreement" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.Id IN (SELECT SE.CantractService FROM [Catalog].[Equipment_Equiements] SE WHERE SE.Clients IN (SELECT DE.Client FROM [Document].[Event] DE WHERE DE.UserMA = @UserId))" SyncUpload="True">
+		<Entity Name="ServiceAgreement" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.Id IN (SELECT SE.CantractService FROM [Catalog].[Equipment_Equipments] SE WHERE SE.Clients IN (SELECT DE.Client FROM [Document].[Event] DE WHERE DE.UserMA = @UserId))" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -258,7 +258,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity Name="Equipment" Schema="Catalog" SyncDownload="True" DeleteFilter="" SyncFilter="t.Id IN (SELECT DE.Equiement FROM [Catalog].[Equipment_Equiements] DE WHERE DE.Clients IN (SELECT SE.Client FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))" SyncUpload="True">
+		<Entity Name="Equipment" Schema="Catalog" SyncDownload="True" DeleteFilter="" SyncFilter="t.Id IN (SELECT DE.Equipment FROM [Catalog].[Equipment_Equipments] DE WHERE DE.Clients IN (SELECT SE.Client FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -268,26 +268,26 @@
 				<Field AllowNull="true" Name="SKU" Type="Catalog.SKU"/>
 			</Fields>
 			<TabularSections>
-				<TabularSection Key="Period,Clients,Equiement" Name="Equiements" DeleteFilter="" SyncFilter="">
+				<TabularSection Key="Period,Clients,Equipment" Name="Equipments" DeleteFilter="" SyncFilter="">
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="true" Name="Period" Type="DateTime2"/>
 					<Field AllowNull="true" Name="Clients" Type="Catalog.Client"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
-					<Field AllowNull="true" Name="StatusEquiement" Type="Enum.StatusEquipment"/>
+					<Field AllowNull="true" Name="StatusEquipment" Type="Enum.StatusEquipment"/>
 					<Field AllowNull="true" Name="ContractSale" Type="Catalog.ServiceAgreement"/>
 					<Field AllowNull="true" Name="CantractService" Type="Catalog.ServiceAgreement"/>
-					<Field AllowNull="true" Length="100" Name="ContactForEquiemnt" Type="String"/>
+					<Field AllowNull="true" Length="100" Name="ContactForEquipment" Type="String"/>
 					<Field AllowNull="true" Length="1000" Name="Info" Type="String"/>
-					<Field AllowNull="true" Name="Equiement" Type="Catalog.Equipment"/>
+					<Field AllowNull="true" Name="Equipment" Type="Catalog.Equipment"/>
 				</TabularSection>
-				<TabularSection Key="Period,Client,Equiements" Name="EquiementsHistory" DeleteFilter="" SyncFilter="T.[Period] &gt;(SELECT CASE WHEN LogicValue = 1         THEN CASE WHEN NumericValue = 0            THEN CAST('1980-01-01 00:00:00' as date)            ELSE (getDate() - NumericValue)            END         ELSE CAST('2100-01-01 00:00:00' as date)          END             FROM [Catalog].[SettingMobileApplication]       WHERE [Description] = 'HistoryLength')">
+				<TabularSection Key="Period,Client,Equipments" Name="EquipmentsHistory" DeleteFilter="" SyncFilter="T.[Period] &gt;(SELECT CASE WHEN LogicValue = 1         THEN CASE WHEN NumericValue = 0            THEN CAST('1980-01-01 00:00:00' as date)            ELSE (getDate() - NumericValue)            END         ELSE CAST('2100-01-01 00:00:00' as date)          END             FROM [Catalog].[SettingMobileApplication]       WHERE [Description] = 'HistoryLength')">
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="true" Name="Period" Type="DateTime2"/>
 					<Field AllowNull="true" Name="Client" Type="Catalog.Client"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
-					<Field AllowNull="true" Name="Equiements" Type="Catalog.Equipment"/>
+					<Field AllowNull="true" Name="Equipments" Type="Catalog.Equipment"/>
 					<Field AllowNull="true" Length="100" Name="Target" Type="String"/>
 					<Field AllowNull="true" Name="Result" Type="Enum.ResultEvent"/>
 					<Field AllowNull="true" Length="1000" Name="ObjectGet" Type="String"/>
@@ -359,7 +359,7 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
-		<Entity Name="User" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.[Id] = @UserId OR t.[Id] IN (SELECT Executor FROM [Catalog].[Equipment_EquiementsHistory] WHERE Equiements IN ( SELECT DE.Equiement FROM [Catalog].[Equipment_Equiements] DE WHERE DE.Clients IN (SELECT SE.Client FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))) OR t.[Id] IN (SELECT [Author] FROM [Document].[Event] WHERE [UserMA] = @UserId)" SyncUpload="True">
+		<Entity Name="User" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.[Id] = @UserId OR t.[Id] IN (SELECT Executor FROM [Catalog].[Equipment_EquipmentsHistory] WHERE Equipments IN ( SELECT DE.Equipment FROM [Catalog].[Equipment_Equipments] DE WHERE DE.Clients IN (SELECT SE.Client FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))) OR t.[Id] IN (SELECT [Author] FROM [Document].[Event] WHERE [UserMA] = @UserId)" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
