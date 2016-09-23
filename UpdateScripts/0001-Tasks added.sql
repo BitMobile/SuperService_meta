@@ -507,55 +507,134 @@ GO
  --table
 sp_rename 'Catalog.Equipment_Equiements', 'Equipment_Equipments';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 --fields
 sp_rename 'Catalog.Equipment_Equipments.StatusEquiement', 'StatusEquipment', 'COLUMN';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.Equipment_Equipments.ContactForEquiemnt', 'ContactForEquipment', 'COLUMN';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.Equipment_Equipments.Equiement','Equipment','COLUMN';
 GO
 --keys
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.PK_Catalog_Equipment_Equiements','PK_Catalog_Equipment_Equipments','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Catalog_Client_Clients','FK_Catalog_Equipment__Equipments_Catalog_Client_Clients','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Catalog_Equipment_Equiement','FK_Catalog_Equipment__Equipments_Catalog_Equipment_Equipment','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Catalog_ServiceAgreement_CantractService','FK_Catalog_Equipment__Equipments_Catalog_ServiceAgreement_CantractService','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Catalog_ServiceAgreement_ContractSale','FK_Catalog_Equipment__Equipments_Catalog_ServiceAgreement_ContractSale','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Enum_StatusEquipment_StatusEquiement','FK_Catalog_Equipment__Equipments_Enum_StatusEquipment_StatusEquipment','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment_Equiements_Catalog_Equipment_EntityId','FK_Catalog_Equipment_Equipments_Catalog_Equipment_EntityId','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 --indexes
 sp_rename 'Catalog.Equipment_Equipments.UQ_Catalog_Equipment_Equiements_Key','UQ_Catalog_Equipment_Equipments_Key','INDEX';
 GO
 
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+
 --table
 sp_rename 'Catalog.Equipment_EquiementsHistory', 'Equipment_EquipmentsHistory';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 --fields
 sp_rename 'Catalog.Equipment_EquipmentsHistory.Equiements', 'Equipments', 'COLUMN';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 --keys
 sp_rename 'Catalog.PK_Catalog_Equipment_EquiementsHistory','PK_Catalog_Equipment_EquipmentsHistory','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_Client_Client','FK_Catalog_Equipment__EquipmentsHistory_Catalog_Client_Client','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_Equipment_Equiements','FK_Catalog_Equipment__EquipmentsHistory_Catalog_Equipment_Equipments','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_User_Executor','FK_Catalog_Equipment__EquipmentsHistory_Catalog_User_Executor','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Enum_ResultEvent_Result','FK_Catalog_Equipment__EquipmentsHistory_Enum_ResultEvent_Result','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 sp_rename 'Catalog.FK_Catalog_Equipment_EquiementsHistory_Catalog_Equipment_EntityId','FK_Catalog_Equipment_EquipmentsHistory_Catalog_Equipment_EntityId','OBJECT';
 GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 --indexes
 sp_rename 'Catalog.Equipment_EquipmentsHistory.UQ_Catalog_Equipment_EquiementsHistory_Key','UQ_Catalog_Equipment_EquipmentsHistory_Key','INDEX';
 GO
-
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
