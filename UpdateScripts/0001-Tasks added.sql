@@ -3,6 +3,8 @@
   Updates SuperService database for using Task module
 
 */
+
+
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion' AND [Value]='3.1.3.0' )
 
   RETURN
@@ -497,7 +499,10 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-PRINT N'Renaming objects with TYPO - equipment'
+
+
+PRINT N'Renaming objects with TYPO - equipment';
+GO
 
  --table
 sp_rename 'Catalog.Equipment_Equiements', 'Equipment_Equipments';
@@ -510,7 +515,7 @@ GO
 sp_rename 'Catalog.Equipment_Equipments.Equiement','Equipment','COLUMN';
 GO
 --keys
-sp_rename 'Catalog.Equipment_Equipments.PK_Catalog_Equipment_Equiements','Equipment_Equipments.PK_Catalog_Equipment_Equipments','OBJECT';
+sp_rename 'Catalog.PK_Catalog_Equipment_Equiements','PK_Catalog_Equipment_Equipments','OBJECT';
 GO
 sp_rename 'Catalog.FK_Catalog_Equipment__Equiements_Catalog_Client_Clients','FK_Catalog_Equipment__Equipments_Catalog_Client_Clients','OBJECT';
 GO
@@ -525,8 +530,6 @@ GO
 sp_rename 'Catalog.FK_Catalog_Equipment_Equiements_Catalog_Equipment_EntityId','FK_Catalog_Equipment_Equipments_Catalog_Equipment_EntityId','OBJECT';
 GO
 --indexes
-sp_rename 'Catalog.Equipment_Equipments.PK_Catalog_Equipment_Equiements','PK_Catalog_Equipment_Equipments','INDEX';
-GO
 sp_rename 'Catalog.Equipment_Equipments.UQ_Catalog_Equipment_Equiements_Key','UQ_Catalog_Equipment_Equipments_Key','INDEX';
 GO
 
@@ -537,23 +540,22 @@ GO
 sp_rename 'Catalog.Equipment_EquipmentsHistory.Equiements', 'Equipments', 'COLUMN';
 GO
 --keys
-sp_rename 'Catalog.Equipment_EquipmentsHistory.PK_Catalog_Equipment_EquiementsHistory','PK_Catalog_Equipment_EquipmentsHistory','OBJECT';
+sp_rename 'Catalog.PK_Catalog_Equipment_EquiementsHistory','PK_Catalog_Equipment_EquipmentsHistory','OBJECT';
 GO
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_Client_Client','FK_Catalog_Equipment__EquipmentsHistory_Catalog_Client_Client','OBJECT';
 GO
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_Equipment_Equiements','FK_Catalog_Equipment__EquipmentsHistory_Catalog_Equipment_Equipments','OBJECT';
 GO
-sp_rename 'Catalog.FK_Catalog_Equipment__EquipmentsHistory_Catalog_User_Executor','FK_Catalog_Equipment__EquipmentsHistory_Catalog_User_Executor','OBJECT';
+sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Catalog_User_Executor','FK_Catalog_Equipment__EquipmentsHistory_Catalog_User_Executor','OBJECT';
 GO
 sp_rename 'Catalog.FK_Catalog_Equipment__EquiementsHistory_Enum_ResultEvent_Result','FK_Catalog_Equipment__EquipmentsHistory_Enum_ResultEvent_Result','OBJECT';
 GO
 sp_rename 'Catalog.FK_Catalog_Equipment_EquiementsHistory_Catalog_Equipment_EntityId','FK_Catalog_Equipment_EquipmentsHistory_Catalog_Equipment_EntityId','OBJECT';
 GO
 --indexes
-sp_rename 'Catalog.Equipment_EquipmentsHistory.PK_Catalog_Equipment_EquiementsHistory','PK_Catalog_Equipment_EquipmentsHistory','INDEX';
-GO
 sp_rename 'Catalog.Equipment_EquipmentsHistory.UQ_Catalog_Equipment_EquiementsHistory_Key','UQ_Catalog_Equipment_EquipmentsHistory_Key','INDEX';
 GO
+
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -587,3 +589,4 @@ ELSE BEGIN
   PRINT 'The database update failed'
 END
 GO
+
