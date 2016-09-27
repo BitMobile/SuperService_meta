@@ -639,7 +639,49 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-PRINT N'Renaming objects with TYPO - equipment'
+PRINT 'Update DeletionMark field'
+GO
+
+DECLARE @colName NVARCHAR(50) = 'DeletionMark';
+DECLARE @script_update NVARCHAR(MAX);
+DECLARE @script_alter NVARCHAR(MAX);
+DECLARE @tableName NVARCHAR(MAX);
+
+DECLARE cursor_name CURSOR FAST_FORWARD READ_ONLY FOR
+SELECT 
+    'UPDATE ['+ z.schemaName +'].[' + z.tableName + ']
+          SET [' + @colName + '] = 0
+          WHERE [' + @colName + '] IS null' AS scriptUpdate,
+	'ALTER TABLE [' + z.schemaName + '].[' + z.tableName + ']
+       ALTER COLUMN ' + @colName + ' BIT NOT NULL' AS scriptAlter,
+	z.tableName AS tableName
+FROM (
+       SELECT 
+	        t.name AS tableName,
+			SCHEMA_NAME(SCHEMA_ID) AS schemaName
+		FROM
+		    sys.tables AS t 
+			    INNER JOIN sys.columns AS c
+				ON t.object_id = c.object_id
+				where c.name = @colName
+	 ) AS z
+OPEN cursor_name
+FETCH NEXT FROM cursor_name INTO @script_update, @script_alter, @tableName
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+  PRINT 'FOR ' + @tableName;
+  EXEC(@script_update);
+  EXEC(@script_alter);
+
+  FETCH NEXT FROM cursor_name INTO @script_update, @script_alter, @tableName
+END
+
+CLOSE cursor_name  		
+DEALLOCATE cursor_name	
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
 
 PRINT N'Set DBVersion = 3.1.3.0'
 
