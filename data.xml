@@ -349,11 +349,19 @@
 				<Row LineNumber="21" Parameter="db6961b2-4e89-11e6-b0f3-74d02b239a8a" Val=""/>
 			</Parameters>
 		</Row>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иванова Надежда" Code="000000001" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="d90eef15-0e83-4866-afc1-7eeaa928e0d2" Phone="+7 (812) 325-49-49" Role="">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иванова Надежда" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="d90eef15-0e83-4866-afc1-7eeaa928e0d2" Phone="+7 (812) 325-49-49" Role="Admin">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c804-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иван Филатов" Code="000000002" UserName="ivan" Password="2502" UserDB="" EMail="" UserID="392346f0-0826-4e98-8d8a-e67ff8ccde84" Phone="+7 (911) 290-28-17" Role="SR">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Сидоров Михаил" Code="2" UserName="srm" Password="srm" UserDB="" EMail="" UserID="8e32e0f0-aeea-4092-9e33-922316902046" Phone="" Role="SRM">
+			<Bag Key="Materials"/>
+			<RemainsNorms Key="Materials"/>
+		</Row>
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Коленова Александра" Code="3" UserName="sr" Password="sr" UserDB="" EMail="" UserID="027d02cc-aa03-436d-8e07-8ac2df53cf06" Phone="" Role="SR">
+			<Bag Key="Materials"/>
+			<RemainsNorms Key="Materials"/>
+		</Row>
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c804-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иван Филатов" Code="4" UserName="ivan" Password="2502" UserDB="" EMail="" UserID="392346f0-0826-4e98-8d8a-e67ff8ccde84" Phone="+7 (911) 290-28-17" Role="SR">
 			<Bag Key="Materials">
 				<Row Materials="f365b19a-1690-11e6-b0e4-6c71d97753d2" Count="-2" LineNumber="1"/>
 				<Row Materials="f365b19b-1690-11e6-b0e4-6c71d97753d2" Count="30" LineNumber="1"/>
