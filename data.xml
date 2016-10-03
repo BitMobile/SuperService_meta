@@ -2083,11 +2083,11 @@
 		
 		<!-- Catalog.ActivityTypes  "Направления"-->
 
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeletionMark="False" Description="Поставка витаминов" Code="1" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeletionMark="False" Description="Поставка лекарств" Code="2" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="6a33a083-b1ff-4e02-be91-c478fbc60057" DeletionMark="False" Description="Услуги" Code="3" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="1609c085-75b9-4526-835b-5381af17b445" DeletionMark="False" Description="Прочая деятельность" Code="4" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeletionMark="False" Description="Поставка витаминов" Code="1" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeletionMark="False" Description="Поставка лекарств" Code="2" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="6a33a083-b1ff-4e02-be91-c478fbc60057" DeletionMark="False" Description="Услуги" Code="3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="1609c085-75b9-4526-835b-5381af17b445" DeletionMark="False" Description="Прочая деятельность" Code="4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
 		
 		<!-- Document.Tender  "Тендеры"-->
 
