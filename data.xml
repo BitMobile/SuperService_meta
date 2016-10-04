@@ -354,92 +354,92 @@
 		
 		<!-- Catalog.Roles  "Роли"-->
 
-		<Row _Type="Catalog.Roles" _RS="0" Predefined="False" Id="680efa97-b038-46b4-bed0-d652a82e914d" DeletionMark="False" Name="Admin" Ident="Admin" Description="Administrator" CanManageSelf="True" />
+		<Row _Type="Catalog.Roles" _RS="0" Id="680efa97-b038-46b4-bed0-d652a82e914d" DeletionMark="False" Name="Admin" Ident="Admin" Description="Administrator" CanManageSelf="True" />
 
-		<Row _Type="Catalog.Roles" _RS="0" Predefined="False" Id="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" DeletionMark="False" Name="SRM" Ident="SRM" Description="SRM" CanManageSelf="True" />
+		<Row _Type="Catalog.Roles" _RS="0" Id="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" DeletionMark="False" Name="SRM" Ident="SRM" Description="SRM" CanManageSelf="True" />
 
-		<Row _Type="Catalog.Roles" _RS="0" Predefined="False" Id="679dc4bb-7d76-427c-abfa-d2e53996ef48" DeletionMark="False" Name="SR" Ident="SR" Description="SR" CanManageSelf="False" />
+		<Row _Type="Catalog.Roles" _RS="0" Id="679dc4bb-7d76-427c-abfa-d2e53996ef48" DeletionMark="False" Name="SR" Ident="SR" Description="SR" CanManageSelf="False" />
 
 		<!-- Catalog.RoleWebactions  "Разрешения ролей"-->
 
 			<!-- Admin -->
 
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="3929ba7a-53e8-4845-9514-8db9c2a18525" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="0a06a3b7-64a8-48dd-b7e0-87490b7ee080" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="0fdbb04a-20af-46f0-95b5-af16f08e2e48" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="d3ef9a98-ad3f-4e14-91dd-fc85a1731ad0" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="1ddaff1d-89e0-409e-a56f-eb4bf3927744" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="55a6e5ac-b211-4869-911f-e70540ffc7d8" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="224212fb-9136-4c11-9005-b9c91dbff797" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="1becab3c-d81f-4cab-9520-81deec108d3c" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="3a255f28-178d-47d9-9460-a121bde54989" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="6879f766-d8d7-4621-a40d-61da906fdfb8" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="f85baac7-0a90-4704-957e-bdc238bef8eb" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="f27ec6e0-cc42-4cb6-8482-8c15366d1c7d" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="43ec0da6-9f75-40ba-ba30-f05d2c325410" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="5a8fd8d9-3478-4de7-b316-ea41514b2e23" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="b6a2f9b7-dcf0-47fe-a2b2-e1ddca3b8cf8" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="e9246e63-c9ac-43a8-b1c4-a97b3fd79cb1" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="2b2487d7-1326-4f5c-85c3-089c599c4f72" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="99b217e3-1f53-4539-ad1a-67f5f36829ce" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="4a44518e-9934-4052-a81c-7a0b815962d3" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="51c34669-1797-437b-992b-9b3be9baf8cf" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="d43a4271-c47f-445c-ad9b-016fd34dfe44" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="36503f36-91f9-4b18-ae29-7135e1c49bdf" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="53e652b4-4483-4120-9abe-6ef0d9bad182" DeletionMark="False" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="3929ba7a-53e8-4845-9514-8db9c2a18525" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0a06a3b7-64a8-48dd-b7e0-87490b7ee080" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0fdbb04a-20af-46f0-95b5-af16f08e2e48" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d3ef9a98-ad3f-4e14-91dd-fc85a1731ad0" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="1ddaff1d-89e0-409e-a56f-eb4bf3927744" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="55a6e5ac-b211-4869-911f-e70540ffc7d8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="224212fb-9136-4c11-9005-b9c91dbff797" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="1becab3c-d81f-4cab-9520-81deec108d3c" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="3a255f28-178d-47d9-9460-a121bde54989" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="6879f766-d8d7-4621-a40d-61da906fdfb8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f85baac7-0a90-4704-957e-bdc238bef8eb" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f27ec6e0-cc42-4cb6-8482-8c15366d1c7d" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="43ec0da6-9f75-40ba-ba30-f05d2c325410" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="5a8fd8d9-3478-4de7-b316-ea41514b2e23" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="b6a2f9b7-dcf0-47fe-a2b2-e1ddca3b8cf8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e9246e63-c9ac-43a8-b1c4-a97b3fd79cb1" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="2b2487d7-1326-4f5c-85c3-089c599c4f72" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="99b217e3-1f53-4539-ad1a-67f5f36829ce" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="4a44518e-9934-4052-a81c-7a0b815962d3" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="51c34669-1797-437b-992b-9b3be9baf8cf" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d43a4271-c47f-445c-ad9b-016fd34dfe44" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="36503f36-91f9-4b18-ae29-7135e1c49bdf" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="53e652b4-4483-4120-9abe-6ef0d9bad182" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
 
 
 			<!-- SRM -->
 
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="0de8c83b-f805-4c10-86a2-9ac838809523" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="5be66e89-7286-4dd2-9bd7-bdfa84b5cc89" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="f926b8a4-49e5-4c42-80fc-d733f64e988b" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="6ec4543e-72b2-4426-a26f-30765c5a24d3" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="0a2acc62-28b5-4706-892f-9d83729f5f7d" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="42bd22ed-7095-44e7-9206-f741d7954aaa" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="e08f59eb-e728-4079-9f5b-76205174a1e2" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="065fa351-fba4-4dce-bac1-c168ae7f94d9" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="d6e2315c-a166-4cdc-9911-5e76e26df6f0" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="496e89cb-e969-4206-a6ec-391d2823c8d3" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="24a4149e-4aa1-4cc0-a204-bb1707b53feb" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="54952807-eb03-42ef-82b8-9b8d48137b95" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="e6b828fb-15dd-4422-a9b2-3b5a315c72f7" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="e7061b87-304a-4ef7-8e40-36014dc70abb" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="5d47f12a-8f1a-47ed-91b0-469719d60d0d" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="25a5c9cd-b930-4b1b-a9b9-57f8c095f9ee" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="651ce4df-2994-4b7f-92f9-f3fce9022e5c" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="ca5f7cd4-58c5-45c1-97d1-2d15e3e1c2c2" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="9b0321bf-af47-4465-8953-44b93b1597e9" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="4da194ef-0d61-4c2b-9e49-e0bada4d8e49" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="6c227e58-3dce-4f89-86b9-3e31eda8bc1e" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="05d584f7-ecaa-46c1-88eb-6a82fe238848" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="281bf901-b914-417e-ade7-1ac84baa06f7" DeletionMark="False" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0de8c83b-f805-4c10-86a2-9ac838809523" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="5be66e89-7286-4dd2-9bd7-bdfa84b5cc89" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f926b8a4-49e5-4c42-80fc-d733f64e988b" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="6ec4543e-72b2-4426-a26f-30765c5a24d3" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0a2acc62-28b5-4706-892f-9d83729f5f7d" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="42bd22ed-7095-44e7-9206-f741d7954aaa" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e08f59eb-e728-4079-9f5b-76205174a1e2" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="065fa351-fba4-4dce-bac1-c168ae7f94d9" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d6e2315c-a166-4cdc-9911-5e76e26df6f0" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="496e89cb-e969-4206-a6ec-391d2823c8d3" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="24a4149e-4aa1-4cc0-a204-bb1707b53feb" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="54952807-eb03-42ef-82b8-9b8d48137b95" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e6b828fb-15dd-4422-a9b2-3b5a315c72f7" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e7061b87-304a-4ef7-8e40-36014dc70abb" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="5d47f12a-8f1a-47ed-91b0-469719d60d0d" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="25a5c9cd-b930-4b1b-a9b9-57f8c095f9ee" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="651ce4df-2994-4b7f-92f9-f3fce9022e5c" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="ca5f7cd4-58c5-45c1-97d1-2d15e3e1c2c2" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="9b0321bf-af47-4465-8953-44b93b1597e9" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="4da194ef-0d61-4c2b-9e49-e0bada4d8e49" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="6c227e58-3dce-4f89-86b9-3e31eda8bc1e" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="05d584f7-ecaa-46c1-88eb-6a82fe238848" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="281bf901-b914-417e-ade7-1ac84baa06f7" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
 
 			<!-- SR -->
 
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="75d7733f-8f17-4449-b400-e60f4ba8ca34" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="b91d7dd3-7062-4e93-987d-3383025f042f" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="25202a16-ec82-4d1e-a830-01eeaac27eb2" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="41d5eb02-60d7-4f63-93ee-b8ffce5696e2" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="275b87ef-9645-4ca4-8e32-ebdde28d7650" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="8d4139f7-124e-486a-b722-9ea09418fbf6" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="e171d2bb-29ab-4e08-b905-878371682997" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="9fe85e9d-69b6-4cad-a8c2-5fe6cb53610c" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="7f2c4548-ea5b-4c75-badb-e1369d1e665f" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="04966ee3-fded-47a7-a588-e4526880ea43" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="c9e93c33-d543-4778-867f-1ee1a7f21c85" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="04a45197-1a23-4d01-8a86-c2bc207cee0b" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="8cc77251-fe52-4032-a701-b1961ed5fece" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="6a945d55-9407-433c-9e06-b25d5308119e" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="d69a4af4-9b37-4b35-9c21-807ab3da7227" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="25be9a90-da86-49d7-b86f-1850217d52ff" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="1680f7e6-5652-44d9-b7f6-fe494d1fc625" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="41d775d0-59b4-4fbe-863a-bf3b2a252521" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="c96b7158-2e6c-497d-9a1b-af3d263a6b27" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="96753b4a-d1d4-4a36-a8ee-75a224997f89" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="b223de25-c632-40fd-b451-d5ddab7f789d" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="f4678755-2658-4210-b28b-f89d50525d14" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
-			<Row _Type="Catalog.RoleWebactions" _RS="0" Predefined="False" Id="9eec7f13-dd70-43de-b86c-bbcfdec57992" DeletionMark="False" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="75d7733f-8f17-4449-b400-e60f4ba8ca34" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="b91d7dd3-7062-4e93-987d-3383025f042f" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="25202a16-ec82-4d1e-a830-01eeaac27eb2" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="41d5eb02-60d7-4f63-93ee-b8ffce5696e2" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="275b87ef-9645-4ca4-8e32-ebdde28d7650" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-493b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="8d4139f7-124e-486a-b722-9ea09418fbf6" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e171d2bb-29ab-4e08-b905-878371682997" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="9fe85e9d-69b6-4cad-a8c2-5fe6cb53610c" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="7f2c4548-ea5b-4c75-badb-e1369d1e665f" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="04966ee3-fded-47a7-a588-e4526880ea43" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="c9e93c33-d543-4778-867f-1ee1a7f21c85" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="04a45197-1a23-4d01-8a86-c2bc207cee0b" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="8cc77251-fe52-4032-a701-b1961ed5fece" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="6a945d55-9407-433c-9e06-b25d5308119e" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d69a4af4-9b37-4b35-9c21-807ab3da7227" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="25be9a90-da86-49d7-b86f-1850217d52ff" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="1680f7e6-5652-44d9-b7f6-fe494d1fc625" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="41d775d0-59b4-4fbe-863a-bf3b2a252521" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="c96b7158-2e6c-497d-9a1b-af3d263a6b27" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="96753b4a-d1d4-4a36-a8ee-75a224997f89" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="b223de25-c632-40fd-b451-d5ddab7f789d" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f4678755-2658-4210-b28b-f89d50525d14" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="9eec7f13-dd70-43de-b86c-bbcfdec57992" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
 
 
 
@@ -2187,54 +2187,54 @@
 		
 		<!-- Catalog.ActivityTypes  "Направления"-->
 
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeletionMark="False" Description="Поставка витаминов" Code="1" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeletionMark="False" Description="Поставка лекарств" Code="2" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="6a33a083-b1ff-4e02-be91-c478fbc60057" DeletionMark="False" Description="Услуги" Code="3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="1609c085-75b9-4526-835b-5381af17b445" DeletionMark="False" Description="Прочая деятельность" Code="4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
-		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeletionMark="False" Description="Поставка витаминов" Code="1" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeletionMark="False" Description="Поставка лекарств" Code="2" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="6a33a083-b1ff-4e02-be91-c478fbc60057" DeletionMark="False" Description="Услуги" Code="3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="1609c085-75b9-4526-835b-5381af17b445" DeletionMark="False" Description="Прочая деятельность" Code="4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
 		
 		<!-- Document.Tender  "Тендеры"-->
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" DeletionMark="False" Date="03.10.2016 11:39:03" Number="000000001" Description="Тендер на поставки витаминов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryDateTime="30.10.2016 11:39:03" Marketplace="http://ya.ru" Sum="540500" />
+		<Row _Type="Document.Tender" _RS="0" Id="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" DeletionMark="False" Date="03.10.2016 11:39:03" Number="000000001" Description="Тендер на поставки витаминов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryDateTime="30.10.2016 11:39:03" Marketplace="http://ya.ru" Sum="540500" />
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="6b47b280-01e0-42bc-9f1f-7b7645a6017c" DeletionMark="False" Date="02.10.2016 09:43:17" Number="000000002" Description="Тендер на поставки БАД" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="10.10.2016 09:43:17" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryDateTime="30.12.2016 09:43:17" Marketplace="http://zakupki.ru" Sum="18360" />
+		<Row _Type="Document.Tender" _RS="0" Id="6b47b280-01e0-42bc-9f1f-7b7645a6017c" DeletionMark="False" Date="02.10.2016 09:43:17" Number="000000002" Description="Тендер на поставки БАД" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="10.10.2016 09:43:17" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryDateTime="30.12.2016 09:43:17" Marketplace="http://zakupki.ru" Sum="18360" />
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="032d4521-3e7c-45d8-97cc-27810a631af3" DeletionMark="False" Date="01.10.2016 00:00:01" Number="000000003" Description="Запрос на вагон аспирина" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="01.01.2017 00:00:00" ActivityType="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeliveryDateTime="01.02.2017 11:39:03" Marketplace="http://ya.ru" Sum="2500" />
+		<Row _Type="Document.Tender" _RS="0" Id="032d4521-3e7c-45d8-97cc-27810a631af3" DeletionMark="False" Date="01.10.2016 00:00:01" Number="000000003" Description="Запрос на вагон аспирина" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="01.01.2017 00:00:00" ActivityType="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeliveryDateTime="01.02.2017 11:39:03" Marketplace="http://ya.ru" Sum="2500" />
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="90465e39-88ad-4076-a5e2-0a8e49ff26ad" DeletionMark="False" Date="30.09.2016 12:01:00" Number="000000004" Description="Проведение серии курсов по здоровому питанию" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" ActivityType="6a33a083-b1ff-4e02-be91-c478fbc60057" DeliveryDateTime="29.02.2020 19:26:03" Marketplace="http://market.yandex.ru" Sum="3.14" />
+		<Row _Type="Document.Tender" _RS="0" Id="90465e39-88ad-4076-a5e2-0a8e49ff26ad" DeletionMark="False" Date="30.09.2016 12:01:00" Number="000000004" Description="Проведение серии курсов по здоровому питанию" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" ActivityType="6a33a083-b1ff-4e02-be91-c478fbc60057" DeliveryDateTime="29.02.2020 19:26:03" Marketplace="http://market.yandex.ru" Sum="3.14" />
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="a4ea2bf3-c8a0-4ea4-89a0-60143643ca08" DeletionMark="False" Date="20.08.2016 11:11:11" Number="000000005" Description="Подготовка маркетинговых материалов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="03.10.2016 22:17:32" ActivityType="1609c085-75b9-4526-835b-5381af17b445" DeliveryDateTime="23.10.2016 22:00:00" Marketplace="http://1cbit.ru" Sum="127" />
+		<Row _Type="Document.Tender" _RS="0" Id="a4ea2bf3-c8a0-4ea4-89a0-60143643ca08" DeletionMark="False" Date="20.08.2016 11:11:11" Number="000000005" Description="Подготовка маркетинговых материалов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="03.10.2016 22:17:32" ActivityType="1609c085-75b9-4526-835b-5381af17b445" DeliveryDateTime="23.10.2016 22:00:00" Marketplace="http://1cbit.ru" Sum="127" />
 
-		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="b39f427c-ae81-49a2-add0-1f7c9b16e8e7" DeletionMark="False" Date="29.10.2015 13:13:21" Number="000000006" Description="Запрос на поставку новопассита" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.11.2016 07:59:59" ActivityType="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeliveryDateTime="30.11.2016 11:39:55" Marketplace="http://grotem.com" Sum="999999.99" />
+		<Row _Type="Document.Tender" _RS="0" Id="b39f427c-ae81-49a2-add0-1f7c9b16e8e7" DeletionMark="False" Date="29.10.2015 13:13:21" Number="000000006" Description="Запрос на поставку новопассита" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.11.2016 07:59:59" ActivityType="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeliveryDateTime="30.11.2016 11:39:55" Marketplace="http://grotem.com" Sum="999999.99" />
 
 		<!-- Catalog.Chat  "Чаттер"-->
 		<!-- По Тендеру Number="000000001" -->
 
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="80866ec9-c6ce-462b-990f-68b5c745b7ad" DeletionMark="False" Code="1" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Нужны витамины" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="80866ec9-c6ce-462b-990f-68b5c745b7ad" DeletionMark="False" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Нужны витамины" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="20b3f406-ea48-4210-8fb7-af075d9b6f9e" DeletionMark="False" Code="2" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хорошо, прикину сроки" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="20b3f406-ea48-4210-8fb7-af075d9b6f9e" DeletionMark="False" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хорошо, прикину сроки" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="2d772a59-ec13-453b-a9ed-c8153d6968f5" DeletionMark="False" Code="3" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это важный клиент - сроки тоже должны быть соотвествующие" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="2d772a59-ec13-453b-a9ed-c8153d6968f5" DeletionMark="False" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это важный клиент - сроки тоже должны быть соотвествующие" />
 		
 		<!-- По Тендеру Number="000000002" -->
 
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="0c6dc6fc-2e3f-4b3b-b7ab-d5c83da7e148" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хороший клиент - еще один тендер открыл" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="0c6dc6fc-2e3f-4b3b-b7ab-d5c83da7e148" DeletionMark="False" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хороший клиент - еще один тендер открыл" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="a2150a1d-2f68-4eab-a77a-99201fcaf3c1" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Опять нужно сделать все возможное и невозможное?" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="a2150a1d-2f68-4eab-a77a-99201fcaf3c1" DeletionMark="False" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Опять нужно сделать все возможное и невозможное?" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="79926a21-74e2-4c69-a5f3-abc59a0bc064" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Да, именно так" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="79926a21-74e2-4c69-a5f3-abc59a0bc064" DeletionMark="False" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Да, именно так" />
 
 		<!-- По Тендеру Number="000000003" -->
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="1200a8f7-3caf-4b0a-b4c8-b16a0193346b" DeletionMark="False" Code="1" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Это обеспечение Крайнего Севера, чтобы не болели" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="1200a8f7-3caf-4b0a-b4c8-b16a0193346b" DeletionMark="False" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Это обеспечение Крайнего Севера, чтобы не болели" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="deda47a4-a1dd-4138-8600-bf7d99e6d03e" DeletionMark="False" Code="1" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Нужен вагон - термостат" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="deda47a4-a1dd-4138-8600-bf7d99e6d03e" DeletionMark="False" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Нужен вагон - термостат" />
 
 		<!-- По Тендеру Number="000000004" -->
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="9fed0d4c-3a6b-424a-9de9-7dc077ae03e8" DeletionMark="False" Code="1" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это тоже наши клиенты?!?!?!" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="9fed0d4c-3a6b-424a-9de9-7dc077ae03e8" DeletionMark="False" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это тоже наши клиенты?!?!?!" />
 		
-		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="d9394a82-abd4-4fd5-9550-9b163167e3b2" DeletionMark="False" Code="1" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Если быть - то быть первыми!" />
+		<Row _Type="Catalog.Chat" _RS="0" Id="d9394a82-abd4-4fd5-9550-9b163167e3b2" DeletionMark="False" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Если быть - то быть первыми!" />
 
 		<!-- +++BIOVITRUM -->
 
