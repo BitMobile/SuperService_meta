@@ -701,8 +701,8 @@
 			<Row Description="Создание и редактирование чек-листов" Id="0236eb9f-eed9-507b-9152-86b037e79a79" Name="CheckListsEditing" _RS="0"/>
 			<Row Description="Управление активностью чек-листов" Id="0236eb9f-eed9-508b-9152-86b037e79a79" Name="CheckListManageActivityStatus" _RS="0"/>
 			<Row Description="Доступ к аналитике" Id="0236eb9f-eed9-509b-9152-86b037e79a79" Name="AnaliticAccess" _RS="0"/>
-			<Row Description="Доступ к веб-приложению" Id="0236eb9f-eed9-510b-9152-86b037e79a79" Name="AnaliticAccess" _RS="0"/>
-			<Row Description="Доступ к мобильному приложению" Id="0236eb9f-eed9-511b-9152-86b037e79a79" Name="AnaliticAccess" _RS="0"/>
+			<Row Description="Доступ к веб-приложению" Id="0236eb9f-eed9-510b-9152-86b037e79a79" Name="WebInterfaceAccess" _RS="0"/>
+			<Row Description="Доступ к мобильному приложению" Id="0236eb9f-eed9-511b-9152-86b037e79a79" Name="MobileAppAccess" _RS="0"/>
 		</Entity>
 	</Constants>
 </Configuration>
