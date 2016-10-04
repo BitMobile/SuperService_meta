@@ -598,13 +598,14 @@
 				<Field KeyField="true" Name="Id" Type="Guid"/>
 				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
 				<Field AllowNull="true" Length="9" Name="Number" Type="String"/>
+				<Field AllowNull="true" Name="Date" Type="DateTime2"/>
 				<Field AllowNull="false" Name="Client" Type="Catalog.Client"/>
 				<Field AllowNull="true" Name="DueDateTime" Type="DateTime2"/>
 				<Field AllowNull="true" Name="ActivityType" Type="Catalog.ActivityTypes"/>
 				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
 				<Field AllowNull="true" Name="DeliveryDateTime" Type="DateTime2"/>
 				<Field AllowNull="true" Length="100" Name="Marketplace" Type="String"/>
-				<Field AllowNull="false" Name="Sum" Precision="15" Scale="3" Type="Decimal"/>
+				<Field AllowNull="false" Name="Sum" Precision="15" Scale="2" Type="Decimal"/>
 			</Fields>
 			<TabularSections/>
 		</Entity>
