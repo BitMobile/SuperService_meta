@@ -1732,7 +1732,7 @@
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fb-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedCalculateMaterials" Code="000000007" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fc-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedCalculateService" Code="000000006" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fd-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedCheckLists" Code="000000004" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fe-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedEquipment" Code="000000001" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
+		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fe-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedEquipment" Code="000000001" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7ff-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedGpsFix" Code="000000008" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c800-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedServiceBag" Code="000000014" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Document.NeedMat" _RS="0" Posted="True" Id="c2f5c968-bd98-45e0-a5d6-1da015afe31e" DeletionMark="False" Date="10.05.2016 13:10:56" Number="000000001" DocIn="00000000-0000-0000-0000-000000000000" StatsNeed="bdd2411f-c0e4-2a47-4486-a87fa2ad1dfb" SR="71e1c804-1387-11e6-b0e4-6c71d97753d2" FillFull="True" SRMComment="" SRComment="">
@@ -2086,5 +2086,61 @@
 				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
+
+		<!-- +++BIOVITRUM -->   
+		
+		<!-- Catalog.ActivityTypes  "Направления"-->
+
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeletionMark="False" Description="Поставка витаминов" Code="1" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeletionMark="False" Description="Поставка лекарств" Code="2" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="6a33a083-b1ff-4e02-be91-c478fbc60057" DeletionMark="False" Description="Услуги" Code="3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="1609c085-75b9-4526-835b-5381af17b445" DeletionMark="False" Description="Прочая деятельность" Code="4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+		<Row _Type="Catalog.ActivityTypes" _RS="0" Predefined="False" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+		
+		<!-- Document.Tender  "Тендеры"-->
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" DeletionMark="False" Date="03.10.2016 11:39:03" Number="000000001" Description="Тендер на поставки витаминов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="20.10.2016 11:39:03" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryTime="30.10.2016 11:39:03" Marketplace="http://ya.ru" Sum="540500" />
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="6b47b280-01e0-42bc-9f1f-7b7645a6017c" DeletionMark="False" Date="02.10.2016 09:43:17" Number="000000002" Description="Тендер на поставки БАД" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="10.10.2016 09:43:17" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" DeliveryTime="30.12.2016 09:43:17" Marketplace="http://zakupki.ru" Sum="18360" />
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="032d4521-3e7c-45d8-97cc-27810a631af3" DeletionMark="False" Date="01.10.2016 00:00:01" Number="000000003" Description="Запрос на вагон аспирина" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="01.01.2017 00:00:00" ActivityType="12cf5f37-ca41-4058-9f0b-9c827c06e40c" DeliveryTime="01.02.2017 11:39:03" Marketplace="http://ya.ru" Sum="2500" />
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="90465e39-88ad-4076-a5e2-0a8e49ff26ad" DeletionMark="False" Date="30.09.2016 12:01:00" Number="000000004" Description="Проведение серии курсов по здоровому питанию" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="20.10.2016 11:39:03" ActivityType="6a33a083-b1ff-4e02-be91-c478fbc60057" DeliveryTime="29.02.2020 19:26:03" Marketplace="http://market.yandex.ru" Sum="3.14" />
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="a4ea2bf3-c8a0-4ea4-89a0-60143643ca08" DeletionMark="False" Date="20.08.2016 11:11:11" Number="000000005" Description="Подготовка маркетинговых материалов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="03.10.2016 22:17:32" ActivityType="1609c085-75b9-4526-835b-5381af17b445" DeliveryTime="23.10.2016 22:00:00" Marketplace="http://1cbit.ru" Sum="127" />
+
+		<Row _Type="Document.Tender" _RS="0" Posted="True" Id="b39f427c-ae81-49a2-add0-1f7c9b16e8e7" DeletionMark="False" Date="29.10.2015 13:13:21" Number="000000006" Description="Запрос на поставку новопассита" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" ApplicationDeadline="20.11.2016 07:59:59" ActivityType="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeliveryTime="30.11.2016 11:39:55" Marketplace="http://grotem.com" Sum="999999.99" />
+
+		<!-- Catalog.Chat  "Чаттер"-->
+		<!-- По Тендеру Number="000000001" -->
+
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="80866ec9-c6ce-462b-990f-68b5c745b7ad" DeletionMark="False" Code="1" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Нужны витамины" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="20b3f406-ea48-4210-8fb7-af075d9b6f9e" DeletionMark="False" Code="2" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хорошо, прикину сроки" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="2d772a59-ec13-453b-a9ed-c8153d6968f5" DeletionMark="False" Code="3" DateTime="03.10.2016 11:39:03" Tender="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это важный клиент - сроки тоже должны быть соотвествующие" />
+		
+		<!-- По Тендеру Number="000000002" -->
+
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="0c6dc6fc-2e3f-4b3b-b7ab-d5c83da7e148" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Хороший клиент - еще один тендер открыл" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="a2150a1d-2f68-4eab-a77a-99201fcaf3c1" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Опять нужно сделать все возможное и невозможное?" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="79926a21-74e2-4c69-a5f3-abc59a0bc064" DeletionMark="False" Code="1" DateTime="02.10.2016 09:43:17" Tender="6b47b280-01e0-42bc-9f1f-7b7645a6017c" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Да, именно так" />
+
+		<!-- По Тендеру Number="000000003" -->
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="1200a8f7-3caf-4b0a-b4c8-b16a0193346b" DeletionMark="False" Code="1" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Это обеспечение Крайнего Севера, чтобы не болели" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="deda47a4-a1dd-4138-8600-bf7d99e6d03e" DeletionMark="False" Code="1" DateTime="01.10.2016 00:00:01" Tender="032d4521-3e7c-45d8-97cc-27810a631af3" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" Message="Нужен вагон - термостат" />
+
+		<!-- По Тендеру Number="000000004" -->
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="9fed0d4c-3a6b-424a-9de9-7dc077ae03e8" DeletionMark="False" Code="1" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Это тоже наши клиенты?!?!?!" />
+		
+		<Row _Type="Catalog.Chat" _RS="0" Predefined="False" Id="d9394a82-abd4-4fd5-9550-9b163167e3b2" DeletionMark="False" Code="1" DateTime="30.09.2016 12:01:00" Tender="90465e39-88ad-4076-a5e2-0a8e49ff26ad" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Message="Если быть - то быть первыми!" />
+
+		<!-- +++BIOVITRUM -->
+
 	</Rows>
 </Root>
