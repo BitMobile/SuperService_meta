@@ -683,6 +683,21 @@ DEALLOCATE cursor_name
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
+IF NOT EXISTS (
+  SELECT * 
+  FROM   sys.columns 
+  WHERE  object_id = OBJECT_ID(N'[Document].[Task_Status]') 
+         AND name = 'CloseEvent'
+)
+BEGIN
+  ALTER TABLE [Document].[Task_Status] ADD
+  [CloseEvent] uniqueidentifier NULL
+END
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Set DBVersion = 3.1.3.0'
 
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
