@@ -63,7 +63,6 @@
 				<Field KeyField="true" Name="Id" Type="Guid"/>
 				<Field AllowNull="false" Length="100" Name="Name" Type="String"/>
 				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
-				<Field AllowNull="false" Name="Event" Type="Document.Event"/>
 			</Fields>
 		</Entity>
 		<Entity Name="FoReminders" Schema="Enum">
@@ -561,6 +560,7 @@
 					<Field AllowNull="true" Name="Status" Type="Enum.StatusTasks"/>
 					<Field AllowNull="true" Name="UserMA" Type="Catalog.User"/>
 					<Field AllowNull="true" Name="ActualEndDate" Type="DateTime2"/>
+					<Field AllowNull="false" Name="Event" Type="Document.Event"/>
 				</TabularSection>
 			</TabularSections>
 		</Entity>
