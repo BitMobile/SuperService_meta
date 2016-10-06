@@ -1763,7 +1763,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="9431af10-b7a2-4189-b4d9-b82db4bae36e" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000002" Description="Задача (по наряду) №000000002" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" Equipment="7FC7F35B-21B0-11E6-B0E7-6C71D97753D2" Event="5FD5FBE6-655C-11E6-B0F8-74D02B239A8A" TaskType="Плановый выезд">
@@ -1771,7 +1771,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="083c836d-a3bb-4d9d-a79e-864fa0fd8a6d" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000003" Description="Задача (по наряду) №000000003" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="CEC4C161-4E8D-11E6-B0F3-74D02B239A8A" Event="3936A331-652A-11E6-B0F7-74D02B239A8A" TaskType="Встреча">
@@ -1779,7 +1779,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="8e2deae3-f70f-435d-8d35-755a2c490ac7" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000004" Description="Задача (по наряду) №000000004" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="CEC4C162-4E8D-11E6-B0F3-74D02B239A8A" Event="3936A331-652A-11E6-B0F7-74D02B239A8A" TaskType="Осмотр">
@@ -1787,7 +1787,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="5aee4fd2-6990-432d-8319-965438a6b84f" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000005" Description="Задача (по наряду) №000000005" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="CEC4C161-4E8D-11E6-B0F3-74D02B239A8A" Event="3936A333-652A-11E6-B0F7-74D02B239A8A" TaskType="Плановый выезд">
@@ -1795,7 +1795,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="31836b1b-9dae-4f44-8f4e-2cfc0b7ecac2" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000006" Description="Задача (по наряду) №000000006" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="CEC4C162-4E8D-11E6-B0F3-74D02B239A8A" Event="3936A333-652A-11E6-B0F7-74D02B239A8A" TaskType="Встреча">
@@ -1803,7 +1803,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="36121325-88f7-4633-8795-61dedc3ba2c1" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000007" Description="Задача (по наряду) №000000007" Client="88098524-296E-11E6-B0EA-6C71D97753D2" Equipment="88098525-296E-11E6-B0EA-6C71D97753D2" Event="21FF439F-6445-11E6-B0F7-74D02B239A8A" TaskType="Плановый выезд">
@@ -1811,7 +1811,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="0f507edd-f04e-4d6b-95b0-b48a395bba0d" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000008" Description="Задача (по наряду) №000000008" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="4D97F60C-184D-11E6-B0E5-6C71D97753D2" Event="347470BF-54A0-11E6-B0F5-74D02B239A8A" TaskType="Встреча">
@@ -1819,7 +1819,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="23287d44-3155-4137-b97b-c8956c8a5e88" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000009" Description="Задача (по наряду) №000000009" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="4D97F60E-184D-11E6-B0E5-6C71D97753D2" Event="347470BF-54A0-11E6-B0F5-74D02B239A8A" TaskType="Плановый выезд">
@@ -1827,7 +1827,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="1cc4959a-c757-4237-bd7f-c4a1c6c8b902" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000010" Description="Задача (по наряду) №000000010" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="BC012EC0-233C-11E6-B0E9-6C71D97753D2" Event="347470BF-54A0-11E6-B0F5-74D02B239A8A" TaskType="Встреча">
@@ -1835,7 +1835,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="90761af8-659f-4261-908f-ccccaeae76e3" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000011" Description="Задача (по наряду) №000000011" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="59E019B1-438D-11E6-B0F1-6C71D97753D2" Event="347470BF-54A0-11E6-B0F5-74D02B239A8A" TaskType="Осмотр">
@@ -1843,7 +1843,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="65c15664-0be7-4405-84a1-265a8900d07a" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000012" Description="Задача (по наряду) №000000012" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="347470BC-54A0-11E6-B0F5-74D02B239A8A" Event="347470BF-54A0-11E6-B0F5-74D02B239A8A" TaskType="Плановый выезд">
@@ -1851,7 +1851,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="77315029-f7a4-4334-9e0d-059460f46d49" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000013" Description="Задача (по наряду) №000000013" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="4D97F60C-184D-11E6-B0E5-6C71D97753D2" Event="347470BD-54A0-11E6-B0F5-74D02B239A8A" TaskType="Встреча">
@@ -1859,7 +1859,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="c0b77da3-394c-49e3-8f5f-3e8679670ea1" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000014" Description="Задача (по наряду) №000000014" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="4D97F60E-184D-11E6-B0E5-6C71D97753D2" Event="347470BD-54A0-11E6-B0F5-74D02B239A8A" TaskType="Плановый выезд">
@@ -1867,7 +1867,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="be995ac5-7cdd-44f1-8799-502e4854d0fb" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000015" Description="Задача (по наряду) №000000015" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="BC012EC0-233C-11E6-B0E9-6C71D97753D2" Event="347470BD-54A0-11E6-B0F5-74D02B239A8A" TaskType="Встреча">
@@ -1875,7 +1875,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="dd2ba811-625e-41dd-b9b7-c026ef4cf3ba" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000016" Description="Задача (по наряду) №000000016" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="347470BD-54A0-11E6-B0F5-74D02B239A8A" TaskType="Осмотр">
@@ -1883,7 +1883,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="0ec54f57-d85a-4988-81d0-959808bbf98a" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000017" Description="Задача (по наряду) №000000017" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="347470BD-54A0-11E6-B0F5-74D02B239A8A" TaskType="Плановый выезд">
@@ -1891,7 +1891,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="3f4bcc10-f957-458a-91b2-92fe3b811ecd" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000018" Description="Задача (по наряду) №000000018" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="00000000-0000-0000-0000-000000000000" Event="08440A24-4F15-11E6-B0F3-74D02B239A8A" TaskType="Встреча">
@@ -1899,7 +1899,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="07fa0bb9-81b4-44a2-8c6b-520a13f41cf2" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000019" Description="Задача (по наряду) №000000019" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="00000000-0000-0000-0000-000000000000" Event="08440A24-4F15-11E6-B0F3-74D02B239A8A" TaskType="Плановый выезд">
@@ -1907,7 +1907,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="4d640d31-d082-4ee0-9b8b-1978e5863bc5" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000020" Description="Задача (по наряду) №000000020" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="00000000-0000-0000-0000-000000000000" Event="CEC4C163-4E8D-11E6-B0F3-74D02B239A8A" TaskType="Встреча">
@@ -1915,7 +1915,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="d98fba49-320e-4721-896f-92336da99aa8" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000021" Description="Задача (по клиенту) №000000021" Client="DB6961B5-4E89-11E6-B0F3-74D02B239A8A" Equipment="00000000-0000-0000-0000-000000000000" Event="CEC4C163-4E8D-11E6-B0F3-74D02B239A8A" TaskType="Осмотр">
@@ -1923,7 +1923,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="5d1e09bc-8a5a-4591-b06b-f4ecdf7e0909" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000022" Description="Задача (по клиенту) №000000022" Client="6144CBAE-44EE-11E6-B0F1-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="6144CBB6-44EE-11E6-B0F1-6C71D97753D2" TaskType="Плановый выезд">
@@ -1931,7 +1931,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="ef5ee917-6fca-4d42-a382-ec7ba0415046" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000023" Description="Задача (по клиенту) №000000023" Client="6144CBAE-44EE-11E6-B0F1-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="6144CBB4-44EE-11E6-B0F1-6C71D97753D2" TaskType="Плановый выезд">
@@ -1939,7 +1939,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="68dcde4b-0dad-4851-97e4-fb8e60791f4b" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000024" Description="Задача (по клиенту) №000000024" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="A3E91BDC-441C-11E6-B0F1-6C71D97753D2" TaskType="Встреча">
@@ -1947,7 +1947,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="3de93879-93cf-476d-940a-193f8a9d052e" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000025" Description="Задача (по клиенту) №000000025" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="A3E91BDC-441C-11E6-B0F1-6C71D97753D2" TaskType="Плановый выезд">
@@ -1955,7 +1955,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="85f79f4a-e092-4561-b6bf-5a56bbe965bd" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000026" Description="Задача (по клиенту) №000000026" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="A3E91BDC-441C-11E6-B0F1-6C71D97753D2" TaskType="Встреча">
@@ -1963,7 +1963,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="62e7b909-4737-4569-b50f-e57ef4aecf25" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000027" Description="Задача (по клиенту) №000000027" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="A3E91BDC-441C-11E6-B0F1-6C71D97753D2" TaskType="Осмотр">
@@ -1971,7 +1971,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="aa3504cc-1205-4745-a277-1064cff03a18" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000028" Description="Задача (по клиенту) №000000028" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="A3E91BDC-441C-11E6-B0F1-6C71D97753D2" TaskType="Плановый выезд">
@@ -1979,7 +1979,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="93fa556f-9e91-476e-96b1-79dcccda0b5c" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000029" Description="Задача (по клиенту) №000000029" Client="C5D5E506-42B6-11E6-B0F0-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="C5D5E507-42B6-11E6-B0F0-6C71D97753D2" TaskType="Встреча">
@@ -1987,7 +1987,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="2dca3f0e-fafb-4f74-8470-6b5ac6d3f058" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000030" Description="Задача (по клиенту) №000000030" Client="F4A4D5D0-1DD3-11E6-B0E7-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="C5D5E505-42B6-11E6-B0F0-6C71D97753D2" TaskType="Встреча">
@@ -1995,7 +1995,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="fe50e166-be74-4657-9f94-fddbc9876a4e" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000031" Description="Задача (по клиенту) №000000031" Client="8D96B0BE-3ED8-11E6-B0F0-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Плановый выезд">
@@ -2003,7 +2003,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="a40092b1-a9ca-4893-88d8-d15eaa394154" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000032" Description="Задача (по клиенту) №000000032" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Встреча">
@@ -2011,7 +2011,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="0030f2ec-7e52-484e-b145-db17551eec19" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000033" Description="Задача (по клиенту) №000000033" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Осмотр">
@@ -2019,7 +2019,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="7eeae92c-68b7-4051-873a-f962cc1892b6" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000034" Description="Задача (по клиенту) №000000034" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Плановый выезд">
@@ -2027,7 +2027,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="389e730d-bc68-4541-abfa-4f782fbf73e3" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000035" Description="Задача (по клиенту) №000000035" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Встреча">
@@ -2035,7 +2035,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="df5d66b8-460d-4079-955a-a2c8f29f8149" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000036" Description="Задача (по клиенту) №000000036" Client="4D97F608-184D-11E6-B0E5-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Плановый выезд">
@@ -2043,7 +2043,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="b30bd9ae-50a2-4463-aeec-01a2610e1d2b" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000037" Description="Задача (по клиенту) №000000037" Client="F4A4D5D0-1DD3-11E6-B0E7-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Встреча">
@@ -2051,7 +2051,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="a66a8cd8-4979-41de-8146-4d524fa8036d" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000038" Description="Задача (по клиенту) №000000038" Client="88098524-296E-11E6-B0EA-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Плановый выезд">
@@ -2059,7 +2059,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="218d66b4-0f5e-41be-9f56-88176f6ea3ea" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000039" Description="Задача (по клиенту) №000000039" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Встреча">
@@ -2067,7 +2067,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 		<Row _Type="Document.Task" _RS="0" Posted="True" Id="af7aad01-7a61-4c20-a2b0-8fc1389fa6ef" DeletionMark="False" Date="12.09.2016 11:39:03" Number="000000040" Description="Задача (по клиенту) №000000040" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" Equipment="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" TaskType="Осмотр">
@@ -2075,7 +2075,7 @@
 				<Row LineNumber="1" Description="" IsDone="False" />
 			</Targets>
 			<Status Key="CommentContractor">
-				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
+				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" Event="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
 	</Rows>
