@@ -218,7 +218,7 @@ CREATE TABLE [Document].[Task](
   [TaskType] [nvarchar](100) NULL,
   [Client] [uniqueidentifier] NOT NULL,
   [Equipment] [uniqueidentifier] NULL,
-  [Event] [uniqueidentifier] NULL,
+  [CloseEvent] [uniqueidentifier] NULL,
   CONSTRAINT [PK_Document_Task] PRIMARY KEY NONCLUSTERED 
   (
     [Id] ASC
