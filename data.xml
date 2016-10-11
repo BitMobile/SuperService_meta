@@ -353,11 +353,11 @@
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Сидоров Михаил" Code="2" UserName="srm" Password="srm" UserDB="" EMail="" UserID="8e32e0f0-aeea-4092-9e33-922316902046" Phone="" Role="SRM">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="a37207f5-860d-4271-bc21-9bab1aaafc00" DeletionMark="False" Description="Сидоров Михаил" Code="2" UserName="srm" Password="srm" UserDB="" EMail="" UserID="8e32e0f0-aeea-4092-9e33-922316902046" Phone="" Role="SRM">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Коленова Александра" Code="3" UserName="sr" Password="sr" UserDB="" EMail="" UserID="027d02cc-aa03-436d-8e07-8ac2df53cf06" Phone="" Role="SR">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="d3b29a53-2ac6-4976-9f2e-fd59f8bdc310" DeletionMark="False" Description="Коленова Александра" Code="3" UserName="sr" Password="sr" UserDB="" EMail="" UserID="027d02cc-aa03-436d-8e07-8ac2df53cf06" Phone="" Role="SR">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
