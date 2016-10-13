@@ -445,22 +445,24 @@
 
 		<!-- +++BIOVITRUM -->
 
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иванова Надежда" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="d90eef15-0e83-4866-afc1-7eeaa928e0d2" Phone="+7 (812) 325-49-49" Role="680efa97-b038-46b4-bed0-d652a82e914d">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иванова Надежда" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="d90eef15-0e83-4866-afc1-7eeaa928e0d2" Phone="+7 (812) 325-49-49" Role="680efa97-b038-46b4-bed0-d652a82e914d" Manager="00000000-0000-0000-0000-000000000000">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
 		
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Сидоров Михаил" Code="2" UserName="srm" Password="srm" UserDB="" EMail="" UserID="8e32e0f0-aeea-4092-9e33-922316902046" Phone="" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Сидоров Михаил" Code="2" UserName="srm" Password="srm" UserDB="" EMail="" UserID="8e32e0f0-aeea-4092-9e33-922316902046" Phone="" Role="452a8e4d-4ad9-4a1c-abac-0c916cfabcfb" Manager="00000000-0000-0000-0000-000000000000">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
 		
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Коленова Александра" Code="3" UserName="sr" Password="sr" UserDB="" EMail="" UserID="027d02cc-aa03-436d-8e07-8ac2df53cf06" Phone="" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Коленова Александра" Code="3" UserName="sr" Password="sr" UserDB="" EMail="" UserID="027d02cc-aa03-436d-8e07-8ac2df53cf06" Phone="" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Manager="00000000-0000-0000-0000-000000000000">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
 		
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c804-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иван Филатов" Code="4" UserName="ivan" Password="2502" UserDB="" EMail="" UserID="392346f0-0826-4e98-8d8a-e67ff8ccde84" Phone="+7 (911) 290-28-17" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48">
+		<!-- У сотрудника Филатов Иван в качестве руковдителя указываем Коленову Александру (предыдущий элемент) -->
+		
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="71e1c804-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Иван Филатов" Code="4" UserName="ivan" Password="2502" UserDB="" EMail="" UserID="392346f0-0826-4e98-8d8a-e67ff8ccde84" Phone="+7 (911) 290-28-17" Role="679dc4bb-7d76-427c-abfa-d2e53996ef48" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2">
 			<Bag Key="Materials">
 				<Row Materials="f365b19a-1690-11e6-b0e4-6c71d97753d2" Count="-2" LineNumber="1"/>
 				<Row Materials="f365b19b-1690-11e6-b0e4-6c71d97753d2" Count="30" LineNumber="1"/>
@@ -477,7 +479,7 @@
 			</RemainsNorms>
 		</Row>
 		
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="c8fc49a6-4213-4ddb-825f-9a9b163c7009" DeletionMark="False" Description="Обмен 1С" Code="5" UserName="Exchange" Password="Exchange" UserDB="" EMail="" UserID="50eb9c4a-53c3-47e7-a275-9b56682236f7" Phone="" Role="680efa97-b038-46b4-bed0-d652a82e914d">
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="c8fc49a6-4213-4ddb-825f-9a9b163c7009" DeletionMark="False" Description="Обмен 1С" Code="5" UserName="Exchange" Password="Exchange" UserDB="" EMail="" UserID="50eb9c4a-53c3-47e7-a275-9b56682236f7" Phone="" Role="680efa97-b038-46b4-bed0-d652a82e914d" Manager="00000000-0000-0000-0000-000000000000">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>
