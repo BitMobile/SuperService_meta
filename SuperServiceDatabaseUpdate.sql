@@ -5,43 +5,56 @@
 */
 SET NUMERIC_ROUNDABORT OFF
 GO
+
 SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
+
 SET XACT_ABORT ON
 GO
+
 SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
 GO
+
 BEGIN TRANSACTION
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[TokenCache]'
 GO
+
 CREATE TABLE [dbo].[TokenCache]
 (
-[ID] [int] NOT NULL IDENTITY(1, 1),
-[UserName] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[Token] [varchar] (500) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[IssuedDate] [datetime2] NOT NULL CONSTRAINT [DF_TokenCache_CreationDate] DEFAULT (getdate()),
-[ExpiresDate] [datetime2] NOT NULL CONSTRAINT [DF_TokenCache_ExpirationDate] DEFAULT (dateadd(day,(1),getdate())),
-[ExpireTimespan] [bigint] NOT NULL,
-[LocalIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[RemoteIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[LastRequestDate] [datetime2] NULL,
-[IsLoggedout] [bit] NOT NULL CONSTRAINT [DF_TokenCache_IsLoggedout] DEFAULT ((0)),
-[IsExpired] AS (case when [ExpiresDate]<getdate() then (1) else (0) end)
+	[ID] [int] NOT NULL IDENTITY(1, 1),
+	[UserName] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[Token] [varchar] (500) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[IssuedDate] [datetime2] NOT NULL CONSTRAINT [DF_TokenCache_CreationDate] DEFAULT (getdate()),
+	[ExpiresDate] [datetime2] NOT NULL CONSTRAINT [DF_TokenCache_ExpirationDate] DEFAULT (dateadd(day,(1),getdate())),
+	[ExpireTimespan] [bigint] NOT NULL,
+	[LocalIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[RemoteIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[LastRequestDate] [datetime2] NULL,
+	[IsLoggedout] [bit] NOT NULL CONSTRAINT [DF_TokenCache_IsLoggedout] DEFAULT ((0)),
+	[IsExpired] AS (case when [ExpiresDate]<getdate() then (1) else (0) end)
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_TokenCache] on [dbo].[TokenCache]'
 GO
+
 ALTER TABLE [dbo].[TokenCache] ADD CONSTRAINT [PK_TokenCache] PRIMARY KEY CLUSTERED  ([Token])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[TokenUpdateExpiration]'
 GO
+
 
 CREATE PROCEDURE [dbo].[TokenUpdateExpiration]
 (
@@ -63,29 +76,38 @@ BEGIN
 END
 
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[TokenCacheAccessHistory]'
 GO
+
 CREATE TABLE [dbo].[TokenCacheAccessHistory]
 (
-[ID] [int] NOT NULL IDENTITY(1, 1),
-[TokenId] [int] NOT NULL,
-[AccessDate] [datetime2] NOT NULL,
-[LocalIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[RemoteIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[ID] [int] NOT NULL IDENTITY(1, 1),
+	[TokenId] [int] NOT NULL,
+	[AccessDate] [datetime2] NOT NULL,
+	[LocalIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[RemoteIp] [varchar] (100) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_TokenCacheAccessHistory] on [dbo].[TokenCacheAccessHistory]'
 GO
+
 ALTER TABLE [dbo].[TokenCacheAccessHistory] ADD CONSTRAINT [PK_TokenCacheAccessHistory] PRIMARY KEY CLUSTERED  ([ID])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[UserByToken]'
 GO
+
 
 CREATE PROCEDURE [dbo].[UserByToken]
 (
@@ -120,10 +142,13 @@ BEGIN
 END;
 
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[TokenAdd]'
 GO
+
 
 CREATE PROCEDURE [dbo].[TokenAdd]
 (
@@ -147,10 +172,13 @@ BEGIN
 END
 
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[TokenLogout]'
 GO
+
 
 CREATE PROCEDURE [dbo].[TokenLogout]
 (
@@ -171,178 +199,288 @@ BEGIN
 END
 
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetUsers]'
 GO
+
 CREATE TABLE [dbo].[AspNetUsers]
 (
-[Id] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[Email] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NULL,
-[EmailConfirmed] [bit] NOT NULL,
-[PasswordHash] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
-[SecurityStamp] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
-[PhoneNumber] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
-[PhoneNumberConfirmed] [bit] NOT NULL,
-[TwoFactorEnabled] [bit] NOT NULL,
-[LockoutEndDateUtc] [datetime] NULL,
-[LockoutEnabled] [bit] NOT NULL,
-[AccessFailedCount] [int] NOT NULL,
-[UserName] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[PasswordLastChangeDateUtc] [datetime] NULL
+	[Id] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[Email] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
+	[SecurityStamp] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
+	[PhoneNumber] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEndDateUtc] [datetime] NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[UserName] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[PasswordLastChangeDateUtc] [datetime] NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_AspNetUsers] on [dbo].[AspNetUsers]'
 GO
+
 ALTER TABLE [dbo].[AspNetUsers] ADD CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED  ([Id])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Adding constraints to [dbo].[AspNetUsers]'
 GO
+
 ALTER TABLE [dbo].[AspNetUsers] ADD CONSTRAINT [CK_AspNetUsers_UserName] UNIQUE NONCLUSTERED  ([UserName])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetUserPreferences]'
 GO
+
 CREATE TABLE [dbo].[AspNetUserPreferences]
 (
-[ID] [int] NOT NULL IDENTITY(1, 1),
-[AspNetUserID] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[PrefKey] [nvarchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[PrefValue] [nvarchar] (250) COLLATE Cyrillic_General_CI_AS NULL
+	[ID] [int] NOT NULL IDENTITY(1, 1),
+	[AspNetUserID] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[PrefKey] [nvarchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[PrefValue] [nvarchar] (250) COLLATE Cyrillic_General_CI_AS NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_AspNetUserPreferences1] on [dbo].[AspNetUserPreferences]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserPreferences] ADD CONSTRAINT [PK_AspNetUserPreferences1] PRIMARY KEY CLUSTERED  ([ID])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetRoles]'
 GO
+
 CREATE TABLE [dbo].[AspNetRoles]
 (
-[Id] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[Name] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[Id] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[Name] [nvarchar] (256) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_dbo.AspNetRoles] on [dbo].[AspNetRoles]'
 GO
+
 ALTER TABLE [dbo].[AspNetRoles] ADD CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED  ([Id])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetUserRoles]'
 GO
+
 CREATE TABLE [dbo].[AspNetUserRoles]
 (
-[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[RoleId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[RoleId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_dbo.AspNetUserRoles] on [dbo].[AspNetUserRoles]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserRoles] ADD CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED  ([UserId], [RoleId])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetUserClaims]'
 GO
+
 CREATE TABLE [dbo].[AspNetUserClaims]
 (
-[Id] [int] NOT NULL IDENTITY(1, 1),
-[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[ClaimType] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
-[ClaimValue] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL
+	[Id] [int] NOT NULL IDENTITY(1, 1),
+	[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[ClaimType] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL,
+	[ClaimValue] [nvarchar] (max) COLLATE Cyrillic_General_CI_AS NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_dbo.AspNetUserClaims] on [dbo].[AspNetUserClaims]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserClaims] ADD CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED  ([Id])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[AspNetUserLogins]'
 GO
+
 CREATE TABLE [dbo].[AspNetUserLogins]
 (
-[LoginProvider] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[ProviderKey] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[LoginProvider] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[ProviderKey] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[UserId] [nvarchar] (128) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating primary key [PK_dbo.AspNetUserLogins] on [dbo].[AspNetUserLogins]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserLogins] ADD CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY CLUSTERED  ([LoginProvider], [ProviderKey], [UserId])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating [dbo].[dbConfig]'
 GO
+
 CREATE TABLE [dbo].[dbConfig]
 (
-[ID] [int] NOT NULL IDENTITY(1, 1) NOT FOR REPLICATION,
-[Key] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
-[Value] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[ID] [int] NOT NULL IDENTITY(1, 1) NOT FOR REPLICATION,
+	[Key] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
+	[Value] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('DBVersion'
+           ,N'3.1.3.0');
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Creating primary key [PK_dbConfig] on [dbo].[dbConfig]'
 GO
+
 ALTER TABLE [dbo].[dbConfig] ADD CONSTRAINT [PK_dbConfig] PRIMARY KEY CLUSTERED  ([ID])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Adding constraints to [dbo].[dbConfig]'
 GO
+
 ALTER TABLE [dbo].[dbConfig] ADD CONSTRAINT [CK_dbConfig_Key] UNIQUE NONCLUSTERED  ([Key])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Adding foreign keys to [dbo].[AspNetUserRoles]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserRoles] ADD CONSTRAINT [FK_AspNetUserRoles_AspNetRoles] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id])
 ALTER TABLE [dbo].[AspNetUserRoles] ADD CONSTRAINT [FK_AspNetUserRoles_AspNetUsers] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Adding foreign keys to [dbo].[AspNetUserPreferences]'
 GO
+
 ALTER TABLE [dbo].[AspNetUserPreferences] ADD CONSTRAINT [FK_AspNetUserPreferences1_AspNetUsers] FOREIGN KEY ([AspNetUserID]) REFERENCES [dbo].[AspNetUsers] ([Id])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Adding foreign keys to [dbo].[TokenCache]'
 GO
+
 ALTER TABLE [dbo].[TokenCache] ADD CONSTRAINT [FK_TokenCache_AspNetUsers] FOREIGN KEY ([UserName]) REFERENCES [dbo].[AspNetUsers] ([UserName])
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 PRINT N'Creating extended properties'
 GO
+
 EXEC sp_addextendedproperty N'MS_Description', N'Глобальная конфигурация (базовые параметры)', 'SCHEMA', N'dbo', 'TABLE', N'dbConfig', NULL, NULL
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
+PRINT N'Creating [dbo].[PicturePaths]...';
+GO
+
+CREATE TABLE [dbo].[PicturePaths] (
+    [Id]          UNIQUEIDENTIFIER NOT NULL,
+    [Name]        NVARCHAR (200)   NOT NULL,
+    [PrivatePath] NVARCHAR (250)   NULL,
+    [SharedPath]  NVARCHAR (250)   NULL,
+    CONSTRAINT [UQ_PicturePaths_Name] UNIQUE NONCLUSTERED ([Name] ASC),
+	CONSTRAINT [PK_PicturePaths] PRIMARY KEY ([Id])
+);
+GO
+
+PRINT N'Creating unnamed constraint on [dbo].[PicturePaths]...';
+GO
+
+ALTER TABLE [dbo].[PicturePaths]
+    ADD DEFAULT (newsequentialid()) FOR [Id];
+GO
+
+CREATE UNIQUE NONCLUSTERED INDEX [Name_ASC_Unclustered_Unique]
+ON [dbo].[PicturePaths] ([Name] ASC)
+WITH (PAD_INDEX = OFF,
+	IGNORE_DUP_KEY = OFF,
+	STATISTICS_NORECOMPUTE = OFF,
+	SORT_IN_TEMPDB = OFF,
+	ONLINE = OFF,
+	ALLOW_ROW_LOCKS = ON,
+	ALLOW_PAGE_LOCKS = ON)
+ON [default]
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 COMMIT TRANSACTION
 GO
+
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
 DECLARE @Success AS BIT
 SET @Success = 1
 SET NOEXEC OFF
@@ -352,6 +490,7 @@ ELSE BEGIN
 	PRINT 'The database update failed'
 END
 GO
+
 
 
 
