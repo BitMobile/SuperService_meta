@@ -367,7 +367,7 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
-		<Entity DeleteFilter="" Name="User" Schema="Catalog" SyncDownload="False" SyncFilter="t.[Id] = @UserId OR t.[Id] IN (SELECT Executor FROM [Catalog].[Equipment_EquipmentsHistory] WHERE Equipments IN ( SELECT DE.Equipment FROM [Catalog].[Equipment_Equipments] DE WHERE DE.Clients IN (SELECT SE.Client FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))) OR t.[Id] IN (SELECT [Author] FROM [Document].[Event] WHERE [UserMA] = @UserId) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
+		<Entity DeleteFilter="" Name="User" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
