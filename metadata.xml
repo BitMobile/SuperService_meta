@@ -604,7 +604,7 @@
 				<Field AllowNull="false" Name="Client" Type="Catalog.Client"/>
 				<Field AllowNull="true" Name="DueDateTime" Type="DateTime2"/>
 				<Field AllowNull="true" Name="ActivityType" Type="Catalog.ActivityTypes"/>
-				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
+				<Field AllowNull="false" Length="1000" Name="Description" Type="String"/>
 				<Field AllowNull="true" Name="DeliveryDateTime" Type="DateTime2"/>
 				<Field AllowNull="true" Length="100" Name="Marketplace" Type="String"/>
 				<Field AllowNull="false" Name="Sum" Precision="15" Scale="2" Type="Decimal"/>
