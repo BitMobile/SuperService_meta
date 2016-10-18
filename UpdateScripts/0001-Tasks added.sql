@@ -698,6 +698,22 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
+sp_msForEachTable 
+  @command1='IF NOT EXISTS (
+    SELECT * 
+    FROM   sys.columns 
+    WHERE  object_id = OBJECT_ID(''?'') 
+          AND name = N''KeyFieldTimestamp''
+    )
+    BEGIN
+      ALTER TABLE ? ADD [KeyFieldTimestamp] bigint NULL
+    END',
+  @whereand=N'AND SCHEMA_NAME([schema_id])+N''.''+PARSENAME(o.[name], 1) 
+    IN (SELECT [SyncTable] FROM [admin].[SyncConfiguration])'
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Set DBVersion = 3.1.3.0'
 
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
