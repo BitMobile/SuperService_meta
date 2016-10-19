@@ -90,6 +90,19 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
+		
+		<Entity DeleteFilter="" Name="EventResults" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
+			<Fields>
+				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
+				<Field KeyField="true" Name="Id" Type="Guid"/>
+				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
+				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
+				<Field AllowNull="true" Length="9" Name="Code" Type="String"/>
+				<Field AllowNull="false" Name="Negative" Type="Boolean"/>
+			</Fields>
+			<TabularSections/>
+		</Entity>
+		
 		<Entity DeleteFilter="" Name="RIM" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
@@ -156,6 +169,7 @@
 				<Field AllowNull="true" Name="GPSTime" Type="DateTime2"/>
 				<Field AllowNull="true" Name="ContactVisiting" Type="Catalog.Contacts"/>
 				<Field AllowNull="true" Name="TypesDepartures" Type="Catalog.TypesDepartures"/>
+				<Field AllowNull="true" Name="EventResult" Type="Catalog.EventResults"/>
 				<Field AllowNull="false" Name="Importance" Type="Enum.StatusImportance"/>
 			</Fields>
 			<TabularSections>
