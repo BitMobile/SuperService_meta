@@ -397,7 +397,7 @@
 				<Field AllowNull="true" Length="100" Name="Phone" Type="String"/>
 				<Field AllowNull="false" Name="Role" Type="Catalog.Roles"/>
 				<Field AllowNull="true" Name="Manager" Type="Catalog.User"/>
-				<Field AllowNull="fasle" Name="EnablePush" Type="Boolean"/>
+				<Field AllowNull="false" Name="EnablePush" Type="Boolean"/>
 				<Field Length="128" Name="AspNetUserID" Type="String"/>
 			</Fields>
 			<TabularSections>
@@ -600,7 +600,9 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
+		
 		<!-- +++BIOVITRUM -->
+		
 		<Entity DeleteFilter="" Name="ActivityTypes" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -613,7 +615,7 @@
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
-					<Field AllowNull="true" Name="User" Type="Catalog.Users"/>
+					<Field AllowNull="false" Name="User" Type="Catalog.User"/>
 				</TabularSection>
 			</TabularSections>
 		</Entity>

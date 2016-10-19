@@ -1430,12 +1430,10 @@
 				<Row LineNumber="4" SKU="88098526-296e-11e6-b0ea-6c71d97753d2" Price="5000" AmountPlan="2" SumPlan="10000" AmountFact="2" SumFact="10000"/>
 			</ServicesMaterials>
 		</Row>
-		<Row _Type="Document.Event" _RS="0" Posted="True" Id="f42b8e53-3dea-11e6-b0f0-6c71d97753d2" DeletionMark="False" Date="29.06.2016 14:16:41" Number="000000018" ApplicationJustification="" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" DivisionSource="" KindEvent="83c0e4e3-0164-81bf-4804-a18e953859f5" AnySale="False" AnyProblem="False" StartDatePlan="30.06.2016 12:00:00" EndDatePlan="01.01.0001 00:00:00" ActualStartDate="30.06.2016 12:08:18" ActualEndDate="30.06.2016 12:14:47" Author="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" UserMA="71e1c804-1387-11e6-b0e4-6c71d97753d2" Comment="Плановое ТО." DetailedDescription="" CommentContractor="О EventResult="00000000-0000-0000-0000-000000000000"к
-" TargInteractions="" ResultInteractions="" Status="81998d6c-e971-8f4d-4fbb-bd4d3b61e737" Latitude="60,03267" Longitude="30,28506" GPSTime="30.06.2016 09:14:45" ContactVisiting="f365b190-1690-11e6-b0e4-6c71d97753d2" TypesDepartures="00000000-0000-0000-0000-000000000000" Importance="a570aeea-0f88-54c3-4075-d0cb82f0dd95">
+		<Row _Type="Document.Event" _RS="0" Posted="True" Id="f42b8e53-3dea-11e6-b0f0-6c71d97753d2" DeletionMark="False" Date="29.06.2016 14:16:41" Number="000000018" ApplicationJustification="" Client="4d97f608-184d-11e6-b0e5-6c71d97753d2" DivisionSource="" KindEvent="83c0e4e3-0164-81bf-4804-a18e953859f5" AnySale="False" AnyProblem="False" StartDatePlan="30.06.2016 12:00:00" EndDatePlan="01.01.0001 00:00:00" ActualStartDate="30.06.2016 12:08:18" ActualEndDate="30.06.2016 12:14:47" Author="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" UserMA="71e1c804-1387-11e6-b0e4-6c71d97753d2" Comment="Плановое ТО." DetailedDescription="" CommentContractor="Ок" TargInteractions="" ResultInteractions="" Status="81998d6c-e971-8f4d-4fbb-bd4d3b61e737" Latitude="60,03267" Longitude="30,28506" GPSTime="30.06.2016 09:14:45" ContactVisiting="f365b190-1690-11e6-b0e4-6c71d97753d2" TypesDepartures="00000000-0000-0000-0000-000000000000" Importance="a570aeea-0f88-54c3-4075-d0cb82f0dd95"  EventResult="00000000-0000-0000-0000-000000000000">
 			<Files Key="FullFileName,FileName"/>
 			<Equipments Key="Equipment,SID">
-				<Row LineNumber="1" Equipment="4d97f60e-184d-11e6-b0e5-6c71d97753d2" Terget="Плановое ТО" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" Comment="Запчасть
-" SID="28ab6aea-a3d4-426e-94b9-e7ec5d76a5d1"/>
+				<Row LineNumber="1" Equipment="4d97f60e-184d-11e6-b0e5-6c71d97753d2" Terget="Плановое ТО" Result="9956cf47-e216-522e-48f6-8aba06fc9a5e" Comment="Запчасть" SID="28ab6aea-a3d4-426e-94b9-e7ec5d76a5d1"/>
 				<Row LineNumber="2" Equipment="4d97f60c-184d-11e6-b0e5-6c71d97753d2" Terget="Диагностика неисправностей" Result="81270b2c-190a-faf2-440f-4a593042495e" Comment="" SID="e342e961-fa07-4352-899f-005f34b9630f"/>
 			</Equipments>
 			<Photos Key="UIDPhoto"/>
