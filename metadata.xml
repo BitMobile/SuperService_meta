@@ -627,13 +627,19 @@
 				<Field AllowNull="true" Name="Date" Type="DateTime2"/>
 				<Field AllowNull="false" Name="Client" Type="Catalog.Client"/>
 				<Field AllowNull="true" Name="DueDateTime" Type="DateTime2"/>
-				<Field AllowNull="true" Name="ActivityType" Type="Catalog.ActivityTypes"/>
 				<Field AllowNull="false" Length="1000" Name="Description" Type="String"/>
 				<Field AllowNull="true" Name="DeliveryDateTime" Type="DateTime2"/>
 				<Field AllowNull="true" Length="1000" Name="Marketplace" Type="String"/>
 				<Field AllowNull="false" Name="Sum" Precision="15" Scale="2" Type="Decimal"/>
 			</Fields>
-			<TabularSections/>
+			<TabularSections>
+				<TabularSection DeleteFilter="" Key="ActivityType" Name="ActivityTypes" SyncFilter="">
+					<Field KeyField="true" Name="Id" Type="Guid"/>
+					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
+					<Field AllowNull="false" Name="ActivityType" Type="Catalog.ActivityTypes"/>
+				</TabularSection>
+			</TabularSections>
 		</Entity>
 		<Entity DeleteFilter="" Name="Chat" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
 			<Fields>
