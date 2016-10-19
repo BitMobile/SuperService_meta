@@ -396,6 +396,7 @@
 				<Field AllowNull="true" Length="100" Name="Phone" Type="String"/>
 				<Field AllowNull="false" Name="Role" Type="Catalog.Roles"/>
 				<Field AllowNull="true" Name="Manager" Type="Catalog.User"/>
+				<Field AllowNull="fasle" Name="EnablePush" Type="Boolean"/>
 				<Field Length="128" Name="AspNetUserID" Type="String"/>
 			</Fields>
 			<TabularSections>
