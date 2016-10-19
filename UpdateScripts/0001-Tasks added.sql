@@ -218,7 +218,7 @@ CREATE TABLE [Document].[Task](
   [TaskType] [nvarchar](100) NULL,
   [Client] [uniqueidentifier] NOT NULL,
   [Equipment] [uniqueidentifier] NULL,
-  [CloseEvent] [uniqueidentifier] NULL,
+  [Event] [uniqueidentifier] NULL,
   CONSTRAINT [PK_Document_Task] PRIMARY KEY NONCLUSTERED 
   (
     [Id] ASC
@@ -727,6 +727,12 @@ IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
        VALUES
            ('DBVersion'
            ,N'3.1.3.0');
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+COMMIT TRANSACTION
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
