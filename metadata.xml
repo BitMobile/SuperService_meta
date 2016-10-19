@@ -171,6 +171,7 @@
 				<Field AllowNull="true" Name="TypesDepartures" Type="Catalog.TypesDepartures"/>
 				<Field AllowNull="true" Name="EventResult" Type="Catalog.EventResults"/>
 				<Field AllowNull="false" Name="Importance" Type="Enum.StatusImportance"/>
+				<Field AllowNull="true" Name="Tender" Type="Catalog.Tender"/>
 			</Fields>
 			<TabularSections>
 				<TabularSection DeleteFilter="" Key="FullFileName,FileName" Name="Files" SyncFilter="">
@@ -557,7 +558,7 @@
 				<Field AllowNull="true" Name="Event" Type="Document.Event"/>
 				<Field AllowNull="true" Length="100" Name="TaskType" Type="String"/>
 				<!-- +++BIOVITRUM -->
-				<Field AllowNull="true" Name="Tender" Type="Document.Tender"/>
+				<Field AllowNull="true" Name="Tender" Type="Catalog.Tender"/>
 				<!-- +++BIOVITRUM -->
 			</Fields>
 			<TabularSections>
@@ -610,7 +611,7 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>
-		<Entity DeleteFilter="" Name="Tender" Schema="Document" SyncDownload="True" SyncFilter="" SyncUpload="True">
+		<Entity DeleteFilter="" Name="Tender" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
 				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
@@ -631,7 +632,7 @@
 				<Field KeyField="true" Name="Id" Type="Guid"/>
 				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
 				<Field AllowNull="false" Name="DateTime" Type="DateTime2"/>
-				<Field AllowNull="false" Name="Tender" Type="Document.Tender"/>
+				<Field AllowNull="false" Name="Tender" Type="Catalog.Tender"/>
 				<Field AllowNull="false" Name="User" Type="Catalog.User"/>
 				<Field AllowNull="true" Length="500" Name="Message" Type="String"/>
 			</Fields>
