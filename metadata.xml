@@ -607,9 +607,15 @@
 				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
 				<Field AllowNull="true" Length="9" Name="Code" Type="String"/>
 				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
-				<Field AllowNull="true" Name="User" Type="Catalog.User"/>
 			</Fields>
-			<TabularSections/>
+			<TabularSections>
+				<TabularSection DeleteFilter="" Key="User" Name="Users" SyncFilter="">
+					<Field KeyField="true" Name="Id" Type="Guid"/>
+					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
+					<Field AllowNull="true" Name="User" Type="Catalog.Users"/>
+				</TabularSection>
+			</TabularSections>
 		</Entity>
 		<Entity DeleteFilter="" Name="Tender" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
 			<Fields>
