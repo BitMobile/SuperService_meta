@@ -352,6 +352,14 @@
 		
 		<!-- +++BIOVITRUM -->   
 		
+		<!-- Catalog.MobileTaskFilters  "Фильтры задач для мобильного приложения"-->
+
+		<Row _Type="Catalog.MobileTaskFilters" _RS="0" Id="21cd2bca-ed68-4c96-bbfa-8107f8af4bb1" DeletionMark="False" Predefined="False" Description="Все задачи" Query="" />
+		<Row _Type="Catalog.MobileTaskFilters" _RS="0" Id="d88d11a7-30e8-44d5-8485-1b788547167c" DeletionMark="False" Predefined="False" Description="Визит" Query="event.KindEvent = '@ref[Enum_TypesEvents]:83c0e4e3-0164-81bf-4804-a18e953859f5'" />
+		<Row _Type="Catalog.MobileTaskFilters" _RS="0" Id="d88d11a7-30e8-44d5-8485-1b788547167c" DeletionMark="False" Predefined="False" Description="Задача" Query="event.KindEvent = '@ref[Enum_TypesEvents]:be62d056-4a2d-3ff4-45bf-b48e8f3b30fb'" />
+		<Row _Type="Catalog.MobileTaskFilters" _RS="0" Id="d88d11a7-30e8-44d5-8485-1b788547167c" DeletionMark="False" Predefined="False" Description="Звонок" Query="event.KindEvent = '@ref[Enum_TypesEvents]:ad7e2b2c-b856-ed78-4d06-4b44a4a4cd57'" />
+		<Row _Type="Catalog.MobileTaskFilters" _RS="0" Id="d88d11a7-30e8-44d5-8485-1b788547167c" DeletionMark="False" Predefined="False" Description="Письмо" Query="event.KindEvent = '@ref[Enum_TypesEvents]:8824e263-6025-070c-4ea0-55807f97b5e3'" />
+		
 		<!-- Catalog.EventResults  "Результаты взаимодействия"-->
 
 		<Row _Type="Catalog.EventResults" _RS="0" Id="a2e7f4ab-1e1c-4f22-bdbf-5d43f2a43af6" DeletionMark="False" Predefined="False" Description="Успешно" Code="1" Negative="False" />
