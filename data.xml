@@ -2,7 +2,6 @@
 <Root>
 	<RegionalSettings NumberDecimalSeparator="," NumberGroupSeparator=" "/>
 	<Rows>
-<<<<<<< HEAD
 		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c801-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Техническое обследование" Code="000000001"/>
 		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c802-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Монтаж" Code="000000002"/>
 		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c803-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Ремонт" Code="000000003"/>
@@ -2087,35 +2086,5 @@
 				<Row LineNumber="1" CommentContractor="" Status="a0a9e67f-483e-419a-a714-859f13c1245c" UserMA="00000000-0000-0000-0000-000000000000" CloseEvent="00000000-0000-0000-0000-000000000000" ActualEndDate="01.01.0001 00:00:00"/>
 			</Status>
 		</Row>
-=======
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="af739dda-a4d5-11e5-8aad-f8a963e4bf15" DeletionMark="False" Description="Admin" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="9305f8d6-fc84-4120-804c-a42b0bc42935" Phone="" Role="Admin">
-			<Bag Key="Materials"/>
-			<RemainsNorms Key="Materials"/>
-		</Row>
-		
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="4af19cfd-c800-11e5-80f8-902b3416d383" DeletionMark="False" Description="Первичный" Code="1"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="472a6ed3-c8bc-11e5-80f8-902b3416d383" DeletionMark="False" Description="Повторный" Code="2"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="fad09bad-ce45-11e5-80fb-902b3416d383" DeletionMark="False" Description="Монтаж" Code="3"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="7ffc8260-d481-11e5-80fc-902b3416d383" DeletionMark="False" Description="Тех. обслуживание" Code="4"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="51a10555-fbfb-11e5-80fd-902b3416d383" DeletionMark="False" Description="Профилактический" Code="5"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="b5983357-fca7-11e5-80fd-902b3416d383" DeletionMark="False" Description="Расчет" Code="6"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="69904769-ffdb-11e5-80fd-902b3416d383" DeletionMark="False" Description="Демонтаж" Code="7"/>
-		
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="d5d5f05f-c4cb-11e5-80f8-902b3416d383" DeletionMark="False" Description="AllowGalery" Code="3" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="d5d5f060-c4cb-11e5-80f8-902b3416d383" DeletionMark="False" Description="PictureSize" Code="2" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="2500"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="d5d5f061-c4cb-11e5-80f8-902b3416d383" DeletionMark="False" Description="UsedEquipment" Code="1" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="68df5401-c695-11e5-80f8-902b3416d383" DeletionMark="False" Description="UsedCheckLists" Code="4" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="b44959ea-cb13-11e5-80f8-902b3416d383" DeletionMark="False" Description="HistoryLength" Code="5" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="90"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c5842c-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="EditPlanService" Code="6" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c5842d-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="AddUnPlanMaterials" Code="7" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c5842e-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="EditPlanMaterials" Code="8" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c5842f-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedGpsFix" Code="9" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58430-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculateService" Code="10" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58431-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="AddUnPlanService" Code="11" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58432-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculate" Code="12" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58433-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculateMaterials" Code="13" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="4f10f61a-0bc0-11e6-80ff-902b3416d383" DeletionMark="False" Description="UsedServiceBag" Code="14" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
-		
->>>>>>> hotfix/3.1.3.1
 	</Rows>
 </Root>
