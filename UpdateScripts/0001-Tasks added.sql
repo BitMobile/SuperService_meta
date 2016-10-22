@@ -41,17 +41,17 @@ SELECT
     'UPDATE ['+ z.schemaName +'].[' + z.tableName + ']
           SET [' + @colName + '] = 0
           WHERE [' + @colName + '] IS null' AS scriptUpdate,
-	z.tableName AS tableName
+  z.tableName AS tableName
 FROM (
        SELECT 
-	        t.name AS tableName,
-			SCHEMA_NAME(SCHEMA_ID) AS schemaName
-		FROM
-		    sys.tables AS t 
-			    INNER JOIN sys.columns AS c
-				ON t.object_id = c.object_id
-				where c.name = @colName
-	 ) AS z
+          t.name AS tableName,
+      SCHEMA_NAME(SCHEMA_ID) AS schemaName
+    FROM
+        sys.tables AS t 
+          INNER JOIN sys.columns AS c
+        ON t.object_id = c.object_id
+        where c.name = @colName
+   ) AS z
 OPEN cursor_name
 FETCH NEXT FROM cursor_name INTO @script_update, @tableName
 
@@ -62,8 +62,8 @@ BEGIN
   FETCH NEXT FROM cursor_name INTO @script_update, @tableName
 END
 
-CLOSE cursor_name  		
-DEALLOCATE cursor_name	
+CLOSE cursor_name     
+DEALLOCATE cursor_name  
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -75,32 +75,8 @@ GO
 PRINT N'Renaming objects with TYPO - equipment';
 GO
 
-<<<<<<< HEAD
-PRINT N'Creating [Document].[Task]'
-
-CREATE TABLE [Document].[Task](
-  [Id] [uniqueidentifier] NOT NULL,
-  [Timestamp] [bigint] NULL,
-  [IsDeleted] [bit] NULL,
-  [Posted] [bit] NULL,
-  [DeletionMark] [bit] NULL,
-  [Date] [datetime2](7) NOT NULL,
-  [Number] [nvarchar](9) NULL,
-  [Description] [nvarchar](500) NULL,
-  [TaskType] [nvarchar](100) NULL,
-  [Client] [uniqueidentifier] NOT NULL,
-  [Equipment] [uniqueidentifier] NULL,
-  [Event] [uniqueidentifier] NULL,
-  CONSTRAINT [PK_Document_Task] PRIMARY KEY NONCLUSTERED 
-  (
-    [Id] ASC
-  )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
-) 
-
-=======
  --table
 sp_rename 'Catalog.Equipment_Equiements', 'Equipment_Equipments';
->>>>>>> hotfix/3.1.3.1
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
@@ -1097,22 +1073,22 @@ GO
  
 CREATE PROCEDURE [Document].[Event_Files_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Event_Files] SET 
-				[LineNumber] = D.[LineNumber],				[FullFileName] = D.[FullFileName],				[FileName] = D.[FileName]			FROM [Document].[Event_Files] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Event_Files] SET 
+        [LineNumber] = D.[LineNumber],        [FullFileName] = D.[FullFileName],        [FileName] = D.[FileName]     FROM [Document].[Event_Files] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))  WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
  
-	INSERT INTO [Document].[Event_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[FullFileName],D.[FileName]		FROM @Data D 
-		LEFT JOIN [Document].[Event_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Document].[Event_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[FullFileName],D.[FileName]   FROM @Data D 
+    LEFT JOIN [Document].[Event_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Document].[Event_Files] 
-	FROM [Document].[Event_Files] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL	 
+  DELETE FROM [Document].[Event_Files] 
+  FROM [Document].[Event_Files] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL)) WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1140,15 +1116,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[SKU_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[SKU]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[IsFolder],				[Parent],				[Description],				[Code]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@IsFolder,				@Parent,				@Description,				@Code			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[SKU]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [IsFolder],       [Parent],       [Description],        [Code]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @IsFolder,        @Parent,        @Description,       @Code     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1156,12 +1132,12 @@ PRINT N'Altering [Document].[Event_Files_adm_delete]'
 GO
  
 ALTER PROCEDURE [Document].[Event_Files_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@FullFileName NVARCHAR(1000) 
-		,@FileName UNIQUEIDENTIFIER 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Document].[Event_Files] 
-	WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName	
+    ,@FullFileName NVARCHAR(1000) 
+    ,@FileName UNIQUEIDENTIFIER 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Document].[Event_Files] 
+  WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName  
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1169,12 +1145,12 @@ PRINT N'Altering [Catalog].[SKU_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[SKU_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[SKU] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[IsFolder] = @IsFolder,				[Parent] = @Parent,				[Description] = @Description,				[Code] = @Code			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [IsFolder] <> @IsFolder OR ([IsFolder] IS NULL AND NOT @IsFolder IS NULL) OR (NOT [IsFolder] IS NULL AND @IsFolder IS NULL)  OR [Parent] <> @Parent OR ([Parent] IS NULL AND NOT @Parent IS NULL) OR (NOT [Parent] IS NULL AND @Parent IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[SKU] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [IsFolder] = @IsFolder,       [Parent] = @Parent,       [Description] = @Description,       [Code] = @Code      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [IsFolder] <> @IsFolder OR ([IsFolder] IS NULL AND NOT @IsFolder IS NULL) OR (NOT [IsFolder] IS NULL AND @IsFolder IS NULL)  OR [Parent] <> @Parent OR ([Parent] IS NULL AND NOT @Parent IS NULL) OR (NOT [Parent] IS NULL AND @Parent IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1209,13 +1185,13 @@ GO
  
  
 ALTER PROCEDURE [Document].[Event_Equipments_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Equipment UNIQUEIDENTIFIER,		@Terget NVARCHAR(1000),		@Result UNIQUEIDENTIFIER,		@Comment NVARCHAR(1000),		@SID UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_Equipments]( 
-		[Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Equipment,@Terget,@Result,@Comment,@SID	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Equipment UNIQUEIDENTIFIER,    @Terget NVARCHAR(1000),   @Result UNIQUEIDENTIFIER,   @Comment NVARCHAR(1000),    @SID UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_Equipments]( 
+    [Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Equipment,@Terget,@Result,@Comment,@SID )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1223,20 +1199,20 @@ PRINT N'Altering [Catalog].[SKU_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[SKU_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[SKU] WHERE Id = @Id) 
-	UPDATE [Catalog].[SKU] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[IsFolder] = @IsFolder,				[Parent] = @Parent,				[Description] = @Description,				[Code] = @Code			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[SKU] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[IsFolder],				[Parent],				[Description],				[Code]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@IsFolder,				@Parent,				@Description,				@Code			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.SKU',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[SKU] WHERE Id = @Id) 
+  UPDATE [Catalog].[SKU] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [IsFolder] = @IsFolder,       [Parent] = @Parent,       [Description] = @Description,       [Code] = @Code      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[SKU] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [IsFolder],       [Parent],       [Description],        [Code]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @IsFolder,        @Parent,        @Description,       @Code     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.SKU',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1245,12 +1221,12 @@ GO
  
 CREATE PROCEDURE [Document].[Event_Equipments_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_Equipments] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_Equipments]( 
-		[Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_Equipments]( 
+    [Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1267,18 +1243,18 @@ PRINT N'Altering [Document].[Event_Equipments_adm_update]'
 GO
  
 ALTER PROCEDURE [Document].[Event_Equipments_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Equipment UNIQUEIDENTIFIER,		@Terget NVARCHAR(1000),		@Result UNIQUEIDENTIFIER,		@Comment NVARCHAR(1000),		@SID UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Event_Equipments] WHERE [Ref] = @Ref AND ([Equipment] = @Equipment OR ([Equipment] IS NULL AND @Equipment IS NULL)) AND ([SID] = @SID OR ([SID] IS NULL AND @SID IS NULL))) 
-	UPDATE [Document].[Event_Equipments] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Equipment] = @Equipment,				[Terget] = @Terget,				[Result] = @Result,				[Comment] = @Comment,				[SID] = @SID			WHERE [Ref] = @Ref AND [Equipment] = @Equipment AND [SID] = @SID AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [Terget] <> @Terget OR [Result] <> @Result OR [Comment] <> @Comment ) 
-	ELSE 
-	INSERT INTO [Document].[Event_Equipments]( 
-		[Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Equipment,@Terget,@Result,@Comment,@SID	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Equipment UNIQUEIDENTIFIER,    @Terget NVARCHAR(1000),   @Result UNIQUEIDENTIFIER,   @Comment NVARCHAR(1000),    @SID UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Event_Equipments] WHERE [Ref] = @Ref AND ([Equipment] = @Equipment OR ([Equipment] IS NULL AND @Equipment IS NULL)) AND ([SID] = @SID OR ([SID] IS NULL AND @SID IS NULL))) 
+  UPDATE [Document].[Event_Equipments] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Equipment] = @Equipment,       [Terget] = @Terget,       [Result] = @Result,       [Comment] = @Comment,       [SID] = @SID      WHERE [Ref] = @Ref AND [Equipment] = @Equipment AND [SID] = @SID AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [Terget] <> @Terget OR [Result] <> @Result OR [Comment] <> @Comment ) 
+  ELSE 
+  INSERT INTO [Document].[Event_Equipments]( 
+    [Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Equipment,@Terget,@Result,@Comment,@SID )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1305,15 +1281,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Equipment_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@SKU UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[SKU]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@SKU			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @SKU UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [SKU]     )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @SKU      )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1322,22 +1298,22 @@ GO
  
 CREATE PROCEDURE [Document].[Event_Equipments_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_Equipments] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Event_Equipments] SET 
-				[LineNumber] = D.[LineNumber],				[Equipment] = D.[Equipment],				[Terget] = D.[Terget],				[Result] = D.[Result],				[Comment] = D.[Comment],				[SID] = D.[SID]			FROM [Document].[Event_Equipments] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Equipment] <> D.[Equipment] OR T.[Terget] <> D.[Terget] OR T.[Result] <> D.[Result] OR T.[Comment] <> D.[Comment] OR T.[SID] <> D.[SID] ) 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Event_Equipments] SET 
+        [LineNumber] = D.[LineNumber],        [Equipment] = D.[Equipment],        [Terget] = D.[Terget],        [Result] = D.[Result],        [Comment] = D.[Comment],        [SID] = D.[SID]     FROM [Document].[Event_Equipments] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL))  WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Equipment] <> D.[Equipment] OR T.[Terget] <> D.[Terget] OR T.[Result] <> D.[Result] OR T.[Comment] <> D.[Comment] OR T.[SID] <> D.[SID] ) 
  
-	INSERT INTO [Document].[Event_Equipments]( 
-		[Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Equipment],D.[Terget],D.[Result],D.[Comment],D.[SID]		FROM @Data D 
-		LEFT JOIN [Document].[Event_Equipments] T ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Document].[Event_Equipments]( 
+    [Ref],[LineNumber],[Equipment],[Terget],[Result],[Comment],[SID]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Equipment],D.[Terget],D.[Result],D.[Comment],D.[SID]   FROM @Data D 
+    LEFT JOIN [Document].[Event_Equipments] T ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL)) WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Document].[Event_Equipments] 
-	FROM [Document].[Event_Equipments] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL))	WHERE T.Ref = @Ref AND D.[Equipment] IS NULL AND D.[SID] IS NULL	 
+  DELETE FROM [Document].[Event_Equipments] 
+  FROM [Document].[Event_Equipments] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) AND (T.[SID] = D.[SID] OR (T.[SID] IS NULL AND D.[SID] IS NULL)) WHERE T.Ref = @Ref AND D.[Equipment] IS NULL AND D.[SID] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1345,12 +1321,12 @@ PRINT N'Altering [Catalog].[Equipment_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[Equipment_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@SKU UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Equipment] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[SKU] = @SKU			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [SKU] <> @SKU OR ([SKU] IS NULL AND NOT @SKU IS NULL) OR (NOT [SKU] IS NULL AND @SKU IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @SKU UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Equipment] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [SKU] = @SKU      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [SKU] <> @SKU OR ([SKU] IS NULL AND NOT @SKU IS NULL) OR (NOT [SKU] IS NULL AND @SKU IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1358,20 +1334,20 @@ PRINT N'Altering [Catalog].[Equipment_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[Equipment_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@SKU UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Equipment] WHERE Id = @Id) 
-	UPDATE [Catalog].[Equipment] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[SKU] = @SKU			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[Equipment] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[SKU]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@SKU			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Equipment',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @SKU UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Equipment] WHERE Id = @Id) 
+  UPDATE [Catalog].[Equipment] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [SKU] = @SKU      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[Equipment] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [SKU]     ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @SKU      ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Equipment',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1475,13 +1451,13 @@ GO
  
  
 ALTER PROCEDURE [Document].[Event_CheckList_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Action UNIQUEIDENTIFIER,		@CheckListRef UNIQUEIDENTIFIER,		@Result NVARCHAR(1000),		@ActionType UNIQUEIDENTIFIER,		@Required BIT	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_CheckList]( 
-		[Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Action,@CheckListRef,@Result,@ActionType,@Required	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Action UNIQUEIDENTIFIER,   @CheckListRef UNIQUEIDENTIFIER,   @Result NVARCHAR(1000),   @ActionType UNIQUEIDENTIFIER,   @Required BIT AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_CheckList]( 
+    [Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Action,@CheckListRef,@Result,@ActionType,@Required  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1490,12 +1466,12 @@ GO
  
 CREATE PROCEDURE [Document].[Event_CheckList_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_CheckList] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_CheckList]( 
-		[Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_CheckList]( 
+    [Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required] ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]    FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1530,13 +1506,13 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Equipment_Files_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1544,18 +1520,18 @@ PRINT N'Altering [Document].[Event_CheckList_adm_update]'
 GO
  
 ALTER PROCEDURE [Document].[Event_CheckList_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Action UNIQUEIDENTIFIER,		@CheckListRef UNIQUEIDENTIFIER,		@Result NVARCHAR(1000),		@ActionType UNIQUEIDENTIFIER,		@Required BIT	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Event_CheckList] WHERE [Ref] = @Ref AND ([Action] = @Action OR ([Action] IS NULL AND @Action IS NULL)) AND ([CheckListRef] = @CheckListRef OR ([CheckListRef] IS NULL AND @CheckListRef IS NULL))) 
-	UPDATE [Document].[Event_CheckList] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Action] = @Action,				[CheckListRef] = @CheckListRef,				[Result] = @Result,				[ActionType] = @ActionType,				[Required] = @Required			WHERE [Ref] = @Ref AND [Action] = @Action AND [CheckListRef] = @CheckListRef AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [Result] <> @Result OR [ActionType] <> @ActionType OR [Required] <> @Required ) 
-	ELSE 
-	INSERT INTO [Document].[Event_CheckList]( 
-		[Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Action,@CheckListRef,@Result,@ActionType,@Required	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Action UNIQUEIDENTIFIER,   @CheckListRef UNIQUEIDENTIFIER,   @Result NVARCHAR(1000),   @ActionType UNIQUEIDENTIFIER,   @Required BIT AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Event_CheckList] WHERE [Ref] = @Ref AND ([Action] = @Action OR ([Action] IS NULL AND @Action IS NULL)) AND ([CheckListRef] = @CheckListRef OR ([CheckListRef] IS NULL AND @CheckListRef IS NULL))) 
+  UPDATE [Document].[Event_CheckList] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Action] = @Action,       [CheckListRef] = @CheckListRef,       [Result] = @Result,       [ActionType] = @ActionType,       [Required] = @Required      WHERE [Ref] = @Ref AND [Action] = @Action AND [CheckListRef] = @CheckListRef AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [Result] <> @Result OR [ActionType] <> @ActionType OR [Required] <> @Required ) 
+  ELSE 
+  INSERT INTO [Document].[Event_CheckList]( 
+    [Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Action,@CheckListRef,@Result,@ActionType,@Required  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1564,12 +1540,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Files_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[FullFileName],[FileName]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[FullFileName],[FileName]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1587,22 +1563,22 @@ GO
  
 CREATE PROCEDURE [Document].[Event_CheckList_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_CheckList] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Event_CheckList] SET 
-				[LineNumber] = D.[LineNumber],				[Action] = D.[Action],				[CheckListRef] = D.[CheckListRef],				[Result] = D.[Result],				[ActionType] = D.[ActionType],				[Required] = D.[Required]			FROM [Document].[Event_CheckList] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Action] <> D.[Action] OR T.[CheckListRef] <> D.[CheckListRef] OR T.[Result] <> D.[Result] OR T.[ActionType] <> D.[ActionType] OR T.[Required] <> D.[Required] ) 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Event_CheckList] SET 
+        [LineNumber] = D.[LineNumber],        [Action] = D.[Action],        [CheckListRef] = D.[CheckListRef],        [Result] = D.[Result],        [ActionType] = D.[ActionType],        [Required] = D.[Required]     FROM [Document].[Event_CheckList] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL))  WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Action] <> D.[Action] OR T.[CheckListRef] <> D.[CheckListRef] OR T.[Result] <> D.[Result] OR T.[ActionType] <> D.[ActionType] OR T.[Required] <> D.[Required] ) 
  
-	INSERT INTO [Document].[Event_CheckList]( 
-		[Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Action],D.[CheckListRef],D.[Result],D.[ActionType],D.[Required]		FROM @Data D 
-		LEFT JOIN [Document].[Event_CheckList] T ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Document].[Event_CheckList]( 
+    [Ref],[LineNumber],[Action],[CheckListRef],[Result],[ActionType],[Required] ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Action],D.[CheckListRef],D.[Result],D.[ActionType],D.[Required]    FROM @Data D 
+    LEFT JOIN [Document].[Event_CheckList] T ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Document].[Event_CheckList] 
-	FROM [Document].[Event_CheckList] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL))	WHERE T.Ref = @Ref AND D.[Action] IS NULL AND D.[CheckListRef] IS NULL	 
+  DELETE FROM [Document].[Event_CheckList] 
+  FROM [Document].[Event_CheckList] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Action] = D.[Action] OR (T.[Action] IS NULL AND D.[Action] IS NULL)) AND (T.[CheckListRef] = D.[CheckListRef] OR (T.[CheckListRef] IS NULL AND D.[CheckListRef] IS NULL)) WHERE T.Ref = @Ref AND D.[Action] IS NULL AND D.[CheckListRef] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1631,18 +1607,18 @@ PRINT N'Altering [Catalog].[Equipment_Files_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[Equipment_Files_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Equipment_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
-	UPDATE [Catalog].[Equipment_Files] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[FullFileName] = @FullFileName,				[FileName] = @FileName			WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Catalog].[Equipment_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Equipment_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
+  UPDATE [Catalog].[Equipment_Files] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [FullFileName] = @FullFileName,       [FileName] = @FileName      WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Catalog].[Equipment_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1671,69 +1647,69 @@ PRINT N'Altering [admin].[WriteLog]'
 GO
  
 ALTER PROCEDURE [admin].[WriteLog]  
-	@StartTime DATETIME, 
-	@EndTime DATETIME, 
-	@FirstSync BIT, 
-	@TimestampFrom BIGINT, 
-	@TimestampTo BIGINT, 
-	@DeviceId VARCHAR(150), 
-	@Login VARCHAR(50), 
-	@UserId UNIQUEIDENTIFIER, 
-	@UserEMail VARCHAR(100), 
-	@ContentLength INT, 
-	@ContentType VARCHAR(100), 
-	@Host VARCHAR(250), 
-	@ConfigName VARCHAR(250), 
-	@ConfigVersion VARCHAR(50), 
-	@CoreVersion VARCHAR(50), 
-	@ResourceVersion VARCHAR(50), 
-	@OutputContentLength INT, 
-	@StatusCode INT,			 
-	@StatusDescription VARCHAR(MAX)	 
+  @StartTime DATETIME, 
+  @EndTime DATETIME, 
+  @FirstSync BIT, 
+  @TimestampFrom BIGINT, 
+  @TimestampTo BIGINT, 
+  @DeviceId VARCHAR(150), 
+  @Login VARCHAR(50), 
+  @UserId UNIQUEIDENTIFIER, 
+  @UserEMail VARCHAR(100), 
+  @ContentLength INT, 
+  @ContentType VARCHAR(100), 
+  @Host VARCHAR(250), 
+  @ConfigName VARCHAR(250), 
+  @ConfigVersion VARCHAR(50), 
+  @CoreVersion VARCHAR(50), 
+  @ResourceVersion VARCHAR(50), 
+  @OutputContentLength INT, 
+  @StatusCode INT,       
+  @StatusDescription VARCHAR(MAX)  
 AS 
 SET NOCOUNT ON 
 INSERT INTO [admin].DeviceLog( 
-	[StartTime], 
-	[EndTime], 
-	[FirstSync], 
-	[TimestampFrom], 
-	[TimestampTo], 
-	[DeviceId], 
-	[Login], 
-	[UserId], 
-	[UserEMail], 
-	[ContentLength], 
-	[ContentType], 
-	[Host], 
-	[ConfigName], 
-	[ConfigVersion], 
-	[CoreVersion], 
-	[ResourceVersion], 
-	[OutputContentLength], 
-	[StatusCode],			 
-	[StatusDescription] 
+  [StartTime], 
+  [EndTime], 
+  [FirstSync], 
+  [TimestampFrom], 
+  [TimestampTo], 
+  [DeviceId], 
+  [Login], 
+  [UserId], 
+  [UserEMail], 
+  [ContentLength], 
+  [ContentType], 
+  [Host], 
+  [ConfigName], 
+  [ConfigVersion], 
+  [CoreVersion], 
+  [ResourceVersion], 
+  [OutputContentLength], 
+  [StatusCode],      
+  [StatusDescription] 
 ) 
 VALUES( 
-	@StartTime, 
-	@EndTime, 
-	@FirstSync, 
-	@TimestampFrom, 
-	@TimestampTo, 
-	@DeviceId, 
-	@Login, 
-	@UserId, 
-	@UserEMail, 
-	@ContentLength, 
-	@ContentType, 
-	@Host, 
-	@ConfigName, 
-	@ConfigVersion, 
-	@CoreVersion, 
-	@ResourceVersion, 
-	@OutputContentLength, 
-	@StatusCode,			 
-	@StatusDescription	 
-)	
+  @StartTime, 
+  @EndTime, 
+  @FirstSync, 
+  @TimestampFrom, 
+  @TimestampTo, 
+  @DeviceId, 
+  @Login, 
+  @UserId, 
+  @UserEMail, 
+  @ContentLength, 
+  @ContentType, 
+  @Host, 
+  @ConfigName, 
+  @ConfigVersion, 
+  @CoreVersion, 
+  @ResourceVersion, 
+  @OutputContentLength, 
+  @StatusCode,       
+  @StatusDescription   
+) 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1742,22 +1718,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Files_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Equipment_Files] SET 
-				[LineNumber] = D.[LineNumber],				[FullFileName] = D.[FullFileName],				[FileName] = D.[FileName]			FROM [Catalog].[Equipment_Files] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Equipment_Files] SET 
+        [LineNumber] = D.[LineNumber],        [FullFileName] = D.[FullFileName],        [FileName] = D.[FileName]     FROM [Catalog].[Equipment_Files] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))  WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
  
-	INSERT INTO [Catalog].[Equipment_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[FullFileName],D.[FileName]		FROM @Data D 
-		LEFT JOIN [Catalog].[Equipment_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[Equipment_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[FullFileName],D.[FileName]   FROM @Data D 
+    LEFT JOIN [Catalog].[Equipment_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL)) WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[Equipment_Files] 
-	FROM [Catalog].[Equipment_Files] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL	 
+  DELETE FROM [Catalog].[Equipment_Files] 
+  FROM [Catalog].[Equipment_Files] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL)) WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1765,12 +1741,12 @@ PRINT N'Altering [Catalog].[Equipment_Files_adm_delete]'
 GO
  
 ALTER PROCEDURE [Catalog].[Equipment_Files_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@FullFileName NVARCHAR(1000) 
-		,@FileName UNIQUEIDENTIFIER 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Equipment_Files] 
-	WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName	
+    ,@FullFileName NVARCHAR(1000) 
+    ,@FileName UNIQUEIDENTIFIER 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Equipment_Files] 
+  WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName  
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1858,15 +1834,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[ServiceAgreement_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Client UNIQUEIDENTIFIER,		@Organization NVARCHAR(500),		@DateStart DATETIME2,		@DateEnd DATETIME2	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[ServiceAgreement]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Client],				[Organization],				[DateStart],				[DateEnd]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Client,				@Organization,				@DateStart,				@DateEnd			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Client UNIQUEIDENTIFIER,   @Organization NVARCHAR(500),    @DateStart DATETIME2,   @DateEnd DATETIME2  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[ServiceAgreement]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Client],       [Organization],       [DateStart],        [DateEnd]     )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Client,        @Organization,        @DateStart,       @DateEnd      )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1874,12 +1850,12 @@ PRINT N'Altering [Catalog].[ServiceAgreement_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[ServiceAgreement_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Client UNIQUEIDENTIFIER,		@Organization NVARCHAR(500),		@DateStart DATETIME2,		@DateEnd DATETIME2	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[ServiceAgreement] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Client] = @Client,				[Organization] = @Organization,				[DateStart] = @DateStart,				[DateEnd] = @DateEnd			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [Organization] <> @Organization OR ([Organization] IS NULL AND NOT @Organization IS NULL) OR (NOT [Organization] IS NULL AND @Organization IS NULL)  OR [DateStart] <> @DateStart OR ([DateStart] IS NULL AND NOT @DateStart IS NULL) OR (NOT [DateStart] IS NULL AND @DateStart IS NULL)  OR [DateEnd] <> @DateEnd OR ([DateEnd] IS NULL AND NOT @DateEnd IS NULL) OR (NOT [DateEnd] IS NULL AND @DateEnd IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Client UNIQUEIDENTIFIER,   @Organization NVARCHAR(500),    @DateStart DATETIME2,   @DateEnd DATETIME2  AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[ServiceAgreement] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Client] = @Client,       [Organization] = @Organization,       [DateStart] = @DateStart,       [DateEnd] = @DateEnd      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [Organization] <> @Organization OR ([Organization] IS NULL AND NOT @Organization IS NULL) OR (NOT [Organization] IS NULL AND @Organization IS NULL)  OR [DateStart] <> @DateStart OR ([DateStart] IS NULL AND NOT @DateStart IS NULL) OR (NOT [DateStart] IS NULL AND @DateStart IS NULL)  OR [DateEnd] <> @DateEnd OR ([DateEnd] IS NULL AND NOT @DateEnd IS NULL) OR (NOT [DateEnd] IS NULL AND @DateEnd IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1887,20 +1863,20 @@ PRINT N'Altering [Catalog].[ServiceAgreement_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[ServiceAgreement_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Client UNIQUEIDENTIFIER,		@Organization NVARCHAR(500),		@DateStart DATETIME2,		@DateEnd DATETIME2	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[ServiceAgreement] WHERE Id = @Id) 
-	UPDATE [Catalog].[ServiceAgreement] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Client] = @Client,				[Organization] = @Organization,				[DateStart] = @DateStart,				[DateEnd] = @DateEnd			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[ServiceAgreement] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Client],				[Organization],				[DateStart],				[DateEnd]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Client,				@Organization,				@DateStart,				@DateEnd			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.ServiceAgreement',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Client UNIQUEIDENTIFIER,   @Organization NVARCHAR(500),    @DateStart DATETIME2,   @DateEnd DATETIME2  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[ServiceAgreement] WHERE Id = @Id) 
+  UPDATE [Catalog].[ServiceAgreement] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Client] = @Client,       [Organization] = @Organization,       [DateStart] = @DateStart,       [DateEnd] = @DateEnd      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[ServiceAgreement] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Client],       [Organization],       [DateStart],        [DateEnd]     ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Client,        @Organization,        @DateStart,       @DateEnd      ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.ServiceAgreement',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1957,15 +1933,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[User_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@UserName NVARCHAR(100),		@Password NVARCHAR(100),		@UserDB NVARCHAR(500),		@EMail NVARCHAR(100),		@UserID UNIQUEIDENTIFIER,		@Phone NVARCHAR(100),		@Role NVARCHAR(500),		@AspNetUserID NVARCHAR(128)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[User]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[UserName],				[Password],				[UserDB],				[EMail],				[UserID],				[Phone],				[Role],				[AspNetUserID]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@UserName,				@Password,				@UserDB,				@EMail,				@UserID,				@Phone,				@Role,				@AspNetUserID			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @UserName NVARCHAR(100),    @Password NVARCHAR(100),    @UserDB NVARCHAR(500),    @EMail NVARCHAR(100),   @UserID UNIQUEIDENTIFIER,   @Phone NVARCHAR(100),   @Role NVARCHAR(500),    @AspNetUserID NVARCHAR(128) AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[User]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [UserName],       [Password],       [UserDB],       [EMail],        [UserID],       [Phone],        [Role],       [AspNetUserID]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @UserName,        @Password,        @UserDB,        @EMail,       @UserID,        @Phone,       @Role,        @AspNetUserID     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1973,12 +1949,12 @@ PRINT N'Altering [Catalog].[User_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[User_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@UserName NVARCHAR(100),		@Password NVARCHAR(100),		@UserDB NVARCHAR(500),		@EMail NVARCHAR(100),		@UserID UNIQUEIDENTIFIER,		@Phone NVARCHAR(100),		@Role NVARCHAR(500),		@AspNetUserID NVARCHAR(128)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[User] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[UserName] = @UserName,				[Password] = @Password,				[UserDB] = @UserDB,				[EMail] = @EMail,				[UserID] = @UserID,				[Phone] = @Phone,				[Role] = @Role,				[AspNetUserID] = @AspNetUserID			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [UserName] <> @UserName OR ([UserName] IS NULL AND NOT @UserName IS NULL) OR (NOT [UserName] IS NULL AND @UserName IS NULL)  OR [Password] <> @Password OR ([Password] IS NULL AND NOT @Password IS NULL) OR (NOT [Password] IS NULL AND @Password IS NULL)  OR [UserDB] <> @UserDB OR ([UserDB] IS NULL AND NOT @UserDB IS NULL) OR (NOT [UserDB] IS NULL AND @UserDB IS NULL)  OR [EMail] <> @EMail OR ([EMail] IS NULL AND NOT @EMail IS NULL) OR (NOT [EMail] IS NULL AND @EMail IS NULL)  OR [UserID] <> @UserID OR ([UserID] IS NULL AND NOT @UserID IS NULL) OR (NOT [UserID] IS NULL AND @UserID IS NULL)  OR [Phone] <> @Phone OR ([Phone] IS NULL AND NOT @Phone IS NULL) OR (NOT [Phone] IS NULL AND @Phone IS NULL)  OR [Role] <> @Role OR ([Role] IS NULL AND NOT @Role IS NULL) OR (NOT [Role] IS NULL AND @Role IS NULL)  OR [AspNetUserID] <> @AspNetUserID OR ([AspNetUserID] IS NULL AND NOT @AspNetUserID IS NULL) OR (NOT [AspNetUserID] IS NULL AND @AspNetUserID IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @UserName NVARCHAR(100),    @Password NVARCHAR(100),    @UserDB NVARCHAR(500),    @EMail NVARCHAR(100),   @UserID UNIQUEIDENTIFIER,   @Phone NVARCHAR(100),   @Role NVARCHAR(500),    @AspNetUserID NVARCHAR(128) AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[User] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [UserName] = @UserName,       [Password] = @Password,       [UserDB] = @UserDB,       [EMail] = @EMail,       [UserID] = @UserID,       [Phone] = @Phone,       [Role] = @Role,       [AspNetUserID] = @AspNetUserID      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [UserName] <> @UserName OR ([UserName] IS NULL AND NOT @UserName IS NULL) OR (NOT [UserName] IS NULL AND @UserName IS NULL)  OR [Password] <> @Password OR ([Password] IS NULL AND NOT @Password IS NULL) OR (NOT [Password] IS NULL AND @Password IS NULL)  OR [UserDB] <> @UserDB OR ([UserDB] IS NULL AND NOT @UserDB IS NULL) OR (NOT [UserDB] IS NULL AND @UserDB IS NULL)  OR [EMail] <> @EMail OR ([EMail] IS NULL AND NOT @EMail IS NULL) OR (NOT [EMail] IS NULL AND @EMail IS NULL)  OR [UserID] <> @UserID OR ([UserID] IS NULL AND NOT @UserID IS NULL) OR (NOT [UserID] IS NULL AND @UserID IS NULL)  OR [Phone] <> @Phone OR ([Phone] IS NULL AND NOT @Phone IS NULL) OR (NOT [Phone] IS NULL AND @Phone IS NULL)  OR [Role] <> @Role OR ([Role] IS NULL AND NOT @Role IS NULL) OR (NOT [Role] IS NULL AND @Role IS NULL)  OR [AspNetUserID] <> @AspNetUserID OR ([AspNetUserID] IS NULL AND NOT @AspNetUserID IS NULL) OR (NOT [AspNetUserID] IS NULL AND @AspNetUserID IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -1986,20 +1962,20 @@ PRINT N'Altering [Catalog].[User_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[User_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@UserName NVARCHAR(100),		@Password NVARCHAR(100),		@UserDB NVARCHAR(500),		@EMail NVARCHAR(100),		@UserID UNIQUEIDENTIFIER,		@Phone NVARCHAR(100),		@Role NVARCHAR(500),		@AspNetUserID NVARCHAR(128)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[User] WHERE Id = @Id) 
-	UPDATE [Catalog].[User] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[UserName] = @UserName,				[Password] = @Password,				[UserDB] = @UserDB,				[EMail] = @EMail,				[UserID] = @UserID,				[Phone] = @Phone,				[Role] = @Role,				[AspNetUserID] = @AspNetUserID			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[User] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[UserName],				[Password],				[UserDB],				[EMail],				[UserID],				[Phone],				[Role],				[AspNetUserID]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@UserName,				@Password,				@UserDB,				@EMail,				@UserID,				@Phone,				@Role,				@AspNetUserID			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.User',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @UserName NVARCHAR(100),    @Password NVARCHAR(100),    @UserDB NVARCHAR(500),    @EMail NVARCHAR(100),   @UserID UNIQUEIDENTIFIER,   @Phone NVARCHAR(100),   @Role NVARCHAR(500),    @AspNetUserID NVARCHAR(128) AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[User] WHERE Id = @Id) 
+  UPDATE [Catalog].[User] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [UserName] = @UserName,       [Password] = @Password,       [UserDB] = @UserDB,       [EMail] = @EMail,       [UserID] = @UserID,       [Phone] = @Phone,       [Role] = @Role,       [AspNetUserID] = @AspNetUserID      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[User] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [UserName],       [Password],       [UserDB],       [EMail],        [UserID],       [Phone],        [Role],       [AspNetUserID]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @UserName,        @Password,        @UserDB,        @EMail,       @UserID,        @Phone,       @Role,        @AspNetUserID     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.User',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2058,59 +2034,59 @@ PRINT N'Altering [admin].[GetDeviceLog]'
 GO
  
 ALTER PROCEDURE [admin].[GetDeviceLog] 
-	@UserId UNIQUEIDENTIFIER = NULL, @StartTime datetime = NULL, @EndTime datetime = NULL 
-	AS 
-	SET NOCOUNT ON 
+  @UserId UNIQUEIDENTIFIER = NULL, @StartTime datetime = NULL, @EndTime datetime = NULL 
+  AS 
+  SET NOCOUNT ON 
  
-	SELECT  
-	1 AS Tag,  
-	NULL AS Parent, 
-	'' AS [Root!1], 
-	NULL AS [Row!2!StartTime], 
-	NULL AS [Row!2!EndTime], 
-	NULL AS [Row!2!FirstSync], 
-	NULL AS [Row!2!DeviceId], 
-	NULL AS [Row!2!Login], 
-	NULL AS [Row!2!UserId], 
-	NULL AS [Row!2!UserEMail], 
-	NULL AS [Row!2!ContentLength], 
-	NULL AS [Row!2!OutputContentLength], 
-	NULL AS [Row!2!ConfigName], 
-	NULL AS [Row!2!ConfigVersion], 
-	NULL AS [Row!2!CoreVersion], 
-	NULL AS [Row!2!ResourceVersion], 
-	NULL AS [Row!2!StatusCode], 
-	NULL AS [Row!2!StatusDescription] 
+  SELECT  
+  1 AS Tag,  
+  NULL AS Parent, 
+  '' AS [Root!1], 
+  NULL AS [Row!2!StartTime], 
+  NULL AS [Row!2!EndTime], 
+  NULL AS [Row!2!FirstSync], 
+  NULL AS [Row!2!DeviceId], 
+  NULL AS [Row!2!Login], 
+  NULL AS [Row!2!UserId], 
+  NULL AS [Row!2!UserEMail], 
+  NULL AS [Row!2!ContentLength], 
+  NULL AS [Row!2!OutputContentLength], 
+  NULL AS [Row!2!ConfigName], 
+  NULL AS [Row!2!ConfigVersion], 
+  NULL AS [Row!2!CoreVersion], 
+  NULL AS [Row!2!ResourceVersion], 
+  NULL AS [Row!2!StatusCode], 
+  NULL AS [Row!2!StatusDescription] 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT  
-		2 AS Tag,  
-		1 AS Parent, 
-		NULL AS [Root!1], 
-		[StartTime] AS [Row!2!StartTime], 
-		[EndTime] AS [Row!2!EndTime], 
-		[FirstSync] AS [Row!2!FirstSync], 
-		[DeviceId] AS [Row!2!DeviceId], 
-		[Login] AS [Row!2!Login], 
-		[UserId] AS [Row!2!UserId], 
-		[UserEMail] AS [Row!2!UserEMail], 
-		[ContentLength] AS [Row!2!ContentLength], 
-		[OutputContentLength] AS [Row!2!OutputContentLength], 
-		[ConfigName] AS [Row!2!ConfigName], 
-		[ConfigVersion] AS [Row!2!ConfigVersion], 
-		[CoreVersion] AS [Row!2!CoreVersion], 
-		[ResourceVersion] AS [Row!2!ResourceVersion], 
-		[StatusCode] AS [Row!2!StatusCode], 
-		[StatusDescription] AS [Row!2!StatusDescription] 
-	FROM [admin].DeviceLog 
-	WHERE [UserId] = ISNULL(@UserId, [UserId]) 
-	AND [StartTime] >= ISNULL(@StartTime, [StartTime]) 
-	AND [EndTime] <= ISNULL(@EndTime, [EndTime]) 
+  SELECT  
+    2 AS Tag,  
+    1 AS Parent, 
+    NULL AS [Root!1], 
+    [StartTime] AS [Row!2!StartTime], 
+    [EndTime] AS [Row!2!EndTime], 
+    [FirstSync] AS [Row!2!FirstSync], 
+    [DeviceId] AS [Row!2!DeviceId], 
+    [Login] AS [Row!2!Login], 
+    [UserId] AS [Row!2!UserId], 
+    [UserEMail] AS [Row!2!UserEMail], 
+    [ContentLength] AS [Row!2!ContentLength], 
+    [OutputContentLength] AS [Row!2!OutputContentLength], 
+    [ConfigName] AS [Row!2!ConfigName], 
+    [ConfigVersion] AS [Row!2!ConfigVersion], 
+    [CoreVersion] AS [Row!2!CoreVersion], 
+    [ResourceVersion] AS [Row!2!ResourceVersion], 
+    [StatusCode] AS [Row!2!StatusCode], 
+    [StatusDescription] AS [Row!2!StatusDescription] 
+  FROM [admin].DeviceLog 
+  WHERE [UserId] = ISNULL(@UserId, [UserId]) 
+  AND [StartTime] >= ISNULL(@StartTime, [StartTime]) 
+  AND [EndTime] <= ISNULL(@EndTime, [EndTime]) 
  
-	ORDER BY 4,2,1 
+  ORDER BY 4,2,1 
  
-	FOR XML EXPLICIT
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2373,361 +2349,361 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Equipment_adm_getchanges] @SessionId UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DECLARE @DateFrom DATETIME, @DateTo DATETIME 
-	SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
-	SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
-	IF @DateFrom IS NULL OR @DateTo IS NULL 
-	  RAISERROR('Invalid interval', 16, 1) 
+  SET NOCOUNT ON 
+  DECLARE @DateFrom DATETIME, @DateTo DATETIME 
+  SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
+  SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
+  IF @DateFrom IS NULL OR @DateTo IS NULL 
+    RAISERROR('Invalid interval', 16, 1) 
  
-	DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
-	INSERT @Ids  
-	SELECT E.[Id]  
-	FROM [Catalog].[Equipment] E 
-	JOIN [Catalog].[Equipment_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
-		UNION 
-	SELECT E.Ref  
-	FROM [Catalog].[Equipment_Equipments] E 
-	JOIN [Catalog].[Equipment_Equipments_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-		UNION 
-	SELECT E.Ref  
-	FROM [Catalog].[Equipment_EquipmentsHistory] E 
-	JOIN [Catalog].[Equipment_EquipmentsHistory_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-		UNION 
-	SELECT E.Ref  
-	FROM [Catalog].[Equipment_Files] E 
-	JOIN [Catalog].[Equipment_Files_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-		UNION 
-	SELECT E.Ref  
-	FROM [Catalog].[Equipment_Parameters] E 
-	JOIN [Catalog].[Equipment_Parameters_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-	 
-	SELECT 
-	1 AS Tag, NULL AS Parent, 
-	'Catalog.Equipment' AS [Entity!1!Name], 
-	NULL AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]						,NULL AS [Equipments!11] 
-						,NULL AS [EquipmentsHistory!21] 
-						,NULL AS [Files!31] 
-						,NULL AS [Parameters!41] 
-															,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Period] 
-					,NULL AS [Row!12!Clients] 
-					,NULL AS [Row!12!StatusEquipment] 
-					,NULL AS [Row!12!ContractSale] 
-					,NULL AS [Row!12!CantractService] 
-					,NULL AS [Row!12!ContactForEquipment] 
-					,NULL AS [Row!12!Info] 
-					,NULL AS [Row!12!Equipment] 
-												,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Period] 
-					,NULL AS [Row!22!Client] 
-					,NULL AS [Row!22!Equipments] 
-					,NULL AS [Row!22!Target] 
-					,NULL AS [Row!22!Result] 
-					,NULL AS [Row!22!ObjectGet] 
-					,NULL AS [Row!22!Comment] 
-					,NULL AS [Row!22!Executor] 
-												,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!FullFileName] 
-					,NULL AS [Row!32!FileName] 
-												,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!Parameter] 
-					,NULL AS [Row!42!Val] 
-			 
-	UNION ALL 
+  DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
+  INSERT @Ids  
+  SELECT E.[Id]  
+  FROM [Catalog].[Equipment] E 
+  JOIN [Catalog].[Equipment_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
+    UNION 
+  SELECT E.Ref  
+  FROM [Catalog].[Equipment_Equipments] E 
+  JOIN [Catalog].[Equipment_Equipments_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+    UNION 
+  SELECT E.Ref  
+  FROM [Catalog].[Equipment_EquipmentsHistory] E 
+  JOIN [Catalog].[Equipment_EquipmentsHistory_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+    UNION 
+  SELECT E.Ref  
+  FROM [Catalog].[Equipment_Files] E 
+  JOIN [Catalog].[Equipment_Files_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+    UNION 
+  SELECT E.Ref  
+  FROM [Catalog].[Equipment_Parameters] E 
+  JOIN [Catalog].[Equipment_Parameters_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+   
+  SELECT 
+  1 AS Tag, NULL AS Parent, 
+  'Catalog.Equipment' AS [Entity!1!Name], 
+  NULL AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]            ,NULL AS [Equipments!11] 
+            ,NULL AS [EquipmentsHistory!21] 
+            ,NULL AS [Files!31] 
+            ,NULL AS [Parameters!41] 
+                              ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Period] 
+          ,NULL AS [Row!12!Clients] 
+          ,NULL AS [Row!12!StatusEquipment] 
+          ,NULL AS [Row!12!ContractSale] 
+          ,NULL AS [Row!12!CantractService] 
+          ,NULL AS [Row!12!ContactForEquipment] 
+          ,NULL AS [Row!12!Info] 
+          ,NULL AS [Row!12!Equipment] 
+                        ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Period] 
+          ,NULL AS [Row!22!Client] 
+          ,NULL AS [Row!22!Equipments] 
+          ,NULL AS [Row!22!Target] 
+          ,NULL AS [Row!22!Result] 
+          ,NULL AS [Row!22!ObjectGet] 
+          ,NULL AS [Row!22!Comment] 
+          ,NULL AS [Row!22!Executor] 
+                        ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!FullFileName] 
+          ,NULL AS [Row!32!FileName] 
+                        ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!Parameter] 
+          ,NULL AS [Row!42!Val] 
+       
+  UNION ALL 
  
-	SELECT 
-	2 AS Tag, 1 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	H.[Id] AS [Row!2!Id], 
-	H.[Predefined] AS [Row!2!Predefined],H.[DeletionMark] AS [Row!2!DeletionMark],H.[Description] AS [Row!2!Description],H.[Code] AS [Row!2!Code],H.[SKU] AS [Row!2!SKU]						,NULL AS [Equipments!11] 
-						,NULL AS [EquipmentsHistory!21] 
-						,NULL AS [Files!31] 
-						,NULL AS [Parameters!41] 
-															,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Period] 
-					,NULL AS [Row!12!Clients] 
-					,NULL AS [Row!12!StatusEquipment] 
-					,NULL AS [Row!12!ContractSale] 
-					,NULL AS [Row!12!CantractService] 
-					,NULL AS [Row!12!ContactForEquipment] 
-					,NULL AS [Row!12!Info] 
-					,NULL AS [Row!12!Equipment] 
-												,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Period] 
-					,NULL AS [Row!22!Client] 
-					,NULL AS [Row!22!Equipments] 
-					,NULL AS [Row!22!Target] 
-					,NULL AS [Row!22!Result] 
-					,NULL AS [Row!22!ObjectGet] 
-					,NULL AS [Row!22!Comment] 
-					,NULL AS [Row!22!Executor] 
-												,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!FullFileName] 
-					,NULL AS [Row!32!FileName] 
-												,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!Parameter] 
-					,NULL AS [Row!42!Val] 
-				FROM [Catalog].[Equipment] H 
-	JOIN @Ids Ids ON Ids.Id = H.Id 
+  SELECT 
+  2 AS Tag, 1 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  H.[Id] AS [Row!2!Id], 
+  H.[Predefined] AS [Row!2!Predefined],H.[DeletionMark] AS [Row!2!DeletionMark],H.[Description] AS [Row!2!Description],H.[Code] AS [Row!2!Code],H.[SKU] AS [Row!2!SKU]            ,NULL AS [Equipments!11] 
+            ,NULL AS [EquipmentsHistory!21] 
+            ,NULL AS [Files!31] 
+            ,NULL AS [Parameters!41] 
+                              ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Period] 
+          ,NULL AS [Row!12!Clients] 
+          ,NULL AS [Row!12!StatusEquipment] 
+          ,NULL AS [Row!12!ContractSale] 
+          ,NULL AS [Row!12!CantractService] 
+          ,NULL AS [Row!12!ContactForEquipment] 
+          ,NULL AS [Row!12!Info] 
+          ,NULL AS [Row!12!Equipment] 
+                        ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Period] 
+          ,NULL AS [Row!22!Client] 
+          ,NULL AS [Row!22!Equipments] 
+          ,NULL AS [Row!22!Target] 
+          ,NULL AS [Row!22!Result] 
+          ,NULL AS [Row!22!ObjectGet] 
+          ,NULL AS [Row!22!Comment] 
+          ,NULL AS [Row!22!Executor] 
+                        ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!FullFileName] 
+          ,NULL AS [Row!32!FileName] 
+                        ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!Parameter] 
+          ,NULL AS [Row!42!Val] 
+        FROM [Catalog].[Equipment] H 
+  JOIN @Ids Ids ON Ids.Id = H.Id 
  
-			 
-	UNION ALL 
+       
+  UNION ALL 
  
-	SELECT 
-	11 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!11] 
-				,NULL AS [EquipmentsHistory!11] 
-				,NULL AS [Files!11] 
-				,NULL AS [Parameters!11] 
-										,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Period] 
-					,NULL AS [Row!12!Clients] 
-					,NULL AS [Row!12!StatusEquipment] 
-					,NULL AS [Row!12!ContractSale] 
-					,NULL AS [Row!12!CantractService] 
-					,NULL AS [Row!12!ContactForEquipment] 
-					,NULL AS [Row!12!Info] 
-					,NULL AS [Row!12!Equipment] 
-									,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Period] 
-					,NULL AS [Row!12!Client] 
-					,NULL AS [Row!12!Equipments] 
-					,NULL AS [Row!12!Target] 
-					,NULL AS [Row!12!Result] 
-					,NULL AS [Row!12!ObjectGet] 
-					,NULL AS [Row!12!Comment] 
-					,NULL AS [Row!12!Executor] 
-									,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!FullFileName] 
-					,NULL AS [Row!12!FileName] 
-									,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Parameter] 
-					,NULL AS [Row!12!Val] 
-				FROM @Ids Ids 
+  SELECT 
+  11 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!11] 
+        ,NULL AS [EquipmentsHistory!11] 
+        ,NULL AS [Files!11] 
+        ,NULL AS [Parameters!11] 
+                    ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Period] 
+          ,NULL AS [Row!12!Clients] 
+          ,NULL AS [Row!12!StatusEquipment] 
+          ,NULL AS [Row!12!ContractSale] 
+          ,NULL AS [Row!12!CantractService] 
+          ,NULL AS [Row!12!ContactForEquipment] 
+          ,NULL AS [Row!12!Info] 
+          ,NULL AS [Row!12!Equipment] 
+                  ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Period] 
+          ,NULL AS [Row!12!Client] 
+          ,NULL AS [Row!12!Equipments] 
+          ,NULL AS [Row!12!Target] 
+          ,NULL AS [Row!12!Result] 
+          ,NULL AS [Row!12!ObjectGet] 
+          ,NULL AS [Row!12!Comment] 
+          ,NULL AS [Row!12!Executor] 
+                  ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!FullFileName] 
+          ,NULL AS [Row!12!FileName] 
+                  ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Parameter] 
+          ,NULL AS [Row!12!Val] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	12 AS Tag, 11 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!11] 
-				,NULL AS [EquipmentsHistory!11] 
-				,NULL AS [Files!11] 
-				,NULL AS [Parameters!11] 
-										 ,T.[Id] AS [Row!12!Id]								 ,T.[Ref] AS [Row!12!Ref]								 ,T.[LineNumber] AS [Row!12!LineNumber]								 ,T.[Period] AS [Row!12!Period]								 ,T.[Clients] AS [Row!12!Clients]								 ,T.[StatusEquipment] AS [Row!12!StatusEquipment]								 ,T.[ContractSale] AS [Row!12!ContractSale]								 ,T.[CantractService] AS [Row!12!CantractService]								 ,T.[ContactForEquipment] AS [Row!12!ContactForEquipment]								 ,T.[Info] AS [Row!12!Info]								 ,T.[Equipment] AS [Row!12!Equipment]															 ,NULL AS [Row!12!Id]								 ,NULL AS [Row!12!Ref]								 ,NULL AS [Row!12!LineNumber]								 ,NULL AS [Row!12!Period]								 ,NULL AS [Row!12!Client]								 ,NULL AS [Row!12!Equipments]								 ,NULL AS [Row!12!Target]								 ,NULL AS [Row!12!Result]								 ,NULL AS [Row!12!ObjectGet]								 ,NULL AS [Row!12!Comment]								 ,NULL AS [Row!12!Executor]												 ,NULL AS [Row!12!Id]								 ,NULL AS [Row!12!Ref]								 ,NULL AS [Row!12!LineNumber]								 ,NULL AS [Row!12!FullFileName]								 ,NULL AS [Row!12!FileName]												 ,NULL AS [Row!12!Id]								 ,NULL AS [Row!12!Ref]								 ,NULL AS [Row!12!LineNumber]								 ,NULL AS [Row!12!Parameter]								 ,NULL AS [Row!12!Val]				FROM @Ids Ids 
-	JOIN [Catalog].[Equipment_Equipments] T ON T.Ref = Ids.Id 
+  SELECT 
+  12 AS Tag, 11 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!11] 
+        ,NULL AS [EquipmentsHistory!11] 
+        ,NULL AS [Files!11] 
+        ,NULL AS [Parameters!11] 
+                     ,T.[Id] AS [Row!12!Id]                ,T.[Ref] AS [Row!12!Ref]                ,T.[LineNumber] AS [Row!12!LineNumber]                ,T.[Period] AS [Row!12!Period]                ,T.[Clients] AS [Row!12!Clients]                ,T.[StatusEquipment] AS [Row!12!StatusEquipment]                ,T.[ContractSale] AS [Row!12!ContractSale]                ,T.[CantractService] AS [Row!12!CantractService]                ,T.[ContactForEquipment] AS [Row!12!ContactForEquipment]                ,T.[Info] AS [Row!12!Info]                ,T.[Equipment] AS [Row!12!Equipment]                              ,NULL AS [Row!12!Id]                ,NULL AS [Row!12!Ref]                 ,NULL AS [Row!12!LineNumber]                ,NULL AS [Row!12!Period]                ,NULL AS [Row!12!Client]                ,NULL AS [Row!12!Equipments]                ,NULL AS [Row!12!Target]                ,NULL AS [Row!12!Result]                ,NULL AS [Row!12!ObjectGet]                 ,NULL AS [Row!12!Comment]                 ,NULL AS [Row!12!Executor]                        ,NULL AS [Row!12!Id]                ,NULL AS [Row!12!Ref]                 ,NULL AS [Row!12!LineNumber]                ,NULL AS [Row!12!FullFileName]                ,NULL AS [Row!12!FileName]                        ,NULL AS [Row!12!Id]                ,NULL AS [Row!12!Ref]                 ,NULL AS [Row!12!LineNumber]                ,NULL AS [Row!12!Parameter]                 ,NULL AS [Row!12!Val]        FROM @Ids Ids 
+  JOIN [Catalog].[Equipment_Equipments] T ON T.Ref = Ids.Id 
  
-		 
-	UNION ALL 
+     
+  UNION ALL 
  
-	SELECT 
-	21 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!21] 
-				,NULL AS [EquipmentsHistory!21] 
-				,NULL AS [Files!21] 
-				,NULL AS [Parameters!21] 
-										,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Period] 
-					,NULL AS [Row!22!Clients] 
-					,NULL AS [Row!22!StatusEquipment] 
-					,NULL AS [Row!22!ContractSale] 
-					,NULL AS [Row!22!CantractService] 
-					,NULL AS [Row!22!ContactForEquipment] 
-					,NULL AS [Row!22!Info] 
-					,NULL AS [Row!22!Equipment] 
-									,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Period] 
-					,NULL AS [Row!22!Client] 
-					,NULL AS [Row!22!Equipments] 
-					,NULL AS [Row!22!Target] 
-					,NULL AS [Row!22!Result] 
-					,NULL AS [Row!22!ObjectGet] 
-					,NULL AS [Row!22!Comment] 
-					,NULL AS [Row!22!Executor] 
-									,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!FullFileName] 
-					,NULL AS [Row!22!FileName] 
-									,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Parameter] 
-					,NULL AS [Row!22!Val] 
-				FROM @Ids Ids 
+  SELECT 
+  21 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!21] 
+        ,NULL AS [EquipmentsHistory!21] 
+        ,NULL AS [Files!21] 
+        ,NULL AS [Parameters!21] 
+                    ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Period] 
+          ,NULL AS [Row!22!Clients] 
+          ,NULL AS [Row!22!StatusEquipment] 
+          ,NULL AS [Row!22!ContractSale] 
+          ,NULL AS [Row!22!CantractService] 
+          ,NULL AS [Row!22!ContactForEquipment] 
+          ,NULL AS [Row!22!Info] 
+          ,NULL AS [Row!22!Equipment] 
+                  ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Period] 
+          ,NULL AS [Row!22!Client] 
+          ,NULL AS [Row!22!Equipments] 
+          ,NULL AS [Row!22!Target] 
+          ,NULL AS [Row!22!Result] 
+          ,NULL AS [Row!22!ObjectGet] 
+          ,NULL AS [Row!22!Comment] 
+          ,NULL AS [Row!22!Executor] 
+                  ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!FullFileName] 
+          ,NULL AS [Row!22!FileName] 
+                  ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Parameter] 
+          ,NULL AS [Row!22!Val] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	22 AS Tag, 21 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!21] 
-				,NULL AS [EquipmentsHistory!21] 
-				,NULL AS [Files!21] 
-				,NULL AS [Parameters!21] 
-													 ,NULL AS [Row!22!Id]								 ,NULL AS [Row!22!Ref]								 ,NULL AS [Row!22!LineNumber]								 ,NULL AS [Row!22!Period]								 ,NULL AS [Row!22!Clients]								 ,NULL AS [Row!22!StatusEquipment]								 ,NULL AS [Row!22!ContractSale]								 ,NULL AS [Row!22!CantractService]								 ,NULL AS [Row!22!ContactForEquipment]								 ,NULL AS [Row!22!Info]								 ,NULL AS [Row!22!Equipment]									 ,T.[Id] AS [Row!22!Id]								 ,T.[Ref] AS [Row!22!Ref]								 ,T.[LineNumber] AS [Row!22!LineNumber]								 ,T.[Period] AS [Row!22!Period]								 ,T.[Client] AS [Row!22!Client]								 ,T.[Equipments] AS [Row!22!Equipments]								 ,T.[Target] AS [Row!22!Target]								 ,T.[Result] AS [Row!22!Result]								 ,T.[ObjectGet] AS [Row!22!ObjectGet]								 ,T.[Comment] AS [Row!22!Comment]								 ,T.[Executor] AS [Row!22!Executor]															 ,NULL AS [Row!22!Id]								 ,NULL AS [Row!22!Ref]								 ,NULL AS [Row!22!LineNumber]								 ,NULL AS [Row!22!FullFileName]								 ,NULL AS [Row!22!FileName]												 ,NULL AS [Row!22!Id]								 ,NULL AS [Row!22!Ref]								 ,NULL AS [Row!22!LineNumber]								 ,NULL AS [Row!22!Parameter]								 ,NULL AS [Row!22!Val]				FROM @Ids Ids 
-	JOIN [Catalog].[Equipment_EquipmentsHistory] T ON T.Ref = Ids.Id 
+  SELECT 
+  22 AS Tag, 21 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!21] 
+        ,NULL AS [EquipmentsHistory!21] 
+        ,NULL AS [Files!21] 
+        ,NULL AS [Parameters!21] 
+                           ,NULL AS [Row!22!Id]                ,NULL AS [Row!22!Ref]                 ,NULL AS [Row!22!LineNumber]                ,NULL AS [Row!22!Period]                ,NULL AS [Row!22!Clients]                 ,NULL AS [Row!22!StatusEquipment]                 ,NULL AS [Row!22!ContractSale]                ,NULL AS [Row!22!CantractService]                 ,NULL AS [Row!22!ContactForEquipment]                 ,NULL AS [Row!22!Info]                ,NULL AS [Row!22!Equipment]                   ,T.[Id] AS [Row!22!Id]                ,T.[Ref] AS [Row!22!Ref]                ,T.[LineNumber] AS [Row!22!LineNumber]                ,T.[Period] AS [Row!22!Period]                ,T.[Client] AS [Row!22!Client]                ,T.[Equipments] AS [Row!22!Equipments]                ,T.[Target] AS [Row!22!Target]                ,T.[Result] AS [Row!22!Result]                ,T.[ObjectGet] AS [Row!22!ObjectGet]                ,T.[Comment] AS [Row!22!Comment]                ,T.[Executor] AS [Row!22!Executor]                              ,NULL AS [Row!22!Id]                ,NULL AS [Row!22!Ref]                 ,NULL AS [Row!22!LineNumber]                ,NULL AS [Row!22!FullFileName]                ,NULL AS [Row!22!FileName]                        ,NULL AS [Row!22!Id]                ,NULL AS [Row!22!Ref]                 ,NULL AS [Row!22!LineNumber]                ,NULL AS [Row!22!Parameter]                 ,NULL AS [Row!22!Val]        FROM @Ids Ids 
+  JOIN [Catalog].[Equipment_EquipmentsHistory] T ON T.Ref = Ids.Id 
  
-		 
-	UNION ALL 
+     
+  UNION ALL 
  
-	SELECT 
-	31 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!31] 
-				,NULL AS [EquipmentsHistory!31] 
-				,NULL AS [Files!31] 
-				,NULL AS [Parameters!31] 
-										,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!Period] 
-					,NULL AS [Row!32!Clients] 
-					,NULL AS [Row!32!StatusEquipment] 
-					,NULL AS [Row!32!ContractSale] 
-					,NULL AS [Row!32!CantractService] 
-					,NULL AS [Row!32!ContactForEquipment] 
-					,NULL AS [Row!32!Info] 
-					,NULL AS [Row!32!Equipment] 
-									,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!Period] 
-					,NULL AS [Row!32!Client] 
-					,NULL AS [Row!32!Equipments] 
-					,NULL AS [Row!32!Target] 
-					,NULL AS [Row!32!Result] 
-					,NULL AS [Row!32!ObjectGet] 
-					,NULL AS [Row!32!Comment] 
-					,NULL AS [Row!32!Executor] 
-									,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!FullFileName] 
-					,NULL AS [Row!32!FileName] 
-									,NULL AS [Row!32!Id] 
-					,NULL AS [Row!32!Ref] 
-					,NULL AS [Row!32!LineNumber] 
-					,NULL AS [Row!32!Parameter] 
-					,NULL AS [Row!32!Val] 
-				FROM @Ids Ids 
+  SELECT 
+  31 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!31] 
+        ,NULL AS [EquipmentsHistory!31] 
+        ,NULL AS [Files!31] 
+        ,NULL AS [Parameters!31] 
+                    ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!Period] 
+          ,NULL AS [Row!32!Clients] 
+          ,NULL AS [Row!32!StatusEquipment] 
+          ,NULL AS [Row!32!ContractSale] 
+          ,NULL AS [Row!32!CantractService] 
+          ,NULL AS [Row!32!ContactForEquipment] 
+          ,NULL AS [Row!32!Info] 
+          ,NULL AS [Row!32!Equipment] 
+                  ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!Period] 
+          ,NULL AS [Row!32!Client] 
+          ,NULL AS [Row!32!Equipments] 
+          ,NULL AS [Row!32!Target] 
+          ,NULL AS [Row!32!Result] 
+          ,NULL AS [Row!32!ObjectGet] 
+          ,NULL AS [Row!32!Comment] 
+          ,NULL AS [Row!32!Executor] 
+                  ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!FullFileName] 
+          ,NULL AS [Row!32!FileName] 
+                  ,NULL AS [Row!32!Id] 
+          ,NULL AS [Row!32!Ref] 
+          ,NULL AS [Row!32!LineNumber] 
+          ,NULL AS [Row!32!Parameter] 
+          ,NULL AS [Row!32!Val] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	32 AS Tag, 31 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!31] 
-				,NULL AS [EquipmentsHistory!31] 
-				,NULL AS [Files!31] 
-				,NULL AS [Parameters!31] 
-													 ,NULL AS [Row!32!Id]								 ,NULL AS [Row!32!Ref]								 ,NULL AS [Row!32!LineNumber]								 ,NULL AS [Row!32!Period]								 ,NULL AS [Row!32!Clients]								 ,NULL AS [Row!32!StatusEquipment]								 ,NULL AS [Row!32!ContractSale]								 ,NULL AS [Row!32!CantractService]								 ,NULL AS [Row!32!ContactForEquipment]								 ,NULL AS [Row!32!Info]								 ,NULL AS [Row!32!Equipment]												 ,NULL AS [Row!32!Id]								 ,NULL AS [Row!32!Ref]								 ,NULL AS [Row!32!LineNumber]								 ,NULL AS [Row!32!Period]								 ,NULL AS [Row!32!Client]								 ,NULL AS [Row!32!Equipments]								 ,NULL AS [Row!32!Target]								 ,NULL AS [Row!32!Result]								 ,NULL AS [Row!32!ObjectGet]								 ,NULL AS [Row!32!Comment]								 ,NULL AS [Row!32!Executor]									 ,T.[Id] AS [Row!32!Id]								 ,T.[Ref] AS [Row!32!Ref]								 ,T.[LineNumber] AS [Row!32!LineNumber]								 ,T.[FullFileName] AS [Row!32!FullFileName]								 ,T.[FileName] AS [Row!32!FileName]															 ,NULL AS [Row!32!Id]								 ,NULL AS [Row!32!Ref]								 ,NULL AS [Row!32!LineNumber]								 ,NULL AS [Row!32!Parameter]								 ,NULL AS [Row!32!Val]				FROM @Ids Ids 
-	JOIN [Catalog].[Equipment_Files] T ON T.Ref = Ids.Id 
+  SELECT 
+  32 AS Tag, 31 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!31] 
+        ,NULL AS [EquipmentsHistory!31] 
+        ,NULL AS [Files!31] 
+        ,NULL AS [Parameters!31] 
+                           ,NULL AS [Row!32!Id]                ,NULL AS [Row!32!Ref]                 ,NULL AS [Row!32!LineNumber]                ,NULL AS [Row!32!Period]                ,NULL AS [Row!32!Clients]                 ,NULL AS [Row!32!StatusEquipment]                 ,NULL AS [Row!32!ContractSale]                ,NULL AS [Row!32!CantractService]                 ,NULL AS [Row!32!ContactForEquipment]                 ,NULL AS [Row!32!Info]                ,NULL AS [Row!32!Equipment]                         ,NULL AS [Row!32!Id]                ,NULL AS [Row!32!Ref]                 ,NULL AS [Row!32!LineNumber]                ,NULL AS [Row!32!Period]                ,NULL AS [Row!32!Client]                ,NULL AS [Row!32!Equipments]                ,NULL AS [Row!32!Target]                ,NULL AS [Row!32!Result]                ,NULL AS [Row!32!ObjectGet]                 ,NULL AS [Row!32!Comment]                 ,NULL AS [Row!32!Executor]                  ,T.[Id] AS [Row!32!Id]                ,T.[Ref] AS [Row!32!Ref]                ,T.[LineNumber] AS [Row!32!LineNumber]                ,T.[FullFileName] AS [Row!32!FullFileName]                ,T.[FileName] AS [Row!32!FileName]                              ,NULL AS [Row!32!Id]                ,NULL AS [Row!32!Ref]                 ,NULL AS [Row!32!LineNumber]                ,NULL AS [Row!32!Parameter]                 ,NULL AS [Row!32!Val]        FROM @Ids Ids 
+  JOIN [Catalog].[Equipment_Files] T ON T.Ref = Ids.Id 
  
-		 
-	UNION ALL 
+     
+  UNION ALL 
  
-	SELECT 
-	41 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!41] 
-				,NULL AS [EquipmentsHistory!41] 
-				,NULL AS [Files!41] 
-				,NULL AS [Parameters!41] 
-										,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!Period] 
-					,NULL AS [Row!42!Clients] 
-					,NULL AS [Row!42!StatusEquipment] 
-					,NULL AS [Row!42!ContractSale] 
-					,NULL AS [Row!42!CantractService] 
-					,NULL AS [Row!42!ContactForEquipment] 
-					,NULL AS [Row!42!Info] 
-					,NULL AS [Row!42!Equipment] 
-									,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!Period] 
-					,NULL AS [Row!42!Client] 
-					,NULL AS [Row!42!Equipments] 
-					,NULL AS [Row!42!Target] 
-					,NULL AS [Row!42!Result] 
-					,NULL AS [Row!42!ObjectGet] 
-					,NULL AS [Row!42!Comment] 
-					,NULL AS [Row!42!Executor] 
-									,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!FullFileName] 
-					,NULL AS [Row!42!FileName] 
-									,NULL AS [Row!42!Id] 
-					,NULL AS [Row!42!Ref] 
-					,NULL AS [Row!42!LineNumber] 
-					,NULL AS [Row!42!Parameter] 
-					,NULL AS [Row!42!Val] 
-				FROM @Ids Ids 
+  SELECT 
+  41 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!41] 
+        ,NULL AS [EquipmentsHistory!41] 
+        ,NULL AS [Files!41] 
+        ,NULL AS [Parameters!41] 
+                    ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!Period] 
+          ,NULL AS [Row!42!Clients] 
+          ,NULL AS [Row!42!StatusEquipment] 
+          ,NULL AS [Row!42!ContractSale] 
+          ,NULL AS [Row!42!CantractService] 
+          ,NULL AS [Row!42!ContactForEquipment] 
+          ,NULL AS [Row!42!Info] 
+          ,NULL AS [Row!42!Equipment] 
+                  ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!Period] 
+          ,NULL AS [Row!42!Client] 
+          ,NULL AS [Row!42!Equipments] 
+          ,NULL AS [Row!42!Target] 
+          ,NULL AS [Row!42!Result] 
+          ,NULL AS [Row!42!ObjectGet] 
+          ,NULL AS [Row!42!Comment] 
+          ,NULL AS [Row!42!Executor] 
+                  ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!FullFileName] 
+          ,NULL AS [Row!42!FileName] 
+                  ,NULL AS [Row!42!Id] 
+          ,NULL AS [Row!42!Ref] 
+          ,NULL AS [Row!42!LineNumber] 
+          ,NULL AS [Row!42!Parameter] 
+          ,NULL AS [Row!42!Val] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	42 AS Tag, 41 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]			,NULL AS [Equipments!41] 
-				,NULL AS [EquipmentsHistory!41] 
-				,NULL AS [Files!41] 
-				,NULL AS [Parameters!41] 
-													 ,NULL AS [Row!42!Id]								 ,NULL AS [Row!42!Ref]								 ,NULL AS [Row!42!LineNumber]								 ,NULL AS [Row!42!Period]								 ,NULL AS [Row!42!Clients]								 ,NULL AS [Row!42!StatusEquipment]								 ,NULL AS [Row!42!ContractSale]								 ,NULL AS [Row!42!CantractService]								 ,NULL AS [Row!42!ContactForEquipment]								 ,NULL AS [Row!42!Info]								 ,NULL AS [Row!42!Equipment]												 ,NULL AS [Row!42!Id]								 ,NULL AS [Row!42!Ref]								 ,NULL AS [Row!42!LineNumber]								 ,NULL AS [Row!42!Period]								 ,NULL AS [Row!42!Client]								 ,NULL AS [Row!42!Equipments]								 ,NULL AS [Row!42!Target]								 ,NULL AS [Row!42!Result]								 ,NULL AS [Row!42!ObjectGet]								 ,NULL AS [Row!42!Comment]								 ,NULL AS [Row!42!Executor]												 ,NULL AS [Row!42!Id]								 ,NULL AS [Row!42!Ref]								 ,NULL AS [Row!42!LineNumber]								 ,NULL AS [Row!42!FullFileName]								 ,NULL AS [Row!42!FileName]									 ,T.[Id] AS [Row!42!Id]								 ,T.[Ref] AS [Row!42!Ref]								 ,T.[LineNumber] AS [Row!42!LineNumber]								 ,T.[Parameter] AS [Row!42!Parameter]								 ,T.[Val] AS [Row!42!Val]							FROM @Ids Ids 
-	JOIN [Catalog].[Equipment_Parameters] T ON T.Ref = Ids.Id 
+  SELECT 
+  42 AS Tag, 41 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!Predefined],NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Description],NULL AS [Row!2!Code],NULL AS [Row!2!SKU]      ,NULL AS [Equipments!41] 
+        ,NULL AS [EquipmentsHistory!41] 
+        ,NULL AS [Files!41] 
+        ,NULL AS [Parameters!41] 
+                           ,NULL AS [Row!42!Id]                ,NULL AS [Row!42!Ref]                 ,NULL AS [Row!42!LineNumber]                ,NULL AS [Row!42!Period]                ,NULL AS [Row!42!Clients]                 ,NULL AS [Row!42!StatusEquipment]                 ,NULL AS [Row!42!ContractSale]                ,NULL AS [Row!42!CantractService]                 ,NULL AS [Row!42!ContactForEquipment]                 ,NULL AS [Row!42!Info]                ,NULL AS [Row!42!Equipment]                         ,NULL AS [Row!42!Id]                ,NULL AS [Row!42!Ref]                 ,NULL AS [Row!42!LineNumber]                ,NULL AS [Row!42!Period]                ,NULL AS [Row!42!Client]                ,NULL AS [Row!42!Equipments]                ,NULL AS [Row!42!Target]                ,NULL AS [Row!42!Result]                ,NULL AS [Row!42!ObjectGet]                 ,NULL AS [Row!42!Comment]                 ,NULL AS [Row!42!Executor]                        ,NULL AS [Row!42!Id]                ,NULL AS [Row!42!Ref]                 ,NULL AS [Row!42!LineNumber]                ,NULL AS [Row!42!FullFileName]                ,NULL AS [Row!42!FileName]                  ,T.[Id] AS [Row!42!Id]                ,T.[Ref] AS [Row!42!Ref]                ,T.[LineNumber] AS [Row!42!LineNumber]                ,T.[Parameter] AS [Row!42!Parameter]                ,T.[Val] AS [Row!42!Val]             FROM @Ids Ids 
+  JOIN [Catalog].[Equipment_Parameters] T ON T.Ref = Ids.Id 
  
-	 
-	ORDER BY [Row!2!Id], Tag ,[Row!12!LineNumber],[Row!22!LineNumber],[Row!32!LineNumber],[Row!42!LineNumber] 
-	FOR XML EXPLICIT
+   
+  ORDER BY [Row!2!Id], Tag ,[Row!12!LineNumber],[Row!22!LineNumber],[Row!32!LineNumber],[Row!42!LineNumber] 
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2841,15 +2817,15 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@DeletionMark BIT,		@Posted BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(1000),		@Client UNIQUEIDENTIFIER,		@Equipment UNIQUEIDENTIFIER,		@Event UNIQUEIDENTIFIER,		@TaskType NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Task]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[DeletionMark],				[Posted],				[Date],				[Number],				[Description],				[Client],				[Equipment],				[Event],				[TaskType]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@DeletionMark,				@Posted,				@Date,				@Number,				@Description,				@Client,				@Equipment,				@Event,				@TaskType			)
+    @Id UNIQUEIDENTIFIER,   @DeletionMark BIT,    @Posted BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(1000),    @Client UNIQUEIDENTIFIER,   @Equipment UNIQUEIDENTIFIER,    @Event UNIQUEIDENTIFIER,    @TaskType NVARCHAR(100) AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Task]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [DeletionMark],       [Posted],       [Date],       [Number],       [Description],        [Client],       [Equipment],        [Event],        [TaskType]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @DeletionMark,        @Posted,        @Date,        @Number,        @Description,       @Client,        @Equipment,       @Event,       @TaskType     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2874,12 +2850,12 @@ PRINT N'Creating [Document].[Task_adm_update]'
 GO
  
 CREATE PROCEDURE [Document].[Task_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@DeletionMark BIT,		@Posted BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(1000),		@Client UNIQUEIDENTIFIER,		@Equipment UNIQUEIDENTIFIER,		@Event UNIQUEIDENTIFIER,		@TaskType NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Task] SET 
-				[Id] = @Id,				[DeletionMark] = @DeletionMark,				[Posted] = @Posted,				[Date] = @Date,				[Number] = @Number,				[Description] = @Description,				[Client] = @Client,				[Equipment] = @Equipment,				[Event] = @Event,				[TaskType] = @TaskType			WHERE Id = @Id AND 
-	( 1=0 OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [Equipment] <> @Equipment OR ([Equipment] IS NULL AND NOT @Equipment IS NULL) OR (NOT [Equipment] IS NULL AND @Equipment IS NULL)  OR [Event] <> @Event OR ([Event] IS NULL AND NOT @Event IS NULL) OR (NOT [Event] IS NULL AND @Event IS NULL)  OR [TaskType] <> @TaskType OR ([TaskType] IS NULL AND NOT @TaskType IS NULL) OR (NOT [TaskType] IS NULL AND @TaskType IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @DeletionMark BIT,    @Posted BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(1000),    @Client UNIQUEIDENTIFIER,   @Equipment UNIQUEIDENTIFIER,    @Event UNIQUEIDENTIFIER,    @TaskType NVARCHAR(100) AS 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Task] SET 
+        [Id] = @Id,       [DeletionMark] = @DeletionMark,       [Posted] = @Posted,       [Date] = @Date,       [Number] = @Number,       [Description] = @Description,       [Client] = @Client,       [Equipment] = @Equipment,       [Event] = @Event,       [TaskType] = @TaskType      WHERE Id = @Id AND 
+  ( 1=0 OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [Equipment] <> @Equipment OR ([Equipment] IS NULL AND NOT @Equipment IS NULL) OR (NOT [Equipment] IS NULL AND @Equipment IS NULL)  OR [Event] <> @Event OR ([Event] IS NULL AND NOT @Event IS NULL) OR (NOT [Event] IS NULL AND @Event IS NULL)  OR [TaskType] <> @TaskType OR ([TaskType] IS NULL AND NOT @TaskType IS NULL) OR (NOT [TaskType] IS NULL AND @TaskType IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2904,20 +2880,20 @@ PRINT N'Creating [Document].[Task_adm_markdelete]'
 GO
  
 CREATE PROCEDURE [Document].[Task_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@DeletionMark BIT,		@Posted BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(1000),		@Client UNIQUEIDENTIFIER,		@Equipment UNIQUEIDENTIFIER,		@Event UNIQUEIDENTIFIER,		@TaskType NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Task] WHERE Id = @Id) 
-	UPDATE [Document].[Task] SET 
-				[Id] = @Id,				[DeletionMark] = @DeletionMark,				[Posted] = @Posted,				[Date] = @Date,				[Number] = @Number,				[Description] = @Description,				[Client] = @Client,				[Equipment] = @Equipment,				[Event] = @Event,				[TaskType] = @TaskType			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Document].[Task] 
-	( 
-				[Id],				[DeletionMark],				[Posted],				[Date],				[Number],				[Description],				[Client],				[Equipment],				[Event],				[TaskType]			) 
-	VALUES 
-	( 
-				@Id,				@DeletionMark,				@Posted,				@Date,				@Number,				@Description,				@Client,				@Equipment,				@Event,				@TaskType			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.Task',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @DeletionMark BIT,    @Posted BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(1000),    @Client UNIQUEIDENTIFIER,   @Equipment UNIQUEIDENTIFIER,    @Event UNIQUEIDENTIFIER,    @TaskType NVARCHAR(100) AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Task] WHERE Id = @Id) 
+  UPDATE [Document].[Task] SET 
+        [Id] = @Id,       [DeletionMark] = @DeletionMark,       [Posted] = @Posted,       [Date] = @Date,       [Number] = @Number,       [Description] = @Description,       [Client] = @Client,       [Equipment] = @Equipment,       [Event] = @Event,       [TaskType] = @TaskType      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Document].[Task] 
+  ( 
+        [Id],       [DeletionMark],       [Posted],       [Date],       [Number],       [Description],        [Client],       [Equipment],        [Event],        [TaskType]      ) 
+  VALUES 
+  ( 
+        @Id,        @DeletionMark,        @Posted,        @Date,        @Number,        @Description,       @Client,        @Equipment,       @Event,       @TaskType     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.Task',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2926,13 +2902,13 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[EquipmentOptions_ListValues_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2957,15 +2933,15 @@ PRINT N'Creating [Document].[Task_adm_delete]'
 GO
  
 CREATE PROCEDURE [Document].[Task_adm_delete] @Id UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
---	DELETE FROM [Document].[Task] WHERE Id = @Id 
-	UPDATE [Document].[Task_tracking] SET 
-		[sync_row_is_tombstone] = 1,  
-		[local_update_peer_key] = 0,  
-		[update_scope_local_id] = NULL,  
-		[last_change_datetime] = GETDATE()  
-	WHERE Id = @Id 
-	UPDATE [admin].[DeletedObjects] SET [DeletionDate] = GETDATE() WHERE [Id] = @Id
+  SET NOCOUNT ON 
+--  DELETE FROM [Document].[Task] WHERE Id = @Id 
+  UPDATE [Document].[Task_tracking] SET 
+    [sync_row_is_tombstone] = 1,  
+    [local_update_peer_key] = 0,  
+    [update_scope_local_id] = NULL,  
+    [last_change_datetime] = GETDATE()  
+  WHERE Id = @Id 
+  UPDATE [admin].[DeletedObjects] SET [DeletionDate] = GETDATE() WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -2974,12 +2950,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[EquipmentOptions_ListValues_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_EquipmentOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Val]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Val]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3025,8 +3001,8 @@ PRINT N'Creating [Document].[Task_adm_exists]'
 GO
  
 CREATE PROCEDURE [Document].[Task_adm_exists] @Id UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	SELECT Id FROM [Document].[Task] WHERE Id = @Id
+  SET NOCOUNT ON 
+  SELECT Id FROM [Document].[Task] WHERE Id = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3059,23 +3035,23 @@ PRINT N'Creating [Document].[Task_adm_getnotexisting]'
 GO
  
 CREATE PROCEDURE [Document].[Task_adm_getnotexisting] @Xml XML AS 
-	SET NOCOUNT ON 
-	SELECT  
-	1 AS Tag,  
-	NULL AS Parent, 
-	'Document.Task' AS [Entity!1!Name], 
-	NULL AS [Row!2!Id] 
-	UNION ALL 
-	SELECT  
-		2 AS Tag,  
-		1 AS Parent, 
-		NULL AS [Entity!1Name], 
-		T1.c.value('@Id','UNIQUEIDENTIFIER') AS [Row!2!Id] 
-	FROM @Xml.nodes('//Row') T1(c) 
-	LEFT JOIN [Document].[Task] T2 ON T2.Id = T1.c.value('@Id','UNIQUEIDENTIFIER') 
-	WHERE T2.Id IS NULL 
-	ORDER BY 2,1 
-	FOR XML EXPLICIT
+  SET NOCOUNT ON 
+  SELECT  
+  1 AS Tag,  
+  NULL AS Parent, 
+  'Document.Task' AS [Entity!1!Name], 
+  NULL AS [Row!2!Id] 
+  UNION ALL 
+  SELECT  
+    2 AS Tag,  
+    1 AS Parent, 
+    NULL AS [Entity!1Name], 
+    T1.c.value('@Id','UNIQUEIDENTIFIER') AS [Row!2!Id] 
+  FROM @Xml.nodes('//Row') T1(c) 
+  LEFT JOIN [Document].[Task] T2 ON T2.Id = T1.c.value('@Id','UNIQUEIDENTIFIER') 
+  WHERE T2.Id IS NULL 
+  ORDER BY 2,1 
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3112,13 +3088,13 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Description NVARCHAR(1000),		@IsDone BIT	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Task_Targets]( 
-		[Ref],[LineNumber],[Description],[IsDone]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Description,@IsDone	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Description NVARCHAR(1000),    @IsDone BIT AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Task_Targets]( 
+    [Ref],[LineNumber],[Description],[IsDone] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Description,@IsDone )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3126,18 +3102,18 @@ PRINT N'Altering [Catalog].[EquipmentOptions_ListValues_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[EquipmentOptions_ListValues_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[EquipmentOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
-	UPDATE [Catalog].[EquipmentOptions_ListValues] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Val] = @Val			WHERE [Ref] = @Ref AND [Val] = @Val AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[EquipmentOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
+  UPDATE [Catalog].[EquipmentOptions_ListValues] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Val] = @Val      WHERE [Ref] = @Ref AND [Val] = @Val AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3146,12 +3122,12 @@ GO
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Task_Targets] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Task_Targets]( 
-		[Ref],[LineNumber],[Description],[IsDone]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Description],[IsDone]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Task_Targets]( 
+    [Ref],[LineNumber],[Description],[IsDone] ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Description],[IsDone]    FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3160,22 +3136,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[EquipmentOptions_ListValues_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_EquipmentOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[EquipmentOptions_ListValues] SET 
-				[LineNumber] = D.[LineNumber],				[Val] = D.[Val]			FROM [Catalog].[EquipmentOptions_ListValues] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[EquipmentOptions_ListValues] SET 
+        [LineNumber] = D.[LineNumber],        [Val] = D.[Val]     FROM [Catalog].[EquipmentOptions_ListValues] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
  
-	INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Val]		FROM @Data D 
-		LEFT JOIN [Catalog].[EquipmentOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[EquipmentOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Val]   FROM @Data D 
+    LEFT JOIN [Catalog].[EquipmentOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[EquipmentOptions_ListValues] 
-	FROM [Catalog].[EquipmentOptions_ListValues] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND D.[Val] IS NULL	 
+  DELETE FROM [Catalog].[EquipmentOptions_ListValues] 
+  FROM [Catalog].[EquipmentOptions_ListValues] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))  WHERE T.Ref = @Ref AND D.[Val] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3215,147 +3191,147 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_adm_getchanges] @SessionId UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DECLARE @DateFrom DATETIME, @DateTo DATETIME 
-	SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
-	SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
-	IF @DateFrom IS NULL OR @DateTo IS NULL 
-	  RAISERROR('Invalid interval', 16, 1) 
+  SET NOCOUNT ON 
+  DECLARE @DateFrom DATETIME, @DateTo DATETIME 
+  SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
+  SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
+  IF @DateFrom IS NULL OR @DateTo IS NULL 
+    RAISERROR('Invalid interval', 16, 1) 
  
-	DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
-	INSERT @Ids  
-	SELECT E.[Id]  
-	FROM [Document].[Task] E 
-	JOIN [Document].[Task_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
-		UNION 
-	SELECT E.Ref  
-	FROM [Document].[Task_Targets] E 
-	JOIN [Document].[Task_Targets_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-		UNION 
-	SELECT E.Ref  
-	FROM [Document].[Task_Status] E 
-	JOIN [Document].[Task_Status_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)	 
-	 
-	SELECT 
-	1 AS Tag, NULL AS Parent, 
-	'Document.Task' AS [Entity!1!Name], 
-	NULL AS [Row!2!Id], 
-	NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]						,NULL AS [Targets!11] 
-						,NULL AS [Status!21] 
-															,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Description] 
-					,NULL AS [Row!12!IsDone] 
-												,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!CommentContractor] 
-					,NULL AS [Row!22!Status] 
-					,NULL AS [Row!22!UserMA] 
-					,NULL AS [Row!22!ActualEndDate] 
-					,NULL AS [Row!22!CloseEvent] 
-			 
-	UNION ALL 
+  DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
+  INSERT @Ids  
+  SELECT E.[Id]  
+  FROM [Document].[Task] E 
+  JOIN [Document].[Task_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
+    UNION 
+  SELECT E.Ref  
+  FROM [Document].[Task_Targets] E 
+  JOIN [Document].[Task_Targets_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+    UNION 
+  SELECT E.Ref  
+  FROM [Document].[Task_Status] E 
+  JOIN [Document].[Task_Status_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/)  
+   
+  SELECT 
+  1 AS Tag, NULL AS Parent, 
+  'Document.Task' AS [Entity!1!Name], 
+  NULL AS [Row!2!Id], 
+  NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]           ,NULL AS [Targets!11] 
+            ,NULL AS [Status!21] 
+                              ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Description] 
+          ,NULL AS [Row!12!IsDone] 
+                        ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!CommentContractor] 
+          ,NULL AS [Row!22!Status] 
+          ,NULL AS [Row!22!UserMA] 
+          ,NULL AS [Row!22!ActualEndDate] 
+          ,NULL AS [Row!22!CloseEvent] 
+       
+  UNION ALL 
  
-	SELECT 
-	2 AS Tag, 1 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	H.[Id] AS [Row!2!Id], 
-	H.[DeletionMark] AS [Row!2!DeletionMark],H.[Posted] AS [Row!2!Posted],H.[Date] AS [Row!2!Date],H.[Number] AS [Row!2!Number],H.[Description] AS [Row!2!Description],H.[Client] AS [Row!2!Client],H.[Equipment] AS [Row!2!Equipment],H.[Event] AS [Row!2!Event],H.[TaskType] AS [Row!2!TaskType]						,NULL AS [Targets!11] 
-						,NULL AS [Status!21] 
-															,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Description] 
-					,NULL AS [Row!12!IsDone] 
-												,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!CommentContractor] 
-					,NULL AS [Row!22!Status] 
-					,NULL AS [Row!22!UserMA] 
-					,NULL AS [Row!22!ActualEndDate] 
-					,NULL AS [Row!22!CloseEvent] 
-				FROM [Document].[Task] H 
-	JOIN @Ids Ids ON Ids.Id = H.Id 
+  SELECT 
+  2 AS Tag, 1 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  H.[Id] AS [Row!2!Id], 
+  H.[DeletionMark] AS [Row!2!DeletionMark],H.[Posted] AS [Row!2!Posted],H.[Date] AS [Row!2!Date],H.[Number] AS [Row!2!Number],H.[Description] AS [Row!2!Description],H.[Client] AS [Row!2!Client],H.[Equipment] AS [Row!2!Equipment],H.[Event] AS [Row!2!Event],H.[TaskType] AS [Row!2!TaskType]            ,NULL AS [Targets!11] 
+            ,NULL AS [Status!21] 
+                              ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Description] 
+          ,NULL AS [Row!12!IsDone] 
+                        ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!CommentContractor] 
+          ,NULL AS [Row!22!Status] 
+          ,NULL AS [Row!22!UserMA] 
+          ,NULL AS [Row!22!ActualEndDate] 
+          ,NULL AS [Row!22!CloseEvent] 
+        FROM [Document].[Task] H 
+  JOIN @Ids Ids ON Ids.Id = H.Id 
  
-			 
-	UNION ALL 
+       
+  UNION ALL 
  
-	SELECT 
-	11 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]			,NULL AS [Targets!11] 
-				,NULL AS [Status!11] 
-										,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!Description] 
-					,NULL AS [Row!12!IsDone] 
-									,NULL AS [Row!12!Id] 
-					,NULL AS [Row!12!Ref] 
-					,NULL AS [Row!12!LineNumber] 
-					,NULL AS [Row!12!CommentContractor] 
-					,NULL AS [Row!12!Status] 
-					,NULL AS [Row!12!UserMA] 
-					,NULL AS [Row!12!ActualEndDate] 
-					,NULL AS [Row!12!CloseEvent] 
-				FROM @Ids Ids 
+  SELECT 
+  11 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]     ,NULL AS [Targets!11] 
+        ,NULL AS [Status!11] 
+                    ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!Description] 
+          ,NULL AS [Row!12!IsDone] 
+                  ,NULL AS [Row!12!Id] 
+          ,NULL AS [Row!12!Ref] 
+          ,NULL AS [Row!12!LineNumber] 
+          ,NULL AS [Row!12!CommentContractor] 
+          ,NULL AS [Row!12!Status] 
+          ,NULL AS [Row!12!UserMA] 
+          ,NULL AS [Row!12!ActualEndDate] 
+          ,NULL AS [Row!12!CloseEvent] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	12 AS Tag, 11 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]			,NULL AS [Targets!11] 
-				,NULL AS [Status!11] 
-										 ,T.[Id] AS [Row!12!Id]								 ,T.[Ref] AS [Row!12!Ref]								 ,T.[LineNumber] AS [Row!12!LineNumber]								 ,T.[Description] AS [Row!12!Description]								 ,T.[IsDone] AS [Row!12!IsDone]															 ,NULL AS [Row!12!Id]								 ,NULL AS [Row!12!Ref]								 ,NULL AS [Row!12!LineNumber]								 ,NULL AS [Row!12!CommentContractor]								 ,NULL AS [Row!12!Status]								 ,NULL AS [Row!12!UserMA]								 ,NULL AS [Row!12!ActualEndDate]								 ,NULL AS [Row!12!CloseEvent]				FROM @Ids Ids 
-	JOIN [Document].[Task_Targets] T ON T.Ref = Ids.Id 
+  SELECT 
+  12 AS Tag, 11 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]     ,NULL AS [Targets!11] 
+        ,NULL AS [Status!11] 
+                     ,T.[Id] AS [Row!12!Id]                ,T.[Ref] AS [Row!12!Ref]                ,T.[LineNumber] AS [Row!12!LineNumber]                ,T.[Description] AS [Row!12!Description]                ,T.[IsDone] AS [Row!12!IsDone]                              ,NULL AS [Row!12!Id]                ,NULL AS [Row!12!Ref]                 ,NULL AS [Row!12!LineNumber]                ,NULL AS [Row!12!CommentContractor]                 ,NULL AS [Row!12!Status]                ,NULL AS [Row!12!UserMA]                ,NULL AS [Row!12!ActualEndDate]                 ,NULL AS [Row!12!CloseEvent]       FROM @Ids Ids 
+  JOIN [Document].[Task_Targets] T ON T.Ref = Ids.Id 
  
-		 
-	UNION ALL 
+     
+  UNION ALL 
  
-	SELECT 
-	21 AS Tag, 2 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]			,NULL AS [Targets!21] 
-				,NULL AS [Status!21] 
-										,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!Description] 
-					,NULL AS [Row!22!IsDone] 
-									,NULL AS [Row!22!Id] 
-					,NULL AS [Row!22!Ref] 
-					,NULL AS [Row!22!LineNumber] 
-					,NULL AS [Row!22!CommentContractor] 
-					,NULL AS [Row!22!Status] 
-					,NULL AS [Row!22!UserMA] 
-					,NULL AS [Row!22!ActualEndDate] 
-					,NULL AS [Row!22!CloseEvent] 
-				FROM @Ids Ids 
+  SELECT 
+  21 AS Tag, 2 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]     ,NULL AS [Targets!21] 
+        ,NULL AS [Status!21] 
+                    ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!Description] 
+          ,NULL AS [Row!22!IsDone] 
+                  ,NULL AS [Row!22!Id] 
+          ,NULL AS [Row!22!Ref] 
+          ,NULL AS [Row!22!LineNumber] 
+          ,NULL AS [Row!22!CommentContractor] 
+          ,NULL AS [Row!22!Status] 
+          ,NULL AS [Row!22!UserMA] 
+          ,NULL AS [Row!22!ActualEndDate] 
+          ,NULL AS [Row!22!CloseEvent] 
+        FROM @Ids Ids 
  
-	UNION ALL 
+  UNION ALL 
  
-	SELECT 
-	22 AS Tag, 21 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	Ids.Id AS [Row!2!Id], 
-	NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]			,NULL AS [Targets!21] 
-				,NULL AS [Status!21] 
-													 ,NULL AS [Row!22!Id]								 ,NULL AS [Row!22!Ref]								 ,NULL AS [Row!22!LineNumber]								 ,NULL AS [Row!22!Description]								 ,NULL AS [Row!22!IsDone]									 ,T.[Id] AS [Row!22!Id]								 ,T.[Ref] AS [Row!22!Ref]								 ,T.[LineNumber] AS [Row!22!LineNumber]								 ,T.[CommentContractor] AS [Row!22!CommentContractor]								 ,T.[Status] AS [Row!22!Status]								 ,T.[UserMA] AS [Row!22!UserMA]								 ,T.[ActualEndDate] AS [Row!22!ActualEndDate]								 ,T.[CloseEvent] AS [Row!22!CloseEvent]							FROM @Ids Ids 
-	JOIN [Document].[Task_Status] T ON T.Ref = Ids.Id 
+  SELECT 
+  22 AS Tag, 21 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  Ids.Id AS [Row!2!Id], 
+  NULL AS [Row!2!DeletionMark],NULL AS [Row!2!Posted],NULL AS [Row!2!Date],NULL AS [Row!2!Number],NULL AS [Row!2!Description],NULL AS [Row!2!Client],NULL AS [Row!2!Equipment],NULL AS [Row!2!Event],NULL AS [Row!2!TaskType]     ,NULL AS [Targets!21] 
+        ,NULL AS [Status!21] 
+                           ,NULL AS [Row!22!Id]                ,NULL AS [Row!22!Ref]                 ,NULL AS [Row!22!LineNumber]                ,NULL AS [Row!22!Description]                 ,NULL AS [Row!22!IsDone]                  ,T.[Id] AS [Row!22!Id]                ,T.[Ref] AS [Row!22!Ref]                ,T.[LineNumber] AS [Row!22!LineNumber]                ,T.[CommentContractor] AS [Row!22!CommentContractor]                ,T.[Status] AS [Row!22!Status]                ,T.[UserMA] AS [Row!22!UserMA]                ,T.[ActualEndDate] AS [Row!22!ActualEndDate]                ,T.[CloseEvent] AS [Row!22!CloseEvent]             FROM @Ids Ids 
+  JOIN [Document].[Task_Status] T ON T.Ref = Ids.Id 
  
-	 
-	ORDER BY [Row!2!Id], Tag ,[Row!12!LineNumber],[Row!22!LineNumber] 
-	FOR XML EXPLICIT
+   
+  ORDER BY [Row!2!Id], Tag ,[Row!12!LineNumber],[Row!22!LineNumber] 
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3363,8 +3339,8 @@ PRINT N'Creating [Document].[Task_Targets_adm_clear]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_clear] @Ref UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Document].[Task_Targets] WHERE [Ref] = @Ref
+  SET NOCOUNT ON 
+  DELETE FROM [Document].[Task_Targets] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3372,11 +3348,11 @@ PRINT N'Altering [Catalog].[EquipmentOptions_ListValues_adm_delete]'
 GO
  
 ALTER PROCEDURE [Catalog].[EquipmentOptions_ListValues_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Val NVARCHAR(100) 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[EquipmentOptions_ListValues] 
-	WHERE [Ref] = @Ref AND [Val] = @Val	
+    ,@Val NVARCHAR(100) 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[EquipmentOptions_ListValues] 
+  WHERE [Ref] = @Ref AND [Val] = @Val 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3394,7 +3370,7 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_selectkeys] @Ref UNIQUEIDENTIFIER AS 
-	SELECT [Ref],[LineNumber],[Description],[IsDone]	FROM [Document].[Task_Targets] WHERE [Ref] = @Ref
+  SELECT [Ref],[LineNumber],[Description],[IsDone]  FROM [Document].[Task_Targets] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3411,18 +3387,18 @@ PRINT N'Creating [Document].[Task_Targets_adm_update]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Description NVARCHAR(1000),		@IsDone BIT	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Task_Targets] WHERE [Ref] = @Ref AND ([Description] = @Description OR ([Description] IS NULL AND @Description IS NULL))) 
-	UPDATE [Document].[Task_Targets] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Description] = @Description,				[IsDone] = @IsDone			WHERE [Ref] = @Ref AND [Description] = @Description AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [IsDone] <> @IsDone ) 
-	ELSE 
-	INSERT INTO [Document].[Task_Targets]( 
-		[Ref],[LineNumber],[Description],[IsDone]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Description,@IsDone	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Description NVARCHAR(1000),    @IsDone BIT AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Task_Targets] WHERE [Ref] = @Ref AND ([Description] = @Description OR ([Description] IS NULL AND @Description IS NULL))) 
+  UPDATE [Document].[Task_Targets] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Description] = @Description,       [IsDone] = @IsDone      WHERE [Ref] = @Ref AND [Description] = @Description AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [IsDone] <> @IsDone ) 
+  ELSE 
+  INSERT INTO [Document].[Task_Targets]( 
+    [Ref],[LineNumber],[Description],[IsDone] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Description,@IsDone )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3440,22 +3416,22 @@ GO
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Task_Targets] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Task_Targets] SET 
-				[LineNumber] = D.[LineNumber],				[Description] = D.[Description],				[IsDone] = D.[IsDone]			FROM [Document].[Task_Targets] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Description] <> D.[Description] OR T.[IsDone] <> D.[IsDone] ) 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Task_Targets] SET 
+        [LineNumber] = D.[LineNumber],        [Description] = D.[Description],        [IsDone] = D.[IsDone]     FROM [Document].[Task_Targets] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Description] <> D.[Description] OR T.[IsDone] <> D.[IsDone] ) 
  
-	INSERT INTO [Document].[Task_Targets]( 
-		[Ref],[LineNumber],[Description],[IsDone]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Description],D.[IsDone]		FROM @Data D 
-		LEFT JOIN [Document].[Task_Targets] T ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Document].[Task_Targets]( 
+    [Ref],[LineNumber],[Description],[IsDone] ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Description],D.[IsDone]    FROM @Data D 
+    LEFT JOIN [Document].[Task_Targets] T ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Document].[Task_Targets] 
-	FROM [Document].[Task_Targets] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL))	WHERE T.Ref = @Ref AND D.[Description] IS NULL	 
+  DELETE FROM [Document].[Task_Targets] 
+  FROM [Document].[Task_Targets] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Description] = D.[Description] OR (T.[Description] IS NULL AND D.[Description] IS NULL))  WHERE T.Ref = @Ref AND D.[Description] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3472,11 +3448,11 @@ PRINT N'Creating [Document].[Task_Targets_adm_delete]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Targets_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Description NVARCHAR(1000) 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Document].[Task_Targets] 
-	WHERE [Ref] = @Ref AND [Description] = @Description	
+    ,@Description NVARCHAR(1000) 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Document].[Task_Targets] 
+  WHERE [Ref] = @Ref AND [Description] = @Description 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3495,13 +3471,13 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_Status_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@CommentContractor NVARCHAR(1000),		@Status UNIQUEIDENTIFIER,		@UserMA UNIQUEIDENTIFIER,		@ActualEndDate DATETIME2,		@CloseEvent UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Task_Status]( 
-		[Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@CommentContractor,@Status,@UserMA,@ActualEndDate,@CloseEvent	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @CommentContractor NVARCHAR(1000),    @Status UNIQUEIDENTIFIER,   @UserMA UNIQUEIDENTIFIER,   @ActualEndDate DATETIME2,   @CloseEvent UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Task_Status]( 
+    [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@CommentContractor,@Status,@UserMA,@ActualEndDate,@CloseEvent  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3519,12 +3495,12 @@ GO
  
 CREATE PROCEDURE [Document].[Task_Status_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Task_Status] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Task_Status]( 
-		[Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Task_Status]( 
+    [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent] ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]    FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3553,37 +3529,37 @@ GO
  
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_getchanges] @SessionId UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DECLARE @DateFrom DATETIME, @DateTo DATETIME 
-	SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
-	SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
-	IF @DateFrom IS NULL OR @DateTo IS NULL 
-	  RAISERROR('Invalid interval', 16, 1) 
+  SET NOCOUNT ON 
+  DECLARE @DateFrom DATETIME, @DateTo DATETIME 
+  SELECT @DateFrom = LastTime FROM [admin].LastSyncTime 
+  SELECT @DateTo = StartTime FROM [admin].SyncSession WHERE [Id] = @SessionId 
+  IF @DateFrom IS NULL OR @DateTo IS NULL 
+    RAISERROR('Invalid interval', 16, 1) 
  
-	DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
-	INSERT @Ids  
-	SELECT E.[Id]  
-	FROM [Enum].[StatusTasks] E 
-	JOIN [Enum].[StatusTasks_tracking] T ON T.[Id] = E.[Id] 
-	WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
-	 
-	SELECT 
-	1 AS Tag, NULL AS Parent, 
-	'Enum.StatusTasks' AS [Entity!1!Name], 
-	NULL AS [Row!2!Id], 
-	NULL AS [Row!2!Name],NULL AS [Row!2!Description]						 
-	UNION ALL 
+  DECLARE @Ids TABLE(Id UNIQUEIDENTIFIER) 
+  INSERT @Ids  
+  SELECT E.[Id]  
+  FROM [Enum].[StatusTasks] E 
+  JOIN [Enum].[StatusTasks_tracking] T ON T.[Id] = E.[Id] 
+  WHERE T.[last_change_datetime] BETWEEN @DateFrom AND @DateTo AND (NOT T.update_scope_local_id IS NULL/* OR NOT T.create_scope_local_id IS NULL*/) 
+   
+  SELECT 
+  1 AS Tag, NULL AS Parent, 
+  'Enum.StatusTasks' AS [Entity!1!Name], 
+  NULL AS [Row!2!Id], 
+  NULL AS [Row!2!Name],NULL AS [Row!2!Description]             
+  UNION ALL 
  
-	SELECT 
-	2 AS Tag, 1 AS Parent, 
-	NULL AS [Entity!1!Name], 
-	H.[Id] AS [Row!2!Id], 
-	H.[Name] AS [Row!2!Name],H.[Description] AS [Row!2!Description]							FROM [Enum].[StatusTasks] H 
-	JOIN @Ids Ids ON Ids.Id = H.Id 
+  SELECT 
+  2 AS Tag, 1 AS Parent, 
+  NULL AS [Entity!1!Name], 
+  H.[Id] AS [Row!2!Id], 
+  H.[Name] AS [Row!2!Name],H.[Description] AS [Row!2!Description]             FROM [Enum].[StatusTasks] H 
+  JOIN @Ids Ids ON Ids.Id = H.Id 
  
-		 
-	ORDER BY [Row!2!Id], Tag  
-	FOR XML EXPLICIT
+     
+  ORDER BY [Row!2!Id], Tag  
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3591,8 +3567,8 @@ PRINT N'Creating [Document].[Task_Status_adm_clear]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Status_adm_clear] @Ref UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Document].[Task_Status] WHERE [Ref] = @Ref
+  SET NOCOUNT ON 
+  DELETE FROM [Document].[Task_Status] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3601,13 +3577,13 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[EventOptions_ListValues_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[EventOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[EventOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3616,7 +3592,7 @@ GO
  
  
 CREATE PROCEDURE [Document].[Task_Status_adm_selectkeys] @Ref UNIQUEIDENTIFIER AS 
-	SELECT [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]	FROM [Document].[Task_Status] WHERE [Ref] = @Ref
+  SELECT [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]  FROM [Document].[Task_Status] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3625,12 +3601,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[EventOptions_ListValues_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_EventOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[EventOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Val]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[EventOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Val]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3638,18 +3614,18 @@ PRINT N'Creating [Document].[Task_Status_adm_update]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Status_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@CommentContractor NVARCHAR(1000),		@Status UNIQUEIDENTIFIER,		@UserMA UNIQUEIDENTIFIER,		@ActualEndDate DATETIME2,		@CloseEvent UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Task_Status] WHERE [Ref] = @Ref AND ([CommentContractor] = @CommentContractor OR ([CommentContractor] IS NULL AND @CommentContractor IS NULL))) 
-	UPDATE [Document].[Task_Status] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[CommentContractor] = @CommentContractor,				[Status] = @Status,				[UserMA] = @UserMA,				[ActualEndDate] = @ActualEndDate,				[CloseEvent] = @CloseEvent			WHERE [Ref] = @Ref AND [CommentContractor] = @CommentContractor AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [Status] <> @Status OR [UserMA] <> @UserMA OR [ActualEndDate] <> @ActualEndDate OR [CloseEvent] <> @CloseEvent ) 
-	ELSE 
-	INSERT INTO [Document].[Task_Status]( 
-		[Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@CommentContractor,@Status,@UserMA,@ActualEndDate,@CloseEvent	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @CommentContractor NVARCHAR(1000),    @Status UNIQUEIDENTIFIER,   @UserMA UNIQUEIDENTIFIER,   @ActualEndDate DATETIME2,   @CloseEvent UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Task_Status] WHERE [Ref] = @Ref AND ([CommentContractor] = @CommentContractor OR ([CommentContractor] IS NULL AND @CommentContractor IS NULL))) 
+  UPDATE [Document].[Task_Status] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [CommentContractor] = @CommentContractor,       [Status] = @Status,       [UserMA] = @UserMA,       [ActualEndDate] = @ActualEndDate,       [CloseEvent] = @CloseEvent      WHERE [Ref] = @Ref AND [CommentContractor] = @CommentContractor AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [Status] <> @Status OR [UserMA] <> @UserMA OR [ActualEndDate] <> @ActualEndDate OR [CloseEvent] <> @CloseEvent ) 
+  ELSE 
+  INSERT INTO [Document].[Task_Status]( 
+    [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@CommentContractor,@Status,@UserMA,@ActualEndDate,@CloseEvent  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3658,22 +3634,22 @@ GO
  
 CREATE PROCEDURE [Document].[Task_Status_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Task_Status] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Task_Status] SET 
-				[LineNumber] = D.[LineNumber],				[CommentContractor] = D.[CommentContractor],				[Status] = D.[Status],				[UserMA] = D.[UserMA],				[ActualEndDate] = D.[ActualEndDate],				[CloseEvent] = D.[CloseEvent]			FROM [Document].[Task_Status] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[CommentContractor] <> D.[CommentContractor] OR T.[Status] <> D.[Status] OR T.[UserMA] <> D.[UserMA] OR T.[ActualEndDate] <> D.[ActualEndDate] OR T.[CloseEvent] <> D.[CloseEvent] ) 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Task_Status] SET 
+        [LineNumber] = D.[LineNumber],        [CommentContractor] = D.[CommentContractor],        [Status] = D.[Status],        [UserMA] = D.[UserMA],        [ActualEndDate] = D.[ActualEndDate],        [CloseEvent] = D.[CloseEvent]     FROM [Document].[Task_Status] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[CommentContractor] <> D.[CommentContractor] OR T.[Status] <> D.[Status] OR T.[UserMA] <> D.[UserMA] OR T.[ActualEndDate] <> D.[ActualEndDate] OR T.[CloseEvent] <> D.[CloseEvent] ) 
  
-	INSERT INTO [Document].[Task_Status]( 
-		[Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[CommentContractor],D.[Status],D.[UserMA],D.[ActualEndDate],D.[CloseEvent]		FROM @Data D 
-		LEFT JOIN [Document].[Task_Status] T ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Document].[Task_Status]( 
+    [Ref],[LineNumber],[CommentContractor],[Status],[UserMA],[ActualEndDate],[CloseEvent] ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[CommentContractor],D.[Status],D.[UserMA],D.[ActualEndDate],D.[CloseEvent]    FROM @Data D 
+    LEFT JOIN [Document].[Task_Status] T ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL)) WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Document].[Task_Status] 
-	FROM [Document].[Task_Status] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL))	WHERE T.Ref = @Ref AND D.[CommentContractor] IS NULL	 
+  DELETE FROM [Document].[Task_Status] 
+  FROM [Document].[Task_Status] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[CommentContractor] = D.[CommentContractor] OR (T.[CommentContractor] IS NULL AND D.[CommentContractor] IS NULL))  WHERE T.Ref = @Ref AND D.[CommentContractor] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3684,15 +3660,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Client_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@Address NVARCHAR(1000),		@Contractor UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Client]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Latitude],				[Longitude],				[Address],				[Contractor]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Latitude,				@Longitude,				@Address,				@Contractor			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @Address NVARCHAR(1000),    @Contractor UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Client]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Latitude],       [Longitude],        [Address],        [Contractor]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Latitude,        @Longitude,       @Address,       @Contractor     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3700,11 +3676,11 @@ PRINT N'Creating [Document].[Task_Status_adm_delete]'
 GO
  
 CREATE PROCEDURE [Document].[Task_Status_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@CommentContractor NVARCHAR(1000) 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Document].[Task_Status] 
-	WHERE [Ref] = @Ref AND [CommentContractor] = @CommentContractor	
+    ,@CommentContractor NVARCHAR(1000) 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Document].[Task_Status] 
+  WHERE [Ref] = @Ref AND [CommentContractor] = @CommentContractor 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3712,18 +3688,18 @@ PRINT N'Altering [Catalog].[EventOptions_ListValues_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[EventOptions_ListValues_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[EventOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
-	UPDATE [Catalog].[EventOptions_ListValues] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Val] = @Val			WHERE [Ref] = @Ref AND [Val] = @Val AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Catalog].[EventOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[EventOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
+  UPDATE [Catalog].[EventOptions_ListValues] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Val] = @Val      WHERE [Ref] = @Ref AND [Val] = @Val AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Catalog].[EventOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3731,12 +3707,12 @@ PRINT N'Altering [Catalog].[Client_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[Client_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@Address NVARCHAR(1000),		@Contractor UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Client] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Latitude] = @Latitude,				[Longitude] = @Longitude,				[Address] = @Address,				[Contractor] = @Contractor			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Latitude] <> @Latitude OR ([Latitude] IS NULL AND NOT @Latitude IS NULL) OR (NOT [Latitude] IS NULL AND @Latitude IS NULL)  OR [Longitude] <> @Longitude OR ([Longitude] IS NULL AND NOT @Longitude IS NULL) OR (NOT [Longitude] IS NULL AND @Longitude IS NULL)  OR [Address] <> @Address OR ([Address] IS NULL AND NOT @Address IS NULL) OR (NOT [Address] IS NULL AND @Address IS NULL)  OR [Contractor] <> @Contractor OR ([Contractor] IS NULL AND NOT @Contractor IS NULL) OR (NOT [Contractor] IS NULL AND @Contractor IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @Address NVARCHAR(1000),    @Contractor UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Client] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Latitude] = @Latitude,       [Longitude] = @Longitude,       [Address] = @Address,       [Contractor] = @Contractor      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Latitude] <> @Latitude OR ([Latitude] IS NULL AND NOT @Latitude IS NULL) OR (NOT [Latitude] IS NULL AND @Latitude IS NULL)  OR [Longitude] <> @Longitude OR ([Longitude] IS NULL AND NOT @Longitude IS NULL) OR (NOT [Longitude] IS NULL AND @Longitude IS NULL)  OR [Address] <> @Address OR ([Address] IS NULL AND NOT @Address IS NULL) OR (NOT [Address] IS NULL AND @Address IS NULL)  OR [Contractor] <> @Contractor OR ([Contractor] IS NULL AND NOT @Contractor IS NULL) OR (NOT [Contractor] IS NULL AND @Contractor IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3745,22 +3721,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[EventOptions_ListValues_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_EventOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[EventOptions_ListValues] SET 
-				[LineNumber] = D.[LineNumber],				[Val] = D.[Val]			FROM [Catalog].[EventOptions_ListValues] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[EventOptions_ListValues] SET 
+        [LineNumber] = D.[LineNumber],        [Val] = D.[Val]     FROM [Catalog].[EventOptions_ListValues] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
  
-	INSERT INTO [Catalog].[EventOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Val]		FROM @Data D 
-		LEFT JOIN [Catalog].[EventOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[EventOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Val]   FROM @Data D 
+    LEFT JOIN [Catalog].[EventOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[EventOptions_ListValues] 
-	FROM [Catalog].[EventOptions_ListValues] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND D.[Val] IS NULL	 
+  DELETE FROM [Catalog].[EventOptions_ListValues] 
+  FROM [Catalog].[EventOptions_ListValues] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))  WHERE T.Ref = @Ref AND D.[Val] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3768,20 +3744,20 @@ PRINT N'Altering [Catalog].[Client_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[Client_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@Address NVARCHAR(1000),		@Contractor UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Client] WHERE Id = @Id) 
-	UPDATE [Catalog].[Client] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Latitude] = @Latitude,				[Longitude] = @Longitude,				[Address] = @Address,				[Contractor] = @Contractor			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[Client] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Latitude],				[Longitude],				[Address],				[Contractor]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Latitude,				@Longitude,				@Address,				@Contractor			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Client',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @Address NVARCHAR(1000),    @Contractor UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Client] WHERE Id = @Id) 
+  UPDATE [Catalog].[Client] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Latitude] = @Latitude,       [Longitude] = @Longitude,       [Address] = @Address,       [Contractor] = @Contractor      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[Client] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Latitude],       [Longitude],        [Address],        [Contractor]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Latitude,        @Longitude,       @Address,       @Contractor     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Client',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3789,11 +3765,11 @@ PRINT N'Altering [Catalog].[EventOptions_ListValues_adm_delete]'
 GO
  
 ALTER PROCEDURE [Catalog].[EventOptions_ListValues_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Val NVARCHAR(100) 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[EventOptions_ListValues] 
-	WHERE [Ref] = @Ref AND [Val] = @Val	
+    ,@Val NVARCHAR(100) 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[EventOptions_ListValues] 
+  WHERE [Ref] = @Ref AND [Val] = @Val 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3804,15 +3780,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[RIM_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Price DECIMAL(15,2),		@Service BIT,		@SKU UNIQUEIDENTIFIER,		@Unit NVARCHAR(5)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[RIM]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[IsFolder],				[Parent],				[Description],				[Code],				[Price],				[Service],				[SKU],				[Unit]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@IsFolder,				@Parent,				@Description,				@Code,				@Price,				@Service,				@SKU,				@Unit			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Price DECIMAL(15,2),   @Service BIT,   @SKU UNIQUEIDENTIFIER,    @Unit NVARCHAR(5) AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[RIM]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [IsFolder],       [Parent],       [Description],        [Code],       [Price],        [Service],        [SKU],        [Unit]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @IsFolder,        @Parent,        @Description,       @Code,        @Price,       @Service,       @SKU,       @Unit     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3820,12 +3796,12 @@ PRINT N'Altering [Catalog].[RIM_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[RIM_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Price DECIMAL(15,2),		@Service BIT,		@SKU UNIQUEIDENTIFIER,		@Unit NVARCHAR(5)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[RIM] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[IsFolder] = @IsFolder,				[Parent] = @Parent,				[Description] = @Description,				[Code] = @Code,				[Price] = @Price,				[Service] = @Service,				[SKU] = @SKU,				[Unit] = @Unit			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [IsFolder] <> @IsFolder OR ([IsFolder] IS NULL AND NOT @IsFolder IS NULL) OR (NOT [IsFolder] IS NULL AND @IsFolder IS NULL)  OR [Parent] <> @Parent OR ([Parent] IS NULL AND NOT @Parent IS NULL) OR (NOT [Parent] IS NULL AND @Parent IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Price] <> @Price OR ([Price] IS NULL AND NOT @Price IS NULL) OR (NOT [Price] IS NULL AND @Price IS NULL)  OR [Service] <> @Service OR ([Service] IS NULL AND NOT @Service IS NULL) OR (NOT [Service] IS NULL AND @Service IS NULL)  OR [SKU] <> @SKU OR ([SKU] IS NULL AND NOT @SKU IS NULL) OR (NOT [SKU] IS NULL AND @SKU IS NULL)  OR [Unit] <> @Unit OR ([Unit] IS NULL AND NOT @Unit IS NULL) OR (NOT [Unit] IS NULL AND @Unit IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Price DECIMAL(15,2),   @Service BIT,   @SKU UNIQUEIDENTIFIER,    @Unit NVARCHAR(5) AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[RIM] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [IsFolder] = @IsFolder,       [Parent] = @Parent,       [Description] = @Description,       [Code] = @Code,       [Price] = @Price,       [Service] = @Service,       [SKU] = @SKU,       [Unit] = @Unit      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [IsFolder] <> @IsFolder OR ([IsFolder] IS NULL AND NOT @IsFolder IS NULL) OR (NOT [IsFolder] IS NULL AND @IsFolder IS NULL)  OR [Parent] <> @Parent OR ([Parent] IS NULL AND NOT @Parent IS NULL) OR (NOT [Parent] IS NULL AND @Parent IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Price] <> @Price OR ([Price] IS NULL AND NOT @Price IS NULL) OR (NOT [Price] IS NULL AND @Price IS NULL)  OR [Service] <> @Service OR ([Service] IS NULL AND NOT @Service IS NULL) OR (NOT [Service] IS NULL AND @Service IS NULL)  OR [SKU] <> @SKU OR ([SKU] IS NULL AND NOT @SKU IS NULL) OR (NOT [SKU] IS NULL AND @SKU IS NULL)  OR [Unit] <> @Unit OR ([Unit] IS NULL AND NOT @Unit IS NULL) OR (NOT [Unit] IS NULL AND @Unit IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3833,20 +3809,20 @@ PRINT N'Altering [Catalog].[RIM_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[RIM_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@IsFolder BIT,		@Parent UNIQUEIDENTIFIER,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Price DECIMAL(15,2),		@Service BIT,		@SKU UNIQUEIDENTIFIER,		@Unit NVARCHAR(5)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[RIM] WHERE Id = @Id) 
-	UPDATE [Catalog].[RIM] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[IsFolder] = @IsFolder,				[Parent] = @Parent,				[Description] = @Description,				[Code] = @Code,				[Price] = @Price,				[Service] = @Service,				[SKU] = @SKU,				[Unit] = @Unit			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[RIM] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[IsFolder],				[Parent],				[Description],				[Code],				[Price],				[Service],				[SKU],				[Unit]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@IsFolder,				@Parent,				@Description,				@Code,				@Price,				@Service,				@SKU,				@Unit			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.RIM',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @IsFolder BIT,    @Parent UNIQUEIDENTIFIER,   @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Price DECIMAL(15,2),   @Service BIT,   @SKU UNIQUEIDENTIFIER,    @Unit NVARCHAR(5) AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[RIM] WHERE Id = @Id) 
+  UPDATE [Catalog].[RIM] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [IsFolder] = @IsFolder,       [Parent] = @Parent,       [Description] = @Description,       [Code] = @Code,       [Price] = @Price,       [Service] = @Service,       [SKU] = @SKU,       [Unit] = @Unit      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[RIM] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [IsFolder],       [Parent],       [Description],        [Code],       [Price],        [Service],        [SKU],        [Unit]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @IsFolder,        @Parent,        @Description,       @Code,        @Price,       @Service,       @SKU,       @Unit     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.RIM',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3855,13 +3831,13 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Client_Files_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Client_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Client_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3870,12 +3846,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[Client_Files_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Client_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Client_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[FullFileName],[FileName]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Client_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[FullFileName],[FileName]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3885,15 +3861,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[SettingMobileApplication_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@DataType UNIQUEIDENTIFIER,		@LogicValue BIT,		@NumericValue INT	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[SettingMobileApplication]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[DataType],				[LogicValue],				[NumericValue]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@DataType,				@LogicValue,				@NumericValue			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @DataType UNIQUEIDENTIFIER,   @LogicValue BIT,    @NumericValue INT AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[SettingMobileApplication]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [DataType],       [LogicValue],       [NumericValue]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @DataType,        @LogicValue,        @NumericValue     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3901,18 +3877,18 @@ PRINT N'Altering [Catalog].[Client_Files_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[Client_Files_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Client_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
-	UPDATE [Catalog].[Client_Files] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[FullFileName] = @FullFileName,				[FileName] = @FileName			WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Catalog].[Client_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Client_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
+  UPDATE [Catalog].[Client_Files] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [FullFileName] = @FullFileName,       [FileName] = @FileName      WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Catalog].[Client_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3920,12 +3896,12 @@ PRINT N'Altering [Catalog].[SettingMobileApplication_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[SettingMobileApplication_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@DataType UNIQUEIDENTIFIER,		@LogicValue BIT,		@NumericValue INT	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[SettingMobileApplication] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[DataType] = @DataType,				[LogicValue] = @LogicValue,				[NumericValue] = @NumericValue			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [DataType] <> @DataType OR ([DataType] IS NULL AND NOT @DataType IS NULL) OR (NOT [DataType] IS NULL AND @DataType IS NULL)  OR [LogicValue] <> @LogicValue OR ([LogicValue] IS NULL AND NOT @LogicValue IS NULL) OR (NOT [LogicValue] IS NULL AND @LogicValue IS NULL)  OR [NumericValue] <> @NumericValue OR ([NumericValue] IS NULL AND NOT @NumericValue IS NULL) OR (NOT [NumericValue] IS NULL AND @NumericValue IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @DataType UNIQUEIDENTIFIER,   @LogicValue BIT,    @NumericValue INT AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[SettingMobileApplication] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [DataType] = @DataType,       [LogicValue] = @LogicValue,       [NumericValue] = @NumericValue      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [DataType] <> @DataType OR ([DataType] IS NULL AND NOT @DataType IS NULL) OR (NOT [DataType] IS NULL AND @DataType IS NULL)  OR [LogicValue] <> @LogicValue OR ([LogicValue] IS NULL AND NOT @LogicValue IS NULL) OR (NOT [LogicValue] IS NULL AND @LogicValue IS NULL)  OR [NumericValue] <> @NumericValue OR ([NumericValue] IS NULL AND NOT @NumericValue IS NULL) OR (NOT [NumericValue] IS NULL AND @NumericValue IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3934,22 +3910,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[Client_Files_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Client_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Client_Files] SET 
-				[LineNumber] = D.[LineNumber],				[FullFileName] = D.[FullFileName],				[FileName] = D.[FileName]			FROM [Catalog].[Client_Files] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Client_Files] SET 
+        [LineNumber] = D.[LineNumber],        [FullFileName] = D.[FullFileName],        [FileName] = D.[FileName]     FROM [Catalog].[Client_Files] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))  WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[FullFileName] <> D.[FullFileName] OR T.[FileName] <> D.[FileName] ) 
  
-	INSERT INTO [Catalog].[Client_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[FullFileName],D.[FileName]		FROM @Data D 
-		LEFT JOIN [Catalog].[Client_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[Client_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[FullFileName],D.[FileName]   FROM @Data D 
+    LEFT JOIN [Catalog].[Client_Files] T ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[Client_Files] 
-	FROM [Catalog].[Client_Files] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL))	WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL	 
+  DELETE FROM [Catalog].[Client_Files] 
+  FROM [Catalog].[Client_Files] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[FullFileName] = D.[FullFileName] OR (T.[FullFileName] IS NULL AND D.[FullFileName] IS NULL)) AND (T.[FileName] = D.[FileName] OR (T.[FileName] IS NULL AND D.[FileName] IS NULL)) WHERE T.Ref = @Ref AND D.[FullFileName] IS NULL AND D.[FileName] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3957,20 +3933,20 @@ PRINT N'Altering [Catalog].[SettingMobileApplication_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[SettingMobileApplication_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@DataType UNIQUEIDENTIFIER,		@LogicValue BIT,		@NumericValue INT	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[SettingMobileApplication] WHERE Id = @Id) 
-	UPDATE [Catalog].[SettingMobileApplication] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[DataType] = @DataType,				[LogicValue] = @LogicValue,				[NumericValue] = @NumericValue			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[SettingMobileApplication] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[DataType],				[LogicValue],				[NumericValue]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@DataType,				@LogicValue,				@NumericValue			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.SettingMobileApplication',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @DataType UNIQUEIDENTIFIER,   @LogicValue BIT,    @NumericValue INT AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[SettingMobileApplication] WHERE Id = @Id) 
+  UPDATE [Catalog].[SettingMobileApplication] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [DataType] = @DataType,       [LogicValue] = @LogicValue,       [NumericValue] = @NumericValue      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[SettingMobileApplication] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [DataType],       [LogicValue],       [NumericValue]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @DataType,        @LogicValue,        @NumericValue     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.SettingMobileApplication',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3978,12 +3954,12 @@ PRINT N'Altering [Catalog].[Client_Files_adm_delete]'
 GO
  
 ALTER PROCEDURE [Catalog].[Client_Files_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@FullFileName NVARCHAR(1000) 
-		,@FileName UNIQUEIDENTIFIER 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Client_Files] 
-	WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName	
+    ,@FullFileName NVARCHAR(1000) 
+    ,@FileName UNIQUEIDENTIFIER 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Client_Files] 
+  WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName  
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -3993,15 +3969,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[TypesDepartures_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[TypesDepartures]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[TypesDepartures]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4009,12 +3985,12 @@ PRINT N'Altering [Catalog].[TypesDepartures_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[TypesDepartures_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[TypesDepartures] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[TypesDepartures] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4022,20 +3998,20 @@ PRINT N'Altering [Catalog].[TypesDepartures_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[TypesDepartures_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[TypesDepartures] WHERE Id = @Id) 
-	UPDATE [Catalog].[TypesDepartures] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[TypesDepartures] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.TypesDepartures',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9) AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[TypesDepartures] WHERE Id = @Id) 
+  UPDATE [Catalog].[TypesDepartures] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[TypesDepartures] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code]      ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.TypesDepartures',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4045,15 +4021,15 @@ GO
  
  
 ALTER PROCEDURE [Document].[CheckList_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(100),		@Project NVARCHAR(500),		@Status UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[CheckList]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Posted],				[DeletionMark],				[Date],				[Number],				[Description],				[Project],				[Status]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Posted,				@DeletionMark,				@Date,				@Number,				@Description,				@Project,				@Status			)
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(100),   @Project NVARCHAR(500),   @Status UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[CheckList]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Posted],       [DeletionMark],       [Date],       [Number],       [Description],        [Project],        [Status]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Posted,        @DeletionMark,        @Date,        @Number,        @Description,       @Project,       @Status     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4061,12 +4037,12 @@ PRINT N'Altering [Document].[CheckList_adm_update]'
 GO
  
 ALTER PROCEDURE [Document].[CheckList_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(100),		@Project NVARCHAR(500),		@Status UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[CheckList] SET 
-				[Id] = @Id,				[Posted] = @Posted,				[DeletionMark] = @DeletionMark,				[Date] = @Date,				[Number] = @Number,				[Description] = @Description,				[Project] = @Project,				[Status] = @Status			WHERE Id = @Id AND 
-	( 1=0 OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Project] <> @Project OR ([Project] IS NULL AND NOT @Project IS NULL) OR (NOT [Project] IS NULL AND @Project IS NULL)  OR [Status] <> @Status OR ([Status] IS NULL AND NOT @Status IS NULL) OR (NOT [Status] IS NULL AND @Status IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(100),   @Project NVARCHAR(500),   @Status UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  UPDATE [Document].[CheckList] SET 
+        [Id] = @Id,       [Posted] = @Posted,       [DeletionMark] = @DeletionMark,       [Date] = @Date,       [Number] = @Number,       [Description] = @Description,       [Project] = @Project,       [Status] = @Status      WHERE Id = @Id AND 
+  ( 1=0 OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Project] <> @Project OR ([Project] IS NULL AND NOT @Project IS NULL) OR (NOT [Project] IS NULL AND @Project IS NULL)  OR [Status] <> @Status OR ([Status] IS NULL AND NOT @Status IS NULL) OR (NOT [Status] IS NULL AND @Status IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4074,20 +4050,20 @@ PRINT N'Altering [Document].[CheckList_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Document].[CheckList_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@Description NVARCHAR(100),		@Project NVARCHAR(500),		@Status UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[CheckList] WHERE Id = @Id) 
-	UPDATE [Document].[CheckList] SET 
-				[Id] = @Id,				[Posted] = @Posted,				[DeletionMark] = @DeletionMark,				[Date] = @Date,				[Number] = @Number,				[Description] = @Description,				[Project] = @Project,				[Status] = @Status			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Document].[CheckList] 
-	( 
-				[Id],				[Posted],				[DeletionMark],				[Date],				[Number],				[Description],				[Project],				[Status]			) 
-	VALUES 
-	( 
-				@Id,				@Posted,				@DeletionMark,				@Date,				@Number,				@Description,				@Project,				@Status			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.CheckList',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @Description NVARCHAR(100),   @Project NVARCHAR(500),   @Status UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[CheckList] WHERE Id = @Id) 
+  UPDATE [Document].[CheckList] SET 
+        [Id] = @Id,       [Posted] = @Posted,       [DeletionMark] = @DeletionMark,       [Date] = @Date,       [Number] = @Number,       [Description] = @Description,       [Project] = @Project,       [Status] = @Status      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Document].[CheckList] 
+  ( 
+        [Id],       [Posted],       [DeletionMark],       [Date],       [Number],       [Description],        [Project],        [Status]      ) 
+  VALUES 
+  ( 
+        @Id,        @Posted,        @DeletionMark,        @Date,        @Number,        @Description,       @Project,       @Status     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.CheckList',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4098,15 +4074,15 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[Contacts_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Position NVARCHAR(100),		@Tel NVARCHAR(100),		@EMail NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Contacts]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Position],				[Tel],				[EMail]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Position,				@Tel,				@EMail			)
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Position NVARCHAR(100),    @Tel NVARCHAR(100),   @EMail NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Contacts]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Position],       [Tel],        [EMail]     )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Position,        @Tel,       @EMail      )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4114,12 +4090,12 @@ PRINT N'Altering [Catalog].[Contacts_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[Contacts_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Position NVARCHAR(100),		@Tel NVARCHAR(100),		@EMail NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Contacts] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Position] = @Position,				[Tel] = @Tel,				[EMail] = @EMail			WHERE Id = @Id AND 
-	( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Position] <> @Position OR ([Position] IS NULL AND NOT @Position IS NULL) OR (NOT [Position] IS NULL AND @Position IS NULL)  OR [Tel] <> @Tel OR ([Tel] IS NULL AND NOT @Tel IS NULL) OR (NOT [Tel] IS NULL AND @Tel IS NULL)  OR [EMail] <> @EMail OR ([EMail] IS NULL AND NOT @EMail IS NULL) OR (NOT [EMail] IS NULL AND @EMail IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Position NVARCHAR(100),    @Tel NVARCHAR(100),   @EMail NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Contacts] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Position] = @Position,       [Tel] = @Tel,       [EMail] = @EMail      WHERE Id = @Id AND 
+  ( 1=0 OR [Predefined] <> @Predefined OR ([Predefined] IS NULL AND NOT @Predefined IS NULL) OR (NOT [Predefined] IS NULL AND @Predefined IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  OR [Code] <> @Code OR ([Code] IS NULL AND NOT @Code IS NULL) OR (NOT [Code] IS NULL AND @Code IS NULL)  OR [Position] <> @Position OR ([Position] IS NULL AND NOT @Position IS NULL) OR (NOT [Position] IS NULL AND @Position IS NULL)  OR [Tel] <> @Tel OR ([Tel] IS NULL AND NOT @Tel IS NULL) OR (NOT [Tel] IS NULL AND @Tel IS NULL)  OR [EMail] <> @EMail OR ([EMail] IS NULL AND NOT @EMail IS NULL) OR (NOT [EMail] IS NULL AND @EMail IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4127,20 +4103,20 @@ PRINT N'Altering [Catalog].[Contacts_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Catalog].[Contacts_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Predefined BIT,		@DeletionMark BIT,		@Description NVARCHAR(100),		@Code NVARCHAR(9),		@Position NVARCHAR(100),		@Tel NVARCHAR(100),		@EMail NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Contacts] WHERE Id = @Id) 
-	UPDATE [Catalog].[Contacts] SET 
-				[Id] = @Id,				[Predefined] = @Predefined,				[DeletionMark] = @DeletionMark,				[Description] = @Description,				[Code] = @Code,				[Position] = @Position,				[Tel] = @Tel,				[EMail] = @EMail			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Catalog].[Contacts] 
-	( 
-				[Id],				[Predefined],				[DeletionMark],				[Description],				[Code],				[Position],				[Tel],				[EMail]			) 
-	VALUES 
-	( 
-				@Id,				@Predefined,				@DeletionMark,				@Description,				@Code,				@Position,				@Tel,				@EMail			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Contacts',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Predefined BIT,    @DeletionMark BIT,    @Description NVARCHAR(100),   @Code NVARCHAR(9),    @Position NVARCHAR(100),    @Tel NVARCHAR(100),   @EMail NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Contacts] WHERE Id = @Id) 
+  UPDATE [Catalog].[Contacts] SET 
+        [Id] = @Id,       [Predefined] = @Predefined,       [DeletionMark] = @DeletionMark,       [Description] = @Description,       [Code] = @Code,       [Position] = @Position,       [Tel] = @Tel,       [EMail] = @EMail      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Catalog].[Contacts] 
+  ( 
+        [Id],       [Predefined],       [DeletionMark],       [Description],        [Code],       [Position],       [Tel],        [EMail]     ) 
+  VALUES 
+  ( 
+        @Id,        @Predefined,        @DeletionMark,        @Description,       @Code,        @Position,        @Tel,       @EMail      ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Catalog.Contacts',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4151,15 +4127,15 @@ GO
  
  
 ALTER PROCEDURE [Document].[Event_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@ApplicationJustification NVARCHAR(500),		@Client UNIQUEIDENTIFIER,		@DivisionSource NVARCHAR(500),		@KindEvent UNIQUEIDENTIFIER,		@AnySale BIT,		@AnyProblem BIT,		@StartDatePlan DATETIME2,		@EndDatePlan DATETIME2,		@ActualStartDate DATETIME2,		@ActualEndDate DATETIME2,		@Author UNIQUEIDENTIFIER,		@UserMA UNIQUEIDENTIFIER,		@Comment NVARCHAR(1000),		@DetailedDescription NVARCHAR(1000),		@CommentContractor NVARCHAR(1000),		@TargInteractions NVARCHAR(100),		@ResultInteractions NVARCHAR(100),		@Status UNIQUEIDENTIFIER,		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@GPSTime DATETIME2,		@ContactVisiting UNIQUEIDENTIFIER,		@TypesDepartures UNIQUEIDENTIFIER,		@Importance UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Posted],				[DeletionMark],				[Date],				[Number],				[ApplicationJustification],				[Client],				[DivisionSource],				[KindEvent],				[AnySale],				[AnyProblem],				[StartDatePlan],				[EndDatePlan],				[ActualStartDate],				[ActualEndDate],				[Author],				[UserMA],				[Comment],				[DetailedDescription],				[CommentContractor],				[TargInteractions],				[ResultInteractions],				[Status],				[Latitude],				[Longitude],				[GPSTime],				[ContactVisiting],				[TypesDepartures],				[Importance]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Posted,				@DeletionMark,				@Date,				@Number,				@ApplicationJustification,				@Client,				@DivisionSource,				@KindEvent,				@AnySale,				@AnyProblem,				@StartDatePlan,				@EndDatePlan,				@ActualStartDate,				@ActualEndDate,				@Author,				@UserMA,				@Comment,				@DetailedDescription,				@CommentContractor,				@TargInteractions,				@ResultInteractions,				@Status,				@Latitude,				@Longitude,				@GPSTime,				@ContactVisiting,				@TypesDepartures,				@Importance			)
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @ApplicationJustification NVARCHAR(500),    @Client UNIQUEIDENTIFIER,   @DivisionSource NVARCHAR(500),    @KindEvent UNIQUEIDENTIFIER,    @AnySale BIT,   @AnyProblem BIT,    @StartDatePlan DATETIME2,   @EndDatePlan DATETIME2,   @ActualStartDate DATETIME2,   @ActualEndDate DATETIME2,   @Author UNIQUEIDENTIFIER,   @UserMA UNIQUEIDENTIFIER,   @Comment NVARCHAR(1000),    @DetailedDescription NVARCHAR(1000),    @CommentContractor NVARCHAR(1000),    @TargInteractions NVARCHAR(100),    @ResultInteractions NVARCHAR(100),    @Status UNIQUEIDENTIFIER,   @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @GPSTime DATETIME2,   @ContactVisiting UNIQUEIDENTIFIER,    @TypesDepartures UNIQUEIDENTIFIER,    @Importance UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Posted],       [DeletionMark],       [Date],       [Number],       [ApplicationJustification],       [Client],       [DivisionSource],       [KindEvent],        [AnySale],        [AnyProblem],       [StartDatePlan],        [EndDatePlan],        [ActualStartDate],        [ActualEndDate],        [Author],       [UserMA],       [Comment],        [DetailedDescription],        [CommentContractor],        [TargInteractions],       [ResultInteractions],       [Status],       [Latitude],       [Longitude],        [GPSTime],        [ContactVisiting],        [TypesDepartures],        [Importance]      )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Posted,        @DeletionMark,        @Date,        @Number,        @ApplicationJustification,        @Client,        @DivisionSource,        @KindEvent,       @AnySale,       @AnyProblem,        @StartDatePlan,       @EndDatePlan,       @ActualStartDate,       @ActualEndDate,       @Author,        @UserMA,        @Comment,       @DetailedDescription,       @CommentContractor,       @TargInteractions,        @ResultInteractions,        @Status,        @Latitude,        @Longitude,       @GPSTime,       @ContactVisiting,       @TypesDepartures,       @Importance     )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4167,12 +4143,12 @@ PRINT N'Altering [Document].[Event_adm_update]'
 GO
  
 ALTER PROCEDURE [Document].[Event_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@ApplicationJustification NVARCHAR(500),		@Client UNIQUEIDENTIFIER,		@DivisionSource NVARCHAR(500),		@KindEvent UNIQUEIDENTIFIER,		@AnySale BIT,		@AnyProblem BIT,		@StartDatePlan DATETIME2,		@EndDatePlan DATETIME2,		@ActualStartDate DATETIME2,		@ActualEndDate DATETIME2,		@Author UNIQUEIDENTIFIER,		@UserMA UNIQUEIDENTIFIER,		@Comment NVARCHAR(1000),		@DetailedDescription NVARCHAR(1000),		@CommentContractor NVARCHAR(1000),		@TargInteractions NVARCHAR(100),		@ResultInteractions NVARCHAR(100),		@Status UNIQUEIDENTIFIER,		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@GPSTime DATETIME2,		@ContactVisiting UNIQUEIDENTIFIER,		@TypesDepartures UNIQUEIDENTIFIER,		@Importance UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	UPDATE [Document].[Event] SET 
-				[Id] = @Id,				[Posted] = @Posted,				[DeletionMark] = @DeletionMark,				[Date] = @Date,				[Number] = @Number,				[ApplicationJustification] = @ApplicationJustification,				[Client] = @Client,				[DivisionSource] = @DivisionSource,				[KindEvent] = @KindEvent,				[AnySale] = @AnySale,				[AnyProblem] = @AnyProblem,				[StartDatePlan] = @StartDatePlan,				[EndDatePlan] = @EndDatePlan,				[ActualStartDate] = @ActualStartDate,				[ActualEndDate] = @ActualEndDate,				[Author] = @Author,				[UserMA] = @UserMA,				[Comment] = @Comment,				[DetailedDescription] = @DetailedDescription,				[CommentContractor] = @CommentContractor,				[TargInteractions] = @TargInteractions,				[ResultInteractions] = @ResultInteractions,				[Status] = @Status,				[Latitude] = @Latitude,				[Longitude] = @Longitude,				[GPSTime] = @GPSTime,				[ContactVisiting] = @ContactVisiting,				[TypesDepartures] = @TypesDepartures,				[Importance] = @Importance			WHERE Id = @Id AND 
-	( 1=0 OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [ApplicationJustification] <> @ApplicationJustification OR ([ApplicationJustification] IS NULL AND NOT @ApplicationJustification IS NULL) OR (NOT [ApplicationJustification] IS NULL AND @ApplicationJustification IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [DivisionSource] <> @DivisionSource OR ([DivisionSource] IS NULL AND NOT @DivisionSource IS NULL) OR (NOT [DivisionSource] IS NULL AND @DivisionSource IS NULL)  OR [KindEvent] <> @KindEvent OR ([KindEvent] IS NULL AND NOT @KindEvent IS NULL) OR (NOT [KindEvent] IS NULL AND @KindEvent IS NULL)  OR [AnySale] <> @AnySale OR ([AnySale] IS NULL AND NOT @AnySale IS NULL) OR (NOT [AnySale] IS NULL AND @AnySale IS NULL)  OR [AnyProblem] <> @AnyProblem OR ([AnyProblem] IS NULL AND NOT @AnyProblem IS NULL) OR (NOT [AnyProblem] IS NULL AND @AnyProblem IS NULL)  OR [StartDatePlan] <> @StartDatePlan OR ([StartDatePlan] IS NULL AND NOT @StartDatePlan IS NULL) OR (NOT [StartDatePlan] IS NULL AND @StartDatePlan IS NULL)  OR [EndDatePlan] <> @EndDatePlan OR ([EndDatePlan] IS NULL AND NOT @EndDatePlan IS NULL) OR (NOT [EndDatePlan] IS NULL AND @EndDatePlan IS NULL)  OR [ActualStartDate] <> @ActualStartDate OR ([ActualStartDate] IS NULL AND NOT @ActualStartDate IS NULL) OR (NOT [ActualStartDate] IS NULL AND @ActualStartDate IS NULL)  OR [ActualEndDate] <> @ActualEndDate OR ([ActualEndDate] IS NULL AND NOT @ActualEndDate IS NULL) OR (NOT [ActualEndDate] IS NULL AND @ActualEndDate IS NULL)  OR [Author] <> @Author OR ([Author] IS NULL AND NOT @Author IS NULL) OR (NOT [Author] IS NULL AND @Author IS NULL)  OR [UserMA] <> @UserMA OR ([UserMA] IS NULL AND NOT @UserMA IS NULL) OR (NOT [UserMA] IS NULL AND @UserMA IS NULL)  OR [Comment] <> @Comment OR ([Comment] IS NULL AND NOT @Comment IS NULL) OR (NOT [Comment] IS NULL AND @Comment IS NULL)  OR [DetailedDescription] <> @DetailedDescription OR ([DetailedDescription] IS NULL AND NOT @DetailedDescription IS NULL) OR (NOT [DetailedDescription] IS NULL AND @DetailedDescription IS NULL)  OR [CommentContractor] <> @CommentContractor OR ([CommentContractor] IS NULL AND NOT @CommentContractor IS NULL) OR (NOT [CommentContractor] IS NULL AND @CommentContractor IS NULL)  OR [TargInteractions] <> @TargInteractions OR ([TargInteractions] IS NULL AND NOT @TargInteractions IS NULL) OR (NOT [TargInteractions] IS NULL AND @TargInteractions IS NULL)  OR [ResultInteractions] <> @ResultInteractions OR ([ResultInteractions] IS NULL AND NOT @ResultInteractions IS NULL) OR (NOT [ResultInteractions] IS NULL AND @ResultInteractions IS NULL)  OR [Status] <> @Status OR ([Status] IS NULL AND NOT @Status IS NULL) OR (NOT [Status] IS NULL AND @Status IS NULL)  OR [Latitude] <> @Latitude OR ([Latitude] IS NULL AND NOT @Latitude IS NULL) OR (NOT [Latitude] IS NULL AND @Latitude IS NULL)  OR [Longitude] <> @Longitude OR ([Longitude] IS NULL AND NOT @Longitude IS NULL) OR (NOT [Longitude] IS NULL AND @Longitude IS NULL)  OR [GPSTime] <> @GPSTime OR ([GPSTime] IS NULL AND NOT @GPSTime IS NULL) OR (NOT [GPSTime] IS NULL AND @GPSTime IS NULL)  OR [ContactVisiting] <> @ContactVisiting OR ([ContactVisiting] IS NULL AND NOT @ContactVisiting IS NULL) OR (NOT [ContactVisiting] IS NULL AND @ContactVisiting IS NULL)  OR [TypesDepartures] <> @TypesDepartures OR ([TypesDepartures] IS NULL AND NOT @TypesDepartures IS NULL) OR (NOT [TypesDepartures] IS NULL AND @TypesDepartures IS NULL)  OR [Importance] <> @Importance OR ([Importance] IS NULL AND NOT @Importance IS NULL) OR (NOT [Importance] IS NULL AND @Importance IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @ApplicationJustification NVARCHAR(500),    @Client UNIQUEIDENTIFIER,   @DivisionSource NVARCHAR(500),    @KindEvent UNIQUEIDENTIFIER,    @AnySale BIT,   @AnyProblem BIT,    @StartDatePlan DATETIME2,   @EndDatePlan DATETIME2,   @ActualStartDate DATETIME2,   @ActualEndDate DATETIME2,   @Author UNIQUEIDENTIFIER,   @UserMA UNIQUEIDENTIFIER,   @Comment NVARCHAR(1000),    @DetailedDescription NVARCHAR(1000),    @CommentContractor NVARCHAR(1000),    @TargInteractions NVARCHAR(100),    @ResultInteractions NVARCHAR(100),    @Status UNIQUEIDENTIFIER,   @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @GPSTime DATETIME2,   @ContactVisiting UNIQUEIDENTIFIER,    @TypesDepartures UNIQUEIDENTIFIER,    @Importance UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  UPDATE [Document].[Event] SET 
+        [Id] = @Id,       [Posted] = @Posted,       [DeletionMark] = @DeletionMark,       [Date] = @Date,       [Number] = @Number,       [ApplicationJustification] = @ApplicationJustification,       [Client] = @Client,       [DivisionSource] = @DivisionSource,       [KindEvent] = @KindEvent,       [AnySale] = @AnySale,       [AnyProblem] = @AnyProblem,       [StartDatePlan] = @StartDatePlan,       [EndDatePlan] = @EndDatePlan,       [ActualStartDate] = @ActualStartDate,       [ActualEndDate] = @ActualEndDate,       [Author] = @Author,       [UserMA] = @UserMA,       [Comment] = @Comment,       [DetailedDescription] = @DetailedDescription,       [CommentContractor] = @CommentContractor,       [TargInteractions] = @TargInteractions,       [ResultInteractions] = @ResultInteractions,       [Status] = @Status,       [Latitude] = @Latitude,       [Longitude] = @Longitude,       [GPSTime] = @GPSTime,       [ContactVisiting] = @ContactVisiting,       [TypesDepartures] = @TypesDepartures,       [Importance] = @Importance      WHERE Id = @Id AND 
+  ( 1=0 OR [Posted] <> @Posted OR ([Posted] IS NULL AND NOT @Posted IS NULL) OR (NOT [Posted] IS NULL AND @Posted IS NULL)  OR [DeletionMark] <> @DeletionMark OR ([DeletionMark] IS NULL AND NOT @DeletionMark IS NULL) OR (NOT [DeletionMark] IS NULL AND @DeletionMark IS NULL)  OR [Date] <> @Date OR ([Date] IS NULL AND NOT @Date IS NULL) OR (NOT [Date] IS NULL AND @Date IS NULL)  OR [Number] <> @Number OR ([Number] IS NULL AND NOT @Number IS NULL) OR (NOT [Number] IS NULL AND @Number IS NULL)  OR [ApplicationJustification] <> @ApplicationJustification OR ([ApplicationJustification] IS NULL AND NOT @ApplicationJustification IS NULL) OR (NOT [ApplicationJustification] IS NULL AND @ApplicationJustification IS NULL)  OR [Client] <> @Client OR ([Client] IS NULL AND NOT @Client IS NULL) OR (NOT [Client] IS NULL AND @Client IS NULL)  OR [DivisionSource] <> @DivisionSource OR ([DivisionSource] IS NULL AND NOT @DivisionSource IS NULL) OR (NOT [DivisionSource] IS NULL AND @DivisionSource IS NULL)  OR [KindEvent] <> @KindEvent OR ([KindEvent] IS NULL AND NOT @KindEvent IS NULL) OR (NOT [KindEvent] IS NULL AND @KindEvent IS NULL)  OR [AnySale] <> @AnySale OR ([AnySale] IS NULL AND NOT @AnySale IS NULL) OR (NOT [AnySale] IS NULL AND @AnySale IS NULL)  OR [AnyProblem] <> @AnyProblem OR ([AnyProblem] IS NULL AND NOT @AnyProblem IS NULL) OR (NOT [AnyProblem] IS NULL AND @AnyProblem IS NULL)  OR [StartDatePlan] <> @StartDatePlan OR ([StartDatePlan] IS NULL AND NOT @StartDatePlan IS NULL) OR (NOT [StartDatePlan] IS NULL AND @StartDatePlan IS NULL)  OR [EndDatePlan] <> @EndDatePlan OR ([EndDatePlan] IS NULL AND NOT @EndDatePlan IS NULL) OR (NOT [EndDatePlan] IS NULL AND @EndDatePlan IS NULL)  OR [ActualStartDate] <> @ActualStartDate OR ([ActualStartDate] IS NULL AND NOT @ActualStartDate IS NULL) OR (NOT [ActualStartDate] IS NULL AND @ActualStartDate IS NULL)  OR [ActualEndDate] <> @ActualEndDate OR ([ActualEndDate] IS NULL AND NOT @ActualEndDate IS NULL) OR (NOT [ActualEndDate] IS NULL AND @ActualEndDate IS NULL)  OR [Author] <> @Author OR ([Author] IS NULL AND NOT @Author IS NULL) OR (NOT [Author] IS NULL AND @Author IS NULL)  OR [UserMA] <> @UserMA OR ([UserMA] IS NULL AND NOT @UserMA IS NULL) OR (NOT [UserMA] IS NULL AND @UserMA IS NULL)  OR [Comment] <> @Comment OR ([Comment] IS NULL AND NOT @Comment IS NULL) OR (NOT [Comment] IS NULL AND @Comment IS NULL)  OR [DetailedDescription] <> @DetailedDescription OR ([DetailedDescription] IS NULL AND NOT @DetailedDescription IS NULL) OR (NOT [DetailedDescription] IS NULL AND @DetailedDescription IS NULL)  OR [CommentContractor] <> @CommentContractor OR ([CommentContractor] IS NULL AND NOT @CommentContractor IS NULL) OR (NOT [CommentContractor] IS NULL AND @CommentContractor IS NULL)  OR [TargInteractions] <> @TargInteractions OR ([TargInteractions] IS NULL AND NOT @TargInteractions IS NULL) OR (NOT [TargInteractions] IS NULL AND @TargInteractions IS NULL)  OR [ResultInteractions] <> @ResultInteractions OR ([ResultInteractions] IS NULL AND NOT @ResultInteractions IS NULL) OR (NOT [ResultInteractions] IS NULL AND @ResultInteractions IS NULL)  OR [Status] <> @Status OR ([Status] IS NULL AND NOT @Status IS NULL) OR (NOT [Status] IS NULL AND @Status IS NULL)  OR [Latitude] <> @Latitude OR ([Latitude] IS NULL AND NOT @Latitude IS NULL) OR (NOT [Latitude] IS NULL AND @Latitude IS NULL)  OR [Longitude] <> @Longitude OR ([Longitude] IS NULL AND NOT @Longitude IS NULL) OR (NOT [Longitude] IS NULL AND @Longitude IS NULL)  OR [GPSTime] <> @GPSTime OR ([GPSTime] IS NULL AND NOT @GPSTime IS NULL) OR (NOT [GPSTime] IS NULL AND @GPSTime IS NULL)  OR [ContactVisiting] <> @ContactVisiting OR ([ContactVisiting] IS NULL AND NOT @ContactVisiting IS NULL) OR (NOT [ContactVisiting] IS NULL AND @ContactVisiting IS NULL)  OR [TypesDepartures] <> @TypesDepartures OR ([TypesDepartures] IS NULL AND NOT @TypesDepartures IS NULL) OR (NOT [TypesDepartures] IS NULL AND @TypesDepartures IS NULL)  OR [Importance] <> @Importance OR ([Importance] IS NULL AND NOT @Importance IS NULL) OR (NOT [Importance] IS NULL AND @Importance IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4180,20 +4156,20 @@ PRINT N'Altering [Document].[Event_adm_markdelete]'
 GO
  
 ALTER PROCEDURE [Document].[Event_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Posted BIT,		@DeletionMark BIT,		@Date DATETIME2,		@Number NVARCHAR(9),		@ApplicationJustification NVARCHAR(500),		@Client UNIQUEIDENTIFIER,		@DivisionSource NVARCHAR(500),		@KindEvent UNIQUEIDENTIFIER,		@AnySale BIT,		@AnyProblem BIT,		@StartDatePlan DATETIME2,		@EndDatePlan DATETIME2,		@ActualStartDate DATETIME2,		@ActualEndDate DATETIME2,		@Author UNIQUEIDENTIFIER,		@UserMA UNIQUEIDENTIFIER,		@Comment NVARCHAR(1000),		@DetailedDescription NVARCHAR(1000),		@CommentContractor NVARCHAR(1000),		@TargInteractions NVARCHAR(100),		@ResultInteractions NVARCHAR(100),		@Status UNIQUEIDENTIFIER,		@Latitude DECIMAL(12,8),		@Longitude DECIMAL(12,8),		@GPSTime DATETIME2,		@ContactVisiting UNIQUEIDENTIFIER,		@TypesDepartures UNIQUEIDENTIFIER,		@Importance UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Event] WHERE Id = @Id) 
-	UPDATE [Document].[Event] SET 
-				[Id] = @Id,				[Posted] = @Posted,				[DeletionMark] = @DeletionMark,				[Date] = @Date,				[Number] = @Number,				[ApplicationJustification] = @ApplicationJustification,				[Client] = @Client,				[DivisionSource] = @DivisionSource,				[KindEvent] = @KindEvent,				[AnySale] = @AnySale,				[AnyProblem] = @AnyProblem,				[StartDatePlan] = @StartDatePlan,				[EndDatePlan] = @EndDatePlan,				[ActualStartDate] = @ActualStartDate,				[ActualEndDate] = @ActualEndDate,				[Author] = @Author,				[UserMA] = @UserMA,				[Comment] = @Comment,				[DetailedDescription] = @DetailedDescription,				[CommentContractor] = @CommentContractor,				[TargInteractions] = @TargInteractions,				[ResultInteractions] = @ResultInteractions,				[Status] = @Status,				[Latitude] = @Latitude,				[Longitude] = @Longitude,				[GPSTime] = @GPSTime,				[ContactVisiting] = @ContactVisiting,				[TypesDepartures] = @TypesDepartures,				[Importance] = @Importance			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Document].[Event] 
-	( 
-				[Id],				[Posted],				[DeletionMark],				[Date],				[Number],				[ApplicationJustification],				[Client],				[DivisionSource],				[KindEvent],				[AnySale],				[AnyProblem],				[StartDatePlan],				[EndDatePlan],				[ActualStartDate],				[ActualEndDate],				[Author],				[UserMA],				[Comment],				[DetailedDescription],				[CommentContractor],				[TargInteractions],				[ResultInteractions],				[Status],				[Latitude],				[Longitude],				[GPSTime],				[ContactVisiting],				[TypesDepartures],				[Importance]			) 
-	VALUES 
-	( 
-				@Id,				@Posted,				@DeletionMark,				@Date,				@Number,				@ApplicationJustification,				@Client,				@DivisionSource,				@KindEvent,				@AnySale,				@AnyProblem,				@StartDatePlan,				@EndDatePlan,				@ActualStartDate,				@ActualEndDate,				@Author,				@UserMA,				@Comment,				@DetailedDescription,				@CommentContractor,				@TargInteractions,				@ResultInteractions,				@Status,				@Latitude,				@Longitude,				@GPSTime,				@ContactVisiting,				@TypesDepartures,				@Importance			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.Event',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Posted BIT,    @DeletionMark BIT,    @Date DATETIME2,    @Number NVARCHAR(9),    @ApplicationJustification NVARCHAR(500),    @Client UNIQUEIDENTIFIER,   @DivisionSource NVARCHAR(500),    @KindEvent UNIQUEIDENTIFIER,    @AnySale BIT,   @AnyProblem BIT,    @StartDatePlan DATETIME2,   @EndDatePlan DATETIME2,   @ActualStartDate DATETIME2,   @ActualEndDate DATETIME2,   @Author UNIQUEIDENTIFIER,   @UserMA UNIQUEIDENTIFIER,   @Comment NVARCHAR(1000),    @DetailedDescription NVARCHAR(1000),    @CommentContractor NVARCHAR(1000),    @TargInteractions NVARCHAR(100),    @ResultInteractions NVARCHAR(100),    @Status UNIQUEIDENTIFIER,   @Latitude DECIMAL(12,8),    @Longitude DECIMAL(12,8),   @GPSTime DATETIME2,   @ContactVisiting UNIQUEIDENTIFIER,    @TypesDepartures UNIQUEIDENTIFIER,    @Importance UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Event] WHERE Id = @Id) 
+  UPDATE [Document].[Event] SET 
+        [Id] = @Id,       [Posted] = @Posted,       [DeletionMark] = @DeletionMark,       [Date] = @Date,       [Number] = @Number,       [ApplicationJustification] = @ApplicationJustification,       [Client] = @Client,       [DivisionSource] = @DivisionSource,       [KindEvent] = @KindEvent,       [AnySale] = @AnySale,       [AnyProblem] = @AnyProblem,       [StartDatePlan] = @StartDatePlan,       [EndDatePlan] = @EndDatePlan,       [ActualStartDate] = @ActualStartDate,       [ActualEndDate] = @ActualEndDate,       [Author] = @Author,       [UserMA] = @UserMA,       [Comment] = @Comment,       [DetailedDescription] = @DetailedDescription,       [CommentContractor] = @CommentContractor,       [TargInteractions] = @TargInteractions,       [ResultInteractions] = @ResultInteractions,       [Status] = @Status,       [Latitude] = @Latitude,       [Longitude] = @Longitude,       [GPSTime] = @GPSTime,       [ContactVisiting] = @ContactVisiting,       [TypesDepartures] = @TypesDepartures,       [Importance] = @Importance      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Document].[Event] 
+  ( 
+        [Id],       [Posted],       [DeletionMark],       [Date],       [Number],       [ApplicationJustification],       [Client],       [DivisionSource],       [KindEvent],        [AnySale],        [AnyProblem],       [StartDatePlan],        [EndDatePlan],        [ActualStartDate],        [ActualEndDate],        [Author],       [UserMA],       [Comment],        [DetailedDescription],        [CommentContractor],        [TargInteractions],       [ResultInteractions],       [Status],       [Latitude],       [Longitude],        [GPSTime],        [ContactVisiting],        [TypesDepartures],        [Importance]      ) 
+  VALUES 
+  ( 
+        @Id,        @Posted,        @DeletionMark,        @Date,        @Number,        @ApplicationJustification,        @Client,        @DivisionSource,        @KindEvent,       @AnySale,       @AnyProblem,        @StartDatePlan,       @EndDatePlan,       @ActualStartDate,       @ActualEndDate,       @Author,        @UserMA,        @Comment,       @DetailedDescription,       @CommentContractor,       @TargInteractions,        @ResultInteractions,        @Status,        @Latitude,        @Longitude,       @GPSTime,       @ContactVisiting,       @TypesDepartures,       @Importance     ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Document.Event',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4203,15 +4179,15 @@ GO
  
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_insert] 
-		@Id UNIQUEIDENTIFIER,		@Name NVARCHAR(100),		@Description NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Enum].[StatusTasks]( 
-		[Timestamp], [IsDeleted], 
-				[Id],				[Name],				[Description]			)  
-	VALUES 
-	( 
-		1, 0, 
-				@Id,				@Name,				@Description			)
+    @Id UNIQUEIDENTIFIER,   @Name NVARCHAR(100),    @Description NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Enum].[StatusTasks]( 
+    [Timestamp], [IsDeleted], 
+        [Id],       [Name],       [Description]     )  
+  VALUES 
+  ( 
+    1, 0, 
+        @Id,        @Name,        @Description      )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4219,12 +4195,12 @@ PRINT N'Creating [Enum].[StatusTasks_adm_update]'
 GO
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_update] 
-		@Id UNIQUEIDENTIFIER,		@Name NVARCHAR(100),		@Description NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	UPDATE [Enum].[StatusTasks] SET 
-				[Id] = @Id,				[Name] = @Name,				[Description] = @Description			WHERE Id = @Id AND 
-	( 1=0 OR [Name] <> @Name OR ([Name] IS NULL AND NOT @Name IS NULL) OR (NOT [Name] IS NULL AND @Name IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  ) 
-	DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
+    @Id UNIQUEIDENTIFIER,   @Name NVARCHAR(100),    @Description NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  UPDATE [Enum].[StatusTasks] SET 
+        [Id] = @Id,       [Name] = @Name,       [Description] = @Description      WHERE Id = @Id AND 
+  ( 1=0 OR [Name] <> @Name OR ([Name] IS NULL AND NOT @Name IS NULL) OR (NOT [Name] IS NULL AND @Name IS NULL)  OR [Description] <> @Description OR ([Description] IS NULL AND NOT @Description IS NULL) OR (NOT [Description] IS NULL AND @Description IS NULL)  ) 
+  DELETE FROM [admin].[DeletedObjects] WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4233,13 +4209,13 @@ GO
  
  
 ALTER PROCEDURE [Catalog].[ClientOptions_ListValues_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[ClientOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[ClientOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4247,20 +4223,20 @@ PRINT N'Creating [Enum].[StatusTasks_adm_markdelete]'
 GO
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_markdelete] 
-		@Id UNIQUEIDENTIFIER,		@Name NVARCHAR(100),		@Description NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Enum].[StatusTasks] WHERE Id = @Id) 
-	UPDATE [Enum].[StatusTasks] SET 
-				[Id] = @Id,				[Name] = @Name,				[Description] = @Description			WHERE Id = @Id 
-	ELSE 
-	INSERT INTO [Enum].[StatusTasks] 
-	( 
-				[Id],				[Name],				[Description]			) 
-	VALUES 
-	( 
-				@Id,				@Name,				@Description			) 
-	IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
-		INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Enum.StatusTasks',GETDATE())
+    @Id UNIQUEIDENTIFIER,   @Name NVARCHAR(100),    @Description NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Enum].[StatusTasks] WHERE Id = @Id) 
+  UPDATE [Enum].[StatusTasks] SET 
+        [Id] = @Id,       [Name] = @Name,       [Description] = @Description      WHERE Id = @Id 
+  ELSE 
+  INSERT INTO [Enum].[StatusTasks] 
+  ( 
+        [Id],       [Name],       [Description]     ) 
+  VALUES 
+  ( 
+        @Id,        @Name,        @Description      ) 
+  IF NOT EXISTS(SELECT * FROM [admin].[DeletedObjects] WHERE [Id] = @Id) 
+    INSERT INTO [admin].[DeletedObjects]([Id],[Entity],[CreationDate]) VALUES (@Id,'Enum.StatusTasks',GETDATE())
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4269,12 +4245,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[ClientOptions_ListValues_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_ClientOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[ClientOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Val]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[ClientOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Val]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4282,15 +4258,15 @@ PRINT N'Creating [Enum].[StatusTasks_adm_delete]'
 GO
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_delete] @Id UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
---	DELETE FROM [Enum].[StatusTasks] WHERE Id = @Id 
-	UPDATE [Enum].[StatusTasks_tracking] SET 
-		[sync_row_is_tombstone] = 1,  
-		[local_update_peer_key] = 0,  
-		[update_scope_local_id] = NULL,  
-		[last_change_datetime] = GETDATE()  
-	WHERE Id = @Id 
-	UPDATE [admin].[DeletedObjects] SET [DeletionDate] = GETDATE() WHERE [Id] = @Id
+  SET NOCOUNT ON 
+--  DELETE FROM [Enum].[StatusTasks] WHERE Id = @Id 
+  UPDATE [Enum].[StatusTasks_tracking] SET 
+    [sync_row_is_tombstone] = 1,  
+    [local_update_peer_key] = 0,  
+    [update_scope_local_id] = NULL,  
+    [last_change_datetime] = GETDATE()  
+  WHERE Id = @Id 
+  UPDATE [admin].[DeletedObjects] SET [DeletionDate] = GETDATE() WHERE [Id] = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4299,13 +4275,13 @@ GO
  
  
 ALTER PROCEDURE [Document].[Event_Files_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4313,8 +4289,8 @@ PRINT N'Creating [Enum].[StatusTasks_adm_exists]'
 GO
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_exists] @Id UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	SELECT Id FROM [Enum].[StatusTasks] WHERE Id = @Id
+  SET NOCOUNT ON 
+  SELECT Id FROM [Enum].[StatusTasks] WHERE Id = @Id
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4323,12 +4299,12 @@ GO
  
 CREATE PROCEDURE [Document].[Event_Files_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Document].[T_Event_Files] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Document].[Event_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[FullFileName],[FileName]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Document].[Event_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[FullFileName],[FileName]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4336,23 +4312,23 @@ PRINT N'Creating [Enum].[StatusTasks_adm_getnotexisting]'
 GO
  
 CREATE PROCEDURE [Enum].[StatusTasks_adm_getnotexisting] @Xml XML AS 
-	SET NOCOUNT ON 
-	SELECT  
-	1 AS Tag,  
-	NULL AS Parent, 
-	'Enum.StatusTasks' AS [Entity!1!Name], 
-	NULL AS [Row!2!Id] 
-	UNION ALL 
-	SELECT  
-		2 AS Tag,  
-		1 AS Parent, 
-		NULL AS [Entity!1Name], 
-		T1.c.value('@Id','UNIQUEIDENTIFIER') AS [Row!2!Id] 
-	FROM @Xml.nodes('//Row') T1(c) 
-	LEFT JOIN [Enum].[StatusTasks] T2 ON T2.Id = T1.c.value('@Id','UNIQUEIDENTIFIER') 
-	WHERE T2.Id IS NULL 
-	ORDER BY 2,1 
-	FOR XML EXPLICIT
+  SET NOCOUNT ON 
+  SELECT  
+  1 AS Tag,  
+  NULL AS Parent, 
+  'Enum.StatusTasks' AS [Entity!1!Name], 
+  NULL AS [Row!2!Id] 
+  UNION ALL 
+  SELECT  
+    2 AS Tag,  
+    1 AS Parent, 
+    NULL AS [Entity!1Name], 
+    T1.c.value('@Id','UNIQUEIDENTIFIER') AS [Row!2!Id] 
+  FROM @Xml.nodes('//Row') T1(c) 
+  LEFT JOIN [Enum].[StatusTasks] T2 ON T2.Id = T1.c.value('@Id','UNIQUEIDENTIFIER') 
+  WHERE T2.Id IS NULL 
+  ORDER BY 2,1 
+  FOR XML EXPLICIT
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4360,18 +4336,18 @@ PRINT N'Altering [Catalog].[ClientOptions_ListValues_adm_update]'
 GO
  
 ALTER PROCEDURE [Catalog].[ClientOptions_ListValues_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Val NVARCHAR(100)	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[ClientOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
-	UPDATE [Catalog].[ClientOptions_ListValues] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Val] = @Val			WHERE [Ref] = @Ref AND [Val] = @Val AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Catalog].[ClientOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Val	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Val NVARCHAR(100)  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[ClientOptions_ListValues] WHERE [Ref] = @Ref AND ([Val] = @Val OR ([Val] IS NULL AND @Val IS NULL))) 
+  UPDATE [Catalog].[ClientOptions_ListValues] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Val] = @Val      WHERE [Ref] = @Ref AND [Val] = @Val AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Catalog].[ClientOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Val )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4380,22 +4356,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[ClientOptions_ListValues_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_ClientOptions_ListValues] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[ClientOptions_ListValues] SET 
-				[LineNumber] = D.[LineNumber],				[Val] = D.[Val]			FROM [Catalog].[ClientOptions_ListValues] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[ClientOptions_ListValues] SET 
+        [LineNumber] = D.[LineNumber],        [Val] = D.[Val]     FROM [Catalog].[ClientOptions_ListValues] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Val] <> D.[Val] ) 
  
-	INSERT INTO [Catalog].[ClientOptions_ListValues]( 
-		[Ref],[LineNumber],[Val]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Val]		FROM @Data D 
-		LEFT JOIN [Catalog].[ClientOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[ClientOptions_ListValues]( 
+    [Ref],[LineNumber],[Val]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Val]   FROM @Data D 
+    LEFT JOIN [Catalog].[ClientOptions_ListValues] T ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL)) WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[ClientOptions_ListValues] 
-	FROM [Catalog].[ClientOptions_ListValues] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))	WHERE T.Ref = @Ref AND D.[Val] IS NULL	 
+  DELETE FROM [Catalog].[ClientOptions_ListValues] 
+  FROM [Catalog].[ClientOptions_ListValues] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Val] = D.[Val] OR (T.[Val] IS NULL AND D.[Val] IS NULL))  WHERE T.Ref = @Ref AND D.[Val] IS NULL   
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4403,18 +4379,18 @@ PRINT N'Altering [Document].[Event_Files_adm_update]'
 GO
  
 ALTER PROCEDURE [Document].[Event_Files_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@FullFileName NVARCHAR(1000),		@FileName UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Document].[Event_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
-	UPDATE [Document].[Event_Files] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[FullFileName] = @FullFileName,				[FileName] = @FileName			WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
-	( 1=0 OR [LineNumber] <> @LineNumber ) 
-	ELSE 
-	INSERT INTO [Document].[Event_Files]( 
-		[Ref],[LineNumber],[FullFileName],[FileName]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@FullFileName,@FileName	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @FullFileName NVARCHAR(1000),   @FileName UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Document].[Event_Files] WHERE [Ref] = @Ref AND ([FullFileName] = @FullFileName OR ([FullFileName] IS NULL AND @FullFileName IS NULL)) AND ([FileName] = @FileName OR ([FileName] IS NULL AND @FileName IS NULL))) 
+  UPDATE [Document].[Event_Files] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [FullFileName] = @FullFileName,       [FileName] = @FileName      WHERE [Ref] = @Ref AND [FullFileName] = @FullFileName AND [FileName] = @FileName AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber ) 
+  ELSE 
+  INSERT INTO [Document].[Event_Files]( 
+    [Ref],[LineNumber],[FullFileName],[FileName]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@FullFileName,@FileName  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -4422,11 +4398,11 @@ PRINT N'Altering [Catalog].[ClientOptions_ListValues_adm_delete]'
 GO
  
 ALTER PROCEDURE [Catalog].[ClientOptions_ListValues_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Val NVARCHAR(100) 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[ClientOptions_ListValues] 
-	WHERE [Ref] = @Ref AND [Val] = @Val	
+    ,@Val NVARCHAR(100) 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[ClientOptions_ListValues] 
+  WHERE [Ref] = @Ref AND [Val] = @Val 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5041,13 +5017,13 @@ GO
  
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Period DATETIME2,		@Clients UNIQUEIDENTIFIER,		@StatusEquipment UNIQUEIDENTIFIER,		@ContractSale UNIQUEIDENTIFIER,		@CantractService UNIQUEIDENTIFIER,		@ContactForEquipment NVARCHAR(100),		@Info NVARCHAR(1000),		@Equipment UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_Equipments]( 
-		[Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Period,@Clients,@StatusEquipment,@ContractSale,@CantractService,@ContactForEquipment,@Info,@Equipment	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Period DATETIME2,    @Clients UNIQUEIDENTIFIER,    @StatusEquipment UNIQUEIDENTIFIER,    @ContractSale UNIQUEIDENTIFIER,   @CantractService UNIQUEIDENTIFIER,    @ContactForEquipment NVARCHAR(100),   @Info NVARCHAR(1000),   @Equipment UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_Equipments]( 
+    [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Period,@Clients,@StatusEquipment,@ContractSale,@CantractService,@ContactForEquipment,@Info,@Equipment )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5056,12 +5032,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_Equipments] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_Equipments]( 
-		[Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_Equipments]( 
+    [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment] ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]    FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5069,8 +5045,8 @@ PRINT N'Creating [Catalog].[Equipment_Equipments_adm_clear]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_clear] @Ref UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5079,7 +5055,7 @@ GO
  
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_selectkeys] @Ref UNIQUEIDENTIFIER AS 
-	SELECT [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]	FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref
+  SELECT [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]  FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5087,18 +5063,18 @@ PRINT N'Creating [Catalog].[Equipment_Equipments_adm_update]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Period DATETIME2,		@Clients UNIQUEIDENTIFIER,		@StatusEquipment UNIQUEIDENTIFIER,		@ContractSale UNIQUEIDENTIFIER,		@CantractService UNIQUEIDENTIFIER,		@ContactForEquipment NVARCHAR(100),		@Info NVARCHAR(1000),		@Equipment UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref AND ([Period] = @Period OR ([Period] IS NULL AND @Period IS NULL)) AND ([Clients] = @Clients OR ([Clients] IS NULL AND @Clients IS NULL)) AND ([Equipment] = @Equipment OR ([Equipment] IS NULL AND @Equipment IS NULL))) 
-	UPDATE [Catalog].[Equipment_Equipments] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Period] = @Period,				[Clients] = @Clients,				[StatusEquipment] = @StatusEquipment,				[ContractSale] = @ContractSale,				[CantractService] = @CantractService,				[ContactForEquipment] = @ContactForEquipment,				[Info] = @Info,				[Equipment] = @Equipment			WHERE [Ref] = @Ref AND [Period] = @Period AND [Clients] = @Clients AND [Equipment] = @Equipment AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [StatusEquipment] <> @StatusEquipment OR [ContractSale] <> @ContractSale OR [CantractService] <> @CantractService OR [ContactForEquipment] <> @ContactForEquipment OR [Info] <> @Info ) 
-	ELSE 
-	INSERT INTO [Catalog].[Equipment_Equipments]( 
-		[Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Period,@Clients,@StatusEquipment,@ContractSale,@CantractService,@ContactForEquipment,@Info,@Equipment	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Period DATETIME2,    @Clients UNIQUEIDENTIFIER,    @StatusEquipment UNIQUEIDENTIFIER,    @ContractSale UNIQUEIDENTIFIER,   @CantractService UNIQUEIDENTIFIER,    @ContactForEquipment NVARCHAR(100),   @Info NVARCHAR(1000),   @Equipment UNIQUEIDENTIFIER AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Equipment_Equipments] WHERE [Ref] = @Ref AND ([Period] = @Period OR ([Period] IS NULL AND @Period IS NULL)) AND ([Clients] = @Clients OR ([Clients] IS NULL AND @Clients IS NULL)) AND ([Equipment] = @Equipment OR ([Equipment] IS NULL AND @Equipment IS NULL))) 
+  UPDATE [Catalog].[Equipment_Equipments] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Period] = @Period,       [Clients] = @Clients,       [StatusEquipment] = @StatusEquipment,       [ContractSale] = @ContractSale,       [CantractService] = @CantractService,       [ContactForEquipment] = @ContactForEquipment,       [Info] = @Info,       [Equipment] = @Equipment      WHERE [Ref] = @Ref AND [Period] = @Period AND [Clients] = @Clients AND [Equipment] = @Equipment AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [StatusEquipment] <> @StatusEquipment OR [ContractSale] <> @ContractSale OR [CantractService] <> @CantractService OR [ContactForEquipment] <> @ContactForEquipment OR [Info] <> @Info ) 
+  ELSE 
+  INSERT INTO [Catalog].[Equipment_Equipments]( 
+    [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment] )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Period,@Clients,@StatusEquipment,@ContractSale,@CantractService,@ContactForEquipment,@Info,@Equipment )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5107,22 +5083,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_Equipments] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Equipment_Equipments] SET 
-				[LineNumber] = D.[LineNumber],				[Period] = D.[Period],				[Clients] = D.[Clients],				[StatusEquipment] = D.[StatusEquipment],				[ContractSale] = D.[ContractSale],				[CantractService] = D.[CantractService],				[ContactForEquipment] = D.[ContactForEquipment],				[Info] = D.[Info],				[Equipment] = D.[Equipment]			FROM [Catalog].[Equipment_Equipments] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Period] <> D.[Period] OR T.[Clients] <> D.[Clients] OR T.[StatusEquipment] <> D.[StatusEquipment] OR T.[ContractSale] <> D.[ContractSale] OR T.[CantractService] <> D.[CantractService] OR T.[ContactForEquipment] <> D.[ContactForEquipment] OR T.[Info] <> D.[Info] OR T.[Equipment] <> D.[Equipment] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Equipment_Equipments] SET 
+        [LineNumber] = D.[LineNumber],        [Period] = D.[Period],        [Clients] = D.[Clients],        [StatusEquipment] = D.[StatusEquipment],        [ContractSale] = D.[ContractSale],        [CantractService] = D.[CantractService],        [ContactForEquipment] = D.[ContactForEquipment],        [Info] = D.[Info],        [Equipment] = D.[Equipment]     FROM [Catalog].[Equipment_Equipments] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Period] <> D.[Period] OR T.[Clients] <> D.[Clients] OR T.[StatusEquipment] <> D.[StatusEquipment] OR T.[ContractSale] <> D.[ContractSale] OR T.[CantractService] <> D.[CantractService] OR T.[ContactForEquipment] <> D.[ContactForEquipment] OR T.[Info] <> D.[Info] OR T.[Equipment] <> D.[Equipment] ) 
  
-	INSERT INTO [Catalog].[Equipment_Equipments]( 
-		[Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Period],D.[Clients],D.[StatusEquipment],D.[ContractSale],D.[CantractService],D.[ContactForEquipment],D.[Info],D.[Equipment]		FROM @Data D 
-		LEFT JOIN [Catalog].[Equipment_Equipments] T ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[Equipment_Equipments]( 
+    [Ref],[LineNumber],[Period],[Clients],[StatusEquipment],[ContractSale],[CantractService],[ContactForEquipment],[Info],[Equipment] ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Period],D.[Clients],D.[StatusEquipment],D.[ContractSale],D.[CantractService],D.[ContactForEquipment],D.[Info],D.[Equipment]    FROM @Data D 
+    LEFT JOIN [Catalog].[Equipment_Equipments] T ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL)) WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[Equipment_Equipments] 
-	FROM [Catalog].[Equipment_Equipments] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL))	WHERE T.Ref = @Ref AND D.[Period] IS NULL AND D.[Clients] IS NULL AND D.[Equipment] IS NULL	 
+  DELETE FROM [Catalog].[Equipment_Equipments] 
+  FROM [Catalog].[Equipment_Equipments] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Clients] = D.[Clients] OR (T.[Clients] IS NULL AND D.[Clients] IS NULL)) AND (T.[Equipment] = D.[Equipment] OR (T.[Equipment] IS NULL AND D.[Equipment] IS NULL))  WHERE T.Ref = @Ref AND D.[Period] IS NULL AND D.[Clients] IS NULL AND D.[Equipment] IS NULL  
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5130,13 +5106,13 @@ PRINT N'Creating [Catalog].[Equipment_Equipments_adm_delete]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_Equipments_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Period DATETIME2 
-		,@Clients UNIQUEIDENTIFIER 
-		,@Equipment UNIQUEIDENTIFIER 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Equipment_Equipments] 
-	WHERE [Ref] = @Ref AND [Period] = @Period AND [Clients] = @Clients AND [Equipment] = @Equipment	
+    ,@Period DATETIME2 
+    ,@Clients UNIQUEIDENTIFIER 
+    ,@Equipment UNIQUEIDENTIFIER 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Equipment_Equipments] 
+  WHERE [Ref] = @Ref AND [Period] = @Period AND [Clients] = @Clients AND [Equipment] = @Equipment 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5175,13 +5151,13 @@ GO
  
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_insert] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Period DATETIME2,		@Client UNIQUEIDENTIFIER,		@Equipments UNIQUEIDENTIFIER,		@Target NVARCHAR(100),		@Result UNIQUEIDENTIFIER,		@ObjectGet NVARCHAR(1000),		@Comment NVARCHAR(1000),		@Executor UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
-		[Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Period,@Client,@Equipments,@Target,@Result,@ObjectGet,@Comment,@Executor	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Period DATETIME2,    @Client UNIQUEIDENTIFIER,   @Equipments UNIQUEIDENTIFIER,   @Target NVARCHAR(100),    @Result UNIQUEIDENTIFIER,   @ObjectGet NVARCHAR(1000),    @Comment NVARCHAR(1000),    @Executor UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
+    [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Period,@Client,@Equipments,@Target,@Result,@ObjectGet,@Comment,@Executor  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5190,12 +5166,12 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_insert_batch] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_EquipmentsHistory] READONLY 
 AS 
-	SET NOCOUNT ON 
-	INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
-		[Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]	) 
-	SELECT  
-		@Ref 
-		,[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]		FROM @Data
+  SET NOCOUNT ON 
+  INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
+    [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]  ) 
+  SELECT  
+    @Ref 
+    ,[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]   FROM @Data
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5203,8 +5179,8 @@ PRINT N'Creating [Catalog].[Equipment_EquipmentsHistory_adm_clear]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_clear] @Ref UNIQUEIDENTIFIER AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5213,7 +5189,7 @@ GO
  
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_selectkeys] @Ref UNIQUEIDENTIFIER AS 
-	SELECT [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]	FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref
+  SELECT [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor] FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5221,18 +5197,18 @@ PRINT N'Creating [Catalog].[Equipment_EquipmentsHistory_adm_update]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_update] 
-		@Ref UNIQUEIDENTIFIER,		@LineNumber INT,		@Period DATETIME2,		@Client UNIQUEIDENTIFIER,		@Equipments UNIQUEIDENTIFIER,		@Target NVARCHAR(100),		@Result UNIQUEIDENTIFIER,		@ObjectGet NVARCHAR(1000),		@Comment NVARCHAR(1000),		@Executor UNIQUEIDENTIFIER	AS 
-	SET NOCOUNT ON 
-	IF EXISTS(SELECT * FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref AND ([Period] = @Period OR ([Period] IS NULL AND @Period IS NULL)) AND ([Client] = @Client OR ([Client] IS NULL AND @Client IS NULL)) AND ([Equipments] = @Equipments OR ([Equipments] IS NULL AND @Equipments IS NULL))) 
-	UPDATE [Catalog].[Equipment_EquipmentsHistory] SET 
-				[Ref] = @Ref,				[LineNumber] = @LineNumber,				[Period] = @Period,				[Client] = @Client,				[Equipments] = @Equipments,				[Target] = @Target,				[Result] = @Result,				[ObjectGet] = @ObjectGet,				[Comment] = @Comment,				[Executor] = @Executor			WHERE [Ref] = @Ref AND [Period] = @Period AND [Client] = @Client AND [Equipments] = @Equipments AND  
-	( 1=0 OR [LineNumber] <> @LineNumber OR [Target] <> @Target OR [Result] <> @Result OR [ObjectGet] <> @ObjectGet OR [Comment] <> @Comment OR [Executor] <> @Executor ) 
-	ELSE 
-	INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
-		[Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]	)  
-	VALUES 
-	( 
-		@Ref,@LineNumber,@Period,@Client,@Equipments,@Target,@Result,@ObjectGet,@Comment,@Executor	)
+    @Ref UNIQUEIDENTIFIER,    @LineNumber INT,    @Period DATETIME2,    @Client UNIQUEIDENTIFIER,   @Equipments UNIQUEIDENTIFIER,   @Target NVARCHAR(100),    @Result UNIQUEIDENTIFIER,   @ObjectGet NVARCHAR(1000),    @Comment NVARCHAR(1000),    @Executor UNIQUEIDENTIFIER  AS 
+  SET NOCOUNT ON 
+  IF EXISTS(SELECT * FROM [Catalog].[Equipment_EquipmentsHistory] WHERE [Ref] = @Ref AND ([Period] = @Period OR ([Period] IS NULL AND @Period IS NULL)) AND ([Client] = @Client OR ([Client] IS NULL AND @Client IS NULL)) AND ([Equipments] = @Equipments OR ([Equipments] IS NULL AND @Equipments IS NULL))) 
+  UPDATE [Catalog].[Equipment_EquipmentsHistory] SET 
+        [Ref] = @Ref,       [LineNumber] = @LineNumber,       [Period] = @Period,       [Client] = @Client,       [Equipments] = @Equipments,       [Target] = @Target,       [Result] = @Result,       [ObjectGet] = @ObjectGet,       [Comment] = @Comment,       [Executor] = @Executor      WHERE [Ref] = @Ref AND [Period] = @Period AND [Client] = @Client AND [Equipments] = @Equipments AND  
+  ( 1=0 OR [LineNumber] <> @LineNumber OR [Target] <> @Target OR [Result] <> @Result OR [ObjectGet] <> @ObjectGet OR [Comment] <> @Comment OR [Executor] <> @Executor ) 
+  ELSE 
+  INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
+    [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]  )  
+  VALUES 
+  ( 
+    @Ref,@LineNumber,@Period,@Client,@Equipments,@Target,@Result,@ObjectGet,@Comment,@Executor  )
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5241,22 +5217,22 @@ GO
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_update_batch_all] @Ref UNIQUEIDENTIFIER, @Data [Catalog].[T_Equipment_EquipmentsHistory] READONLY 
 AS 
-	SET NOCOUNT ON 
-	UPDATE [Catalog].[Equipment_EquipmentsHistory] SET 
-				[LineNumber] = D.[LineNumber],				[Period] = D.[Period],				[Client] = D.[Client],				[Equipments] = D.[Equipments],				[Target] = D.[Target],				[Result] = D.[Result],				[ObjectGet] = D.[ObjectGet],				[Comment] = D.[Comment],				[Executor] = D.[Executor]			FROM [Catalog].[Equipment_EquipmentsHistory] T 
-	JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL))	WHERE T.Ref = @Ref AND 
-	( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Period] <> D.[Period] OR T.[Client] <> D.[Client] OR T.[Equipments] <> D.[Equipments] OR T.[Target] <> D.[Target] OR T.[Result] <> D.[Result] OR T.[ObjectGet] <> D.[ObjectGet] OR T.[Comment] <> D.[Comment] OR T.[Executor] <> D.[Executor] ) 
+  SET NOCOUNT ON 
+  UPDATE [Catalog].[Equipment_EquipmentsHistory] SET 
+        [LineNumber] = D.[LineNumber],        [Period] = D.[Period],        [Client] = D.[Client],        [Equipments] = D.[Equipments],        [Target] = D.[Target],        [Result] = D.[Result],        [ObjectGet] = D.[ObjectGet],        [Comment] = D.[Comment],        [Executor] = D.[Executor]     FROM [Catalog].[Equipment_EquipmentsHistory] T 
+  JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL)) WHERE T.Ref = @Ref AND 
+  ( 1=0 OR T.[LineNumber] <> D.[LineNumber] OR T.[Period] <> D.[Period] OR T.[Client] <> D.[Client] OR T.[Equipments] <> D.[Equipments] OR T.[Target] <> D.[Target] OR T.[Result] <> D.[Result] OR T.[ObjectGet] <> D.[ObjectGet] OR T.[Comment] <> D.[Comment] OR T.[Executor] <> D.[Executor] ) 
  
-	INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
-		[Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]	) 
-	SELECT  
-		@Ref 
-		,D.[LineNumber],D.[Period],D.[Client],D.[Equipments],D.[Target],D.[Result],D.[ObjectGet],D.[Comment],D.[Executor]		FROM @Data D 
-		LEFT JOIN [Catalog].[Equipment_EquipmentsHistory] T ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL))	WHERE T.[Id] IS NULL 
+  INSERT INTO [Catalog].[Equipment_EquipmentsHistory]( 
+    [Ref],[LineNumber],[Period],[Client],[Equipments],[Target],[Result],[ObjectGet],[Comment],[Executor]  ) 
+  SELECT  
+    @Ref 
+    ,D.[LineNumber],D.[Period],D.[Client],D.[Equipments],D.[Target],D.[Result],D.[ObjectGet],D.[Comment],D.[Executor]   FROM @Data D 
+    LEFT JOIN [Catalog].[Equipment_EquipmentsHistory] T ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL))  WHERE T.[Id] IS NULL 
  
-	DELETE FROM [Catalog].[Equipment_EquipmentsHistory] 
-	FROM [Catalog].[Equipment_EquipmentsHistory] T 
-	LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL))	WHERE T.Ref = @Ref AND D.[Period] IS NULL AND D.[Client] IS NULL AND D.[Equipments] IS NULL	 
+  DELETE FROM [Catalog].[Equipment_EquipmentsHistory] 
+  FROM [Catalog].[Equipment_EquipmentsHistory] T 
+  LEFT JOIN @Data D ON T.Ref = @Ref AND (T.[Period] = D.[Period] OR (T.[Period] IS NULL AND D.[Period] IS NULL)) AND (T.[Client] = D.[Client] OR (T.[Client] IS NULL AND D.[Client] IS NULL)) AND (T.[Equipments] = D.[Equipments] OR (T.[Equipments] IS NULL AND D.[Equipments] IS NULL))  WHERE T.Ref = @Ref AND D.[Period] IS NULL AND D.[Client] IS NULL AND D.[Equipments] IS NULL  
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5264,13 +5240,13 @@ PRINT N'Creating [Catalog].[Equipment_EquipmentsHistory_adm_delete]'
 GO
  
 CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_delete] @Ref UNIQUEIDENTIFIER 
-		,@Period DATETIME2 
-		,@Client UNIQUEIDENTIFIER 
-		,@Equipments UNIQUEIDENTIFIER 
-	AS 
-	SET NOCOUNT ON 
-	DELETE FROM [Catalog].[Equipment_EquipmentsHistory] 
-	WHERE [Ref] = @Ref AND [Period] = @Period AND [Client] = @Client AND [Equipments] = @Equipments	
+    ,@Period DATETIME2 
+    ,@Client UNIQUEIDENTIFIER 
+    ,@Equipments UNIQUEIDENTIFIER 
+  AS 
+  SET NOCOUNT ON 
+  DELETE FROM [Catalog].[Equipment_EquipmentsHistory] 
+  WHERE [Ref] = @Ref AND [Period] = @Period AND [Client] = @Client AND [Equipments] = @Equipments 
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
@@ -5366,20 +5342,6 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-<<<<<<< HEAD
-sp_msForEachTable 
-  @command1='IF NOT EXISTS (
-    SELECT * 
-    FROM   sys.columns 
-    WHERE  object_id = OBJECT_ID(''?'') 
-          AND name = N''KeyFieldTimestamp''
-    )
-    BEGIN
-      ALTER TABLE ? ADD [KeyFieldTimestamp] bigint NULL
-    END',
-  @whereand=N'AND SCHEMA_NAME([schema_id])+N''.''+PARSENAME(o.[name], 1) 
-    IN (SELECT [SyncTable] FROM [admin].[SyncConfiguration])'
-=======
 PRINT N'Inserting data into [admin].[SyncConfiguration]'
 
 INSERT INTO [admin].[SyncConfiguration]
@@ -5447,13 +5409,10 @@ UPDATE [Enum].[TypesDataParameters] SET [Description]=N'Логический', [Timestamp]
 UPDATE [Enum].[TypesDataParameters] SET [Description]=N'Дата', [Timestamp]=@ts_stamp WHERE [Name]='DateTime'
 UPDATE [Enum].[TypesDataParameters] SET [Description]=N'Выбор из списка', [Timestamp]=@ts_stamp WHERE [Name]='ValList'
 GO
->>>>>>> hotfix/3.1.3.1
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-<<<<<<< HEAD
-=======
 --
 -- END OF DATA MODIFICATION 
 --
@@ -5462,7 +5421,6 @@ GO
 -- BEGIN DATABASE VERSION SETUP 
 --
 
->>>>>>> hotfix/3.1.3.1
 PRINT N'Set DBVersion = 3.1.3.0'
 
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
@@ -5481,31 +5439,15 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-<<<<<<< HEAD
-=======
 --
 -- END DATABASE VERSION SETUP 
 --
 
 
->>>>>>> hotfix/3.1.3.1
 COMMIT TRANSACTION
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
-<<<<<<< HEAD
-GO
-
-DECLARE @Success AS BIT
-SET @Success = 1
-SET NOEXEC OFF
-IF (@Success = 1) PRINT 'The database update succeeded'
-ELSE BEGIN
-  IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION
-  PRINT 'The database update failed'
-END
-=======
->>>>>>> hotfix/3.1.3.1
 GO
 
 DECLARE @Success AS BIT 
@@ -5513,7 +5455,7 @@ SET @Success = 1
 SET NOEXEC OFF 
 IF (@Success = 1) PRINT 'The database update succeeded' 
 ELSE BEGIN 
-	IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION 
-	PRINT 'The database update failed' 
+  IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION 
+  PRINT 'The database update failed' 
 END
 GO
