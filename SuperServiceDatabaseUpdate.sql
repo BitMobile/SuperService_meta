@@ -367,7 +367,7 @@ CREATE TABLE [dbo].[dbConfig]
 (
 	[ID] [int] NOT NULL IDENTITY(1, 1) NOT FOR REPLICATION,
 	[Key] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
-	[Value] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[Value] [varchar] (500) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
 
