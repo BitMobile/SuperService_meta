@@ -386,10 +386,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Actions_ValueList]'
 GO
-ALTER TABLE [Catalog].[Actions_ValueList] DROP CONSTRAINT [DF__Actions_Valu__Id__162F4418]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Actions_ValueList] DROP CONSTRAINT [DF__Actions_Valu__Id__162F4418]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[ClientOptions_ListValues]'
 GO
 ALTER TABLE [Catalog].[ClientOptions_ListValues] DROP CONSTRAINT [PK_Catalog_ClientOptions_ListValues]
@@ -398,10 +398,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[ClientOptions_ListValues]'
 GO
-ALTER TABLE [Catalog].[ClientOptions_ListValues] DROP CONSTRAINT [DF__ClientOption__Id__19FFD4FC]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[ClientOptions_ListValues] DROP CONSTRAINT [DF__ClientOption__Id__19FFD4FC]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Client_Contacts]'
 GO
 ALTER TABLE [Catalog].[Client_Contacts] DROP CONSTRAINT [PK_Catalog_Client_Contacts]
@@ -410,10 +410,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Client_Contacts]'
 GO
-ALTER TABLE [Catalog].[Client_Contacts] DROP CONSTRAINT [DF__Client_Conta__Id__18178C8A]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Client_Contacts] DROP CONSTRAINT [DF__Client_Conta__Id__18178C8A]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Client_Files]'
 GO
 ALTER TABLE [Catalog].[Client_Files] DROP CONSTRAINT [PK_Catalog_Client_Files]
@@ -422,10 +422,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Client_Files]'
 GO
-ALTER TABLE [Catalog].[Client_Files] DROP CONSTRAINT [DF__Client_Files__Id__17236851]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Client_Files] DROP CONSTRAINT [DF__Client_Files__Id__17236851]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Client_Parameters]'
 GO
 ALTER TABLE [Catalog].[Client_Parameters] DROP CONSTRAINT [PK_Catalog_Client_Parameters]
@@ -434,10 +434,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Client_Parameters]'
 GO
-ALTER TABLE [Catalog].[Client_Parameters] DROP CONSTRAINT [DF__Client_Param__Id__190BB0C3]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Client_Parameters] DROP CONSTRAINT [DF__Client_Param__Id__190BB0C3]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[EquipmentOptions_ListValues]'
 GO
 ALTER TABLE [Catalog].[EquipmentOptions_ListValues] DROP CONSTRAINT [PK_Catalog_EquipmentOptions_ListValues]
@@ -446,10 +446,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[EquipmentOptions_ListValues]'
 GO
-ALTER TABLE [Catalog].[EquipmentOptions_ListValues] DROP CONSTRAINT [DF__EquipmentOpt__Id__20ACD28B]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[EquipmentOptions_ListValues] DROP CONSTRAINT [DF__EquipmentOpt__Id__20ACD28B]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Files]'
 GO
 ALTER TABLE [Catalog].[Equipment_Files] DROP CONSTRAINT [PK_Catalog_Equipment_Files]
@@ -458,10 +458,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Files]'
 GO
-ALTER TABLE [Catalog].[Equipment_Files] DROP CONSTRAINT [DF__Equipment_Fi__Id__1CDC41A7]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Equipment_Files] DROP CONSTRAINT [DF__Equipment_Fi__Id__1CDC41A7]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Parameters]'
 GO
 ALTER TABLE [Catalog].[Equipment_Parameters] DROP CONSTRAINT [PK_Catalog_Equipment_Parameters]
@@ -470,10 +470,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Parameters]'
 GO
-ALTER TABLE [Catalog].[Equipment_Parameters] DROP CONSTRAINT [DF__Equipment_Pa__Id__1DD065E0]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Equipment_Parameters] DROP CONSTRAINT [DF__Equipment_Pa__Id__1DD065E0]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[EventOptions_ListValues]'
 GO
 ALTER TABLE [Catalog].[EventOptions_ListValues] DROP CONSTRAINT [PK_Catalog_EventOptions_ListValues]
@@ -482,10 +482,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[EventOptions_ListValues]'
 GO
-ALTER TABLE [Catalog].[EventOptions_ListValues] DROP CONSTRAINT [DF__EventOptions__Id__21A0F6C4]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[EventOptions_ListValues] DROP CONSTRAINT [DF__EventOptions__Id__21A0F6C4]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[User_Bag]'
 GO
 ALTER TABLE [Catalog].[User_Bag] DROP CONSTRAINT [PK_Catalog_User_Bag]
@@ -494,10 +494,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[User_Bag]'
 GO
-ALTER TABLE [Catalog].[User_Bag] DROP CONSTRAINT [DF__User_Bag__Id__1EC48A19]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[User_Bag] DROP CONSTRAINT [DF__User_Bag__Id__1EC48A19]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[User_RemainsNorms]'
 GO
 ALTER TABLE [Catalog].[User_RemainsNorms] DROP CONSTRAINT [PK_Catalog_User_RemainsNorms]
@@ -506,10 +506,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[User_RemainsNorms]'
 GO
-ALTER TABLE [Catalog].[User_RemainsNorms] DROP CONSTRAINT [DF__User_Remains__Id__1FB8AE52]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[User_RemainsNorms] DROP CONSTRAINT [DF__User_Remains__Id__1FB8AE52]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[CheckList_Actions]'
 GO
 ALTER TABLE [Document].[CheckList_Actions] DROP CONSTRAINT [PK_Document_CheckList_Actions]
@@ -518,10 +518,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[CheckList_Actions]'
 GO
-ALTER TABLE [Document].[CheckList_Actions] DROP CONSTRAINT [DF__CheckList_Ac__Id__22951AFD]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[CheckList_Actions] DROP CONSTRAINT [DF__CheckList_Ac__Id__22951AFD]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_CheckList]'
 GO
 ALTER TABLE [Document].[Event_CheckList] DROP CONSTRAINT [PK_Document_Event_CheckList]
@@ -530,10 +530,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_CheckList]'
 GO
-ALTER TABLE [Document].[Event_CheckList] DROP CONSTRAINT [DF__Event_CheckL__Id__2759D01A]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_CheckList] DROP CONSTRAINT [DF__Event_CheckL__Id__2759D01A]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_Equipments]'
 GO
 ALTER TABLE [Document].[Event_Equipments] DROP CONSTRAINT [PK_Document_Event_Equipments]
@@ -542,10 +542,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_Equipments]'
 GO
-ALTER TABLE [Document].[Event_Equipments] DROP CONSTRAINT [DF__Event_Equipm__Id__247D636F]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_Equipments] DROP CONSTRAINT [DF__Event_Equipm__Id__247D636F]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_Files]'
 GO
 ALTER TABLE [Document].[Event_Files] DROP CONSTRAINT [PK_Document_Event_Files]
@@ -554,10 +554,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_Files]'
 GO
-ALTER TABLE [Document].[Event_Files] DROP CONSTRAINT [DF__Event_Files__Id__23893F36]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_Files] DROP CONSTRAINT [DF__Event_Files__Id__23893F36]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_Parameters]'
 GO
 ALTER TABLE [Document].[Event_Parameters] DROP CONSTRAINT [PK_Document_Event_Parameters]
@@ -566,10 +566,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_Parameters]'
 GO
-ALTER TABLE [Document].[Event_Parameters] DROP CONSTRAINT [DF__Event_Parame__Id__2665ABE1]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_Parameters] DROP CONSTRAINT [DF__Event_Parame__Id__2665ABE1]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_Photos]'
 GO
 ALTER TABLE [Document].[Event_Photos] DROP CONSTRAINT [PK_Document_Event_Photos]
@@ -578,10 +578,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_Photos]'
 GO
-ALTER TABLE [Document].[Event_Photos] DROP CONSTRAINT [DF__Event_Photos__Id__257187A8]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_Photos] DROP CONSTRAINT [DF__Event_Photos__Id__257187A8]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_ServicesMaterials]'
 GO
 ALTER TABLE [Document].[Event_ServicesMaterials] DROP CONSTRAINT [PK_Document_Event_ServicesMaterials]
@@ -590,10 +590,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_ServicesMaterials]'
 GO
-ALTER TABLE [Document].[Event_ServicesMaterials] DROP CONSTRAINT [DF__Event_Servic__Id__2942188C]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_ServicesMaterials] DROP CONSTRAINT [DF__Event_Servic__Id__2942188C]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Event_TypeDepartures]'
 GO
 ALTER TABLE [Document].[Event_TypeDepartures] DROP CONSTRAINT [PK_Document_Event_TypeDepartures]
@@ -602,10 +602,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Event_TypeDepartures]'
 GO
-ALTER TABLE [Document].[Event_TypeDepartures] DROP CONSTRAINT [DF__Event_TypeDe__Id__284DF453]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Event_TypeDepartures] DROP CONSTRAINT [DF__Event_TypeDe__Id__284DF453]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[NeedMat_Matireals]'
 GO
 ALTER TABLE [Document].[NeedMat_Matireals] DROP CONSTRAINT [PK_Document_NeedMat_Matireals]
@@ -614,10 +614,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[NeedMat_Matireals]'
 GO
-ALTER TABLE [Document].[NeedMat_Matireals] DROP CONSTRAINT [DF__NeedMat_Mati__Id__2A363CC5]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[NeedMat_Matireals] DROP CONSTRAINT [DF__NeedMat_Mati__Id__2A363CC5]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Document].[Reminder_Photo]'
 GO
 ALTER TABLE [Document].[Reminder_Photo] DROP CONSTRAINT [PK_Document_Reminder_Photo]
@@ -626,46 +626,46 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Document].[Reminder_Photo]'
 GO
-ALTER TABLE [Document].[Reminder_Photo] DROP CONSTRAINT [DF__Reminder_Pho__Id__2B2A60FE]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[AsyncUploadSession]'
-GO
-ALTER TABLE [admin].[AsyncUploadSession] DROP CONSTRAINT [PK__AsyncUpl__3214EC06428B8A08]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[DeletedObjects]'
-GO
-ALTER TABLE [admin].[DeletedObjects] DROP CONSTRAINT [PK__DeletedO__3214EC06016BC840]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[FileSystem]'
-GO
-ALTER TABLE [admin].[FileSystem] DROP CONSTRAINT [PK__FileSyst__77387D07559C4637]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[LastSyncTime]'
-GO
-ALTER TABLE [admin].[LastSyncTime] DROP CONSTRAINT [PK__LastSync__C96133CD8C4E7152]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[SyncSession]'
-GO
-ALTER TABLE [admin].[SyncSession] DROP CONSTRAINT [PK__SyncSess__3214EC06B55FB2FD]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Dropping constraints from [admin].[Telegram]'
-GO
-ALTER TABLE [admin].[Telegram] DROP CONSTRAINT [PK__Telegram__5C7E359E5CC811AB]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Document].[Reminder_Photo] DROP CONSTRAINT [DF__Reminder_Pho__Id__2B2A60FE]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[AsyncUploadSession]'
+-- GO
+-- ALTER TABLE [admin].[AsyncUploadSession] DROP CONSTRAINT [PK__AsyncUpl__3214EC06428B8A08]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[DeletedObjects]'
+-- GO
+-- ALTER TABLE [admin].[DeletedObjects] DROP CONSTRAINT [PK__DeletedO__3214EC06016BC840]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[FileSystem]'
+-- GO
+-- ALTER TABLE [admin].[FileSystem] DROP CONSTRAINT [PK__FileSyst__77387D07559C4637]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[LastSyncTime]'
+-- GO
+-- ALTER TABLE [admin].[LastSyncTime] DROP CONSTRAINT [PK__LastSync__C96133CD8C4E7152]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[SyncSession]'
+-- GO
+-- ALTER TABLE [admin].[SyncSession] DROP CONSTRAINT [PK__SyncSess__3214EC06B55FB2FD]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Dropping constraints from [admin].[Telegram]'
+-- GO
+-- ALTER TABLE [admin].[Telegram] DROP CONSTRAINT [PK__Telegram__5C7E359E5CC811AB]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping index [UQ_Catalog_Actions_ValueList_Key] from [Catalog].[Actions_ValueList]'
 GO
 DROP INDEX [UQ_Catalog_Actions_ValueList_Key] ON [Catalog].[Actions_ValueList]
@@ -4438,166 +4438,166 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Creating primary key [PK__AsyncUpl__3214EC06835E520D] on [admin].[AsyncUploadSession]'
 GO
-ALTER TABLE [admin].[AsyncUploadSession] ADD CONSTRAINT [PK__AsyncUpl__3214EC06835E520D] PRIMARY KEY NONCLUSTERED  ([Id])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Creating primary key [PK__DeletedO__3214EC0692135ADC] on [admin].[DeletedObjects]'
-GO
-ALTER TABLE [admin].[DeletedObjects] ADD CONSTRAINT [PK__DeletedO__3214EC0692135ADC] PRIMARY KEY NONCLUSTERED  ([Id])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Creating primary key [PK__FileSyst__77387D07CD0ED4F8] on [admin].[FileSystem]'
-GO
-ALTER TABLE [admin].[FileSystem] ADD CONSTRAINT [PK__FileSyst__77387D07CD0ED4F8] PRIMARY KEY NONCLUSTERED  ([Date])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Creating primary key [PK__LastSync__C96133CDCEA4EEC4] on [admin].[LastSyncTime]'
-GO
-ALTER TABLE [admin].[LastSyncTime] ADD CONSTRAINT [PK__LastSync__C96133CDCEA4EEC4] PRIMARY KEY NONCLUSTERED  ([LastTime])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Creating primary key [PK__SyncSess__3214EC0627948A64] on [admin].[SyncSession]'
-GO
-ALTER TABLE [admin].[SyncSession] ADD CONSTRAINT [PK__SyncSess__3214EC0627948A64] PRIMARY KEY NONCLUSTERED  ([Id])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Creating primary key [PK__Telegram__5C7E359E5A20C0BD] on [admin].[Telegram]'
-GO
-ALTER TABLE [admin].[Telegram] ADD CONSTRAINT [PK__Telegram__5C7E359E5A20C0BD] PRIMARY KEY NONCLUSTERED  ([Phone])
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Actions_ValueList]'
-GO
-ALTER TABLE [Catalog].[Actions_ValueList] ADD CONSTRAINT [DF__Actions_Valu__Id__5BCD9859] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[ClientOptions_ListValues]'
-GO
-ALTER TABLE [Catalog].[ClientOptions_ListValues] ADD CONSTRAINT [DF__ClientOption__Id__5F9E293D] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Client_Contacts]'
-GO
-ALTER TABLE [Catalog].[Client_Contacts] ADD CONSTRAINT [DF__Client_Conta__Id__5DB5E0CB] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Client_Files]'
-GO
-ALTER TABLE [Catalog].[Client_Files] ADD CONSTRAINT [DF__Client_Files__Id__5CC1BC92] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Client_Parameters]'
-GO
-ALTER TABLE [Catalog].[Client_Parameters] ADD CONSTRAINT [DF__Client_Param__Id__5EAA0504] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[EquipmentOptions_ListValues]'
-GO
-ALTER TABLE [Catalog].[EquipmentOptions_ListValues] ADD CONSTRAINT [DF__EquipmentOpt__Id__664B26CC] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Equipment_Files]'
-GO
-ALTER TABLE [Catalog].[Equipment_Files] ADD CONSTRAINT [DF__Equipment_Fi__Id__627A95E8] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Equipment_Parameters]'
-GO
-ALTER TABLE [Catalog].[Equipment_Parameters] ADD CONSTRAINT [DF__Equipment_Pa__Id__636EBA21] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[EventOptions_ListValues]'
-GO
-ALTER TABLE [Catalog].[EventOptions_ListValues] ADD CONSTRAINT [DF__EventOptions__Id__673F4B05] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[User_Bag]'
-GO
-ALTER TABLE [Catalog].[User_Bag] ADD CONSTRAINT [DF__User_Bag__Id__6462DE5A] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[User_RemainsNorms]'
-GO
-ALTER TABLE [Catalog].[User_RemainsNorms] ADD CONSTRAINT [DF__User_Remains__Id__65570293] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[CheckList_Actions]'
-GO
-ALTER TABLE [Document].[CheckList_Actions] ADD CONSTRAINT [DF__CheckList_Ac__Id__68336F3E] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_CheckList]'
-GO
-ALTER TABLE [Document].[Event_CheckList] ADD CONSTRAINT [DF__Event_CheckL__Id__6CF8245B] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_Equipments]'
-GO
-ALTER TABLE [Document].[Event_Equipments] ADD CONSTRAINT [DF__Event_Equipm__Id__6A1BB7B0] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_Files]'
-GO
-ALTER TABLE [Document].[Event_Files] ADD CONSTRAINT [DF__Event_Files__Id__69279377] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_Parameters]'
-GO
-ALTER TABLE [Document].[Event_Parameters] ADD CONSTRAINT [DF__Event_Parame__Id__6C040022] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_Photos]'
-GO
-ALTER TABLE [Document].[Event_Photos] ADD CONSTRAINT [DF__Event_Photos__Id__6B0FDBE9] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_ServicesMaterials]'
-GO
-ALTER TABLE [Document].[Event_ServicesMaterials] ADD CONSTRAINT [DF__Event_Servic__Id__6EE06CCD] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Event_TypeDepartures]'
-GO
-ALTER TABLE [Document].[Event_TypeDepartures] ADD CONSTRAINT [DF__Event_TypeDe__Id__6DEC4894] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[NeedMat_Matireals]'
-GO
-ALTER TABLE [Document].[NeedMat_Matireals] ADD CONSTRAINT [DF__NeedMat_Mati__Id__6FD49106] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Document].[Reminder_Photo]'
-GO
-ALTER TABLE [Document].[Reminder_Photo] ADD CONSTRAINT [DF__Reminder_Pho__Id__70C8B53F] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [admin].[AsyncUploadSession] ADD CONSTRAINT [PK__AsyncUpl__3214EC06835E520D] PRIMARY KEY NONCLUSTERED  ([Id])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Creating primary key [PK__DeletedO__3214EC0692135ADC] on [admin].[DeletedObjects]'
+-- GO
+-- ALTER TABLE [admin].[DeletedObjects] ADD CONSTRAINT [PK__DeletedO__3214EC0692135ADC] PRIMARY KEY NONCLUSTERED  ([Id])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Creating primary key [PK__FileSyst__77387D07CD0ED4F8] on [admin].[FileSystem]'
+-- GO
+-- ALTER TABLE [admin].[FileSystem] ADD CONSTRAINT [PK__FileSyst__77387D07CD0ED4F8] PRIMARY KEY NONCLUSTERED  ([Date])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Creating primary key [PK__LastSync__C96133CDCEA4EEC4] on [admin].[LastSyncTime]'
+-- GO
+-- ALTER TABLE [admin].[LastSyncTime] ADD CONSTRAINT [PK__LastSync__C96133CDCEA4EEC4] PRIMARY KEY NONCLUSTERED  ([LastTime])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Creating primary key [PK__SyncSess__3214EC0627948A64] on [admin].[SyncSession]'
+-- GO
+-- ALTER TABLE [admin].[SyncSession] ADD CONSTRAINT [PK__SyncSess__3214EC0627948A64] PRIMARY KEY NONCLUSTERED  ([Id])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Creating primary key [PK__Telegram__5C7E359E5A20C0BD] on [admin].[Telegram]'
+-- GO
+-- ALTER TABLE [admin].[Telegram] ADD CONSTRAINT [PK__Telegram__5C7E359E5A20C0BD] PRIMARY KEY NONCLUSTERED  ([Phone])
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Actions_ValueList]'
+-- GO
+-- ALTER TABLE [Catalog].[Actions_ValueList] ADD CONSTRAINT [DF__Actions_Valu__Id__5BCD9859] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[ClientOptions_ListValues]'
+-- GO
+-- ALTER TABLE [Catalog].[ClientOptions_ListValues] ADD CONSTRAINT [DF__ClientOption__Id__5F9E293D] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Client_Contacts]'
+-- GO
+-- ALTER TABLE [Catalog].[Client_Contacts] ADD CONSTRAINT [DF__Client_Conta__Id__5DB5E0CB] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Client_Files]'
+-- GO
+-- ALTER TABLE [Catalog].[Client_Files] ADD CONSTRAINT [DF__Client_Files__Id__5CC1BC92] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Client_Parameters]'
+-- GO
+-- ALTER TABLE [Catalog].[Client_Parameters] ADD CONSTRAINT [DF__Client_Param__Id__5EAA0504] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[EquipmentOptions_ListValues]'
+-- GO
+-- ALTER TABLE [Catalog].[EquipmentOptions_ListValues] ADD CONSTRAINT [DF__EquipmentOpt__Id__664B26CC] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Equipment_Files]'
+-- GO
+-- ALTER TABLE [Catalog].[Equipment_Files] ADD CONSTRAINT [DF__Equipment_Fi__Id__627A95E8] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Equipment_Parameters]'
+-- GO
+-- ALTER TABLE [Catalog].[Equipment_Parameters] ADD CONSTRAINT [DF__Equipment_Pa__Id__636EBA21] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[EventOptions_ListValues]'
+-- GO
+-- ALTER TABLE [Catalog].[EventOptions_ListValues] ADD CONSTRAINT [DF__EventOptions__Id__673F4B05] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[User_Bag]'
+-- GO
+-- ALTER TABLE [Catalog].[User_Bag] ADD CONSTRAINT [DF__User_Bag__Id__6462DE5A] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[User_RemainsNorms]'
+-- GO
+-- ALTER TABLE [Catalog].[User_RemainsNorms] ADD CONSTRAINT [DF__User_Remains__Id__65570293] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[CheckList_Actions]'
+-- GO
+-- ALTER TABLE [Document].[CheckList_Actions] ADD CONSTRAINT [DF__CheckList_Ac__Id__68336F3E] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_CheckList]'
+-- GO
+-- ALTER TABLE [Document].[Event_CheckList] ADD CONSTRAINT [DF__Event_CheckL__Id__6CF8245B] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_Equipments]'
+-- GO
+-- ALTER TABLE [Document].[Event_Equipments] ADD CONSTRAINT [DF__Event_Equipm__Id__6A1BB7B0] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_Files]'
+-- GO
+-- ALTER TABLE [Document].[Event_Files] ADD CONSTRAINT [DF__Event_Files__Id__69279377] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_Parameters]'
+-- GO
+-- ALTER TABLE [Document].[Event_Parameters] ADD CONSTRAINT [DF__Event_Parame__Id__6C040022] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_Photos]'
+-- GO
+-- ALTER TABLE [Document].[Event_Photos] ADD CONSTRAINT [DF__Event_Photos__Id__6B0FDBE9] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_ServicesMaterials]'
+-- GO
+-- ALTER TABLE [Document].[Event_ServicesMaterials] ADD CONSTRAINT [DF__Event_Servic__Id__6EE06CCD] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Event_TypeDepartures]'
+-- GO
+-- ALTER TABLE [Document].[Event_TypeDepartures] ADD CONSTRAINT [DF__Event_TypeDe__Id__6DEC4894] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[NeedMat_Matireals]'
+-- GO
+-- ALTER TABLE [Document].[NeedMat_Matireals] ADD CONSTRAINT [DF__NeedMat_Mati__Id__6FD49106] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Document].[Reminder_Photo]'
+-- GO
+-- ALTER TABLE [Document].[Reminder_Photo] ADD CONSTRAINT [DF__Reminder_Pho__Id__70C8B53F] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Adding foreign keys to [Document].[Task_Status]'
 GO
 ALTER TABLE [Document].[Task_Status] ADD CONSTRAINT [FK_Document_Task_Status_Document_Task_EntityId] FOREIGN KEY ([Ref]) REFERENCES [Document].[Task] ([Id]) ON DELETE CASCADE 
@@ -4823,10 +4823,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_EquipmentsHistory]'
 GO
-ALTER TABLE [Catalog].[Equipment_EquipmentsHistory] DROP CONSTRAINT [DF__Equipment_Eq__Id__1BE81D6E]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Equipment_EquipmentsHistory] DROP CONSTRAINT [DF__Equipment_Eq__Id__1BE81D6E]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Equipments]'
 GO
 ALTER TABLE [Catalog].[Equipment_Equipments] DROP CONSTRAINT [PK_Catalog_Equipment_Equipments]
@@ -4835,10 +4835,10 @@ IF @@ERROR <> 0 SET NOEXEC ON
 GO
 PRINT N'Dropping constraints from [Catalog].[Equipment_Equipments]'
 GO
-ALTER TABLE [Catalog].[Equipment_Equipments] DROP CONSTRAINT [DF__Equipment_Eq__Id__1AF3F935]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- ALTER TABLE [Catalog].[Equipment_Equipments] DROP CONSTRAINT [DF__Equipment_Eq__Id__1AF3F935]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Dropping index [UQ_Catalog_Equipment_EquipmentsHistory_Key] from [Catalog].[Equipment_EquipmentsHistory]'
 GO
 DROP INDEX [UQ_Catalog_Equipment_EquipmentsHistory_Key] ON [Catalog].[Equipment_EquipmentsHistory]
@@ -5250,18 +5250,18 @@ CREATE PROCEDURE [Catalog].[Equipment_EquipmentsHistory_adm_delete] @Ref UNIQUEI
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
-PRINT N'Adding constraints to [Catalog].[Equipment_EquipmentsHistory]'
-GO
-ALTER TABLE [Catalog].[Equipment_EquipmentsHistory] ADD CONSTRAINT [DF__Equipment_Eq__Id__618671AF] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Adding constraints to [Catalog].[Equipment_Equipments]'
-GO
-ALTER TABLE [Catalog].[Equipment_Equipments] ADD CONSTRAINT [DF__Equipment_Eq__Id__60924D76] DEFAULT (newsequentialid()) FOR [Id]
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
+-- PRINT N'Adding constraints to [Catalog].[Equipment_EquipmentsHistory]'
+-- GO
+-- ALTER TABLE [Catalog].[Equipment_EquipmentsHistory] ADD CONSTRAINT [DF__Equipment_Eq__Id__618671AF] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
+-- PRINT N'Adding constraints to [Catalog].[Equipment_Equipments]'
+-- GO
+-- ALTER TABLE [Catalog].[Equipment_Equipments] ADD CONSTRAINT [DF__Equipment_Eq__Id__60924D76] DEFAULT (newsequentialid()) FOR [Id]
+-- GO
+-- IF @@ERROR <> 0 SET NOEXEC ON
+-- GO
 PRINT N'Adding foreign keys to [Catalog].[Equipment_EquipmentsHistory]'
 GO
 ALTER TABLE [Catalog].[Equipment_EquipmentsHistory] ADD CONSTRAINT [FK_Catalog_Equipment_EquipmentsHistory_Catalog_Equipment_EntityId] FOREIGN KEY ([Ref]) REFERENCES [Catalog].[Equipment] ([Id]) ON DELETE CASCADE 
