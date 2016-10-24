@@ -379,7 +379,7 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.3.0');
+           ,N'3.1.3.1');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
