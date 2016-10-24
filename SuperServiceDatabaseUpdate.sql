@@ -367,7 +367,7 @@ CREATE TABLE [dbo].[dbConfig]
 (
 	[ID] [int] NOT NULL IDENTITY(1, 1) NOT FOR REPLICATION,
 	[Key] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL,
-	[Value] [varchar] (50) COLLATE Cyrillic_General_CI_AS NOT NULL
+	[Value] [varchar] (500) COLLATE Cyrillic_General_CI_AS NOT NULL
 )
 GO
 
@@ -379,7 +379,7 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.3.0');
+           ,N'3.1.3.1');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
