@@ -150,7 +150,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity DeleteFilter="" Name="Event" Schema="Document" SyncDownload="True" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE EV.[UserMA] = @UserId AND EV.[Date] &gt;(getDate() - 31) AND NOT (SE.[Name] = 'Done')) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
+		<Entity DeleteFilter="" Name="Event" Schema="Document" SyncDownload="True" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE (EV.[UserMA] = @UserId OR EV.[UserMA] IN (SELECT CU.Id From [Catalog].[User] CU Where CU.[Manager] = @UserId)) AND EV.[Date] &gt;(getDate() - 31)) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Posted" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
