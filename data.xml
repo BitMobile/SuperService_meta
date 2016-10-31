@@ -2235,7 +2235,7 @@
 		<Row _Type="Catalog.ActivityTypes" _RS="0" Id="2dca025f-c7b9-4a6c-a73d-e0286abb901e" DeletionMark="False" Description="Розничная торговля" Code="5" >
 			<Users Key="User">
 				<Row LineNumber="1" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
-				<Row LineNumber="2" User="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" />
+				<Row LineNumber="2" User="71e1c804-1387-11e6-b0e4-6c71d97753d2" />
 			</Users>
 		</Row>
 		
