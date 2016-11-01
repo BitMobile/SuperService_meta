@@ -2241,38 +2241,38 @@
 		
 		<!-- Document.Tender  "Тендеры"-->
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" DeletionMark="False" Number="000000001" Date="03.10.2016 11:39:03" Description="Тендер на поставки витаминов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" DeliveryDateTime="30.10.2016 11:39:03" Marketplace="http://ya.ru" Sum="540500" Closed="False">
+		<Row _Type="Catalog.Tender" _RS="0" Id="7f5a5e4e-6678-43a6-9f72-80ec82eea1e4" DeletionMark="False" Number="000000001" Date="03.10.2016 11:39:03" Description="Тендер на поставки витаминов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" DeliveryDateTime="30.10.2016 11:39:03" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://ya.ru" Sum="540500" Closed="False">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" />
 			</ActivityTypes>
 		</Row>
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="6b47b280-01e0-42bc-9f1f-7b7645a6017c" DeletionMark="False" Number="000000002" Date="02.10.2016 09:43:17" Description="Тендер на поставки БАД" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="10.10.2016 09:43:17" DeliveryDateTime="" Marketplace="http://zakupki.ru" Sum="18360" Closed="True">
+		<Row _Type="Catalog.Tender" _RS="0" Id="6b47b280-01e0-42bc-9f1f-7b7645a6017c" DeletionMark="False" Number="000000002" Date="02.10.2016 09:43:17" Description="Тендер на поставки БАД" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="10.10.2016 09:43:17" DeliveryDateTime="" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://zakupki.ru" Sum="18360" Closed="True">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="18401cc1-a2c3-41f2-bdd4-581b47ce5951" />
 			</ActivityTypes>
 		</Row>
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="032d4521-3e7c-45d8-97cc-27810a631af3" DeletionMark="False" Number="000000003" Date="01.10.2016 00:00:01" Description="Запрос на вагон аспирина" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="01.01.2017 00:00:00" DeliveryDateTime="Очень быстро" Marketplace="http://ya.ru" Sum="2500" Closed="False">
+		<Row _Type="Catalog.Tender" _RS="0" Id="032d4521-3e7c-45d8-97cc-27810a631af3" DeletionMark="False" Number="000000003" Date="01.10.2016 00:00:01" Description="Запрос на вагон аспирина" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="01.01.2017 00:00:00" DeliveryDateTime="Очень быстро" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://ya.ru" Sum="2500" Closed="False">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="12cf5f37-ca41-4058-9f0b-9c827c06e40c" />
 			</ActivityTypes>
 		</Row>
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="90465e39-88ad-4076-a5e2-0a8e49ff26ad" DeletionMark="False" Number="000000004" Date="30.09.2016 12:01:00" Description="Проведение серии курсов по здоровому питанию" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" DeliveryDateTime="29.02.2020" Marketplace="http://market.yandex.ru" Sum="3.14" Closed="False">
+		<Row _Type="Catalog.Tender" _RS="0" Id="90465e39-88ad-4076-a5e2-0a8e49ff26ad" DeletionMark="False" Number="000000004" Date="30.09.2016 12:01:00" Description="Проведение серии курсов по здоровому питанию" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.10.2016 11:39:03" DeliveryDateTime="29.02.2020" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://market.yandex.ru" Sum="3.14" Closed="False">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="6a33a083-b1ff-4e02-be91-c478fbc60057" />
 				<Row LineNumber="2" ActivityType="2dca025f-c7b9-4a6c-a73d-e0286abb901e" />
 			</ActivityTypes>
 		</Row>
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="a4ea2bf3-c8a0-4ea4-89a0-60143643ca08" DeletionMark="False" Number="000000005" Date="20.08.2016 11:11:11" Description="Подготовка маркетинговых материалов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="03.10.2016 22:17:32" DeliveryDateTime="22:00:00" Marketplace="http://1cbit.ru" Sum="127" Closed="False">
+		<Row _Type="Catalog.Tender" _RS="0" Id="a4ea2bf3-c8a0-4ea4-89a0-60143643ca08" DeletionMark="False" Number="000000005" Date="20.08.2016 11:11:11" Description="Подготовка маркетинговых материалов" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="03.10.2016 22:17:32" DeliveryDateTime="22:00:00" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://1cbit.ru" Sum="127" Closed="False">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="1609c085-75b9-4526-835b-5381af17b445" />
 			</ActivityTypes>
 		</Row>
 
-		<Row _Type="Catalog.Tender" _RS="0" Id="b39f427c-ae81-49a2-add0-1f7c9b16e8e7" DeletionMark="False" Number="000000006" Date="29.10.2015 13:13:21" Description="Запрос на поставку новопассита" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.11.2016 07:59:59" DeliveryDateTime="Do not forget" Marketplace="http://grotem.com" Sum="999999.99" Closed="False">
+		<Row _Type="Catalog.Tender" _RS="0" Id="b39f427c-ae81-49a2-add0-1f7c9b16e8e7" DeletionMark="False" Number="000000006" Date="29.10.2015 13:13:21" Description="Запрос на поставку новопассита" Client="F365B192-1690-11E6-B0E4-6C71D97753D2" DueDateTime="20.11.2016 07:59:59" DeliveryDateTime="Do not forget" Responsible="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Manager="71e1c7ef-1387-11e6-b0e4-6c71d97753d2" Marketplace="http://grotem.com" Sum="999999.99" Closed="False">
 			<ActivityTypes Key="ActivityType">
 				<Row LineNumber="1" ActivityType="2dca025f-c7b9-4a6c-a73d-e0286abb901e" />
 			</ActivityTypes>
