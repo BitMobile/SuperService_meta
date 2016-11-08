@@ -43,6 +43,8 @@
 		<Row _Type="Catalog.Contacts" _RS="0" Predefined="False" Id="f365b190-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Васильев Андрей" Code="000000001" Position="Руководитель отдела закупок" Tel="+7 (495) 363-31-52" EMail=""/>
 		<Row _Type="Catalog.Contacts" _RS="0" Predefined="False" Id="f4a4d5cd-1dd3-11e6-b0e7-6c71d97753d2" DeletionMark="False" Description="Иванов Михаил" Code="000000002" Position="" Tel="+7 (812) 325-49-49" EMail=""/>
 		<Row _Type="Catalog.Contacts" _RS="0" Predefined="False" Id="8d96b0bd-3ed8-11e6-b0f0-6c71d97753d2" DeletionMark="False" Description="Бекин Александр Михайлович" Code="000000003" Position="" Tel="+7 (812) 325-49-49" EMail=""/>
+		<Row _Type="Catalog.Profile" _RS="0" Id="D6888560-32F7-402A-A041-E775FBBE8884" DeletionMark="False" Description="Профиль1"/>
+		<Row _Type="Catalog.Profile" _RS="0" Id="C0F2711F-8C51-474C-9D26-44FE7D58695E" DeletionMark="False" Description="Профиль2"/>
 		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f365b191-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Логотип" Code="000000001" DataTypeParameter="ae3d67f7-50b3-4e00-4ab8-fc9cb4f1bf64" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val"/>
 		</Row>
@@ -136,7 +138,7 @@
 			</Contacts>
 			<Parameters Key="Parameter,Val">
 				<Row LineNumber="1" Parameter="f365b191-1690-11e6-b0e4-6c71d97753d2" Val="7eddfe5f-2e5c-4ebb-9c47-c5cc1121e41c"/>
-				<Row LineNumber="2" Parameter="4d97f609-184d-11e6-b0e5-6c71d97753d2" Val="Эксклюзив"/>
+				<Row LineNumber="2" Parameter="4d97f609-184d-11e6-b0e5-6c71d97753d2" Val="Эксклюзив" Profile="C0F2711F-8C51-474C-9D26-44FE7D58695E"/>
 				<Row LineNumber="3" Parameter="4d97f60a-184d-11e6-b0e5-6c71d97753d2" Val="ЮЛ"/>
 				<Row LineNumber="4" Parameter="f4a4d5ce-1dd3-11e6-b0e7-6c71d97753d2" Val=""/>
 				<Row LineNumber="5" Parameter="f4a4d5cf-1dd3-11e6-b0e7-6c71d97753d2" Val=""/>
