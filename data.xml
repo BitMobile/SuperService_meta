@@ -48,7 +48,7 @@
 		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f365b191-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Логотип" Code="000000001" DataTypeParameter="ae3d67f7-50b3-4e00-4ab8-fc9cb4f1bf64" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val"/>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4d97f609-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Description="Абонентское обслуживание" Code="000000002" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4d97f609-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Description="Абонентское обслуживание" Profile="C0F2711F-8C51-474C-9D26-44FE7D58695E" Code="000000002" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val">
 				<Row LineNumber="1" Val="Эконом"/>
 				<Row LineNumber="2" Val="Оптима"/>
@@ -57,32 +57,32 @@
 				<Row LineNumber="5" Val="Нет"/>
 			</ListValues>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4d97f60a-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Description="Тип клиента" Code="000000003" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4d97f60a-184d-11e6-b0e5-6c71d97753d2" DeletionMark="False" Profile="C0F2711F-8C51-474C-9D26-44FE7D58695E" Description="Тип клиента" Code="000000003" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val">
 				<Row LineNumber="1" Val="Частное"/>
 				<Row LineNumber="2" Val="ЮЛ"/>
 			</ListValues>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f4a4d5ce-1dd3-11e6-b0e7-6c71d97753d2" DeletionMark="False" Description="Обращение" Code="000000004" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f4a4d5ce-1dd3-11e6-b0e7-6c71d97753d2" DeletionMark="False" Profile="C0F2711F-8C51-474C-9D26-44FE7D58695E" Description="Обращение" Code="000000004" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val">
 				<Row LineNumber="1" Val="Сайт"/>
 				<Row LineNumber="2" Val="Телефон"/>
 			</ListValues>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f4a4d5cf-1dd3-11e6-b0e7-6c71d97753d2" DeletionMark="False" Description="Тип обращения" Code="000000005" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="f4a4d5cf-1dd3-11e6-b0e7-6c71d97753d2" DeletionMark="False" Profile="D6888560-32F7-402A-A041-E775FBBE8884" Description="Тип обращения" Code="000000005" DataTypeParameter="988d759f-473c-bdde-42c8-3dcc69bcc24b" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val">
 				<Row LineNumber="1" Val="Окна"/>
 				<Row LineNumber="2" Val="Балкон"/>
 				<Row LineNumber="3" Val="Ремонт"/>
 			</ListValues>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe79-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="Фото" Code="000000006" DataTypeParameter="ae3d67f7-50b3-4e00-4ab8-fc9cb4f1bf64" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe79-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Profile="D6888560-32F7-402A-A041-E775FBBE8884" Description="Фото" Code="000000006" DataTypeParameter="ae3d67f7-50b3-4e00-4ab8-fc9cb4f1bf64" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val"/>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe7a-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="Заказчик" Code="000000007" DataTypeParameter="8404c846-e63b-425c-40fb-e3081e1b97c0" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe7a-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Profile="D6888560-32F7-402A-A041-E775FBBE8884" Description="Заказчик" Code="000000007" DataTypeParameter="8404c846-e63b-425c-40fb-e3081e1b97c0" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val"/>
 		</Row>
-		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe7b-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="Общая площадь" Code="000000008" DataTypeParameter="8404c846-e63b-425c-40fb-e3081e1b97c0" DisplayingBMA="True" EditingBMA="False">
+		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe7b-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Profile="D6888560-32F7-402A-A041-E775FBBE8884" Description="Общая площадь" Code="000000008" DataTypeParameter="8404c846-e63b-425c-40fb-e3081e1b97c0" DisplayingBMA="True" EditingBMA="False">
 			<ListValues Key="Val"/>
 		</Row>
 		<Row _Type="Catalog.ClientOptions" _RS="0" Predefined="False" Id="4faabe7d-28a5-11e6-b0ea-6c71d97753d2" DeletionMark="False" Description="Период реализации" Code="000000009" DataTypeParameter="8404c846-e63b-425c-40fb-e3081e1b97c0" DisplayingBMA="True" EditingBMA="False">
@@ -138,7 +138,7 @@
 			</Contacts>
 			<Parameters Key="Parameter,Val">
 				<Row LineNumber="1" Parameter="f365b191-1690-11e6-b0e4-6c71d97753d2" Val="7eddfe5f-2e5c-4ebb-9c47-c5cc1121e41c"/>
-				<Row LineNumber="2" Parameter="4d97f609-184d-11e6-b0e5-6c71d97753d2" Val="Эксклюзив" Profile="C0F2711F-8C51-474C-9D26-44FE7D58695E"/>
+				<Row LineNumber="2" Parameter="4d97f609-184d-11e6-b0e5-6c71d97753d2" Val="Эксклюзив"/>
 				<Row LineNumber="3" Parameter="4d97f60a-184d-11e6-b0e5-6c71d97753d2" Val="ЮЛ"/>
 				<Row LineNumber="4" Parameter="f4a4d5ce-1dd3-11e6-b0e7-6c71d97753d2" Val=""/>
 				<Row LineNumber="5" Parameter="f4a4d5cf-1dd3-11e6-b0e7-6c71d97753d2" Val=""/>
