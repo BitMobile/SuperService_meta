@@ -220,6 +220,18 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
+    <Entity Name="EventHistory" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
+      <Fields>
+        <Field KeyField="true" Name="Id" Type="Guid" />
+        <Field AllowNull="false" Name="Date" Type="DateTime2" />
+        <Field AllowNull="false" Name="DeletionMark" Type="Boolean" />
+        <Field AllowNull="false" Name="Status" Type="Enum.StatusyEvents" />
+        <Field AllowNull="false" Name="Event" Type="Document.Event" />
+        <Field AllowNull="true" Name="Author" Type="Catalog.User" />
+        <Field AllowNull="true" Name="UserMA" Type="Catalog.User" />
+      </Fields>
+      <TabularSections />
+    </Entity>
 		<Entity Name="SKU" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.Id IN (SELECT DE.SKU FROM [Document].[Event_ServicesMaterials] DE WHERE DE.Ref IN (SELECT SE.Id FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
@@ -581,7 +593,7 @@
 			</Fields>
 			<TabularSections/>
 		</Entity>    
-    </Entities>
+		</Entities>
 	
 	<Constants>
 		<Entity Name="Enum.TypesDataParameters">
@@ -665,6 +677,6 @@
 			<Row Description="Доступ к веб-приложению" Id="0236eb9f-eed9-510b-9152-86b037e79a79" Name="WebInterfaceAccess" _RS="0"/>
 			<Row Description="Доступ к мобильному приложению" Id="0236eb9f-eed9-511b-9152-86b037e79a79" Name="MobileAppAccess" _RS="0"/>
 		</Entity>
-    
+		
 	</Constants>
 </Configuration>
