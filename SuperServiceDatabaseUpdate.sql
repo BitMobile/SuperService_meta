@@ -471,11 +471,42 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.3.1');
+           ,N'3.1.4.0');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileURL'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileLogin'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobilePass'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 
 PRINT N'Creating primary key [PK_dbConfig] on [dbo].[dbConfig]'
 GO
