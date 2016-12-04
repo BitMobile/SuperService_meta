@@ -2,7 +2,42 @@
 <Root>
 	<RegionalSettings NumberDecimalSeparator="," NumberGroupSeparator=" "/>
 	<Rows>
-		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="af739dda-a4d5-11e5-8aad-f8a963e4bf15" DeletionMark="False" Description="Admin" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="9305f8d6-fc84-4120-804c-a42b0bc42935" Phone="" Role="Admin">
+		
+		<!-- Catalog.Roles  "Роли"-->
+
+		<Row _Type="Catalog.Roles" _RS="0" Id="680efa97-b038-46b4-bed0-d652a82e914d" DeletionMark="False" Name="Admin" Ident="Admin" Description="Administrator" CanManageSelf="True" />
+
+		<!-- Catalog.RoleWebactions  "Разрешения ролей"-->
+
+			<!-- Admin -->
+
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="3929ba7a-53e8-4845-9514-8db9c2a18525" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-489b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0a06a3b7-64a8-48dd-b7e0-87490b7ee080" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-490b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="0fdbb04a-20af-46f0-95b5-af16f08e2e48" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-491b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d3ef9a98-ad3f-4e14-91dd-fc85a1731ad0" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-492b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="55a6e5ac-b211-4869-911f-e70540ffc7d8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-494b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="224212fb-9136-4c11-9005-b9c91dbff797" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-495b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="1becab3c-d81f-4cab-9520-81deec108d3c" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-496b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="3a255f28-178d-47d9-9460-a121bde54989" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-497b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="6879f766-d8d7-4621-a40d-61da906fdfb8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-498b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f85baac7-0a90-4704-957e-bdc238bef8eb" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-499b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="f27ec6e0-cc42-4cb6-8482-8c15366d1c7d" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-500b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="43ec0da6-9f75-40ba-ba30-f05d2c325410" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-501b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="5a8fd8d9-3478-4de7-b316-ea41514b2e23" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-502b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="b6a2f9b7-dcf0-47fe-a2b2-e1ddca3b8cf8" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-503b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="e9246e63-c9ac-43a8-b1c4-a97b3fd79cb1" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-504b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="2b2487d7-1326-4f5c-85c3-089c599c4f72" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-505b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="99b217e3-1f53-4539-ad1a-67f5f36829ce" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-506b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="4a44518e-9934-4052-a81c-7a0b815962d3" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-507b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="51c34669-1797-437b-992b-9b3be9baf8cf" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-508b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="d43a4271-c47f-445c-ad9b-016fd34dfe44" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-509b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="36503f36-91f9-4b18-ae29-7135e1c49bdf" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-510b-9152-86b037e79a79" />
+			<Row _Type="Catalog.RoleWebactions" _RS="0" Id="53e652b4-4483-4120-9abe-6ef0d9bad182" Role="680efa97-b038-46b4-bed0-d652a82e914d" Webaction="0236eb9f-eed9-511b-9152-86b037e79a79" />
+
+		<!-- Catalog.User  "Пользователи"-->
+		
+
+		<Row _Type="Catalog.User" _RS="0" Predefined="False" Id="af739dda-a4d5-11e5-8aad-f8a963e4bf15" DeletionMark="False" Description="Admin" Code="1" UserName="Admin" Password="admin" UserDB="" EMail="" UserID="9305f8d6-fc84-4120-804c-a42b0bc42935" Phone="" Role="680efa97-b038-46b4-bed0-d652a82e914d">
 			<Bag Key="Materials"/>
 			<RemainsNorms Key="Materials"/>
 		</Row>

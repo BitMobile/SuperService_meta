@@ -146,6 +146,98 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
+PRINT N'Updates all code in string'
+Go
+UPDATE Catalog.Accounts Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.Actions Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.Client Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.ClientOptions Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.Contacts Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.Equipment Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.EquipmentOptions Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.EventOptions Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.RIM Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.ServiceAgreement Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.SettingMobileApplication Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.SKU Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.TypesDepartures Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Catalog.[User] Set Code = RIGHT('000000000' + Code,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Document.[Event] Set Number = RIGHT('000000000' + Number,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Document.NeedMat Set Number = RIGHT('000000000' + Number,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Document.Reminder Set Number = RIGHT('000000000' + Number,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+UPDATE Document.Task Set Number = RIGHT('000000000' + Number,9)
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Creating [dbo].[TokenAdd]'
 GO
 
@@ -379,11 +471,42 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.3.1');
+           ,N'3.1.4.0');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileURL'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileLogin'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobilePass'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 
 PRINT N'Creating primary key [PK_dbConfig] on [dbo].[dbConfig]'
 GO
