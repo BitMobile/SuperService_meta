@@ -898,7 +898,7 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
-NSERT INTO [dbo].[dbConfig]
+INSERT INTO [dbo].[dbConfig]
            ([Key]
            ,[Value])
      VALUES
