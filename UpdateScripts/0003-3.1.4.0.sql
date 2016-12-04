@@ -898,6 +898,36 @@ GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
 
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileURL'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobileLogin'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+INSERT INTO [dbo].[dbConfig]
+           ([Key]
+           ,[Value])
+     VALUES
+           ('bitmobilePass'
+           ,'');
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
 PRINT N'Set DBVersion = 3.1.4.0'
 
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
