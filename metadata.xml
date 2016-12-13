@@ -126,7 +126,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity Name="Event" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE EV.[UserMA] = @UserId AND EV.[StartDatePlan] &gt;(getDate() - 31) AND (NOT (SE.[Name] = 'Done') OR (SE.[Name] = 'Done' AND EV.[ActualEndDate] &gt;(getDate() - 1)))) " SyncUpload="True">
+		<Entity Name="Event" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="t.[Id] IN(SELECT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE EV.[UserMA] = @UserId AND EV.[StartDatePlan] &gt;(getDate() - 31) AND (NOT (SE.[Name] = 'New')) AND (NOT (SE.[Name] = 'OnHarmonization')) AND (NOT (SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') OR ((SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') AND EV.[ActualEndDate] &gt;(getDate() - 1)))) " SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Posted" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
