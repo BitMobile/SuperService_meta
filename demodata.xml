@@ -1817,9 +1817,6 @@
 				<Row LineNumber="4" SKU="f365b199-1690-11e6-b0e4-6c71d97753d2" Price="2000" AmountPlan="1" SumPlan="2000" AmountFact="0" SumFact="0"/>
 			</ServicesMaterials>
 		</Row>
-		
-		<!-- Catalog.SettingMobileApplication -->
-		
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7f3-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="AddUnPlanMaterials" Code="000000012" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7f4-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="AddUnPlanService" Code="000000011" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7f5-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="AllowGalery" Code="000000003" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
@@ -1834,14 +1831,6 @@
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fe-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedEquipment" Code="000000001" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7ff-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedGpsFix" Code="000000008" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c800-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedServiceBag" Code="000000014" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="2F5CFF33-986D-47E6-9B8D-26B9351D6B2E" DeletionMark="False" Description="IsBestAccuracy" Code="000000017" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="2A8A6346-1E79-4F8F-9546-2F7434A270C2" DeletionMark="False" Description="MinInterval" Code="000000016" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="180"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="2B052F7C-188D-42B9-9208-CD197B691D6C" DeletionMark="False" Description="MinDistance" Code="000000018" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="100"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="D05EBAA8-059E-4E49-9AB1-7398058CE78C" DeletionMark="False" Description="DistanceFilter" Code="000000019" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="90"/>
-		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="82EA4970-C1AF-44B3-83E5-CE3C60247A3E" DeletionMark="False" Description="SendInterval" Code="000000020" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="2147483647"/>
-		
-		<!-- End Settings -->
-		
 		<Row _Type="Document.NeedMat" _RS="0" Posted="True" Id="c2f5c968-bd98-45e0-a5d6-1da015afe31e" DeletionMark="False" Date="10.05.2016 13:10:56" Number="000000001" DocIn="00000000-0000-0000-0000-000000000000" StatsNeed="bdd2411f-c0e4-2a47-4486-a87fa2ad1dfb" SR="71e1c804-1387-11e6-b0e4-6c71d97753d2" FillFull="True" SRMComment="" SRComment="">
 			<Matireals Key="SKU">
 				<Row LineNumber="1" SKU="f365b19a-1690-11e6-b0e4-6c71d97753d2" Count="15"/>
