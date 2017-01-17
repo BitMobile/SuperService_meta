@@ -318,10 +318,10 @@ DELETE FROM [Enum].[StatusyEvents] Where [Name] = 'CancelOLD' OR [Name] = 'DoneO
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
-PRINT N'Set DBVersion = 3.1.4.0'
+PRINT N'Set DBVersion = 3.1.5.0'
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
     UPDATE [dbo].[dbConfig]  
-      SET [Value]='3.1.4.0'  
+      SET [Value]='3.1.5.0'  
       WHERE [Key]='DBVersion'; 
   ELSE
     INSERT INTO [dbo].[dbConfig]
