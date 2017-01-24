@@ -218,20 +218,32 @@
 					<Field AllowNull="true" Name="AmountFact" Precision="10" Scale="3" Type="Decimal"/>
 					<Field AllowNull="true" Name="SumFact" Precision="15" Scale="2" Type="Decimal"/>
 				</TabularSection>
+				<TabularSection Key="User" Name="EventFiskalProperties" DeleteFilter="" SyncFilter="">
+					<Field KeyField="true" Name="Id" Type="Guid"/>
+					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
+					<Field KeyField="false" Length="100" Name="CheckNumber" Type="String" />
+					<Field AllowNull="false" Name="Date" Type="DateTime2" />
+					<Field AllowNull="false" Name="ShiftNumber" Type="DateTime2" />
+					<Field AllowNull="false" Length="100" Name="NumberFtpr" Type="String" />
+					<Field AllowNull="false" Name="PaymentType" Type="Integer" />
+					<Field AllowNull="false" Name="PaymentAmount" Precision="15" Scale="2" Type="Decimal" />
+					<Field AllowNull="false" Name="User" Type="Catalog.User" />
+				</TabularSection>
 			</TabularSections>
 		</Entity>
-    <Entity Name="EventHistory" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
-      <Fields>
-        <Field KeyField="true" Name="Id" Type="Guid" />
-        <Field AllowNull="false" Name="Date" Type="DateTime2" />
-        <Field AllowNull="false" Name="DeletionMark" Type="Boolean" />
-        <Field AllowNull="false" Name="Status" Type="Enum.StatusyEvents" />
-        <Field AllowNull="false" Name="Event" Type="Document.Event" />
-        <Field AllowNull="true" Name="Author" Type="Catalog.User" />
-        <Field AllowNull="true" Name="UserMA" Type="Catalog.User" />
-      </Fields>
-      <TabularSections />
-    </Entity>
+	    <Entity Name="EventHistory" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
+	      <Fields>
+	        <Field KeyField="true" Name="Id" Type="Guid" />
+	        <Field AllowNull="false" Name="Date" Type="DateTime2" />
+	        <Field AllowNull="false" Name="DeletionMark" Type="Boolean" />
+	        <Field AllowNull="false" Name="Status" Type="Enum.StatusyEvents" />
+	        <Field AllowNull="false" Name="Event" Type="Document.Event" />
+	        <Field AllowNull="true" Name="Author" Type="Catalog.User" />
+	        <Field AllowNull="true" Name="UserMA" Type="Catalog.User" />
+	      </Fields>
+	      <TabularSections />
+	    </Entity>
 		<Entity Name="SKU" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.Id IN (SELECT DE.SKU FROM [Document].[Event_ServicesMaterials] DE WHERE DE.Ref IN (SELECT SE.Id FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
