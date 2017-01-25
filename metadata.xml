@@ -2,6 +2,13 @@
 <Configuration Name="SuperService" Version="1.3.1.327">
 	<GlobalParameters/>
 	<Entities>
+		<Entity Name="VATS" Schema="Enum">
+			<Fields>
+				<Field KeyField="true" Name="Id" Type="Guid"/>
+				<Field AllowNull="false" Length="100" Name="Name" Type="String"/>
+				<Field AllowNull="false" Name="NumberFR" Type="Integer"/>
+			</Fields>
+		</Entity>
 		<Entity Name="TypesDataParameters" Schema="Enum">
 			<Fields>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -103,6 +110,7 @@
 				<Field AllowNull="true" Name="Service" Type="Boolean"/>
 				<Field AllowNull="true" Name="SKU" Type="Catalog.SKU"/>
 				<Field AllowNull="true" Length="5" Name="Unit" Type="String"/>
+				<Field AllowNull="true" Length="5" Name="VAT" Type="Enum.VATS"/>
 			</Fields>
 			<TabularSections/>
 		</Entity>
