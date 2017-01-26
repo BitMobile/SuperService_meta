@@ -1831,6 +1831,7 @@
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7fe-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedEquipment" Code="000000001" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c7ff-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedGpsFix" Code="000000008" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="71e1c800-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="UsedServiceBag" Code="000000014" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
+		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="8b543510-bc75-4247-9c2a-8f4134e81866" DeletionMark="False" Description="EnableFPTR" Code="000000015" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
 		<Row _Type="Document.NeedMat" _RS="0" Posted="True" Id="c2f5c968-bd98-45e0-a5d6-1da015afe31e" DeletionMark="False" Date="10.05.2016 13:10:56" Number="000000001" DocIn="00000000-0000-0000-0000-000000000000" StatsNeed="bdd2411f-c0e4-2a47-4486-a87fa2ad1dfb" SR="71e1c804-1387-11e6-b0e4-6c71d97753d2" FillFull="True" SRMComment="" SRComment="">
 			<Matireals Key="SKU">
 				<Row LineNumber="1" SKU="f365b19a-1690-11e6-b0e4-6c71d97753d2" Count="15"/>
