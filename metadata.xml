@@ -233,7 +233,7 @@
 					<Field KeyField="false"  Name="CheckNumber" Type="Integer" />
 					<Field AllowNull="false" Name="Date" Type="DateTime2" />
 					<Field AllowNull="false" Name="ShiftNumber" Type="Integer" />
-					<Field AllowNull="false" Name="NumberFtpr" Type="String" />
+					<Field AllowNull="false" Length="100" Name="NumberFtpr" Type="String" />
 					<Field AllowNull="false" Name="PaymentType" Type="Integer" />
 					<Field AllowNull="false" Name="PaymentAmount" Precision="15" Scale="2" Type="Decimal" />
 					<Field AllowNull="false" Name="User" Type="Catalog.User" />
