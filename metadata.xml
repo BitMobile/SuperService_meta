@@ -230,7 +230,7 @@
 					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
-					<Field KeyField="true"  Name="CheckNumber" Type="Integer" />
+					<Field KeyField="false"  Name="CheckNumber" Type="Integer" />
 					<Field AllowNull="true" Name="Date" Type="DateTime2" />
 					<Field AllowNull="true" Name="ShiftNumber" Type="Integer" />
 					<Field AllowNull="true" Length="100" Name="NumberFtpr" Type="String" />
