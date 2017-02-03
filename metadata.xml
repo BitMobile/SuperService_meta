@@ -227,7 +227,7 @@
 					<Field AllowNull="true" Name="SumFact" Precision="15" Scale="2" Type="Decimal"/>
 				</TabularSection>
 				<TabularSection Key="User" Name="EventFiskalProperties" DeleteFilter="" SyncFilter="">
-					<Field KeyField="false" Name="Id" Type="Guid"/>
+					<Field KeyField="true" Name="Id" Type="Guid"/>
 					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
 					<Field KeyField="true"  Name="CheckNumber" Type="Integer" />
