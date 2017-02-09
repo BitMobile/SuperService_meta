@@ -2,6 +2,13 @@
 <Configuration Name="SuperService" Version="1.3.1.327">
 	<GlobalParameters/>
 	<Entities>
+		<Entity Name="VATS" Schema="Enum">
+			<Fields>
+				<Field KeyField="true" Name="Id" Type="Guid"/>
+				<Field AllowNull="false" Length="100" Name="Name" Type="String"/>
+				<Field AllowNull="false" Length="100" Name="Description" Type="String"/>
+			</Fields>
+		</Entity>
 		<Entity Name="TypesDataParameters" Schema="Enum">
 			<Fields>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -103,6 +110,7 @@
 				<Field AllowNull="true" Name="Service" Type="Boolean"/>
 				<Field AllowNull="true" Name="SKU" Type="Catalog.SKU"/>
 				<Field AllowNull="true" Length="5" Name="Unit" Type="String"/>
+				<Field AllowNull="true" Length="5" Name="VAT" Type="Enum.VATS"/>
 			</Fields>
 			<TabularSections/>
 		</Entity>
@@ -218,20 +226,32 @@
 					<Field AllowNull="true" Name="AmountFact" Precision="10" Scale="3" Type="Decimal"/>
 					<Field AllowNull="true" Name="SumFact" Precision="15" Scale="2" Type="Decimal"/>
 				</TabularSection>
+				<TabularSection Key="User" Name="EventFiskalProperties" DeleteFilter="" SyncFilter="">
+					<Field KeyField="true" Name="Id" Type="Guid"/>
+					<Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
+					<Field KeyField="false"  Name="CheckNumber" Type="Integer" />
+					<Field AllowNull="true" Name="Date" Type="DateTime2" />
+					<Field AllowNull="true" Name="ShiftNumber" Type="Integer" />
+					<Field AllowNull="true" Length="100" Name="NumberFtpr" Type="String" />
+					<Field AllowNull="true" Name="PaymentType" Type="Integer" />
+					<Field AllowNull="true" Name="PaymentAmount" Precision="15" Scale="2" Type="Decimal" />
+					<Field AllowNull="true" Name="User" Type="Catalog.User" />
+				</TabularSection>
 			</TabularSections>
 		</Entity>
-    <Entity Name="EventHistory" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
-      <Fields>
-        <Field KeyField="true" Name="Id" Type="Guid" />
-        <Field AllowNull="false" Name="Date" Type="DateTime2" />
-        <Field AllowNull="false" Name="DeletionMark" Type="Boolean" />
-        <Field AllowNull="false" Name="Status" Type="Enum.StatusyEvents" />
-        <Field AllowNull="false" Name="Event" Type="Document.Event" />
-        <Field AllowNull="true" Name="Author" Type="Catalog.User" />
-        <Field AllowNull="true" Name="UserMA" Type="Catalog.User" />
-      </Fields>
-      <TabularSections />
-    </Entity>
+	    <Entity Name="EventHistory" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
+	      <Fields>
+	        <Field KeyField="true" Name="Id" Type="Guid" />
+	        <Field AllowNull="false" Name="Date" Type="DateTime2" />
+	        <Field AllowNull="false" Name="DeletionMark" Type="Boolean" />
+	        <Field AllowNull="false" Name="Status" Type="Enum.StatusyEvents" />
+	        <Field AllowNull="false" Name="Event" Type="Document.Event" />
+	        <Field AllowNull="true" Name="Author" Type="Catalog.User" />
+	        <Field AllowNull="true" Name="UserMA" Type="Catalog.User" />
+	      </Fields>
+	      <TabularSections />
+	    </Entity>
 		<Entity Name="SKU" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="t.Id IN (SELECT DE.SKU FROM [Document].[Event_ServicesMaterials] DE WHERE DE.Ref IN (SELECT SE.Id FROM [Document].[Event] SE WHERE SE.UserMA = @UserId))" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
@@ -504,7 +524,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity Name="Contacts" Schema="Catalog" SyncDownload="False" DeleteFilter="" SyncFilter="" SyncUpload="True">
+		<Entity Name="Contacts" Schema="Catalog" SyncDownload="True" DeleteFilter="" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -596,6 +616,12 @@
 		</Entities>
 	
 	<Constants>
+		<Entity Name="Enum.VATS">
+			<Row Description="3" Id="7cb0603a-e767-4e13-b86b-882242e9e05f" Name="Percent18" RS="0"/>
+			<Row Description="1" Id="7a3bfd88-68bd-44e3-87b0-51a844828792" Name="Percent0" _RS="0"/>
+			<Row Description="4" Id="123f1daf-215e-417e-b975-223089e9f0d0" Name="PercentWithoOut" _RS="0"/>
+			<Row Description="2" Id="a100a27f-7f2f-488b-aab8-573db25f83c1" Name="Percent10" _RS="0"/>
+		</Entity>	
 		<Entity Name="Enum.TypesDataParameters">
 			<Row Description="Текст" Id="8404c846-e63b-425c-40fb-e3081e1b97c0" Name="String" _RS="0"/>
 			<Row Description="Целое число" Id="a41d9f6f-7392-f28b-4894-2fdff7b03f74" Name="Integer" _RS="0"/>
@@ -690,6 +716,7 @@
 			<Row Description="Доступ к аналитике" Id="0236eb9f-eed9-509b-9152-86b037e79a79" Name="AnaliticAccess" _RS="0"/>
 			<Row Description="Доступ к веб-приложению" Id="0236eb9f-eed9-510b-9152-86b037e79a79" Name="WebInterfaceAccess" _RS="0"/>
 			<Row Description="Доступ к мобильному приложению" Id="0236eb9f-eed9-511b-9152-86b037e79a79" Name="MobileAppAccess" _RS="0"/>
+			<Row Description="Доступ к фискальному регистратору из мобильного приложения" Id="f22c49d3-42b4-4ccc-9646-970ee8f7db23" Name="MobileFPRAccess" _RS="0"/>
 		</Entity>
 		
 	</Constants>

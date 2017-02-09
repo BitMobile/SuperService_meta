@@ -64,6 +64,7 @@
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58432-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculate" Code="12" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="11c58433-debd-11e5-80fd-902b3416d383" DeletionMark="False" Description="UsedCalculateMaterials" Code="13" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="4f10f61a-0bc0-11e6-80ff-902b3416d383" DeletionMark="False" Description="UsedServiceBag" Code="14" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
-		
+		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="8b543510-bc75-4247-9c2a-8f4134e81866" DeletionMark="False" Description="EnableFPTR" Code="000000015" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="0"/>
+	
 	</Rows>
 </Root>
