@@ -236,7 +236,7 @@
 					<Field AllowNull="true" Length="100" Name="NumberFtpr" Type="String" />
 					<Field AllowNull="true" Name="PaymentType" Type="Integer" />
 					<Field AllowNull="true" Name="PaymentAmount" Precision="15" Scale="2" Type="Decimal" />
-					<Field AllowNull="true" Name="User" Type="Catalog.User" />
+					<Field AllowNull="false" Name="User" Type="Catalog.User" />
 				</TabularSection>
 			</TabularSections>
 		</Entity>
