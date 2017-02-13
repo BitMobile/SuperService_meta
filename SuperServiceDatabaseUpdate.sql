@@ -24,6 +24,24 @@ GO
 PRINT N'Creating [dbo].[TokenCache]'
 GO
 
+CREATE TABLE [dbo].[ReportQuery](
+    [Name] [nvarchar](50) NOT NULL,
+    [Query] [nvarchar](max) NOT NULL,
+    [Number] [int] IDENTITY(1,1) PRIMARY KEY
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+PRINT N'Creating [dbo].[TokenCache]'
+GO
+
 CREATE TABLE [dbo].[TokenCache]
 (
 	[ID] [int] NOT NULL IDENTITY(1, 1),
