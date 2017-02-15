@@ -159,8 +159,10 @@
 				<Field AllowNull="true" Length="100" Name="TargInteractions" Type="String"/>
 				<Field AllowNull="true" Length="100" Name="ResultInteractions" Type="String"/>
 				<Field AllowNull="true" Name="Status" Type="Enum.StatusyEvents"/>
-				<Field AllowNull="true" Name="Latitude" Precision="12" Scale="8" Type="Decimal"/>
-				<Field AllowNull="true" Name="Longitude" Precision="12" Scale="8" Type="Decimal"/>
+				<Field AllowNull="true" Name="LatitudeStart" Precision="12" Scale="8" Type="Decimal"/>
+				<Field AllowNull="true" Name="LongitudeStart" Precision="12" Scale="8" Type="Decimal"/>
+				<Field AllowNull="true" Name="LatitudeEnd" Precision="12" Scale="8" Type="Decimal"/>
+				<Field AllowNull="true" Name="LongitudeEnd" Precision="12" Scale="8" Type="Decimal"/>
 				<Field AllowNull="true" Name="GPSTime" Type="DateTime2"/>
 				<Field AllowNull="true" Name="ContactVisiting" Type="Catalog.Contacts"/>
 				<Field AllowNull="true" Name="TypesDepartures" Type="Catalog.TypesDepartures"/>
