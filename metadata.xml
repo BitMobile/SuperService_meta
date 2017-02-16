@@ -134,7 +134,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity Name="Event" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="t.[Id] IN(SELECT DISTINCT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] WHERE (EV.[UserMA] = @UserId) AND EV.[StartDatePlan] &gt;(getDate() - 31) AND (NOT (SE.[Name] = 'New')) AND (NOT (SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') OR ((SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') AND EV.[ActualEndDate] &gt;(getDate() - 1)))) " SyncUpload="True">
+		<Entity Name="Event" Schema="Document" SyncDownload="True" DeleteFilter="" SyncFilter="t.[Id] IN(SELECT DISTINCT EV.[Id] FROM [Document].[Event] EV JOIN [Enum].[StatusyEvents] SE ON EV.[Status] = SE.[Id] LEFT JOIN [Document].[EventHistory] EH ON EH.Event = EV.Id WHERE (EV.[UserMA] = @UserId OR (EH.UserMA = @UserId AND EH.Date &gt;(getDate()-30))) AND EV.[StartDatePlan] &gt;(getDate() - 31) AND (NOT (SE.[Name] = 'New')) AND (NOT (SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') OR ((SE.[Name] = 'Done' OR SE.[Name] = 'Cancel' OR SE.[Name] = 'DoneWithTrouble' OR SE.[Name] = 'Close' OR SE.[Name] = 'NotDone' OR SE.[Name] = 'OnTheApprovalOf') AND EV.[ActualEndDate] &gt;(getDate() - 1)))) " SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Posted" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
