@@ -1130,6 +1130,10 @@ From Document.Event AS DocumentEvent
     OR CatalogRIM.Description Like ''''%@Search%'''' 
     )
     AND(
+    ''''@ClientId'''' = ''''null''''
+    OR ''''@ClientId'''' = CatalogClient.Id
+    )
+    AND(
     ''''@TypeDepartureID'''' = ''''null''''
     OR ''''@TypeDepartureID'''' = CatalogTypesDepartures.Id
     )
