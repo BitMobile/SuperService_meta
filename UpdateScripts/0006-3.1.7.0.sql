@@ -1351,7 +1351,12 @@ SET IDENTITY_INSERT [dbo].[ReportQuery] OFF
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
-
+PRINT N'Update Event End GPS, Set 0'
+Update Document.Event Set LatitudeEnd = 0 Where NOT LatitudeStart Is NULL
+Update Document.Event Set LongitudeEnd = 0 Where NOT LongitudeStart Is NULL
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
 PRINT N'Set DBVersion = 3.1.7.0'
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
     UPDATE [dbo].[dbConfig]  
