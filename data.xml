@@ -42,13 +42,9 @@
 			<RemainsNorms Key="Materials"/>
 		</Row>
 		
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="4af19cfd-c800-11e5-80f8-902b3416d383" DeletionMark="False" Description="Первичный" Code="1"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="472a6ed3-c8bc-11e5-80f8-902b3416d383" DeletionMark="False" Description="Повторный" Code="2"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="fad09bad-ce45-11e5-80fb-902b3416d383" DeletionMark="False" Description="Монтаж" Code="3"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="7ffc8260-d481-11e5-80fc-902b3416d383" DeletionMark="False" Description="Тех. обслуживание" Code="4"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="51a10555-fbfb-11e5-80fd-902b3416d383" DeletionMark="False" Description="Профилактический" Code="5"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="b5983357-fca7-11e5-80fd-902b3416d383" DeletionMark="False" Description="Расчет" Code="6"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="69904769-ffdb-11e5-80fd-902b3416d383" DeletionMark="False" Description="Демонтаж" Code="7"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="4af19cfd-c800-11e5-80f8-902b3416d383" DeletionMark="False" Description="Наличные" Code="1"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="472a6ed3-c8bc-11e5-80f8-902b3416d383" DeletionMark="False" Description="Карта" Code="2"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="fad09bad-ce45-11e5-80fb-902b3416d383" DeletionMark="False" Description="Сертификат" Code="3"/>
 		
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="d5d5f05f-c4cb-11e5-80f8-902b3416d383" DeletionMark="False" Description="AllowGalery" Code="3" DataType="00000000-0000-0000-0000-000000000000" LogicValue="True" NumericValue="0"/>
 		<Row _Type="Catalog.SettingMobileApplication" _RS="0" Predefined="True" Id="d5d5f060-c4cb-11e5-80f8-902b3416d383" DeletionMark="False" Description="PictureSize" Code="2" DataType="00000000-0000-0000-0000-000000000000" LogicValue="False" NumericValue="2500"/>
