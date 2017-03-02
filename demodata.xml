@@ -2,9 +2,9 @@
 <Root>
 	<RegionalSettings NumberDecimalSeparator="," NumberGroupSeparator=" "/>
 	<Rows>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c801-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Техническое обследование" Code="000000001"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c802-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Монтаж" Code="000000002"/>
-		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c803-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Ремонт" Code="000000003"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c801-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Наличные" Code="000000001"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c802-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Карта" Code="000000002"/>
+		<Row _Type="Catalog.TypesDepartures" _RS="0" Predefined="False" Id="71e1c803-1387-11e6-b0e4-6c71d97753d2" DeletionMark="False" Description="Сертификат" Code="000000003"/>
 		<Row _Type="Catalog.RIM" _RS="0" Predefined="False" Id="f365b198-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" IsFolder="False" Parent="00000000-0000-0000-0000-000000000000" Description="Замер" Code="000000001" Price="1500" Service="True" SKU="00000000-0000-0000-0000-000000000000" Unit="шт." VAT="7cb0603a-e767-4e13-b86b-882242e9e05f"/>
 		<Row _Type="Catalog.RIM" _RS="0" Predefined="False" Id="f365b199-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" IsFolder="False" Parent="00000000-0000-0000-0000-000000000000" Description="Монтаж" Code="000000002" Price="2000" Service="True" SKU="00000000-0000-0000-0000-000000000000" Unit="шт." VAT="7cb0603a-e767-4e13-b86b-882242e9e05f"/>
 		<Row _Type="Catalog.RIM" _RS="0" Predefined="False" Id="f365b19a-1690-11e6-b0e4-6c71d97753d2" DeletionMark="False" IsFolder="False" Parent="00000000-0000-0000-0000-000000000000" Description="Кабель" Code="000000003" Price="30" Service="False" SKU="00000000-0000-0000-0000-000000000000" Unit="м." VAT="7cb0603a-e767-4e13-b86b-882242e9e05f"/>
