@@ -24,6 +24,308 @@ GO
 PRINT N'Creating [dbo].[TokenCache]'
 GO
 
+CREATE TABLE [dbo].[ReportQuery](
+    [Name] [nvarchar](50) NOT NULL,
+    [Query] [nvarchar](max) NOT NULL,
+    [Number] [int] IDENTITY(1,1) PRIMARY KEY
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+DECLARE @pv binary(16)
+
+PRINT(N'Add 2 rows to [dbo].[ReportQuery]')
+SET IDENTITY_INSERT [dbo].[ReportQuery] ON
+EXEC(N'INSERT INTO [dbo].[ReportQuery] ([Number], [Name], [Query]) VALUES (1, N''RimPlanFact'', N''Select Total.EventId,
+Total.AmountFact,
+Total.AmountFactSumMaterials,
+Total.AmountFactSumServices,
+Total.AmountPlan,
+Total.AmountPlanSumMaterials,
+Total.AmountPlanSumServices,
+Total.ClientDesc,
+Total.Date,
+Total.Importance,
+Total.IsService,
+Total.Number,
+Total.Price,
+Total.RIMDesc,
+Total.SumFact,
+Total.SumFactSumMaterials,
+Total.SumFactSumServices,
+Total.SumPlan,
+Total.SumPlanSumMaterials,
+Total.SumPlanSumServices,
+Total.TypeDeparture,
+Total.Unit,
+Total.UserName
+ From
+(Select Distinct DocumentEvent.Id As ''''EventIdRight'''' 
+
+From Document.Event AS DocumentEvent
+	Inner Join Catalog.Client AS CatalogClient
+	On CatalogClient.Id = DocumentEvent.Client
+	Inner Join Document.Event_TypeDepartures AS DocumentEventTypeDepartures
+		On DocumentEventTypeDepartures.Ref = DocumentEvent.Id 
+		Inner Join Catalog.TypesDepartures As CatalogTypesDepartures
+			On CatalogTypesDepartures.Id = DocumentEventTypeDepartures.TypeDeparture AND DocumentEventTypeDepartures.Active=1
+			Inner Join Document.Event_ServicesMaterials As DocumentEventServicesMaterials
+				On DocumentEventServicesMaterials.Ref = DocumentEvent.Id And DocumentEventServicesMaterials.IsDeleted = 0
+				Inner Join Catalog.RIM As CatalogRIM
+					On CatalogRIM.Id = DocumentEventServicesMaterials.SKU
+					Inner Join Catalog.[User] As CatalogUser
+						On CatalogUser.Id = DocumentEvent.UserMA
+						Left JOIN Enum.StatusImportance As EnumStatusImportance
+							On DocumentEvent.Importance = EnumStatusImportance.Id
+	Where (
+    ''''@Search'''' = ''''null''''
+    OR CatalogClient.Description Like ''''%@Search%'''' 
+    OR CatalogTypesDepartures.Description Like ''''%@Search%'''' 
+    OR DocumentEvent.Number Like ''''%@Search%'''' 
+    OR CatalogRIM.Description Like ''''%@Search%'''' 
+    )
+    AND(
+    ''''@ClientId'''' = ''''null''''
+    OR ''''@ClientId'''' = CatalogClient.Id
+    )
+    AND(
+    ''''@TypeDepartureID'''' = ''''null''''
+    OR ''''@TypeDepartureID'''' = CatalogTypesDepartures.Id
+    )
+    AND(
+    ''''@UserId'''' = ''''null''''
+    OR ''''@UserId'''' = CatalogUser.Id
+    )
+    AND(
+    ''''@StartDate'''' = ''''null''''
+    OR DATEADD(DAY, DATEDIFF(DAY, ''''19000101'''', ''''@StartDate''''), ''''19000101'''') <= DocumentEvent.Date
+    )
+    AND(
+    ''''@EndDate'''' = ''''null''''
+    OR  DATEADD(DAY, DATEDIFF(DAY, ''''18991231'''', ''''@EndDate''''), ''''19000101'''') >= DocumentEvent.Date
+    )
+	) As OnlyId
+	Left Join
+(
+Select 
+DocumentEvent.Id As ''''EventId'''',
+DocumentEvent.StartDatePlan AS ''''Date'''',
+CatalogClient.Description AS ''''ClientDesc'''',
+DocumentEvent.Number AS ''''Number'''',
+CatalogTypesDepartures.Description AS ''''TypeDeparture'''',
+CatalogUser.UserName AS ''''UserName'''',
+CatalogRIM.[Description] AS ''''RIMDesc'''',
+CatalogRIM.Service AS ''''IsService'''',
+CatalogRIM.Unit AS ''''Unit'''',
+CatalogRIM.Price As ''''Price'''',
+DocumentEventServicesMaterials.AmountPlan AS ''''AmountPlan'''',
+DocumentEventServicesMaterials.AmountFact AS ''''AmountFact'''',
+DocumentEventServicesMaterials.SumPlan AS ''''SumPlan'''',
+DocumentEventServicesMaterials.SumFact AS ''''SumFact'''',
+EnumStatusImportance.[Name] AS ''''Importance'''',
+(Select Sum(DocumentEventServicesMaterialsGroup.AmountPlan)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 1
+ ) As ''''AmountPlanSumServices'''',
+(Select Sum(DocumentEventServicesMaterialsGroup.AmountFact)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 1
+ ) As ''''AmountFactSumServices'''',
+  (Select Sum(DocumentEventServicesMaterialsGroup.SumPlan)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And Docum'')')
+UPDATE [dbo].[ReportQuery] SET [Query].WRITE(N'entEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 1
+ ) As ''SumPlanSumServices'',
+  (Select Sum(DocumentEventServicesMaterialsGroup.SumFact)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 1
+ ) As ''SumFactSumServices'',
+ (Select Sum(DocumentEventServicesMaterialsGroup.AmountPlan)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 0
+ ) As ''AmountPlanSumMaterials'',
+(Select Sum(DocumentEventServicesMaterialsGroup.AmountFact)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 0
+ ) As ''AmountFactSumMaterials'',
+  (Select Sum(DocumentEventServicesMaterialsGroup.SumPlan)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 0
+ ) As ''SumPlanSumMaterials'',
+  (Select Sum(DocumentEventServicesMaterialsGroup.SumFact)
+ From Document.Event_ServicesMaterials As DocumentEventServicesMaterialsGroup
+ Left Join Catalog.RIM As CR On CR.Id = DocumentEventServicesMaterialsGroup.SKU
+ where DocumentEventServicesMaterialsGroup.Ref = DocumentEvent.Id 
+	And DocumentEventServicesMaterialsGroup.IsDeleted=0 
+	And CR.Service = 0
+ ) As ''SumFactSumMaterials''
+
+
+From Document.Event AS DocumentEvent
+	Inner Join Catalog.Client AS CatalogClient
+	On CatalogClient.Id = DocumentEvent.Client
+	Inner Join Document.Event_TypeDepartures AS DocumentEventTypeDepartures
+		On DocumentEventTypeDepartures.Ref = DocumentEvent.Id 
+		Inner Join Catalog.TypesDepartures As CatalogTypesDepartures
+			On CatalogTypesDepartures.Id = DocumentEventTypeDepartures.TypeDeparture AND DocumentEventTypeDepartures.Active=1
+			Inner Join Document.Event_ServicesMaterials As DocumentEventServicesMaterials
+				On DocumentEventServicesMaterials.Ref = DocumentEvent.Id And DocumentEventServicesMaterials.IsDeleted = 0
+				Inner Join Catalog.RIM As CatalogRIM
+					On CatalogRIM.Id = DocumentEventServicesMaterials.SKU
+					Inner Join Catalog.[User] As CatalogUser
+						On CatalogUser.Id = DocumentEvent.UserMA
+						Left JOIN Enum.StatusImportance As EnumStatusImportance
+							On DocumentEvent.Importance = EnumStatusImportance.Id
+	
+	) as Total
+	On OnlyId.EventIdRight = Total.EventId
+
+		Order By Total.Number
+',NULL,NULL) WHERE [Number] = 1
+EXEC(N'INSERT INTO [dbo].[ReportQuery] ([Number], [Name], [Query]) VALUES (2, N''Discipline'', N''Select *,
+Total.TimeSpendFact - Total.TimeSpendPlan As ''''DiffSpendTime'''',
+Case 
+When Total.MeterDiffGPsEnd Is Null then ''''undefine''''
+When Total.MeterDiffGPsEnd <= 300 Then ''''dist_ok'''' 
+When Total.MeterDiffGPsEnd>300 And Total.MeterDiffGPsEnd <= 600 Then ''''dist_half''''
+When Total.MeterDiffGPsEnd>600 Then ''''dist_big''''
+End As ''''IconStatusGpsEnd'''',
+Case 
+When Total.MeterDiffGPsStart Is Null then ''''undefine''''
+When Total.MeterDiffGPsStart <= 300 Then ''''dist_ok'''' 
+When Total.MeterDiffGPsStart>300 And Total.MeterDiffGPsStart <= 600 Then ''''dist_half''''
+When Total.MeterDiffGPsStart>600 Then ''''dist_big''''
+End As ''''IconStatusGpsStart'''',
+Case 
+When Total.TimeLate <= 5 AND Total.TimeLate >= -5 Then ''''OK'''' 
+When Total.TimeLate > 5 AND Total.TimeLate <= 15 Then ''''yellow_circle_15''''
+When Total.TimeLate < -5 AND Total.TimeLate >= -15 Then ''''yellow_circle_45''''
+When Total.TimeLate < -15 Then ''''red_circle_15''''
+When Total.TimeLate > 15 Then ''''red_circle_45''''
+End As ''''IconStatusTimeLate'''',
+Case 
+When Total.TimeSpendFact - Total.TimeSpendPlan >=-15 And Total.TimeSpendFact - Total.TimeSpendPlan <= 15 then ''''OK''''
+When Total.TimeSpendFact - Total.TimeSpendPlan > 15 And Total.TimeSpendFact - Total.TimeSpendPlan <= 30 then ''''yellow_circle_15'''' 
+When Total.TimeSpendFact - Total.TimeSpendPlan < -15 And Total.TimeSpendFact - Total.TimeSpendPlan >= -30 then ''''yellow_circle_45'''' 
+When Total.TimeSpendFact - Total.TimeSpendPlan < 30 then ''''red_circle_15'''' 
+When Total.TimeSpendFact - Total.TimeSpendPlan > 30 then ''''red_circle_45'''' 
+End As ''''IconStatusDiffSpendTime'''',
+CONVERT(varchar(10), Total.TimeSpendFact) + ''''/'''' +CONVERT(varchar(10),  Total.TimeSpendPlan) As ''''TimeSpentSub''''
+From (
+Select 
+DocumentEvent.Id As ''''EventId'''',
+DocumentEvent.Date AS ''''Date'''',
+CatalogClient.Description AS ''''ClientDesc'''',
+DocumentEvent.Number AS ''''Number'''',
+CatalogTypesDepartures.Description AS ''''TypeDeparture'''',
+CatalogUser.UserName AS ''''UserName'''',
+DATEDIFF ( MINUTE , DocumentEvent.StartDatePlan , DocumentEvent.ActualStartDate )  As ''''TimeLate'''',
+DocumentEvent.StartDatePlan AS ''''PlanTimeStart'''',
+DocumentEvent.ActualStartDate AS ''''FactTimeStart'''',
+DATEDIFF ( MINUTE ,  DocumentEvent.ActualStartDate,DocumentEvent.ActualEndDate )  As ''''TimeSpendFact'''',
+DATEDIFF ( MINUTE ,  DocumentEvent.StartDatePlan,DocumentEvent.EndDatePlan)  As ''''TimeSpendPlan'''',
+Case 
+	When  CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL Then
+		null
+	Else
+		geography::Point(CatalogClient.Latitude,CatalogClient.Longitude, 4326).STDistance(geography::Point(DocumentEvent.LatitudeStart,DocumentEvent.LongitudeStart, 4326))
+END as ''''MeterDiffGPsStart'''',
+
+Case 
+	When  CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL Then
+		null
+	Else 
+		geography::Point(CatalogClient.Latitude,CatalogClient.Longitude, 4326).STDistance(geography::Point(DocumentEvent.LatitudeEnd,DocumentEvent.LongitudeEnd, 4326))  
+END as ''''MeterDiffGPsEnd'''',
+EnumStatusImportance.[Name] AS ''''Importance'''' 
+From Document.Event AS DocumentEvent
+	Inner Join Catalog.Client AS CatalogClient
+	On CatalogClient.Id = DocumentEvent.Client
+	Inner Join Document.Event_TypeDepartures AS DocumentEventTypeDepartures
+		On DocumentEventTypeDepartures.Ref = DocumentEvent.Id 
+		Inner Join Catalog.TypesDepartures As CatalogTypesDepartures
+			On CatalogTypesDepartures.Id = DocumentEventTypeDepartures.TypeDeparture AND DocumentEventTypeDepartures.Active=1
+					Inner Join Catalog.[User] As CatalogUser
+						On CatalogUser.Id = DocumentEvent.UserMA
+						Inner Join Enum.StatusImportance AS EnumStatusImportance
+							On EnumStatusImportance.Id = DocumentEvent.Importance
+							Inner Join Enum.StatusyEvents As EnumStatusyEvents
+								On EnumStatusyEvents.Id = DocumentEvent.Status And (EnumStatusyEvents.Name = ''''Done'''' 
+									OR EnumStatusyEvents.Name = ''''DoneWithTrouble''''
+									OR EnumStatusyEvents.Name ='')')
+UPDATE [dbo].[ReportQuery] SET [Query].WRITE(N' ''OnTheApprovalOf''
+									OR EnumStatusyEvents.Name = ''Close''
+									OR EnumStatusyEvents.Name = ''NotDone'')
+	Where (
+    ''@Search'' = ''null''
+    OR CatalogClient.Description Like ''%@Search%'' 
+    OR CatalogTypesDepartures.Description Like ''%@Search%'' 
+    OR DocumentEvent.Number Like ''%@Search%'' 
+    )
+    AND(
+    ''@ClientId'' = ''null''
+    OR ''@ClientId'' = CatalogClient.Id
+    )
+    AND(
+    ''@TypeDepartureID'' = ''null''
+    OR ''@TypeDepartureID'' = CatalogTypesDepartures.Id
+    )
+    AND(
+    ''@UserId'' = ''null''
+    OR ''@UserId'' = CatalogUser.Id
+    )
+    AND(
+    ''@StartDate'' = ''null''
+    OR ''@StartDate'' <= DocumentEvent.Date
+    )
+    AND(
+    ''@EndDate'' = ''null''
+    OR ''@EndDate'' >= DocumentEvent.Date
+    )
+
+	) as Total
+	Order By Total.Number',NULL,NULL) WHERE [Number] = 2
+SET IDENTITY_INSERT [dbo].[ReportQuery] OFF
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+PRINT N'Creating [dbo].[TokenCache]'
+GO
+
 CREATE TABLE [dbo].[TokenCache]
 (
 	[ID] [int] NOT NULL IDENTITY(1, 1),
@@ -471,7 +773,7 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.6.0');
+           ,N'3.1.7.0');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
