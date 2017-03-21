@@ -653,6 +653,7 @@
 				<Field AllowNull="false" Name="Closed" Type="Boolean"/>
 				<Field AllowNull="true" Name="Responsible" Type="Catalog.User"/>
 				<Field AllowNull="true" Name="Manager" Type="Catalog.User"/>
+			  <Field AllowNull="true" Name="TenderDocumentation" Type="String" Length="512" />
 			</Fields>
 			<TabularSections>
 				<TabularSection DeleteFilter="" Key="ActivityType" Name="ActivityTypes" SyncFilter="">
