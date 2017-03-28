@@ -488,7 +488,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity DeleteFilter="" Name="CheckList" Schema="Document" SyncDownload="False" SyncFilter="t.Id IN (SELECT DEC.[CheckListRef] FROM [Document].[Event_CheckList] DEC LEFT JOIN [Document].[Event] DE ON DEC.Ref = DE.Id WHERE DE.[UserMA] = @UserId) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
+		<Entity DeleteFilter="" Name="CheckList" Schema="Document" SyncDownload="True" SyncFilter="t.Id IN (SELECT DEC.[CheckListRef] FROM [Document].[Event_CheckList] DEC LEFT JOIN [Document].[Event] DE ON DEC.Ref = DE.Id WHERE DE.[UserMA] = @UserId) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Posted" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -527,7 +527,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity DeleteFilter="" Name="Contacts" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
+		<Entity DeleteFilter="" Name="Contacts" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field AllowNull="true" Name="Predefined" Type="Boolean"/>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
@@ -664,7 +664,7 @@
 				</TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity DeleteFilter="" Name="Chat" Schema="Catalog" SyncDownload="False" SyncFilter="" SyncUpload="True">
+		<Entity DeleteFilter="" Name="Chat" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
 			<Fields>
 				<Field KeyField="true" Name="Id" Type="Guid"/>
 				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
