@@ -210,13 +210,13 @@ From Document.Event AS DocumentEvent
 EXEC(N'INSERT INTO [dbo].[ReportQuery] ([Number], [Name], [Query]) VALUES (2, N''Discipline'', N''Select *,
 Total.TimeSpendFact - Total.TimeSpendPlan As ''''DiffSpendTime'''',
 Case 
-When Total.MeterDiffGPsEnd Is Null then ''''undefine''''
+When Total.MeterDiffGPsEnd Is Null then null
 When Total.MeterDiffGPsEnd <= 300 Then ''''dist_ok'''' 
 When Total.MeterDiffGPsEnd>300 And Total.MeterDiffGPsEnd <= 600 Then ''''dist_half''''
 When Total.MeterDiffGPsEnd>600 Then ''''dist_big''''
 End As ''''IconStatusGpsEnd'''',
 Case 
-When Total.MeterDiffGPsStart Is Null then ''''undefine''''
+When Total.MeterDiffGPsStart Is Null then null
 When Total.MeterDiffGPsStart <= 300 Then ''''dist_ok'''' 
 When Total.MeterDiffGPsStart>300 And Total.MeterDiffGPsStart <= 600 Then ''''dist_half''''
 When Total.MeterDiffGPsStart>600 Then ''''dist_big''''
