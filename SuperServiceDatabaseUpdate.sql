@@ -102,11 +102,11 @@ From Document.Event AS DocumentEvent
     )
     AND(
     ''''@StartDate'''' = ''''null''''
-    OR DATEADD(DAY, DATEDIFF(DAY, ''''19000101'''', ''''@StartDate''''), ''''19000101'''') <= DocumentEvent.Date
+    OR DATEADD(DAY, DATEDIFF(DAY, ''''19000101'''', ''''@StartDate''''), ''''19000101'''') <= DocumentEvent.StartDatePlan
     )
     AND(
     ''''@EndDate'''' = ''''null''''
-    OR  DATEADD(DAY, DATEDIFF(DAY, ''''18991231'''', ''''@EndDate''''), ''''19000101'''') >= DocumentEvent.Date
+    OR  DATEADD(DAY, DATEDIFF(DAY, ''''18991231'''', ''''@EndDate''''), ''''19000101'''') >= DocumentEvent.StartDatePlan
     )
 	) As OnlyId
 	Left Join
