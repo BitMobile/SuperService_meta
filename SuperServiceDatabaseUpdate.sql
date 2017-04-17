@@ -263,20 +263,20 @@ Case
 		geography::Point(CatalogClient.Latitude,CatalogClient.Longitude, 4326).STDistance(geography::Point(DocumentEvent.LatitudeEnd,DocumentEvent.LongitudeEnd, 4326))  
 END as 'MeterDiffGPsEnd',
 Case 
-	When  CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL Then
+	When  (CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL) OR (CatalogClient.Latitude = 0 AND CatalogClient.Longitude = 0) Then
 		0
 	Else 
 		1
-END as ''''IsClientCoordinates'''',
+END as 'IsClientCoordinates',
 Case 
-	When  DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL Then
+	When  (DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL) OR (DocumentEvent.LatitudeStart = 0 AND DocumentEvent.LongitudeStart = 0) Then
 		0
 	Else 
 		1
-END as ''''IsEventStartCoordinates'''',
+END as 'IsEventStartCoordinates',
 
 Case 
-	When  DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL Then
+	When  (DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL) OR (DocumentEvent.LatitudeEnd = 0 AND DocumentEvent.LongitudeEnd = 0) Then
 		0
 	Else 
 		1
