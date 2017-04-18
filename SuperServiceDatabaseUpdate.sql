@@ -239,10 +239,10 @@ CONVERT(varchar(10), Total.TimeSpendFact) + ''''/'''' +CONVERT(varchar(10),  Tot
 From (
 Select 
 DocumentEvent.Id As ''''EventId'''',
-DocumentEvent.Date AS ''''Date'''',
-CatalogClient.Description AS ''''ClientDesc'''',
+DocumentEvent.Date AS ''''StartDatePlan'''',
+CatalogClient.Description AS ''''ClientDescription'''',
 DocumentEvent.Number AS ''''Number'''',
-CatalogTypesDepartures.Description AS ''''TypeDeparture'''',
+CatalogTypesDepartures.Description AS ''''TypeDepartureDescription'''',
 CatalogUser.UserName AS ''''UserName'''',
 DATEDIFF ( MINUTE , DocumentEvent.StartDatePlan , DocumentEvent.ActualStartDate )  As ''''TimeLate'''',
 DocumentEvent.StartDatePlan AS ''''PlanTimeStart'''',
