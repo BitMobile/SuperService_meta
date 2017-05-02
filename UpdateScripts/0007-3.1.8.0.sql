@@ -342,6 +342,11 @@ IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
+PRINT N'Updating checklist dates'
+UPDATE Document.Event_CheckList
+ SET Result = CONVERT(varchar(50), Cast(Result as datetime), 127) + 'Z'
+ WHERE ActionType = 'BE371BA8-80CB-B12E-4445-D9DBD848CD08'
+GO
 COMMIT TRANSACTION
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
