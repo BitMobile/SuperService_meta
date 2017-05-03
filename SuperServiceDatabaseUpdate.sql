@@ -47,9 +47,9 @@ Total.AmountFactSumServices,
 Total.AmountPlan,
 Total.AmountPlanSumMaterials,
 Total.AmountPlanSumServices,
-Total.ClientDesc,
-Total.Date,
-Total.Importance,
+Total.ClientDesc AS ClientDescription,
+Total.Date AS StartDatePlan,
+Total.Importance AS ImportanceID,
 Total.IsService,
 Total.Number,
 Total.Price,
@@ -60,7 +60,7 @@ Total.SumFactSumServices,
 Total.SumPlan,
 Total.SumPlanSumMaterials,
 Total.SumPlanSumServices,
-Total.TypeDeparture,
+Total.TypeDeparture AS TypeDepartureDescription,
 Total.Unit,
 Total.UserName
  From
@@ -102,11 +102,11 @@ From Document.Event AS DocumentEvent
     )
     AND(
     ''''@StartDate'''' = ''''null''''
-    OR DATEADD(DAY, DATEDIFF(DAY, ''''19000101'''', ''''@StartDate''''), ''''19000101'''') <= DocumentEvent.Date
+    OR DATEADD(DAY, DATEDIFF(DAY, ''''19000101'''', ''''@StartDate''''), ''''19000101'''') <= DocumentEvent.StartDatePlan
     )
     AND(
     ''''@EndDate'''' = ''''null''''
-    OR  DATEADD(DAY, DATEDIFF(DAY, ''''18991231'''', ''''@EndDate''''), ''''19000101'''') >= DocumentEvent.Date
+    OR  DATEADD(DAY, DATEDIFF(DAY, ''''18991231'''', ''''@EndDate''''), ''''19000101'''') >= DocumentEvent.StartDatePlan
     )
 	) As OnlyId
 	Left Join
@@ -210,13 +210,13 @@ From Document.Event AS DocumentEvent
 EXEC(N'INSERT INTO [dbo].[ReportQuery] ([Number], [Name], [Query]) VALUES (2, N''Discipline'', N''Select *,
 Total.TimeSpendFact - Total.TimeSpendPlan As ''''DiffSpendTime'''',
 Case 
-When Total.MeterDiffGPsEnd Is Null then ''''undefine''''
+When Total.MeterDiffGPsEnd Is Null then null
 When Total.MeterDiffGPsEnd <= 300 Then ''''dist_ok'''' 
 When Total.MeterDiffGPsEnd>300 And Total.MeterDiffGPsEnd <= 600 Then ''''dist_half''''
 When Total.MeterDiffGPsEnd>600 Then ''''dist_big''''
 End As ''''IconStatusGpsEnd'''',
 Case 
-When Total.MeterDiffGPsStart Is Null then ''''undefine''''
+When Total.MeterDiffGPsStart Is Null then null
 When Total.MeterDiffGPsStart <= 300 Then ''''dist_ok'''' 
 When Total.MeterDiffGPsStart>300 And Total.MeterDiffGPsStart <= 600 Then ''''dist_half''''
 When Total.MeterDiffGPsStart>600 Then ''''dist_big''''
@@ -239,10 +239,10 @@ CONVERT(varchar(10), Total.TimeSpendFact) + ''''/'''' +CONVERT(varchar(10),  Tot
 From (
 Select 
 DocumentEvent.Id As ''''EventId'''',
-DocumentEvent.Date AS ''''Date'''',
-CatalogClient.Description AS ''''ClientDesc'''',
+DocumentEvent.Date AS ''''StartDatePlan'''',
+CatalogClient.Description AS ''''ClientDescription'''',
 DocumentEvent.Number AS ''''Number'''',
-CatalogTypesDepartures.Description AS ''''TypeDeparture'''',
+CatalogTypesDepartures.Description AS ''''TypeDepartureDescription'''',
 CatalogUser.UserName AS ''''UserName'''',
 DATEDIFF ( MINUTE , DocumentEvent.StartDatePlan , DocumentEvent.ActualStartDate )  As ''''TimeLate'''',
 DocumentEvent.StartDatePlan AS ''''PlanTimeStart'''',
@@ -250,18 +250,37 @@ DocumentEvent.ActualStartDate AS ''''FactTimeStart'''',
 DATEDIFF ( MINUTE ,  DocumentEvent.ActualStartDate,DocumentEvent.ActualEndDate )  As ''''TimeSpendFact'''',
 DATEDIFF ( MINUTE ,  DocumentEvent.StartDatePlan,DocumentEvent.EndDatePlan)  As ''''TimeSpendPlan'''',
 Case 
-	When  CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL Then
+	When  (CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL) OR (CatalogClient.Latitude = 0 AND CatalogClient.Longitude = 0) OR (DocumentEvent.LatitudeStart = 0 AND DocumentEvent.LongitudeStart = 0) Then
 		null
 	Else
 		geography::Point(CatalogClient.Latitude,CatalogClient.Longitude, 4326).STDistance(geography::Point(DocumentEvent.LatitudeStart,DocumentEvent.LongitudeStart, 4326))
 END as ''''MeterDiffGPsStart'''',
 
 Case 
-	When  CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL Then
+	When  (CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL OR DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL) OR (CatalogClient.Latitude = 0 AND CatalogClient.Longitude = 0) OR (DocumentEvent.LatitudeEnd = 0 AND DocumentEvent.LongitudeEnd = 0) Then
 		null
 	Else 
 		geography::Point(CatalogClient.Latitude,CatalogClient.Longitude, 4326).STDistance(geography::Point(DocumentEvent.LatitudeEnd,DocumentEvent.LongitudeEnd, 4326))  
 END as ''''MeterDiffGPsEnd'''',
+Case 
+	When  (CatalogClient.Latitude IS NULL OR CatalogClient.Longitude IS NULL) OR (CatalogClient.Latitude = 0 AND CatalogClient.Longitude = 0) Then
+		0
+	Else 
+		1
+END as ''''IsClientCoordinates'''',
+Case 
+	When  (DocumentEvent.LatitudeStart IS NULL OR DocumentEvent.LongitudeStart IS NULL) OR (DocumentEvent.LatitudeStart = 0 AND DocumentEvent.LongitudeStart = 0) Then
+		0
+	Else 
+		1
+END as ''''IsEventStartCoordinates'''',
+
+Case 
+	When  (DocumentEvent.LatitudeEnd IS NULL OR DocumentEvent.LongitudeEnd IS NULL) OR (DocumentEvent.LatitudeEnd = 0 AND DocumentEvent.LongitudeEnd = 0) Then
+		0
+	Else 
+		1
+END as ''''IsEventEndCoordinates'''',
 EnumStatusImportance.[Name] AS ''''Importance'''' 
 From Document.Event AS DocumentEvent
 	Inner Join Catalog.Client AS CatalogClient
@@ -773,7 +792,7 @@ INSERT INTO [dbo].[dbConfig]
            ,[Value])
      VALUES
            ('DBVersion'
-           ,N'3.1.7.0');
+           ,N'3.1.8.0');
 GO
 
 IF @@ERROR <> 0 SET NOEXEC ON
