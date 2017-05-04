@@ -39,7 +39,7 @@ DELETE FROM [dbo].[ReportQuery]
 GO
 PRINT(N'Update 2 rows in [dbo].[ReportQuery]')
 INSERT
-INTO [dbo].[ReportQuery] ('Name', 'Query')
+INTO [dbo].[ReportQuery] ([Name], [Query])
 VALUES ('RimPlanFact', N'Select Total.EventId,
 Total.AmountFact,
 Total.AmountFactSumMaterials,
@@ -207,7 +207,7 @@ From Document.Event AS DocumentEvent
 		Order By Total.Number
 ')
 INSERT
-INTO [dbo].[ReportQuery] ('Name', 'Query')
+INTO [dbo].[ReportQuery] ([Name], [Query])
 VALUES ('Discipline', N'Select *,
 Total.TimeSpendFact - Total.TimeSpendPlan As ''DiffSpendTime'',
 Case 
