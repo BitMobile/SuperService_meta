@@ -38,7 +38,9 @@ GO
 DELETE FROM [dbo].[ReportQuery]
 GO
 PRINT(N'Update 2 rows in [dbo].[ReportQuery]')
-UPDATE [dbo].[ReportQuery] SET [Query]=N'Select Total.EventId,
+INSERT
+INTO [dbo].[ReportQuery] ('Name', 'Query')
+VALUES ('RimPlanFact', N'Select Total.EventId,
 Total.AmountFact,
 Total.AmountFactSumMaterials,
 Total.AmountFactSumServices,
@@ -203,8 +205,10 @@ From Document.Event AS DocumentEvent
 	On OnlyId.EventIdRight = Total.EventId
 
 		Order By Total.Number
-' WHERE [Number] = 1
-UPDATE [dbo].[ReportQuery] SET [Query]=N'Select *,
+')
+INSERT
+INTO [dbo].[ReportQuery] ('Name', 'Query')
+VALUES ('Discipline', N'Select *,
 Total.TimeSpendFact - Total.TimeSpendPlan As ''DiffSpendTime'',
 Case 
 When Total.MeterDiffGPsEnd Is Null then null
@@ -324,7 +328,7 @@ From Document.Event AS DocumentEvent
     )
 
 	) as Total
-	Order By Total.Number' WHERE [Number] = 2
+	Order By Total.Number')
 IF @@ERROR <> 0 SET NOEXEC ON
 
 PRINT N'Set DBVersion = 3.1.8.0'
