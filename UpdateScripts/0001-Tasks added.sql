@@ -5,6 +5,8 @@ You are recommended to back up your database before running this script
 Script created by SQL Compare version 12.0.30.3199 from Red Gate Software Ltd at 20.10.2016 14:15:37 
  
 */
+IF EXISTS(SELECT * FROM (SELECT COUNT(*) AS Value FROM [dbo].[dbConfig] WHERE [Key]='DBVersion') AS SubQuery WHERE [SubQuery].[Value]>0)
+  RETURN
 
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion' AND [Value]='3.1.3.0' )
 
