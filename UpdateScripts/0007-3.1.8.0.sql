@@ -330,6 +330,22 @@ From Document.Event AS DocumentEvent
 	) as Total
 	Order By Total.Number')
 IF @@ERROR <> 0 SET NOEXEC ON
+GO
+
+PRINT N'Updating checklist dates'
+UPDATE Document.Event_CheckList
+Set Result = 
+CASE 
+when TRY_PARSE(Result as datetime USING 'ru-ru') IS NULL
+then Result
+Else CONVERT(varchar(50), TRY_PARSE(Result as datetime USING 'ru-ru'), 127) + 'Z'
+End
+ WHERE ActionType = 'BE371BA8-80CB-B12E-4445-D9DBD848CD08'
+GO
+COMMIT TRANSACTION
+GO
+IF @@ERROR <> 0 SET NOEXEC ON
+GO
 
 PRINT N'Set DBVersion = 3.1.8.0'
 IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
@@ -343,15 +359,6 @@ IF EXISTS(SELECT *  FROM  [dbo].[dbConfig] WHERE [Key]='DBVersion')
        VALUES
            ('DBVersion'
            ,N'3.1.8.0');
-GO
-IF @@ERROR <> 0 SET NOEXEC ON
-GO
-PRINT N'Updating checklist dates'
-UPDATE Document.Event_CheckList
- SET Result = CONVERT(varchar(50), Cast(Result as datetime), 127) + 'Z'
- WHERE ActionType = 'BE371BA8-80CB-B12E-4445-D9DBD848CD08'
-GO
-COMMIT TRANSACTION
 GO
 IF @@ERROR <> 0 SET NOEXEC ON
 GO
