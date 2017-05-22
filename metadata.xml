@@ -538,6 +538,7 @@
 				<Field AllowNull="true" Length="100" Name="Tel" Type="String"/>
 				<Field AllowNull="true" Length="100" Name="Tel2" Type="String"/>
 				<Field AllowNull="true" Length="100" Name="EMail" Type="String"/>
+				<Field AllowNull="true" Name="UserMA" Type="Guid"/>
 			</Fields>
 			<TabularSections/>
 		</Entity>
