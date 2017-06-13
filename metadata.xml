@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Configuration Name="SuperService" Version="1.3.1.327">
 	<GlobalParameters/>
 	<Entities>
@@ -244,6 +244,13 @@
 					<Field AllowNull="true" Name="AmountFact" Precision="10" Scale="3" Type="Decimal"/>
 					<Field AllowNull="true" Name="SumFact" Precision="15" Scale="2" Type="Decimal"/>
 				</TabularSection>
+        <TabularSection DeleteFilter="" Key="UniqId" Name="UnreadMark" SyncFilter="">
+          <Field KeyField="true" Name="Id" Type="Guid"/>
+          <Field AllowNull="false" Name="UniqId" Type="String" Length="100" />
+          <Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+          <Field AllowNull="false" Name="Ref" Type="Guid" KeyField="false"/>
+          <Field AllowNull="false" Name="Responsible" Type="Catalog.User"/>
+        </TabularSection>
 			</TabularSections>
 		</Entity>
 		<Entity DeleteFilter="" Name="SKU" Schema="Catalog" SyncDownload="False" SyncFilter="t.Id IN (SELECT DE.SKU FROM [Document].[Event_ServicesMaterials] DE WHERE DE.Ref IN (SELECT SE.Id FROM [Document].[Event] SE WHERE SE.UserMA = @UserId)) OR @UserId IN (SELECT US.[id] FROM [Catalog].[User] US WHERE US.[UserName]='Exchange')" SyncUpload="True">
@@ -664,20 +671,15 @@
 					<Field AllowNull="false" KeyField="false" Name="Ref" Type="Guid"/>
 					<Field AllowNull="false" Name="ActivityType" Type="Catalog.ActivityTypes"/>
 				</TabularSection>
+        <TabularSection DeleteFilter="" Key="UniqId" Name="UnreadMark" SyncFilter="">
+          <Field KeyField="true" Name="Id" Type="Guid"/>
+          <Field AllowNull="false" Name="UniqId" Type="String" Length="100"/>
+          <Field AllowNull="true" Name="LineNumber" Type="Integer"/>
+          <Field AllowNull="false" Name="Ref" Type="Guid" KeyField="false"/>
+          <Field AllowNull="false" Name="Responsible" Type="Catalog.User"/>
+        </TabularSection>
 			</TabularSections>
 		</Entity>
-		<Entity DeleteFilter="" Name="Chat" Schema="Catalog" SyncDownload="True" SyncFilter="" SyncUpload="True">
-			<Fields>
-				<Field KeyField="true" Name="Id" Type="Guid"/>
-				<Field AllowNull="false" Name="DeletionMark" Type="Boolean"/>
-				<Field AllowNull="false" Name="DateTime" Type="DateTime2"/>
-				<Field AllowNull="false" Name="Tender" Type="Catalog.Tender"/>
-				<Field AllowNull="false" Name="User" Type="Catalog.User"/>
-				<Field AllowNull="true" Length="500" Name="Message" Type="String"/>
-			</Fields>
-			<TabularSections/>
-		</Entity>
-		<!-- +++BIOVITRUM -->
 	</Entities>
 	<Constants>
 		<Entity Name="Enum.TypesDataParameters">
